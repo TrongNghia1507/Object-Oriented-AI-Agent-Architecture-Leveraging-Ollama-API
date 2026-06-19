@@ -36,7 +36,7 @@ int main() {
 
     std::cout << "=== BẮT ĐẦU KIỂM THỬ MEMORY TOOL ===" << std::endl;
 
-    // 1. Khởi tạo Database Manager (Chỉ 1 kết nối duy nhất)
+    // 1. Khởi tạo Database Manager 
     auto dbManager = std::make_shared<DatabaseManager>();
     std::cout << "[+] Đã khởi tạo Database Manager và bảng agent_memory." << std::endl;
 

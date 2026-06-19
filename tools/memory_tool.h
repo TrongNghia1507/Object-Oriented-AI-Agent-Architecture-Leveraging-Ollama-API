@@ -1,13 +1,11 @@
 #ifndef MEMORY_TOOL_H
 #define MEMORY_TOOL_H
 
-#include "tool.h" // Interface gốc của hệ thống
+#include "tool.h" 
 #include <sqlite3.h>
 #include <string>
 #include <memory>
-// Đã bỏ #include <optional> vì không cần dùng nữa
 
-// Lớp cha quản lý kết nối Database (Áp dụng RAII)
 class DatabaseManager {
 private:
     sqlite3* db;
@@ -28,7 +26,6 @@ public:
         return "Lưu thông tin, sự kiện quan trọng vào bộ nhớ cơ sở dữ liệu."; 
     }
     
-    // SỬA Ở ĐÂY: Trả về std::string thay vì std::optional<std::string>
     std::string execute(const std::string& args) override;
 };
 
@@ -43,8 +40,8 @@ public:
         return "Lưu thông tin, sự kiện quan trọng vào bộ nhớ cơ sở dữ liệu."; 
     }
     
-    // SỬA Ở ĐÂY: Trả về std::string thay vì std::optional<std::string>
+
     std::string execute(const std::string& args) override;
 };
 
-#endif // MEMORY_TOOL_H
+#endif 
