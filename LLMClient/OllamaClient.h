@@ -22,7 +22,7 @@ class OllamaClient{
     OllamaClient(std::string model, std::string GISTID, std::string GISTPAT);
     std::string encodeImageToBase64(const std::string& filePath);
     std::string buildPayload(const std::string& promptText, const std::string& base64Image = "");
-    std::expected<std::string, OllamaError>executeCurl(const std::string& url, const std::string& method = "GET", const std::string& payload = "");
+    std::expected<std::string, OllamaError> executeCurl(const std::string& url, const std::string& method = "GET", const std::string& payload = "");
     std::expected<std::string, OllamaError> fetchActivePinggyUrl();
     std::expected<std::string, OllamaError> processRequest(const std::string& jsonPayload) ;
     std::expected<std::string, OllamaError> sendPrompt(const std::string& text);
