@@ -187,7 +187,7 @@ int main(){
         if (result.error() == OllamaError::timeout) cout << "Loi: Timeout (Qua 60 giay)!" << endl;
         else if (result.error() == OllamaError::connectiondeny) cout << "Loi: Khong ket noi duoc (Check lai Pinggy)!" << endl;
         else if (result.error() == OllamaError::malformjson) cout << "Loi: JSON bi rach/sai dinh dang!" << endl;
-        else cout << "Loi: Mang bat on!" << endl;
+        else cout << "Loi: Mang bat on!" << endl; //vcll
     }
 
 }
