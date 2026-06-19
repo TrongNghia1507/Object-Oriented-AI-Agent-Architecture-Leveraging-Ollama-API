@@ -1,7 +1,9 @@
 #include <iostream>
 #include <memory>
+#include "tools/tool.h"
 #include "tools/calculator_tool.h"
 #include "tools/advanced_math_tool.h"
+#include "tools/memory_tool.h"
 
 int main() {
     std::cout << "=== HE THONG KIEM THU CUON CHIEU - BOPHAT TOAN TOOL ===" << std::endl;
@@ -30,5 +32,50 @@ int main() {
     std::cout << "Input: " << advExp2 << " -> Output: " << advCalc->execute(advExp2) << " (Ky vong: 5.000000)" << std::endl;
 
     std::cout << "\n=======================================================" << std::endl;
+
+
+    std::cout << "=== BẮT ĐẦU KIỂM THỬ MEMORY TOOL ===" << std::endl;
+
+    // 1. Khởi tạo Database Manager (Chỉ 1 kết nối duy nhất)
+    auto dbManager = std::make_shared<DatabaseManager>();
+    std::cout << "[+] Đã khởi tạo Database Manager và bảng agent_memory." << std::endl;
+
+    // 2. Khởi tạo 2 tay chân (Công cụ)
+    MemorySaveTool saveTool(dbManager);
+    MemorySearchTool searchTool(dbManager);
+
+
+    std::cout << "\n--- TEST 1: LƯU TRỮ DỮ LIỆU ---" << std::endl;
+    std::string textToSave = "Kết quả phép tính 15 * 3 là 45";
+    std::cout << "AI ra lệnh lưu: \"" << textToSave << "\"" << std::endl;
+    
+    std::string saveResult = saveTool.execute(textToSave);
+    std::cout << "Phản hồi từ Tool: " << saveResult << std::endl;
+
+ 
+    std::cout << "\n--- TEST 2: TÌM KIẾM CÓ DỮ LIỆU ---" << std::endl;
+    std::string keyword1 = "15 * 3";
+    std::cout << "AI ra lệnh tìm kiếm: \"" << keyword1 << "\"" << std::endl;
+    
+    std::string searchHit = searchTool.execute(keyword1);
+    if (!searchHit.empty()) {
+        std::cout << "=> THÀNH CÔNG! Tool tìm thấy: " << searchHit << std::endl;
+    } else {
+        std::cout << "=> THẤT BẠI! Lỗi logic, đáng lẽ phải tìm thấy." << std::endl;
+    }
+
+
+    std::cout << "\n--- TEST 3: TÌM KIẾM KHÔNG CÓ DỮ LIỆU ---" << std::endl;
+    std::string keyword2 = "mật khẩu wifi";
+    std::cout << "AI ra lệnh tìm kiếm: \"" << keyword2 << "\"" << std::endl;
+    
+    std::string searchMiss = searchTool.execute(keyword2);
+    if (searchMiss.empty()) {
+        std::cout << "=> THÀNH CÔNG! Trả về chuỗi rỗng đúng như dự kiến vì chưa từng lưu." << std::endl;
+    } else {
+        std::cout << "=> THẤT BẠI! Tool tìm ra dữ liệu sai." << std::endl;
+    }
+
+    std::cout << "\n=== KẾT THÚC KIỂM THỬ ===" << std::endl;
     return 0;
 }
