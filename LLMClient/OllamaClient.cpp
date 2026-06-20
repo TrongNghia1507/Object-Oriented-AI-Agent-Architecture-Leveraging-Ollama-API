@@ -8,8 +8,7 @@ static size_t WriteCallback(void* contents, size_t size, size_t nmemb, string* u
     userp->append((char*)contents, size * nmemb);
     return size * nmemb;
 }
-OllamaClient::OllamaClient(string model, string GISTID, string GISTPAT){
-    modelName = model;
+OllamaClient::OllamaClient(string model, string GISTID, string GISTPAT) : LLMClient(model){
     gistID = GISTID;
     gistPAT = GISTPAT;
 }
@@ -54,14 +53,14 @@ string OllamaClient::buildPayload(const string& promptText, const string& base64
     // Trả về chuỗi JSON hoàn chỉnh để curl bắn đi
     return payload.dump();
 }
-std::expected<string, OllamaError> OllamaClient::executeCurl(const string& url, const string& method = "GET", const string& payload = "") { //get link from GIST using "GET" as parameters, send json format to model using "POST"
+std::expected<string, LLMError> OllamaClient::executeCurl(const string& url, const string& method = "GET", const string& payload = "") { //get link from GIST using "GET" as parameters, send json format to model using "POST"
     CURL* curl;
     CURLcode res;
     string readBuffer;
 
     curl = curl_easy_init();
     if (!curl) {
-        return std::unexpected(OllamaError::unknownednetwork);
+        return std::unexpected(LLMError::unknownednetwork);
     }
 
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
@@ -101,16 +100,16 @@ std::expected<string, OllamaError> OllamaClient::executeCurl(const string& url, 
     // Handle libcurl Errors using std::expected
     if (res != CURLE_OK) {
         if (res == CURLE_OPERATION_TIMEDOUT) {
-            return std::unexpected(OllamaError::timeout);
+            return std::unexpected(LLMError::timeout);
         } else if (res == CURLE_COULDNT_CONNECT || res == CURLE_COULDNT_RESOLVE_HOST) {
-            return std::unexpected(OllamaError::connectiondeny);
+            return std::unexpected(LLMError::connectiondeny);
         }
-        return std::unexpected(OllamaError::unknownednetwork);
+        return std::unexpected(LLMError::unknownednetwork);
     }
 
     return readBuffer;
 }
-std::expected<string, OllamaError> OllamaClient::fetchActivePinggyUrl() { // return the ultimate link that we can use to contact with model
+std::expected<string, LLMError> OllamaClient::fetchActivePinggyUrl() { // return the ultimate link that we can use to contact with model
     string gistApiUrl = "https://api.github.com/gists/" + gistID;
     
     auto getResponse = executeCurl(gistApiUrl, "GET");
@@ -132,10 +131,10 @@ std::expected<string, OllamaError> OllamaClient::fetchActivePinggyUrl() { // ret
         return pinggyUrl + "/api/chat"; // Append the specific Ollama endpoint
         
     } catch (json::parse_error& e) {
-        return std::unexpected(OllamaError::malformjson);
+        return std::unexpected(LLMError::malformjson);
     }
 }
-std::expected<string, OllamaError> OllamaClient::processRequest(const string& jsonPayload) {
+std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonPayload) {
     // Step 1: Discover the active URL dynamically
     auto endpointResult = fetchActivePinggyUrl();
     if (!endpointResult.has_value()) {
@@ -156,14 +155,14 @@ std::expected<string, OllamaError> OllamaClient::processRequest(const string& js
         if (resJson.contains("message") && resJson["message"].contains("content")) {
             return resJson["message"]["content"].get<string>();
         } else {
-            return std::unexpected(OllamaError::malformjson);
+            return std::unexpected(LLMError::malformjson);
         }
     } catch (json::parse_error& e) {
-        return std::unexpected(OllamaError::malformjson);
+        return std::unexpected(LLMError::malformjson);
     }
     
 }
-std::expected<string, OllamaError> OllamaClient::sendPrompt(const string& text) {
+std::expected<string, LLMError> OllamaClient::sendPrompt(const string& text){
     // Build JSON payload không có ảnh
     string payload = buildPayload(text, ""); 
     
@@ -171,24 +170,3 @@ std::expected<string, OllamaError> OllamaClient::sendPrompt(const string& text) 
     return processRequest(payload); 
 }
 
-
-
-
-int main(){
-    OllamaClient myAI("qwen2.5vl:3b","b54e95a50b8b9f0e7743a22593bc0503","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");
-    auto result = myAI.sendPrompt("Mày đủ trình không!??");
-    if (result.has_value()) {
-        cout << "\n=== AI TRA LOI THANG CONG ===" << endl;
-        cout << *result << endl; 
-    } else {
-        cout << "\n=== TOANG! CO LOI XAY RA ===" << endl;
-        
-        // In ra lỗi cụ thể
-        if (result.error() == OllamaError::timeout) cout << "Loi: Timeout (Qua 60 giay)!" << endl;
-        else if (result.error() == OllamaError::connectiondeny) cout << "Loi: Khong ket noi duoc (Check lai Pinggy)!" << endl;
-        else if (result.error() == OllamaError::malformjson) cout << "Loi: JSON bi rach/sai dinh dang!" << endl;
-        else cout << "Loi: Mang bat on!" << endl; //vcll
-    }
-
-}
-//test push pulll
