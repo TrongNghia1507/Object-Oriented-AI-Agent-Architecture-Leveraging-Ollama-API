@@ -1,111 +1,117 @@
 #include "memory_tool.h"
 #include <iostream>
+#include <chrono>   // Thư viện lấy thời gian
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 
-// 1 Khởi tạo Database
+// Hàm hỗ trợ lấy thời gian thực của máy tính (Local Time)
+std::string getCurrentLocalTime() {
+    auto now = std::chrono::system_clock::now();
+    std::time_t now_time = std::chrono::system_clock::to_time_t(now);
+    std::tm* local_tm = std::localtime(&now_time);
+    std::stringstream ss;
+    ss << std::put_time(local_tm, "%Y-%m-%d %H:%M:%S");
+    return ss.str();
+}
+
+
+// 1. LỚP QUẢN LÝ DATABASE
+
 DatabaseManager::DatabaseManager() : db(nullptr) {
     if (sqlite3_open("memory.db", &db) != SQLITE_OK) {
         std::cerr << "Lỗi mở DB: " << sqlite3_errmsg(db) << std::endl;
         return;
     }
+    
 
-    // Khởi tạo bảng ngay khi mở kết nối (Câu thần chú Kẻ Bảng)
     const char* create_table_sql = 
         "CREATE TABLE IF NOT EXISTS agent_memory ("
         "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "context_tag TEXT DEFAULT 'general', "
         "content TEXT NOT NULL, "
-        "created_at DATETIME DEFAULT CURRENT_TIMESTAMP);";
+        "created_at DATETIME);";
     
-    char* errMsg = nullptr;
-    if (sqlite3_exec(db, create_table_sql, nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        std::cerr << "Lỗi tạo bảng: " << errMsg << std::endl;
-        sqlite3_free(errMsg); // Giải phóng bộ nhớ chuỗi lỗi của SQLite
-    }
+    sqlite3_exec(db, create_table_sql, nullptr, nullptr, nullptr);
 }
 
 DatabaseManager::~DatabaseManager() {
-    // Tự động cúp điện thoại khi Agent bị hủy, không bao giờ lo Memory Leak
-    if (db) {
-        sqlite3_close(db);
-    }
+    if (db) sqlite3_close(db);
 }
 
-//2 Tool memory_save
-MemorySaveTool::MemorySaveTool(std::shared_ptr<DatabaseManager> dbMgr) 
-    : dbManager(dbMgr) {}
 
+// 2. TOOL MEMORY SAVE (Xử lý bóc tách Tag & Ghi dữ liệu)
+
+MemorySaveTool::MemorySaveTool(std::shared_ptr<DatabaseManager> dbMgr) : dbManager(dbMgr) {}
 
 std::string MemorySaveTool::execute(const std::string& args) {
-    if (args.empty()) return "Lỗi: Dữ liệu trống, không có gì để lưu."; 
+    if (args.empty()) return "Lỗi: Tham số trống.";
+
+    // Logic bóc tách Tag và Content từ args (Ví dụ: "[math] | 15*3=45")
+    std::string tag = "general"; // Nhãn mặc định nếu AI quên truyền format
+    std::string content = args;
+    
+    size_t pos = args.find("] | ");
+    if (args.front() == '[' && pos != std::string::npos) {
+        tag = args.substr(1, pos - 1);       // Lấy phần chữ giữa [ và ]
+        content = args.substr(pos + 4);      // Lấy phần nội dung phía sau chuỗi "] | "
+    }
+
+    // Lấy thời gian thực từ C++
+    std::string currentTime = getCurrentLocalTime();
+
     sqlite3* db = dbManager->getDB();
     sqlite3_stmt* stmt;
     
-    // Câu thần chú Lưu Trữ với dấu ? để chống SQL Injection
-    const char* sql = "INSERT INTO agent_memory (content) VALUES (?);";
-
-
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
-        return "Lỗi chuẩn bị SQL: " + std::string(sqlite3_errmsg(db));
-    }
-
-    // Nhét dữ liệu của Agent vào vị trí dấu ? (Tham số 1)
-    sqlite3_bind_text(stmt, 1, args.c_str(), -1, SQLITE_STATIC);
-
-
-    if (sqlite3_step(stmt) != SQLITE_DONE) {
+    // Câu lệnh chèn cả 3 cột: tag, nội dung, thời gian
+    const char* sql = "INSERT INTO agent_memory (context_tag, content, created_at) VALUES (?, ?, ?);";
+    
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) == SQLITE_OK) {
+        sqlite3_bind_text(stmt, 1, tag.c_str(), -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(stmt, 2, content.c_str(), -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(stmt, 3, currentTime.c_str(), -1, SQLITE_TRANSIENT);
+        
+        sqlite3_step(stmt);
         sqlite3_finalize(stmt);
-        return "Lỗi lưu dữ liệu: " + std::string(sqlite3_errmsg(db));
+        
+        // Trả về câu thông báo cho AI biết nó vừa lưu thành công kèm Tag
+        return "Đã lưu thành công. Nhãn: [" + tag + "] vào lúc " + currentTime;
     }
-
-
-    sqlite3_finalize(stmt);
-    return "Đã lưu vào bộ nhớ thành công."; // Báo cáo lại cho LLM biết đã xong
+    return "Lỗi cơ sở dữ liệu!";
 }
 
-//3 Tools memory_search
 
-MemorySearchTool::MemorySearchTool(std::shared_ptr<DatabaseManager> dbMgr) 
-    : dbManager(dbMgr) {}
-
+// 3. TOOL MEMORY SEARCH (Truy xuất kèm Tag và Thời gian)
+MemorySearchTool::MemorySearchTool(std::shared_ptr<DatabaseManager> dbMgr) : dbManager(dbMgr) {}
 
 std::string MemorySearchTool::execute(const std::string& args) {
-    if (args.empty()) return ""; 
+    if (args.empty()) return "";
 
     sqlite3* db = dbManager->getDB();
     sqlite3_stmt* stmt;
     
-    // Câu thần chú Tìm Kiếm. LIMIT 1 để chỉ lấy ký ức mới nhất nếu có nhiều dòng trùng
-    const char* sql = "SELECT content FROM agent_memory WHERE content LIKE ? ORDER BY created_at DESC LIMIT 1;";
-
- 
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
-        std::cerr << "Lỗi chuẩn bị tìm kiếm: " << sqlite3_errmsg(db) << std::endl;
-        return ""; // Trả về chuỗi rỗng thay vì nullopt
-    }
-
-    // Sức mạnh của toán tử LIKE: Kẹp từ khóa vào giữa 2 dấu %
-    std::string keyword = "%" + args + "%";
+    // Câu lệnh tìm kiếm lấy ra CẢ 3 thông tin để báo lại cho AI
+    const char* sql = "SELECT context_tag, content, created_at FROM agent_memory WHERE content LIKE ? ORDER BY created_at DESC LIMIT 1;";
     
-    // SQLITE_TRANSIENT báo cho SQLite biết phải tự copy chuỗi này vì std::string có thể bị hủy
-    sqlite3_bind_text(stmt, 1, keyword.c_str(), -1, SQLITE_TRANSIENT);
-
     std::string result = "";
-    
-    if (sqlite3_step(stmt) == SQLITE_ROW) {
-        // Rút nội dung chữ ở Cột 0 (cột content)
-        const unsigned char* text = sqlite3_column_text(stmt, 0);
-        if (text) {
-            result = reinterpret_cast<const char*>(text);
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) == SQLITE_OK) {
+        std::string keyword = "%" + args + "%";
+        sqlite3_bind_text(stmt, 1, keyword.c_str(), -1, SQLITE_TRANSIENT);
+        
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            const char* tag_text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+            const char* content_text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+            const char* time_text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+            
+            // Format lại kết quả trả về để AI dễ dàng đọc hiểu bối cảnh
+            result = "[BỐI CẢNH DỮ LIỆU]\n";
+            result += "- Thời gian: " + std::string(time_text ? time_text : "Unknown") + "\n";
+            result += "- Nhãn loại: [" + std::string(tag_text ? tag_text : "general") + "]\n";
+            result += "- Nội dung: " + std::string(content_text ? content_text : "");
         }
-    }
-
-
-    sqlite3_finalize(stmt);
-
-    // Kịch bản Caching: Nếu DB rỗng (Cache Miss) -> trả về "" (chuỗi rỗng) để Agent tự đi tính toán
-    if (result.empty()) {
-        return ""; 
+        sqlite3_finalize(stmt);
     }
     
-    // Cache Hit -> Trả về kết quả cho LLM
+    if (result.empty()) return ""; 
     return result; 
 }

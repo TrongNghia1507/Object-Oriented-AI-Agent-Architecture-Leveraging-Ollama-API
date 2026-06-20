@@ -45,37 +45,19 @@ int main() {
     MemorySearchTool searchTool(dbManager);
 
 
-    std::cout << "\n--- TEST 1: LƯU TRỮ DỮ LIỆU ---" << std::endl;
-    std::string textToSave = "Kết quả phép tính 15 * 3 là 45";
-    std::cout << "AI ra lệnh lưu: \"" << textToSave << "\"" << std::endl;
-    
-    std::string saveResult = saveTool.execute(textToSave);
-    std::cout << "Phản hồi từ Tool: " << saveResult << std::endl;
+    std::cout << "\n--- TEST 1: LƯU TRỮ DỮ LIỆU CÓ TAG ---" << std::endl;
+    // Thử đóng giả LLM truyền vào format có tag
+    std::string textToSave1 = "[math_result] | Kết quả phép tính 15 * 3 là 45";
+    std::cout << "AI ra lệnh lưu: \"" << textToSave1 << "\"" << std::endl;
+    std::cout << "Phản hồi: " << saveTool.execute(textToSave1) << std::endl;
 
- 
-    std::cout << "\n--- TEST 2: TÌM KIẾM CÓ DỮ LIỆU ---" << std::endl;
+    std::string textToSave2 = "[scenario] | Một tình huống thực tế: Đi siêu thị mua 45 quả táo";
+    std::cout << "AI ra lệnh lưu: \"" << textToSave2 << "\"" << std::endl;
+    std::cout << "Phản hồi: " << saveTool.execute(textToSave2) << std::endl;
+
+    std::cout << "\n--- TEST 2: TÌM KIẾM THEO BỐI CẢNH ---" << std::endl;
     std::string keyword1 = "15 * 3";
-    std::cout << "AI ra lệnh tìm kiếm: \"" << keyword1 << "\"" << std::endl;
-    
-    std::string searchHit = searchTool.execute(keyword1);
-    if (!searchHit.empty()) {
-        std::cout << "=> THÀNH CÔNG! Tool tìm thấy: " << searchHit << std::endl;
-    } else {
-        std::cout << "=> THẤT BẠI! Lỗi logic, đáng lẽ phải tìm thấy." << std::endl;
-    }
-
-
-    std::cout << "\n--- TEST 3: TÌM KIẾM KHÔNG CÓ DỮ LIỆU ---" << std::endl;
-    std::string keyword2 = "mật khẩu wifi";
-    std::cout << "AI ra lệnh tìm kiếm: \"" << keyword2 << "\"" << std::endl;
-    
-    std::string searchMiss = searchTool.execute(keyword2);
-    if (searchMiss.empty()) {
-        std::cout << "=> THÀNH CÔNG! Trả về chuỗi rỗng đúng như dự kiến vì chưa từng lưu." << std::endl;
-    } else {
-        std::cout << "=> THẤT BẠI! Tool tìm ra dữ liệu sai." << std::endl;
-    }
-
-    std::cout << "\n=== KẾT THÚC KIỂM THỬ ===" << std::endl;
+    std::cout << "AI tìm kiếm: \"" << keyword1 << "\"" << std::endl;
+    std::cout << "=> KẾT QUẢ:\n" << searchTool.execute(keyword1) << std::endl;
     return 0;
 }

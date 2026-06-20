@@ -1,11 +1,12 @@
 #ifndef MEMORY_TOOL_H
 #define MEMORY_TOOL_H
 
-#include "tool.h" 
+#include "tool.h"
 #include <sqlite3.h>
 #include <string>
 #include <memory>
 
+// Lớp quản lý Database
 class DatabaseManager {
 private:
     sqlite3* db;
@@ -22,8 +23,10 @@ private:
 public:
     MemorySaveTool(std::shared_ptr<DatabaseManager> dbManager);
     std::string getName() const override { return "memory_save"; }
-    std::string getDescription() const override { 
-        return "Lưu thông tin, sự kiện quan trọng vào bộ nhớ cơ sở dữ liệu."; 
+    
+    // Gợi ý cho AI cách truyền tham số chuẩn
+    std::string getDescription() const { 
+        return "Lưu trí nhớ. Format bắt buộc: [TAG] | NỘI DUNG. Ví dụ: [math] | 15*3=45"; 
     }
     
     std::string execute(const std::string& args) override;
@@ -36,11 +39,11 @@ private:
 public:
     MemorySearchTool(std::shared_ptr<DatabaseManager> dbManager);
     std::string getName() const override { return "memory_search"; }
-    std::string getDescription() const override { 
-        return "Lưu thông tin, sự kiện quan trọng vào bộ nhớ cơ sở dữ liệu."; 
+    
+    std::string getDescription() const { 
+        return "Tìm kiếm trí nhớ bằng từ khóa."; 
     }
     
-
     std::string execute(const std::string& args) override;
 };
 
