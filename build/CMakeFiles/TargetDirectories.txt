@@ -1,0 +1,5 @@
+/workspaces/AgentAI/build/CMakeFiles/math_tool_test.dir
+/workspaces/AgentAI/build/CMakeFiles/llm_tool_test.dir
+/workspaces/AgentAI/build/CMakeFiles/skill_loader_test.dir
+/workspaces/AgentAI/build/CMakeFiles/edit_cache.dir
+/workspaces/AgentAI/build/CMakeFiles/rebuild_cache.dir

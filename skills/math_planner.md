@@ -1,3 +1,6 @@
+---
+keywords: tinh, toan, tính, toán, phep tinh, phép tính, bieu thuc, biểu thức, calculator, advanced_math, cong, tru, nhan, chia, cộng, trừ, nhân, chia, sqrt, can bac hai, căn bậc hai, luy thua, lũy thừa, sin, cos, tan, log, luong giac, lượng giác, pi
+---
 # Kỹ năng Định tuyến và Giải toán Máy tính (Math Routing Skill)
 
 ## 1. Giới thiệu công cụ khả dụng

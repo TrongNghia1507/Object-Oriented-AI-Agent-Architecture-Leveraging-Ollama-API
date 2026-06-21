@@ -1,3 +1,6 @@
+---
+keywords: nho, nhớ, tri nho, trí nhớ, luu, lưu, ghi nho, ghi nhớ, nhac lai, nhắc lại, tim lai, tìm lại, memory, ket qua truoc, kết quả trước, vua nay, vừa nãy, luc nay, lúc nãy, truoc do, trước đó
+---
 # Kỹ năng Quản lý Trí nhớ và Truy vết Bối cảnh (Memory & Context Management Skill)
 
 ## 1. Giới thiệu công cụ khả dụng
