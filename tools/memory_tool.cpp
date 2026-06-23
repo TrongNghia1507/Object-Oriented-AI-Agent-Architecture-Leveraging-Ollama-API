@@ -4,7 +4,6 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
-
 // Hàm hỗ trợ lấy thời gian thực của máy tính (Local Time)
 std::string getCurrentLocalTime() {
     auto now = std::chrono::system_clock::now();
@@ -44,7 +43,8 @@ DatabaseManager::~DatabaseManager() {
 
 MemorySaveTool::MemorySaveTool(std::shared_ptr<DatabaseManager> dbMgr) : dbManager(dbMgr) {}
 
-std::string MemorySaveTool::execute(const std::string& args) {
+std::string MemorySaveTool::execute(const json& payload) {
+    std::string args = payload["arguments"].get<std::string>();
     if (args.empty()) return "Lỗi: Tham số trống.";
 
     // Logic bóc tách Tag và Content từ args (Ví dụ: "[math] | 15*3=45")
@@ -84,7 +84,8 @@ std::string MemorySaveTool::execute(const std::string& args) {
 // 3. TOOL MEMORY SEARCH (Truy xuất kèm Tag và Thời gian)
 MemorySearchTool::MemorySearchTool(std::shared_ptr<DatabaseManager> dbMgr) : dbManager(dbMgr) {}
 
-std::string MemorySearchTool::execute(const std::string& args) {
+std::string MemorySearchTool::execute(const json& payload) {
+    std::string args = payload["arguments"].get<std::string>();
     if (args.empty()) return "";
 
     sqlite3* db = dbManager->getDB();

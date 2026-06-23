@@ -23,7 +23,7 @@ public:
                "Tham so truyen vao phai la chuoi bieu thuc sach, vi du: '(15+5)*17'";
     }
 
-    std::string execute(const std::string& arguments) override;
+    std::string execute(const json& payload) override;
 };
 
 #endif // CALCULATOR_TOOL_H

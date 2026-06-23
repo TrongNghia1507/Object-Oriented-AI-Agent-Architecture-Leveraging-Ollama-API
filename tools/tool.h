@@ -1,8 +1,8 @@
 #ifndef TOOL_H
 #define TOOL_H
-
+#include "../LLMClient/json.hpp"
 #include <string>
-
+using json = nlohmann::json;
 class Tool {
 public:
     // Destructor ảo là BẮT BUỘC trong OOP để tránh rò rỉ bộ nhớ khi giải phóng con trỏ lớp cha
@@ -15,7 +15,7 @@ public:
     virtual std::string getDescription() const = 0;
 
     // Hàm thực thi cốt lõi: nhận vào chuỗi đối số từ AI và trả về kết quả dạng chuỗi
-    virtual std::string execute(const std::string& arguments) = 0;
+    virtual std::string execute(const json& payload) = 0;
 };
 
 #endif // TOOL_H
