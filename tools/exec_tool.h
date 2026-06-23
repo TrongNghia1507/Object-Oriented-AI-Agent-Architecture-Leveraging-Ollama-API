@@ -7,7 +7,7 @@
 class ExecTool : public Tool {
 public:
     std::string execute(const json& payload) override;
-
+    std::string getName() const override { return "exec"; };
     std::string getDescription() const {
         return "Thực thi lệnh shell/bash trên hệ thống. Trả về stdout và stderr.";
     }

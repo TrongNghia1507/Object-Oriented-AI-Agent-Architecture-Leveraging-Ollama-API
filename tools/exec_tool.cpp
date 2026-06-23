@@ -44,9 +44,11 @@ std::string ExecTool::runSystemCommand(const std::string& cmd) {
     std::string cmd_with_stderr = cmd + " 2>&1";
     std::array<char, 128> buffer;
     std::string result;
-    
-    // Dùng Smart Pointer để tự động đóng ống pipe, chống tràn RAM
-    std::unique_ptr<FILE, decltype(&PCLOSE)> pipe(POPEN(cmd_with_stderr.c_str(), "r"), PCLOSE);
+    // 1. Tạo một Lambda function để bọc hàm PCLOSE lại
+    auto pipe_deleter = [](FILE* f) { PCLOSE(f); };
+
+    // 2. Nhét cái Lambda đó vào unique_ptr (Thay cho code cũ của bro)
+    std::unique_ptr<FILE, decltype(pipe_deleter)> pipe(POPEN(cmd_with_stderr.c_str(), "r"), pipe_deleter);
     
     if (!pipe) {
         return "System Error: Không thể mở pipe để chạy lệnh.";
