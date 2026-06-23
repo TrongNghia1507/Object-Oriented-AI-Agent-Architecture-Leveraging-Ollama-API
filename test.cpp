@@ -39,7 +39,7 @@ int main() {
     string execRules = readFile("skills/exec_planner.md"); 
     
     // BƯỚC 2: RÁP PROMPT
-    string userQuestion = "Ghi tên Lê Nguyễn Trọng Nghĩa vào file name.txt ở thư mục results (Tạo mới thư mục results)";
+    string userQuestion = "xoá file name.txt trong thư mục results";
     
     string finalPrompt = 
         "Bạn là AI Agent.\n" + 

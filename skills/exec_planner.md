@@ -19,3 +19,9 @@ Nếu vi phạm các quy tắc này, hệ thống sẽ bị treo hoặc sập:
 * **Bẫy Mất Trí Nhớ (Stateless):** Mỗi lần gọi `exec` là một phiên terminal mới. Lệnh `cd` sẽ không có tác dụng cho lần gọi sau. Nếu muốn đổi thư mục rồi chạy lệnh, PHẢI dùng toán tử `&&` (Ví dụ: `cd /workspace && ./app`).
 * **Tạo Thư Mục An Toàn:** Khi dùng `mkdir`, BẮT BUỘC phải kèm theo cờ `-p` để tránh lỗi thư mục cha chưa tồn tại (Ví dụ: `mkdir -p src/utils`).
 * **Chống Tràn Bộ Nhớ:** TUYỆT ĐỐI KHÔNG dùng lệnh `cat` đối với các file chưa biết kích thước. Hãy dùng `head -n 20 <tên_file>` để đọc 20 dòng đầu, hoặc dùng `grep "<từ_khóa>"` để tìm kiếm nội dung cụ thể.
+* ĐẶC BIỆT LƯU Ý VỀ DẤU GẠCH CHÉO CODESPACES/LINUX:
+  - Dấu `/` ở ĐẦU chuỗi (Ví dụ: `/results`) đại diện cho ĐƯỜNG DẪN TUYỆT ĐỐI tại gốc hệ điều hành (root).
+  - Thư mục dự án của bạn nằm ở CWD (Ví dụ: `/workspaces/AgentAI`).
+  - TUYỆT ĐỐI KHÔNG ĐƯỢC thêm dấu `/` vào trước tên thư mục con nếu muốn di chuyển vào đó. 
+    + SAI: `cd /results` (Hệ thống sẽ tìm thư mục results ở gốc ổ cứng và báo lỗi can't cd).
+    + ĐÚNG: `cd results` hoặc `cd ./results`.
