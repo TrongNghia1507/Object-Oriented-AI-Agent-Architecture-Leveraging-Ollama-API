@@ -50,4 +50,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/llm_tool_test.dir/DependInfo.cmake"
   "CMakeFiles/skill_loader_test.dir/DependInfo.cmake"
   "CMakeFiles/memory_tool_test.dir/DependInfo.cmake"
+  "CMakeFiles/math_llm_test.dir/DependInfo.cmake"
   )
