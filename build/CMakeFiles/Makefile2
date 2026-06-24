@@ -66,6 +66,7 @@ CMAKE_BINARY_DIR = /workspaces/AgentAI/build
 all: CMakeFiles/math_tool_test.dir/all
 all: CMakeFiles/llm_tool_test.dir/all
 all: CMakeFiles/skill_loader_test.dir/all
+all: CMakeFiles/memory_tool_test.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,6 +77,7 @@ preinstall:
 clean: CMakeFiles/math_tool_test.dir/clean
 clean: CMakeFiles/llm_tool_test.dir/clean
 clean: CMakeFiles/skill_loader_test.dir/clean
+clean: CMakeFiles/memory_tool_test.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -137,7 +139,7 @@ CMakeFiles/llm_tool_test.dir/clean:
 CMakeFiles/skill_loader_test.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=16,17,18 "Built target skill_loader_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=22,23,24 "Built target skill_loader_test"
 .PHONY : CMakeFiles/skill_loader_test.dir/all
 
 # Build rule for subdir invocation for target.
@@ -155,6 +157,32 @@ skill_loader_test: CMakeFiles/skill_loader_test.dir/rule
 CMakeFiles/skill_loader_test.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/clean
 .PHONY : CMakeFiles/skill_loader_test.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/memory_tool_test.dir
+
+# All Build rule for target.
+CMakeFiles/memory_tool_test.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=16,17,18,19,20,21 "Built target memory_tool_test"
+.PHONY : CMakeFiles/memory_tool_test.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/memory_tool_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/AgentAI/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/memory_tool_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/AgentAI/build/CMakeFiles 0
+.PHONY : CMakeFiles/memory_tool_test.dir/rule
+
+# Convenience name for target.
+memory_tool_test: CMakeFiles/memory_tool_test.dir/rule
+.PHONY : memory_tool_test
+
+# clean rule for target.
+CMakeFiles/memory_tool_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/clean
+.PHONY : CMakeFiles/memory_tool_test.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

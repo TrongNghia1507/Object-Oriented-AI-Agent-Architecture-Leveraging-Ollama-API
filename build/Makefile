@@ -155,12 +155,26 @@ skill_loader_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/build
 .PHONY : skill_loader_test/fast
 
+#=============================================================================
+# Target rules for targets named memory_tool_test
+
+# Build rule for target.
+memory_tool_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 memory_tool_test
+.PHONY : memory_tool_test
+
+# fast build rule for target.
+memory_tool_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/build
+.PHONY : memory_tool_test/fast
+
 LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.o
 
 # target to build an object file
 LLMClient/OllamaClient.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.cpp.o
 
 LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
@@ -169,6 +183,7 @@ LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
 # target to preprocess a source file
 LLMClient/OllamaClient.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.i
 .PHONY : LLMClient/OllamaClient.cpp.i
 
 LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
@@ -177,6 +192,7 @@ LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
 # target to generate assembly for a file
 LLMClient/OllamaClient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.s
 .PHONY : LLMClient/OllamaClient.cpp.s
 
 LLMClient/base64.o: LLMClient/base64.cpp.o
@@ -185,6 +201,7 @@ LLMClient/base64.o: LLMClient/base64.cpp.o
 # target to build an object file
 LLMClient/base64.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.o
 .PHONY : LLMClient/base64.cpp.o
 
 LLMClient/base64.i: LLMClient/base64.cpp.i
@@ -193,6 +210,7 @@ LLMClient/base64.i: LLMClient/base64.cpp.i
 # target to preprocess a source file
 LLMClient/base64.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.i
 .PHONY : LLMClient/base64.cpp.i
 
 LLMClient/base64.s: LLMClient/base64.cpp.s
@@ -201,6 +219,7 @@ LLMClient/base64.s: LLMClient/base64.cpp.s
 # target to generate assembly for a file
 LLMClient/base64.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.s
 .PHONY : LLMClient/base64.cpp.s
 
 main_test.o: main_test.cpp.o
@@ -253,6 +272,30 @@ skills/skill_loader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/skills/skill_loader.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/skills/skill_loader.cpp.s
 .PHONY : skills/skill_loader.cpp.s
+
+test_memory.o: test_memory.cpp.o
+.PHONY : test_memory.o
+
+# target to build an object file
+test_memory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/test_memory.cpp.o
+.PHONY : test_memory.cpp.o
+
+test_memory.i: test_memory.cpp.i
+.PHONY : test_memory.i
+
+# target to preprocess a source file
+test_memory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/test_memory.cpp.i
+.PHONY : test_memory.cpp.i
+
+test_memory.s: test_memory.cpp.s
+.PHONY : test_memory.s
+
+# target to generate assembly for a file
+test_memory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/test_memory.cpp.s
+.PHONY : test_memory.cpp.s
 
 tests/skill_loader_test.o: tests/skill_loader_test.cpp.o
 .PHONY : tests/skill_loader_test.o
@@ -363,6 +406,7 @@ tools/memory_tool.o: tools/memory_tool.cpp.o
 tools/memory_tool.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/memory_tool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/memory_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/tools/memory_tool.cpp.o
 .PHONY : tools/memory_tool.cpp.o
 
 tools/memory_tool.i: tools/memory_tool.cpp.i
@@ -372,6 +416,7 @@ tools/memory_tool.i: tools/memory_tool.cpp.i
 tools/memory_tool.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/memory_tool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/memory_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/tools/memory_tool.cpp.i
 .PHONY : tools/memory_tool.cpp.i
 
 tools/memory_tool.s: tools/memory_tool.cpp.s
@@ -381,6 +426,7 @@ tools/memory_tool.s: tools/memory_tool.cpp.s
 tools/memory_tool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/memory_tool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/memory_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/tools/memory_tool.cpp.s
 .PHONY : tools/memory_tool.cpp.s
 
 tools/tool_registry.o: tools/tool_registry.cpp.o
@@ -410,6 +456,30 @@ tools/tool_registry.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/tool_registry.cpp.s
 .PHONY : tools/tool_registry.cpp.s
 
+utils/SystemUtils.o: utils/SystemUtils.cpp.o
+.PHONY : utils/SystemUtils.o
+
+# target to build an object file
+utils/SystemUtils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.o
+.PHONY : utils/SystemUtils.cpp.o
+
+utils/SystemUtils.i: utils/SystemUtils.cpp.i
+.PHONY : utils/SystemUtils.i
+
+# target to preprocess a source file
+utils/SystemUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.i
+.PHONY : utils/SystemUtils.cpp.i
+
+utils/SystemUtils.s: utils/SystemUtils.cpp.s
+.PHONY : utils/SystemUtils.s
+
+# target to generate assembly for a file
+utils/SystemUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.s
+.PHONY : utils/SystemUtils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -420,6 +490,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... llm_tool_test"
 	@echo "... math_tool_test"
+	@echo "... memory_tool_test"
 	@echo "... skill_loader_test"
 	@echo "... LLMClient/OllamaClient.o"
 	@echo "... LLMClient/OllamaClient.i"
@@ -433,6 +504,9 @@ help:
 	@echo "... skills/skill_loader.o"
 	@echo "... skills/skill_loader.i"
 	@echo "... skills/skill_loader.s"
+	@echo "... test_memory.o"
+	@echo "... test_memory.i"
+	@echo "... test_memory.s"
 	@echo "... tests/skill_loader_test.o"
 	@echo "... tests/skill_loader_test.i"
 	@echo "... tests/skill_loader_test.s"
@@ -451,6 +525,9 @@ help:
 	@echo "... tools/tool_registry.o"
 	@echo "... tools/tool_registry.i"
 	@echo "... tools/tool_registry.s"
+	@echo "... utils/SystemUtils.o"
+	@echo "... utils/SystemUtils.i"
+	@echo "... utils/SystemUtils.s"
 .PHONY : help
 
 

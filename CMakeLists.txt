@@ -48,3 +48,19 @@ add_executable(skill_loader_test
 
 # llm_tool_test đọc skills/*.md bằng đường dẫn tương đối "skills/",
 # nên phải chạy từ thư mục gốc dự án (nơi chứa thư mục skills/), không phải từ build/.
+
+
+# ---------------------------------------------------------------------------
+# Target 4: memory_tool_test
+# Test công cụ ghi nhớ kết hợp với LLM (Ollama)
+# ---------------------------------------------------------------------------
+add_executable(memory_tool_test
+    test_memory.cpp
+    LLMClient/OllamaClient.cpp
+    LLMClient/base64.cpp
+    tools/memory_tool.cpp
+    utils/SystemUtils.cpp
+)
+
+# Liên kết thư viện SQLite (cho bộ nhớ) và CURL (để gọi API Ollama)
+target_link_libraries(memory_tool_test PRIVATE SQLite::SQLite3 CURL::libcurl)
