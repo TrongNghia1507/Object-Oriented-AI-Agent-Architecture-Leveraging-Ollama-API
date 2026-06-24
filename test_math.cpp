@@ -45,7 +45,7 @@ int main() {
     // BƯỚC 2: RÁP PROMPT & LỰA CHỌN KỊCH BẢN TEST
     
     // KỊCH BẢN 1: Toán cơ bản -> AI phải tự định tuyến sang công cụ "calculator"
-    string userQuestion = "Tính giúp tôi giá trị của biểu thức này: (123 + 45) * 12";
+    string userQuestion = "Tính giúp tôi giá trị căn bậc hai của 3 ";
     
     // KỊCH BẢN 2: Toán cao cấp -> AI phải tự định tuyến sang công cụ "advanced_math"
     // string userQuestion = "Tính căn bậc hai của số 144 rồi cộng thêm với 2 lũy thừa 3.";
