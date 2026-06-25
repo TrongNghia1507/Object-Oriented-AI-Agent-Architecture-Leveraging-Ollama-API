@@ -22,7 +22,7 @@
 #include "../tools/memory_tool.h"
 #include "../tools/exec_tool.h"
 #include "../tools/web_search_tool.h"
-#include "../skills/skill_loader.h"
+#include "../agent/skill_loader.h"
 
 #include <cstdlib>
 #include <filesystem>

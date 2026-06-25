@@ -17,7 +17,7 @@
 #include "../tools/calculator_tool.h"
 #include "../tools/advanced_math_tool.h"
 #include "../tools/memory_tool.h"
-#include "../skills/skill_loader.h"
+#include "../agent/skill_loader.h"
 
 #include <cstdlib>
 #include <iostream>

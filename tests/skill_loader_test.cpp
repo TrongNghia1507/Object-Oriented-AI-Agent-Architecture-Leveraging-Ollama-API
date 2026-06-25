@@ -6,7 +6,7 @@
 //
 // Chạy từ thư mục gốc dự án: ./build/skill_loader_test
 
-#include "../skills/skill_loader.h"
+#include "../agent/skill_loader.h"
 #include <iostream>
 
 static void printSelection(const SkillLoader& loader, const std::string& task) {

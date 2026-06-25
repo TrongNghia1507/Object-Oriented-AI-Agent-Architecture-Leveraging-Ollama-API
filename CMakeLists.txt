@@ -19,7 +19,7 @@ set(TOOL_SOURCES
 
 # Nguồn SkillLoader
 set(SKILL_SOURCES
-    skills/skill_loader.cpp
+    agent/skill_loader.cpp
 )
 
 # Nguồn AgentLoop (không cần Ollama, không cần CURL)
