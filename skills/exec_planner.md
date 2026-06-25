@@ -1,3 +1,6 @@
+---
+keywords: exec, chay lenh, bash, shell, lenh, xoa file, tao file, tao thu muc, ls, mkdir, rm, cat, grep, cp, mv, chmod, ping, curl, python, run, execute, terminal, command
+---
 ## CÔNG CỤ: exec
 Công cụ này cho phép bạn thực thi các lệnh Terminal/Bash/Shell trực tiếp trên hệ thống máy tính ảo.
 

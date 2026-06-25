@@ -1,27 +1,22 @@
-#ifndef WEB_SEARCH_TOOL_H
-#define WEB_SEARCH_TOOL_H
-
-#include "tool.h" // Nhúng interface gốc của bạn
+#pragma once
+#include "tool.h"
 #include <string>
 
 class WebSearchTool : public Tool {
 public:
-    WebSearchTool();
-    ~WebSearchTool() override;
-
-    // 1. SỬA LẠI: Tham số truyền vào phải là `const json&` để khớp 100% với class Tool
-    std::string execute(const json& payload) override;
+    WebSearchTool() = default;
+    ~WebSearchTool() override = default;
 
     std::string getName() const override { return "web_search"; }
-
-    // 2. BỔ SUNG: Bắt buộc phải thêm hàm getDescription() do class Tool yêu cầu
-    std::string getDescription() const override { 
-        return "Công cụ tra cứu thông tin trên Internet. Tham số là từ khóa tìm kiếm."; 
+    std::string getDescription() const override {
+        return "Tim kiem tren DuckDuckGo (Instant Answer API — phu hop voi ten rieng, "
+               "dinh nghia, su kien lon). Tham so: tu khoa Tieng Anh ngan gon, "
+               "vi du: 'Eiffel Tower height' hay 'Albert Einstein'.";
     }
+    // Nhận từ khóa tìm kiếm dạng chuỗi thuần.
+    std::string execute(const std::string& arguments) override;
 
 private:
-    static size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* userp);
+    static size_t writeCallback(void* contents, size_t size, size_t nmemb, std::string* userp);
     std::string urlEncode(const std::string& value);
 };
-
-#endif // WEB_SEARCH_TOOL_H

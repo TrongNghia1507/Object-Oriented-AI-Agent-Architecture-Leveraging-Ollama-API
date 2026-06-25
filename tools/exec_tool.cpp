@@ -1,67 +1,81 @@
 #include "exec_tool.h"
+#include <iostream>
+#include <cstdio>
 
-// Giữ lại xíu Macro cho popen để code compile mượt cả trên Windows lẫn Linux/Codespaces
 #ifdef _WIN32
-    #define POPEN _popen
+    #define POPEN  _popen
     #define PCLOSE _pclose
 #else
-    #define POPEN popen
+    #define POPEN  popen
     #define PCLOSE pclose
 #endif
-std::string ExecTool::execute(const json& payload){
-    // 1. Bóc tách lệnh bash
-    std::string args = payload["arguments"].get<std::string>();
-    
-    // 2. Bóc tách lời giải thích (fallback nếu AI quên truyền)
-    std::string explanation = "Không có giải thích chi tiết từ AI.";
-    if (payload.contains("explanation")) {
-        explanation = payload["explanation"].get<std::string>();
-    }
 
-    // 3. HIỂN THỊ CẢNH BÁO TRÊN TERMINAL
-    std::cout << "\n==================================================\n";
-    std::cout << "[!] CẢNH BÁO BẢO MẬT: AI muốn can thiệp hệ thống\n";
-    std::cout << ">>> Lệnh kỹ thuật : " << args << "\n";
-    std::cout << ">>> AI Giải thích : " << explanation << "\n";
-    std::cout << "--------------------------------------------------\n";
-    std::cout << "Bạn có cho phép chạy lệnh này không? (y/n): ";
-    
-    // Nhận input từ bàn phím người dùng
-    std::string choice;
-    std::getline(std::cin, choice);
-
-    // 4. Xử lý quyết định
-    if (choice != "y" && choice != "Y") {
-        std::cout << "[Hệ thống] Đã từ chối cấp quyền.\n";
-        return "Error: User denied permission to execute the command: " + args;
-    }
-
-    std::cout << "[Hệ thống] Đang thực thi lệnh...\n";
-    return runSystemCommand(args);
+// ─── Policy: AskUser (định nghĩa ở đây để tránh iostream trong header) ───────
+ExecutionPolicy ExecPolicy::AskUser() {
+    return [](const std::string& command, const std::string& explanation) -> bool {
+        std::cout << "\n==================================================\n"
+                  << "[!] CANH BAO BAO MAT: AI muon can thiep he thong\n"
+                  << ">>> Lenh       : " << command << "\n"
+                  << ">>> Giai thich : " << explanation << "\n"
+                  << "--------------------------------------------------\n"
+                  << "Ban co cho phep khong? (y/n): ";
+        std::string choice;
+        std::getline(std::cin, choice);
+        bool allowed = (choice == "y" || choice == "Y");
+        if (!allowed) std::cout << "[He thong] Da tu choi.\n";
+        return allowed;
+    };
 }
-// Hàm thực thi lệnh gom stdout + stderr
-std::string ExecTool::runSystemCommand(const std::string& cmd) {
-    std::string cmd_with_stderr = cmd + " 2>&1";
-    std::array<char, 128> buffer;
-    std::string result;
-    // 1. Tạo một Lambda function để bọc hàm PCLOSE lại
-    auto pipe_deleter = [](FILE* f) { PCLOSE(f); };
 
-    // 2. Nhét cái Lambda đó vào unique_ptr (Thay cho code cũ của bro)
-    std::unique_ptr<FILE, decltype(pipe_deleter)> pipe(POPEN(cmd_with_stderr.c_str(), "r"), pipe_deleter);
-    
-    if (!pipe) {
-        return "System Error: Không thể mở pipe để chạy lệnh.";
+// ─── Constructor ──────────────────────────────────────────────────────────────
+ExecTool::ExecTool(ExecutionPolicy policy) : policy_(std::move(policy)) {}
+
+// ─── execute(): nhận chuỗi lệnh thuần, không nhận JSON ──────────────────────
+// arguments = chuỗi lệnh shell (vd: "ls -la results/").
+// Nếu model gửi thêm explanation theo format "CMD | EXPLAIN", bóc tách ra.
+std::string ExecTool::execute(const std::string& arguments) {
+    std::string command     = arguments;
+    std::string explanation = "(khong co giai thich)";
+
+    // Format tùy chọn: "ls -la | Liet ke file ket qua"
+    auto sep = arguments.find(" | ");
+    if (sep != std::string::npos) {
+        command     = arguments.substr(0, sep);
+        explanation = arguments.substr(sep + 3);
     }
-    
-    // Hút dữ liệu text từ Terminal ngầm
+    // Trim
+    while (!command.empty() && (command.back() == ' ' || command.back() == '\r'))
+        command.pop_back();
+
+    if (command.empty()) return "Loi: lenh rong.";
+
+    // Delegate cho policy — không tự quyết định
+    if (!policy_(command, explanation)) {
+        return "Da tu choi thuc thi lenh: " + command;
+    }
+
+    return runSystemCommand(command);
+}
+
+// ─── runSystemCommand ────────────────────────────────────────────────────────
+std::string ExecTool::runSystemCommand(const std::string& cmd) {
+    std::string cmdWithStderr = cmd + " 2>&1";
+    std::array<char, 256> buffer;
+    std::string result;
+
+    // unique_ptr với custom deleter (C++17) — không leak FILE*
+    auto pipeDeleter = [](FILE* f) { PCLOSE(f); };
+    std::unique_ptr<FILE, decltype(pipeDeleter)> pipe(
+        POPEN(cmdWithStderr.c_str(), "r"), pipeDeleter);
+
+    if (!pipe) return "System Error: Khong the mo pipe.";
+
     while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
         result += buffer.data();
+        if (result.size() > 4096) {   // giới hạn output, tránh tràn context
+            result += "\n[...output bi cat ngan qua 4096 bytes...]";
+            break;
+        }
     }
-    
-    if (result.empty()) {
-        return "Command executed successfully with no output.";
-    }
-    
-    return result;
+    return result.empty() ? "Lenh chay thanh cong, khong co output." : result;
 }

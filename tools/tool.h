@@ -1,21 +1,17 @@
-#ifndef TOOL_H
-#define TOOL_H
-#include "../LLMClient/json.hpp"
+#pragma once
 #include <string>
-using json = nlohmann::json;
+
+// Interface trừu tượng (pure virtual) cho mọi Tool.
+// Quy tắc thiết kế: Tool KHÔNG biết JSON, KHÔNG biết LLM protocol.
+// AgentLoop chịu trách nhiệm bóc tách arguments từ response của model
+// trước khi gọi execute() — tool chỉ nhận chuỗi kết quả cuối cùng.
 class Tool {
 public:
-    // Destructor ảo là BẮT BUỘC trong OOP để tránh rò rỉ bộ nhớ khi giải phóng con trỏ lớp cha
     virtual ~Tool() = default;
-
-    // Trả về tên định danh duy nhất của công cụ (ví dụ: "calculator")
     virtual std::string getName() const = 0;
-
-    // Trả về mô tả chức năng và hướng dẫn tham số để AI hiểu khi nào nên dùng
     virtual std::string getDescription() const = 0;
 
-    // Hàm thực thi cốt lõi: nhận vào chuỗi đối số từ AI và trả về kết quả dạng chuỗi
-    virtual std::string execute(const json& payload) = 0;
+    // Nhận chuỗi arguments thuần (ví dụ: "(15+5)*17" hay "[tag] | nội dung").
+    // Trả về chuỗi kết quả để AgentLoop đưa vào Observation.
+    virtual std::string execute(const std::string& arguments) = 0;
 };
-
-#endif // TOOL_H

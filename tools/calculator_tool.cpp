@@ -107,22 +107,19 @@ double CalculatorTool::evaluatePostfix(const std::vector<std::string>& postfix) 
     return valStack.top();
 }
 
-std::string CalculatorTool::execute(const json& payload) {
+std::string CalculatorTool::execute(const std::string& arguments) {
     try {
-        // Làm sạch chuỗi đầu vào (bỏ dấu ngoặc kép thừa nếu AI sinh lỗi)
-        
-        std::string args= payload["arguments"].get<std::string>();
-        std::string cleanArgs = args;
-        cleanArgs.erase(std::remove(cleanArgs.begin(), cleanArgs.end(), '\"'), cleanArgs.end());
-        
-        std::vector<std::string> postfix = infixToPostfix(cleanArgs);
+        std::string clean = arguments;
+        clean.erase(std::remove(clean.begin(), clean.end(), '"'), clean.end());
+        size_t s = clean.find_first_not_of(" \t\r\n");
+        if (s == std::string::npos) return "Loi: bieu thuc rong";
+        clean = clean.substr(s, clean.find_last_not_of(" \t\r\n") - s + 1);
+        std::vector<std::string> postfix = infixToPostfix(clean);
         double result = evaluatePostfix(postfix);
-        
         std::ostringstream ss;
         ss << result;
-        return ss.str(); // ĐÃ FIX: Trả về chuỗi chuẩn, sạch bóng ký tự lạ
-    } 
-    catch (const std::exception& e) {
-        return e.what(); // Trả về thông báo lỗi trực quan cho AI đọc để tự sửa đổi hành động
+        return ss.str();
+    } catch (const std::exception& e) {
+        return std::string("Loi: ") + e.what();
     }
 }

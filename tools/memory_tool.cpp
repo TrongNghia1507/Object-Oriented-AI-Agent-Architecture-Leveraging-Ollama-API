@@ -43,8 +43,8 @@ DatabaseManager::~DatabaseManager() {
 
 MemorySaveTool::MemorySaveTool(std::shared_ptr<DatabaseManager> dbMgr) : dbManager(dbMgr) {}
 
-std::string MemorySaveTool::execute(const json& payload) {
-    std::string args = payload["arguments"].get<std::string>();
+std::string MemorySaveTool::execute(const std::string& arguments) {
+    std::string args = arguments;
     if (args.empty()) return "Lỗi: Tham số trống.";
 
     // Logic bóc tách Tag và Content từ args (Ví dụ: "[math] | 15*3=45")
@@ -84,8 +84,8 @@ std::string MemorySaveTool::execute(const json& payload) {
 // 3. TOOL MEMORY SEARCH (Truy xuất kèm Tag và Thời gian)
 MemorySearchTool::MemorySearchTool(std::shared_ptr<DatabaseManager> dbMgr) : dbManager(dbMgr) {}
 
-std::string MemorySearchTool::execute(const json& payload) {
-    std::string args = payload["arguments"].get<std::string>();
+std::string MemorySearchTool::execute(const std::string& arguments) {
+    std::string args = arguments;
     if (args.empty()) return "";
 
     sqlite3* db = dbManager->getDB();

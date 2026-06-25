@@ -7,9 +7,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(SQLite3 REQUIRED)
 find_package(CURL REQUIRED)
 
+# Nguồn Tool dùng chung (không cần Ollama)
+set(TOOL_SOURCES
+    tools/tool_registry.cpp
+    tools/calculator_tool.cpp
+    tools/advanced_math_tool.cpp
+    tools/memory_tool.cpp
+    tools/exec_tool.cpp
+    tools/web_search_tool.cpp
+)
+
+# Nguồn SkillLoader
+set(SKILL_SOURCES
+    skills/skill_loader.cpp
+)
+
 # ---------------------------------------------------------------------------
-# Target 1: math_tool_test
-# Test độc lập cho calculator / advanced_math / memory tool (không cần Ollama).
+# Target 1: math_tool_test — test Tool layer, không cần Ollama
 # ---------------------------------------------------------------------------
 add_executable(math_tool_test
     main_test.cpp
@@ -21,38 +35,27 @@ add_executable(math_tool_test
 target_link_libraries(math_tool_test PRIVATE SQLite::SQLite3)
 
 # ---------------------------------------------------------------------------
-# Target 2: llm_tool_test
-# Test tool kết hợp với model thật qua Ollama (xem README.md mục "Test tool với model").
+# Target 2: skill_loader_test — test SkillLoader, không cần Ollama
+# ---------------------------------------------------------------------------
+add_executable(skill_loader_test
+    tests/skill_loader_test.cpp
+    ${SKILL_SOURCES}
+)
+
+# ---------------------------------------------------------------------------
+# Target 3: llm_tool_test — test tool + Ollama thật
 # ---------------------------------------------------------------------------
 add_executable(llm_tool_test
     tests/test_tool_with_llm.cpp
     LLMClient/OllamaClient.cpp
     LLMClient/base64.cpp
-    tools/tool_registry.cpp
-    tools/calculator_tool.cpp
-    tools/advanced_math_tool.cpp
-    tools/memory_tool.cpp
-    skills/skill_loader.cpp
+    ${TOOL_SOURCES}
+    ${SKILL_SOURCES}
 )
 target_link_libraries(llm_tool_test PRIVATE SQLite::SQLite3 CURL::libcurl)
 
 # ---------------------------------------------------------------------------
-# Target 3: skill_loader_test
-# Test độc lập cho SkillLoader (parse frontmatter + keyword matching),
-# không cần Ollama, không cần network.
-# ---------------------------------------------------------------------------
-add_executable(skill_loader_test
-    tests/skill_loader_test.cpp
-    skills/skill_loader.cpp
-)
-
-# llm_tool_test đọc skills/*.md bằng đường dẫn tương đối "skills/",
-# nên phải chạy từ thư mục gốc dự án (nơi chứa thư mục skills/), không phải từ build/.
-
-
-# ---------------------------------------------------------------------------
-# Target 4: memory_tool_test
-# Test công cụ ghi nhớ kết hợp với LLM (Ollama)
+# Target 4: memory_tool_test — test memory tool + Ollama
 # ---------------------------------------------------------------------------
 add_executable(memory_tool_test
     test_memory.cpp
@@ -61,14 +64,10 @@ add_executable(memory_tool_test
     tools/memory_tool.cpp
     utils/SystemUtils.cpp
 )
-
-# Liên kết thư viện SQLite (cho bộ nhớ) và CURL (để gọi API Ollama)
 target_link_libraries(memory_tool_test PRIVATE SQLite::SQLite3 CURL::libcurl)
 
-
 # ---------------------------------------------------------------------------
-# Target 5: math_llm_test
-# Test công cụ toán học kết hợp với LLM (Ollama)
+# Target 5: math_llm_test — test math tools + Ollama
 # ---------------------------------------------------------------------------
 add_executable(math_llm_test
     test_math.cpp
@@ -78,6 +77,31 @@ add_executable(math_llm_test
     tools/advanced_math_tool.cpp
     utils/SystemUtils.cpp
 )
-
-# Liên kết thư viện CURL (để gọi API Ollama)
 target_link_libraries(math_llm_test PRIVATE CURL::libcurl)
+
+# ---------------------------------------------------------------------------
+# Target 6: exec_tool_test — test ExecTool + Ollama
+# ---------------------------------------------------------------------------
+add_executable(exec_tool_test
+    test.cpp
+    LLMClient/OllamaClient.cpp
+    LLMClient/base64.cpp
+    tools/exec_tool.cpp
+    utils/SystemUtils.cpp
+)
+target_link_libraries(exec_tool_test PRIVATE CURL::libcurl)
+
+# ---------------------------------------------------------------------------
+# Target 7: web_search_test — test WebSearchTool + Ollama
+# ---------------------------------------------------------------------------
+add_executable(web_search_test
+    test_web_search.cpp
+    LLMClient/OllamaClient.cpp
+    LLMClient/base64.cpp
+    tools/web_search_tool.cpp
+    utils/SystemUtils.cpp
+)
+target_link_libraries(web_search_test PRIVATE CURL::libcurl)
+
+# Các test với LLM phải chạy từ thư mục gốc dự án (không phải từ build/)
+# vì đọc skills/*.md bằng đường dẫn tương đối.

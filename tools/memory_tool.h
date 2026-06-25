@@ -29,7 +29,7 @@ public:
         return "Lưu trí nhớ. Format bắt buộc: [TAG] | NỘI DUNG. Ví dụ: [math] | 15*3=45"; 
     }
     
-    std::string execute(const json& payload) override;
+    std::string execute(const std::string& arguments) override;
 };
 
 // Tool: Tìm kiếm trí nhớ
@@ -44,7 +44,7 @@ public:
         return "Tìm kiếm trí nhớ bằng từ khóa."; 
     }
     
-    std::string execute(const json& payload) override;
+    std::string execute(const std::string& arguments) override;
 };
 
 #endif 

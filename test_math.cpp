@@ -65,15 +65,18 @@ int main() {
 
     cout << "--- PROMPT SE GUI CHO AI ---\n" << finalPrompt << "\n----------------------------\n\n";
 
-    // BƯỚC 3: KHỞI TẠO CLIENT VÀ GỌI MODEL THẬT (GIST DISCOVERY)
-    cout << "[3] Đang gửi API tới Ollama...\n";
-    
-    // Sử dụng lại Gist Discovery với PAT Token classic của bạn
-    OllamaClient client = OllamaClient::withGistDiscovery(
-        "qwen2.5vl:3b", 
-        "b54e95a50b8b9f0e7743a22593bc0503", 
-        "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" // Hãy thay bằng token ghp_... (classic) đang hoạt động của bạn
-    );
+    // Cau hinh qua bien moi truong (KHONG hardcode secret):
+    //   export OLLAMA_MODEL="qwen2.5vl:3b"
+    //   export OLLAMA_BASE_URL="http://localhost:11434"   (local)
+    //   hoac OLLAMA_GIST_ID + OLLAMA_GIST_PAT            (tunnel)
+    const char* modelEnv = std::getenv("OLLAMA_MODEL");
+    const char* baseUrl  = std::getenv("OLLAMA_BASE_URL");
+    const char* gistId   = std::getenv("OLLAMA_GIST_ID");
+    const char* gistPat  = std::getenv("OLLAMA_GIST_PAT");
+    if (!modelEnv) { cerr << "Can OLLAMA_MODEL\n"; return 1; }
+    OllamaClient client = baseUrl
+        ? OllamaClient(modelEnv, baseUrl)
+        : OllamaClient::withGistDiscovery(modelEnv, gistId ? gistId : "", gistPat ? gistPat : "");
     
     auto apiResult = client.sendPrompt(finalPrompt);
 

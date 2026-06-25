@@ -2,10 +2,10 @@
 #include "exprtk.hpp" // Khai báo nhúng thư viện bên thứ ba dạng header-only
 #include <algorithm>
 
-std::string AdvancedMathTool::execute(const json& payload) {
+std::string AdvancedMathTool::execute(const std::string& arguments) {
     // Làm sạch chuỗi đầu vào loại bỏ khoảng trắng và ký tự bao bọc chuỗi rác
     
-    std::string args = payload["arguments"].get<std::string>();
+    std::string args = arguments;
     std::string cleanArgs = args;
     cleanArgs.erase(std::remove(cleanArgs.begin(), cleanArgs.end(), '\"'), cleanArgs.end());
 
