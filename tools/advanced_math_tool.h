@@ -14,7 +14,7 @@ public:
                "Tham so truyen vao phai la chuoi bieu thuc, vi du: 'sqrt(144) + 2^3'";
     }
 
-    std::string execute(const json& payload) override;
+    std::string execute(const std::string& args) override;
 };
 
 #endif // ADVANCED_MATH_TOOL_H

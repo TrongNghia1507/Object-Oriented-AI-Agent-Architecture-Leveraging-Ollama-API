@@ -8,21 +8,15 @@
     #define POPEN popen
     #define PCLOSE pclose
 #endif
-std::string ExecTool::execute(const json& payload){
+std::string ExecTool::execute(const std::string& args){
     // 1. Bóc tách lệnh bash
-    std::string args = payload["arguments"].get<std::string>();
     
     // 2. Bóc tách lời giải thích (fallback nếu AI quên truyền)
-    std::string explanation = "Không có giải thích chi tiết từ AI.";
-    if (payload.contains("explanation")) {
-        explanation = payload["explanation"].get<std::string>();
-    }
 
     // 3. HIỂN THỊ CẢNH BÁO TRÊN TERMINAL
     std::cout << "\n==================================================\n";
     std::cout << "[!] CẢNH BÁO BẢO MẬT: AI muốn can thiệp hệ thống\n";
     std::cout << ">>> Lệnh kỹ thuật : " << args << "\n";
-    std::cout << ">>> AI Giải thích : " << explanation << "\n";
     std::cout << "--------------------------------------------------\n";
     std::cout << "Bạn có cho phép chạy lệnh này không? (y/n): ";
     

@@ -44,7 +44,7 @@ public:
         return "Tìm kiếm trí nhớ bằng từ khóa."; 
     }
     
-    std::string execute(const json& payload) override;
+    std::string execute(const std::string& args) override;
 };
 
 #endif 

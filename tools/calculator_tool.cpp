@@ -107,11 +107,9 @@ double CalculatorTool::evaluatePostfix(const std::vector<std::string>& postfix) 
     return valStack.top();
 }
 
-std::string CalculatorTool::execute(const json& payload) {
+std::string CalculatorTool::execute(const std::string& args) {
     try {
         // Làm sạch chuỗi đầu vào (bỏ dấu ngoặc kép thừa nếu AI sinh lỗi)
-        
-        std::string args= payload["arguments"].get<std::string>();
         std::string cleanArgs = args;
         cleanArgs.erase(std::remove(cleanArgs.begin(), cleanArgs.end(), '\"'), cleanArgs.end());
         

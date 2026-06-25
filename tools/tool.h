@@ -15,7 +15,7 @@ public:
     virtual std::string getDescription() const = 0;
 
     // Hàm thực thi cốt lõi: nhận vào chuỗi đối số từ AI và trả về kết quả dạng chuỗi
-    virtual std::string execute(const json& payload) = 0;
+    virtual std::string execute(const std::string& args) = 0;
 };
 
 #endif // TOOL_H
