@@ -42,18 +42,23 @@ int main() {
 
     // BƯỚC 2: RÁP PROMPT
     // KỊCH BẢN 1: Test lưu trữ
-    string userQuestion = "Hãy lưu thông tin sau: Mật khẩu wifi phòng lab là 'KhoaCNTT@2026'.";
+    string userQuestion = "Mật khẩu wifi phòng lab là gì?";
     
     // KỊCH BẢN 2: Test tìm kiếm (Bạn có thể comment Kịch bản 1 và mở comment dòng dưới để test Search)
     // string userQuestion = "Bạn có nhớ mật khẩu wifi phòng lab là gì không?";
     
     // Ráp Prompt và thêm một câu ép buộc xuất JSON để code C++ parse không bị lỗi
     string finalPrompt = 
-        "Bạn là AI Agent.\n" + 
-        systemContext + 
-        memoryRules + 
-        "\n\nYêu cầu của người dùng: " + userQuestion + 
-        "\n\nLƯU Ý QUAN TRỌNG: Bạn BẮT BUỘC phải trả lời dưới dạng JSON chứa 2 trường \"action\" (tên công cụ) và \"arguments\" (tham số truyền vào công cụ) để hệ thống tự động bóc tách.";
+    "Bạn là AI Agent.\n" + 
+    systemContext + 
+    memoryRules + 
+    "\n\nYêu cầu của người dùng: " + userQuestion + 
+    "\n\nLƯU Ý QUAN TRỌNG VỀ ĐỊNH DẠNG JSON:\n" +
+    "1. BẮT BUỘC trả lời định dạng JSON hợp lệ.\n" +
+    "2. Trường \"action\" là tên công cụ.\n" +
+    "3. Trường \"arguments\" BẮT BUỘC phải là một CHUỖI (string) thuần túy, KHÔNG ĐƯỢC là một object (không có ngoặc nhọn bao quanh nội dung).\n" +
+    "Ví dụ đúng: {\"action\": \"memory_save\", \"arguments\": \"[personal_info] | Mật khẩu wifi là 123\"}\n" +
+    "Ví dụ SAI: {\"action\": \"memory_save\", \"arguments\": {\"[personal_info] | ...\"}}";
 
     cout << "--- PROMPT SE GUI CHO AI ---\n" << finalPrompt << "\n----------------------------\n\n";
 

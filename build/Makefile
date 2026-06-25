@@ -168,6 +168,19 @@ memory_tool_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/build
 .PHONY : memory_tool_test/fast
 
+#=============================================================================
+# Target rules for targets named math_llm_test
+
+# Build rule for target.
+math_llm_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 math_llm_test
+.PHONY : math_llm_test
+
+# fast build rule for target.
+math_llm_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/build
+.PHONY : math_llm_test/fast
+
 LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.o
 
@@ -175,6 +188,7 @@ LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
 LLMClient/OllamaClient.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.cpp.o
 
 LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
@@ -184,6 +198,7 @@ LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
 LLMClient/OllamaClient.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/OllamaClient.cpp.i
 .PHONY : LLMClient/OllamaClient.cpp.i
 
 LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
@@ -193,6 +208,7 @@ LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
 LLMClient/OllamaClient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/OllamaClient.cpp.s
 .PHONY : LLMClient/OllamaClient.cpp.s
 
 LLMClient/base64.o: LLMClient/base64.cpp.o
@@ -202,6 +218,7 @@ LLMClient/base64.o: LLMClient/base64.cpp.o
 LLMClient/base64.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/base64.cpp.o
 .PHONY : LLMClient/base64.cpp.o
 
 LLMClient/base64.i: LLMClient/base64.cpp.i
@@ -211,6 +228,7 @@ LLMClient/base64.i: LLMClient/base64.cpp.i
 LLMClient/base64.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/base64.cpp.i
 .PHONY : LLMClient/base64.cpp.i
 
 LLMClient/base64.s: LLMClient/base64.cpp.s
@@ -220,6 +238,7 @@ LLMClient/base64.s: LLMClient/base64.cpp.s
 LLMClient/base64.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/base64.cpp.s
 .PHONY : LLMClient/base64.cpp.s
 
 main_test.o: main_test.cpp.o
@@ -272,6 +291,30 @@ skills/skill_loader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/skills/skill_loader.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/skills/skill_loader.cpp.s
 .PHONY : skills/skill_loader.cpp.s
+
+test_math.o: test_math.cpp.o
+.PHONY : test_math.o
+
+# target to build an object file
+test_math.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/test_math.cpp.o
+.PHONY : test_math.cpp.o
+
+test_math.i: test_math.cpp.i
+.PHONY : test_math.i
+
+# target to preprocess a source file
+test_math.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/test_math.cpp.i
+.PHONY : test_math.cpp.i
+
+test_math.s: test_math.cpp.s
+.PHONY : test_math.s
+
+# target to generate assembly for a file
+test_math.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/test_math.cpp.s
+.PHONY : test_math.cpp.s
 
 test_memory.o: test_memory.cpp.o
 .PHONY : test_memory.o
@@ -352,6 +395,7 @@ tools/advanced_math_tool.o: tools/advanced_math_tool.cpp.o
 tools/advanced_math_tool.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/advanced_math_tool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/advanced_math_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/advanced_math_tool.cpp.o
 .PHONY : tools/advanced_math_tool.cpp.o
 
 tools/advanced_math_tool.i: tools/advanced_math_tool.cpp.i
@@ -361,6 +405,7 @@ tools/advanced_math_tool.i: tools/advanced_math_tool.cpp.i
 tools/advanced_math_tool.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/advanced_math_tool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/advanced_math_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/advanced_math_tool.cpp.i
 .PHONY : tools/advanced_math_tool.cpp.i
 
 tools/advanced_math_tool.s: tools/advanced_math_tool.cpp.s
@@ -370,6 +415,7 @@ tools/advanced_math_tool.s: tools/advanced_math_tool.cpp.s
 tools/advanced_math_tool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/advanced_math_tool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/advanced_math_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/advanced_math_tool.cpp.s
 .PHONY : tools/advanced_math_tool.cpp.s
 
 tools/calculator_tool.o: tools/calculator_tool.cpp.o
@@ -379,6 +425,7 @@ tools/calculator_tool.o: tools/calculator_tool.cpp.o
 tools/calculator_tool.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/calculator_tool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/calculator_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/calculator_tool.cpp.o
 .PHONY : tools/calculator_tool.cpp.o
 
 tools/calculator_tool.i: tools/calculator_tool.cpp.i
@@ -388,6 +435,7 @@ tools/calculator_tool.i: tools/calculator_tool.cpp.i
 tools/calculator_tool.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/calculator_tool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/calculator_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/calculator_tool.cpp.i
 .PHONY : tools/calculator_tool.cpp.i
 
 tools/calculator_tool.s: tools/calculator_tool.cpp.s
@@ -397,6 +445,7 @@ tools/calculator_tool.s: tools/calculator_tool.cpp.s
 tools/calculator_tool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/calculator_tool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/calculator_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/calculator_tool.cpp.s
 .PHONY : tools/calculator_tool.cpp.s
 
 tools/memory_tool.o: tools/memory_tool.cpp.o
@@ -462,6 +511,7 @@ utils/SystemUtils.o: utils/SystemUtils.cpp.o
 # target to build an object file
 utils/SystemUtils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/utils/SystemUtils.cpp.o
 .PHONY : utils/SystemUtils.cpp.o
 
 utils/SystemUtils.i: utils/SystemUtils.cpp.i
@@ -470,6 +520,7 @@ utils/SystemUtils.i: utils/SystemUtils.cpp.i
 # target to preprocess a source file
 utils/SystemUtils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/utils/SystemUtils.cpp.i
 .PHONY : utils/SystemUtils.cpp.i
 
 utils/SystemUtils.s: utils/SystemUtils.cpp.s
@@ -478,6 +529,7 @@ utils/SystemUtils.s: utils/SystemUtils.cpp.s
 # target to generate assembly for a file
 utils/SystemUtils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/utils/SystemUtils.cpp.s
 .PHONY : utils/SystemUtils.cpp.s
 
 # Help Target
@@ -489,6 +541,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... llm_tool_test"
+	@echo "... math_llm_test"
 	@echo "... math_tool_test"
 	@echo "... memory_tool_test"
 	@echo "... skill_loader_test"
@@ -504,6 +557,9 @@ help:
 	@echo "... skills/skill_loader.o"
 	@echo "... skills/skill_loader.i"
 	@echo "... skills/skill_loader.s"
+	@echo "... test_math.o"
+	@echo "... test_math.i"
+	@echo "... test_math.s"
 	@echo "... test_memory.o"
 	@echo "... test_memory.i"
 	@echo "... test_memory.s"

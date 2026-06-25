@@ -64,3 +64,20 @@ add_executable(memory_tool_test
 
 # Liên kết thư viện SQLite (cho bộ nhớ) và CURL (để gọi API Ollama)
 target_link_libraries(memory_tool_test PRIVATE SQLite::SQLite3 CURL::libcurl)
+
+
+# ---------------------------------------------------------------------------
+# Target 5: math_llm_test
+# Test công cụ toán học kết hợp với LLM (Ollama)
+# ---------------------------------------------------------------------------
+add_executable(math_llm_test
+    test_math.cpp
+    LLMClient/OllamaClient.cpp
+    LLMClient/base64.cpp
+    tools/calculator_tool.cpp
+    tools/advanced_math_tool.cpp
+    utils/SystemUtils.cpp
+)
+
+# Liên kết thư viện CURL (để gọi API Ollama)
+target_link_libraries(math_llm_test PRIVATE CURL::libcurl)
