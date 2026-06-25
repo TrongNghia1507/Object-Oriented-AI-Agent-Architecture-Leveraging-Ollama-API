@@ -39,7 +39,7 @@ int main() {
     string execRules = readFile("skills/exec_planner.md"); 
     
     // BƯỚC 2: RÁP PROMPT
-    string userQuestion = "xoá file name.txt trong thư mục results";
+    string userQuestion = "Ghi 25127100 vào file name.txt (Tạo mới vì chưa có file) trong thư mục results đã có sẵn";
     
     string finalPrompt = 
         "Bạn là AI Agent.\n" + 
