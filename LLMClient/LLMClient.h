@@ -1,9 +1,8 @@
 #pragma once
-#include <string>
 #include <expected>
+#include <string>
+#include <vector>
 
-// Mã lỗi chung cho mọi LLM client (không gắn riêng với Ollama)
-// để các client khác (OpenAIClient, ClaudeClient...) có thể tái dùng.
 enum class LLMError {
     Timeout,
     ConnectionDenied,
@@ -11,23 +10,34 @@ enum class LLMError {
     UnknownNetworkError
 };
 
-// Interface trừu tượng cho tầng LLM Client (yêu cầu 3.1 / IV.4.1 trong đề bài).
-// AgentLoop chỉ nên phụ thuộc vào interface này, KHÔNG phụ thuộc trực tiếp
-// vào OllamaClient -> sau này đổi sang OpenAI/Claude chỉ cần viết thêm
-// một class mới kế thừa LLMClient, không phải sửa AgentLoop.
+// Đại diện 1 turn trong conversation history (format /api/chat của Ollama).
+// AgentLoop xây dựng vector<Message> qua nhiều bước rồi gửi 1 lần.
+struct Message {
+    std::string role;    // "system" | "user" | "assistant"
+    std::string content;
+};
+
+// Interface trừu tượng cho tầng LLM Client (yêu cầu 3.1).
+// AgentLoop và HarnessRunner chỉ phụ thuộc vào interface này —
+// thay Ollama bằng OpenAI chỉ cần viết thêm 1 class mới.
 class LLMClient {
 public:
     virtual ~LLMClient() = default;
 
-    // Gửi một prompt văn bản thuần, nhận về nội dung trả lời hoặc lỗi.
-    virtual std::expected<std::string, LLMError> sendPrompt(const std::string& text) = 0;
+    // Single-turn (tiện lợi, không duy trì history).
+    virtual std::expected<std::string, LLMError>
+        sendPrompt(const std::string& text) = 0;
 
-    // Gửi prompt kèm 1 ảnh (multimodal) qua CÙNG một interface với sendPrompt,
-    // đáp ứng yêu cầu "text-only và multimodal qua cùng một interface" (3.1).
-    virtual std::expected<std::string, LLMError> sendPromptWithImage(
-        const std::string& text, const std::string& imagePath) = 0;
+    // Multi-turn: gửi toàn bộ conversation history.
+    // AgentLoop gọi method này ở mỗi bước ReAct để model thấy đủ context.
+    virtual std::expected<std::string, LLMError>
+        sendMessages(const std::vector<Message>& messages) = 0;
 
-    // Cấu hình runtime (yêu cầu 3.1: temperature, max_tokens phải cấu hình được)
+    // Multimodal (text + ảnh), cùng interface với sendPrompt (yêu cầu 3.1).
+    virtual std::expected<std::string, LLMError>
+        sendPromptWithImage(const std::string& text,
+                            const std::string& imagePath) = 0;
+
     virtual void setTemperature(float temperature) = 0;
     virtual void setMaxTokens(int maxTokens) = 0;
     virtual std::string getModelName() const = 0;

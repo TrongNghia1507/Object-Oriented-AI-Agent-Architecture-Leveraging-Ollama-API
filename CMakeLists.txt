@@ -22,6 +22,12 @@ set(SKILL_SOURCES
     skills/skill_loader.cpp
 )
 
+# Nguồn AgentLoop (không cần Ollama, không cần CURL)
+set(AGENT_SOURCES
+    agent/agent_loop.cpp
+    agent/loop_detector.cpp
+)
+
 # ---------------------------------------------------------------------------
 # Target 1: math_tool_test — test Tool layer, không cần Ollama
 # ---------------------------------------------------------------------------
@@ -43,7 +49,23 @@ add_executable(skill_loader_test
 )
 
 # ---------------------------------------------------------------------------
-# Target 3: llm_tool_test — test tool + Ollama thật
+# Target 3: agent_loop_test — test AgentLoop + LoopDetector OFFLINE (Mock LLM)
+# ---------------------------------------------------------------------------
+add_executable(agent_loop_test
+    tests/agent_loop_test.cpp
+    ${AGENT_SOURCES}
+    ${SKILL_SOURCES}
+    tools/tool_registry.cpp
+    tools/calculator_tool.cpp
+    tools/advanced_math_tool.cpp
+    tools/memory_tool.cpp
+    tools/exec_tool.cpp
+    tools/web_search_tool.cpp
+)
+target_link_libraries(agent_loop_test PRIVATE SQLite::SQLite3 CURL::libcurl)
+
+# ---------------------------------------------------------------------------
+# Target 4: llm_tool_test — test tool + Ollama thật (không có AgentLoop)
 # ---------------------------------------------------------------------------
 add_executable(llm_tool_test
     tests/test_tool_with_llm.cpp
@@ -53,6 +75,19 @@ add_executable(llm_tool_test
     ${SKILL_SOURCES}
 )
 target_link_libraries(llm_tool_test PRIVATE SQLite::SQLite3 CURL::libcurl)
+
+# ---------------------------------------------------------------------------
+# Target 5: llm_agent_test — AgentLoop đầy đủ + Ollama thật (demo cuối)
+# ---------------------------------------------------------------------------
+add_executable(llm_agent_test
+    tests/llm_agent_test.cpp
+    LLMClient/OllamaClient.cpp
+    LLMClient/base64.cpp
+    ${TOOL_SOURCES}
+    ${SKILL_SOURCES}
+    ${AGENT_SOURCES}
+)
+target_link_libraries(llm_agent_test PRIVATE SQLite::SQLite3 CURL::libcurl)
 
 # ---------------------------------------------------------------------------
 # Target 4: memory_tool_test — test memory tool + Ollama

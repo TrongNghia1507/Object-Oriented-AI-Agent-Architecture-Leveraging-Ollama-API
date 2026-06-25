@@ -1,5 +1,6 @@
 #pragma once
 #include "LLMClient.h"
+#include <vector>
 #include <string>
 
 // OllamaClient: cài đặt cụ thể của LLMClient, nói chuyện với Ollama qua REST API /api/chat.
@@ -37,6 +38,7 @@ public:
     static OllamaClient withGistDiscovery(std::string model, std::string gistId, std::string gistPAT);
 
     std::expected<std::string, LLMError> sendPrompt(const std::string& text) override;
+    std::expected<std::string, LLMError> sendMessages(const std::vector<Message>& messages) override;
     std::expected<std::string, LLMError> sendPromptWithImage(
         const std::string& text, const std::string& imagePath) override;
 

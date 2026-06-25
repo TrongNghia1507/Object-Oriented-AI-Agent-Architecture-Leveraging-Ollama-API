@@ -1,4 +1,5 @@
 #include "OllamaClient.h"
+#include <vector>
 #include "json.hpp"
 #include "base64.h"
 #include <curl/curl.h>
@@ -173,6 +174,24 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
 std::expected<string, LLMError> OllamaClient::sendPrompt(const string& text) {
     string payload = buildPayload(text, "");
     return processRequest(payload);
+}
+// Multi-turn: gửi toàn bộ conversation history lên /api/chat.
+// AgentLoop xây vector<Message> qua nhiều bước rồi gọi method này.
+std::expected<string, LLMError> OllamaClient::sendMessages(const vector<Message>& messages) {
+    json payload = {
+        {"model", modelName_},
+        {"stream", false},
+        {"options", {
+            {"temperature", temperature_},
+            {"num_predict", maxTokens_}
+        }}
+    };
+    json arr = json::array();
+    for (const auto& m : messages) {
+        arr.push_back({{"role", m.role}, {"content", m.content}});
+    }
+    payload["messages"] = arr;
+    return processRequest(payload.dump());
 }
 
 std::expected<string, LLMError> OllamaClient::sendPromptWithImage(const string& text, const string& imagePath) {

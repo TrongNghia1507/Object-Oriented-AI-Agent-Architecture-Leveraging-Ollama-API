@@ -19,6 +19,10 @@ public:
     ToolRegistry(const ToolRegistry&) = delete;
     ToolRegistry& operator=(const ToolRegistry&) = delete;
 
+    // Move OK (unique_ptr bên trong hỗ trợ move)
+    ToolRegistry(ToolRegistry&&) = default;
+    ToolRegistry& operator=(ToolRegistry&&) = default;
+
     // Đăng ký một công cụ mới vào hệ thống (Nhận vào một con trỏ unique_ptr)
     void registerTool(std::unique_ptr<Tool> tool);
 
