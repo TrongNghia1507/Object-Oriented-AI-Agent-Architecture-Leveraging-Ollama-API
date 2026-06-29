@@ -42,7 +42,7 @@ int main() {
 
     // BƯỚC 2: RÁP PROMPT & LỰA CHỌN KỊCH BẢN TEST
     // KỊCH BẢN TEST: Hỏi một sự kiện/thông tin thực tế để AI gọi DuckDuckGo
-    string userQuestion = "RONALDO";
+    string userQuestion = "RONALDO IS GOAT";
     
     // Ráp Prompt với cơ chế ép khuôn JSON nghiêm ngặt để chống AI nhả Object lỗi
     string finalPrompt = 
