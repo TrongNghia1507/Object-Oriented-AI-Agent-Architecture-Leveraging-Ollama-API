@@ -31,15 +31,20 @@
 //   structured bindings (trong ToolRegistry loop)    → auto& [k, v]
 
 class AgentLoop {
+public:
+    // === THÊM MỚI: Bí danh (Alias) cho Hook Interface để code gọn gàng ===
+    using StepHook = std::function<void(const Step&)>;
+
 protected:
-    LLMClient*   llm_;
+    LLMClient* llm_;
     ToolRegistry* registry_;
-    SkillLoader*  skillLoader_;  // nullable — nếu nullptr không inject skill
+    SkillLoader* skillLoader_;  // nullable — nếu nullptr không inject skill
     int           maxSteps_;
     LoopDetector  loopDetector_;
 
     // Observer hook — nullptr khi không có HarnessRunner
-    std::function<void(const Step&)> stepHook_;
+    // === CHỈNH SỬA: Sử dụng Alias và khởi tạo mặc định nullptr cho an toàn ===
+    StepHook stepHook_ = nullptr;
 
     // ── Các bước có thể override (Template Method) ────────────────────────────
 
@@ -62,10 +67,18 @@ protected:
     // Build system prompt (tool descriptions + skill content phù hợp với task).
     virtual std::string buildSystemPrompt(const std::string& task);
 
+    // === THÊM MỚI: Hàm bọc an toàn (Safe Wrapper) để kích hoạt Hook ===
+    // Gọi hàm này trong file .cpp thay vì gọi trực tiếp stepHook_
+    void notifyHook(const Step& current_step) const {
+        if (stepHook_) {
+            stepHook_(current_step);
+        }
+    }
+
 public:
-    AgentLoop(LLMClient*    llm,
+    AgentLoop(LLMClient* llm,
               ToolRegistry* registry,
-              SkillLoader*  skillLoader = nullptr,
+              SkillLoader* skillLoader = nullptr,
               int           maxSteps    = 10);
 
     virtual ~AgentLoop() = default;
@@ -74,7 +87,8 @@ public:
 
     // Inject step hook từ HarnessRunner (Observer pattern).
     // AgentLoop không biết ai gọi — chỉ biết mình phải gọi hook sau mỗi step.
-    void setStepHook(std::function<void(const Step&)> hook) {
+    // === CHỈNH SỬA: Đổi tham số sang dùng Alias StepHook ===
+    void setStepHook(StepHook hook) {
         stepHook_ = std::move(hook);
     }
 
