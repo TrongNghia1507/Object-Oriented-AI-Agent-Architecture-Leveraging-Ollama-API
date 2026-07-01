@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include "../agent/environment.h"
 // Interface trừu tượng (pure virtual) cho mọi Tool.
 // Quy tắc thiết kế: Tool KHÔNG biết JSON, KHÔNG biết LLM protocol.
 // AgentLoop chịu trách nhiệm bóc tách arguments từ response của model

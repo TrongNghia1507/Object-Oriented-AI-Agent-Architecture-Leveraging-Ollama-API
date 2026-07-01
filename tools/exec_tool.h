@@ -32,12 +32,17 @@ namespace ExecPolicy {
 class ExecTool : public Tool {
 private:
     ExecutionPolicy policy_;
+    Environment* env_;
     std::string runSystemCommand(const std::string& cmd);
 
 public:
     // Constructor nhận policy — mặc định là AskUser (an toàn nhất cho môi trường tương tác).
     explicit ExecTool(ExecutionPolicy policy = ExecPolicy::AskUser());
 
+
+    explicit ExecTool(Environment* env) : env_(env) {}
+
+    
     std::string getName() const override { return "exec"; }
     std::string getDescription() const override {
         return "Thuc thi lenh shell/bash. Tham so: lenh shell (vd: 'ls -la results/'). "

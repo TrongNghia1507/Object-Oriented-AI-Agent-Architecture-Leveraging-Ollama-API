@@ -1,21 +1,31 @@
 #pragma once
-#include "../tools/tool.h"
 #include <string>
 
 class Environment {
 public:
     virtual ~Environment() = default;
-    
-    // Hàm này nhận vào BẤT KỲ Tool nào và tham số của nó
-    virtual std::string runTool(Tool* tool, const std::string& args) = 0;
+    // Hàm này trả về câu lệnh "cd ..." nếu là Sandbox, hoặc rỗng nếu là Native
+    virtual std::string getDirectoryPrefix() = 0; 
 };
 
 class NativeEnvironment : public Environment {
 public:
-    std::string runTool(Tool* tool, const std::string& args) override;
+    std::string getDirectoryPrefix() override {
+        return "";//native thì ko cần truy cập folder sandbox
+    }
 };
 
 class SandboxEnvironment : public Environment {
+private:
+    std::string sandboxDir;
 public:
-    std::string runTool(Tool* tool, const std::string& args) override;
+    SandboxEnvironment(const std::string& dir = "./sandbox_root") : sandboxDir(dir) {}
+    
+    std::string getDirectoryPrefix() override {
+        #ifdef _WIN32
+            return "cd /d " + sandboxDir + " && ";
+        #else
+            return "cd " + sandboxDir + " && ";
+        #endif
+    }
 };

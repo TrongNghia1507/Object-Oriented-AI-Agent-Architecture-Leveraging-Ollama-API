@@ -59,11 +59,16 @@ std::string ExecTool::execute(const std::string& arguments) {
 
 // ─── runSystemCommand ────────────────────────────────────────────────────────
 std::string ExecTool::runSystemCommand(const std::string& cmd) {
-    std::string cmdWithStderr = cmd + " 2>&1";
+    
+    // ĐÂY! Lấy lệnh cd từ môi trường ghép vào trước lệnh của AI
+    std::string prefix = env_->getDirectoryPrefix(); 
+    std::string safeCmd = prefix + cmd;
+    
+    std::string cmdWithStderr = safeCmd + " 2>&1"; // Lệnh hoàn chỉnh
     std::array<char, 256> buffer;
     std::string result;
 
-    // unique_ptr với custom deleter (C++17) — không leak FILE*
+    // Vẫn gọi POPEN bình thường, test thả ga!
     auto pipeDeleter = [](FILE* f) { PCLOSE(f); };
     std::unique_ptr<FILE, decltype(pipeDeleter)> pipe(
         POPEN(cmdWithStderr.c_str(), "r"), pipeDeleter);
@@ -72,10 +77,6 @@ std::string ExecTool::runSystemCommand(const std::string& cmd) {
 
     while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
         result += buffer.data();
-        if (result.size() > 4096) {   // giới hạn output, tránh tràn context
-            result += "\n[...output bi cat ngan qua 4096 bytes...]";
-            break;
-        }
     }
-    return result.empty() ? "Lenh chay thanh cong, khong co output." : result;
+    return result.empty() ? "Lenh chay thanh cong." : result;
 }
