@@ -113,7 +113,7 @@ std::string AgentLoop::doAct(const ToolCallAction& action) {
         return "[LOI] Tool '" + action.toolName + "' khong ton tai. "
                "Cac tool co san: " + (names.empty() ? "(khong co)" : names.substr(0, names.size()-2));
     }
-    return tool->execute(action.arguments);
+    return tool->execute(action.arguments);// return env_->runTool(tool,action)
 }
 
 // ─── doObserve ───────────────────────────────────────────────────────────────
