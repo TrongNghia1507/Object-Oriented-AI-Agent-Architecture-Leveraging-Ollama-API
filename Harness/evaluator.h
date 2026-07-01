@@ -1,5 +1,6 @@
 #pragma once
 #include "../agent/trajectory.h" // Đường dẫn chính xác tới file trajectory.h trong thư mục agent
+#include "environment.h"         // === THÊM MỚI: Nhúng interface Environment ===
 #include <string>
 #include <optional>              // Kỹ thuật C++17 bắt buộc theo yêu cầu đồ án
 
@@ -29,7 +30,9 @@ public:
      * @brief Hàm ảo thuần túy xử lý logic chấm điểm bài test một cách kín đáo.
      * @param finalAnswer Câu trả lời cuối cùng thu được từ AgentLoop.
      * @param trajectory Toàn bộ nhật ký hành trình ReAct (Các bước đi, hành động) của Agent.
+     * @param env Con trỏ trỏ tới Môi trường thực thi để Giám khảo kiểm tra vật chứng thực tế (ví dụ: test DB SQLite).
      * @return std::optional<int> Điểm số cục bộ (partial score). Trả về std::nullopt nếu không chấm được.
      */
-    virtual std::optional<int> evaluate(const std::string& finalAnswer, const Trajectory& trajectory) = 0;
+    // === SỬA ĐỔI: Thêm tham số Environment* env ===
+    virtual std::optional<int> evaluate(const std::string& finalAnswer, const Trajectory& trajectory, Environment* env) = 0;
 };

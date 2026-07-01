@@ -38,8 +38,13 @@ public:
         return "KeywordEvaluator";
     }
 
+    // === SỬA ĐỔI CHÍNH: Thêm tham số "Environment* env" vào cuối ===
     // Ghi đè hàm evaluate() với kiểu trả về std::optional<int> theo chuẩn C++17
-    std::optional<int> evaluate(const std::string& finalAnswer, const Trajectory& trajectory) override {
+    std::optional<int> evaluate(const std::string& finalAnswer, const Trajectory& trajectory, Environment* env) override {
+        // Mẹo C++: Báo cho trình biên dịch biết biến env cố tình không được dùng
+        // để tránh cảnh báo (warning: unused parameter)
+        (void)env; 
+
         // Nếu câu trả lời rỗng, có thể coi như không thể chấm điểm hoặc điểm 0
         if (finalAnswer.empty()) {
             return 0; // C++17 sẽ tự động gói số 0 này vào std::optional
