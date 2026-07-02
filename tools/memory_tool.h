@@ -11,7 +11,8 @@ class DatabaseManager {
 private:
     sqlite3* db;
 public:
-    DatabaseManager();
+    // SỬA LỖI HARDCODE: Constructor nhận vào một đường dẫn động để tạo file DB cô lập theo từng Task
+    explicit DatabaseManager(const std::string& dbPath = "memory.db");
     ~DatabaseManager();
     sqlite3* getDB() const { return db; }
 };
@@ -24,8 +25,7 @@ public:
     MemorySaveTool(std::shared_ptr<DatabaseManager> dbManager);
     std::string getName() const override { return "memory_save"; }
     
-    // Gợi ý cho AI cách truyền tham số chuẩn
-    std::string getDescription() const { 
+    std::string getDescription() const override { 
         return "Lưu trí nhớ. Format bắt buộc: [TAG] | NỘI DUNG. Ví dụ: [math] | 15*3=45"; 
     }
     
@@ -40,11 +40,11 @@ public:
     MemorySearchTool(std::shared_ptr<DatabaseManager> dbManager);
     std::string getName() const override { return "memory_search"; }
     
-    std::string getDescription() const { 
+    std::string getDescription() const override { 
         return "Tìm kiếm trí nhớ bằng từ khóa."; 
     }
     
     std::string execute(const std::string& arguments) override;
 };
 
-#endif 
+#endif
