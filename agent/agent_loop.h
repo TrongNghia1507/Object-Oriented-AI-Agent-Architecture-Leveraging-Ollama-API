@@ -34,9 +34,7 @@ class AgentLoop {
 public:
     // === THÊM MỚI: Bí danh (Alias) cho Hook Interface để code gọn gàng ===
     using StepHook = std::function<void(const Step&)>;
-    // t mới thêm
-private:
-    StepHook stepHook_;
+
 protected:
     LLMClient* llm_;
     ToolRegistry* registry_;

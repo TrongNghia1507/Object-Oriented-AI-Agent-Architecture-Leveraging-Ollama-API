@@ -117,133 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named math_tool_test
+# Target rules for targets named run_agent_loop
 
 # Build rule for target.
-math_tool_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 math_tool_test
-.PHONY : math_tool_test
+run_agent_loop: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 run_agent_loop
+.PHONY : run_agent_loop
 
 # fast build rule for target.
-math_tool_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/build
-.PHONY : math_tool_test/fast
+run_agent_loop/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/build
+.PHONY : run_agent_loop/fast
 
-#=============================================================================
-# Target rules for targets named skill_loader_test
+Harness/environment.o: Harness/environment.cpp.o
+.PHONY : Harness/environment.o
 
-# Build rule for target.
-skill_loader_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 skill_loader_test
-.PHONY : skill_loader_test
+# target to build an object file
+Harness/environment.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/Harness/environment.cpp.o
+.PHONY : Harness/environment.cpp.o
 
-# fast build rule for target.
-skill_loader_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/build
-.PHONY : skill_loader_test/fast
+Harness/environment.i: Harness/environment.cpp.i
+.PHONY : Harness/environment.i
 
-#=============================================================================
-# Target rules for targets named agent_loop_test
+# target to preprocess a source file
+Harness/environment.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/Harness/environment.cpp.i
+.PHONY : Harness/environment.cpp.i
 
-# Build rule for target.
-agent_loop_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 agent_loop_test
-.PHONY : agent_loop_test
+Harness/environment.s: Harness/environment.cpp.s
+.PHONY : Harness/environment.s
 
-# fast build rule for target.
-agent_loop_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/build
-.PHONY : agent_loop_test/fast
-
-#=============================================================================
-# Target rules for targets named llm_tool_test
-
-# Build rule for target.
-llm_tool_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 llm_tool_test
-.PHONY : llm_tool_test
-
-# fast build rule for target.
-llm_tool_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/build
-.PHONY : llm_tool_test/fast
-
-#=============================================================================
-# Target rules for targets named llm_agent_test
-
-# Build rule for target.
-llm_agent_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 llm_agent_test
-.PHONY : llm_agent_test
-
-# fast build rule for target.
-llm_agent_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/build
-.PHONY : llm_agent_test/fast
-
-#=============================================================================
-# Target rules for targets named memory_tool_test
-
-# Build rule for target.
-memory_tool_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 memory_tool_test
-.PHONY : memory_tool_test
-
-# fast build rule for target.
-memory_tool_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/build
-.PHONY : memory_tool_test/fast
-
-#=============================================================================
-# Target rules for targets named math_llm_test
-
-# Build rule for target.
-math_llm_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 math_llm_test
-.PHONY : math_llm_test
-
-# fast build rule for target.
-math_llm_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/build
-.PHONY : math_llm_test/fast
-
-#=============================================================================
-# Target rules for targets named exec_tool_test
-
-# Build rule for target.
-exec_tool_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 exec_tool_test
-.PHONY : exec_tool_test
-
-# fast build rule for target.
-exec_tool_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/build
-.PHONY : exec_tool_test/fast
-
-#=============================================================================
-# Target rules for targets named web_search_test
-
-# Build rule for target.
-web_search_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 web_search_test
-.PHONY : web_search_test
-
-# fast build rule for target.
-web_search_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/build
-.PHONY : web_search_test/fast
+# target to generate assembly for a file
+Harness/environment.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/Harness/environment.cpp.s
+.PHONY : Harness/environment.cpp.s
 
 LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.o
 
 # target to build an object file
 LLMClient/OllamaClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/LLMClient/OllamaClient.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/OllamaClient.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/LLMClient/OllamaClient.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/LLMClient/OllamaClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.cpp.o
 
 LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
@@ -251,12 +166,7 @@ LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
 
 # target to preprocess a source file
 LLMClient/OllamaClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/LLMClient/OllamaClient.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/OllamaClient.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/LLMClient/OllamaClient.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/LLMClient/OllamaClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/LLMClient/OllamaClient.cpp.i
 .PHONY : LLMClient/OllamaClient.cpp.i
 
 LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
@@ -264,12 +174,7 @@ LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
 
 # target to generate assembly for a file
 LLMClient/OllamaClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/OllamaClient.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/LLMClient/OllamaClient.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/OllamaClient.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/OllamaClient.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/LLMClient/OllamaClient.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/LLMClient/OllamaClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/LLMClient/OllamaClient.cpp.s
 .PHONY : LLMClient/OllamaClient.cpp.s
 
 LLMClient/base64.o: LLMClient/base64.cpp.o
@@ -277,12 +182,7 @@ LLMClient/base64.o: LLMClient/base64.cpp.o
 
 # target to build an object file
 LLMClient/base64.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/LLMClient/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/LLMClient/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/LLMClient/base64.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/LLMClient/base64.cpp.o
 .PHONY : LLMClient/base64.cpp.o
 
 LLMClient/base64.i: LLMClient/base64.cpp.i
@@ -290,12 +190,7 @@ LLMClient/base64.i: LLMClient/base64.cpp.i
 
 # target to preprocess a source file
 LLMClient/base64.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/LLMClient/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/LLMClient/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/LLMClient/base64.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/LLMClient/base64.cpp.i
 .PHONY : LLMClient/base64.cpp.i
 
 LLMClient/base64.s: LLMClient/base64.cpp.s
@@ -303,12 +198,7 @@ LLMClient/base64.s: LLMClient/base64.cpp.s
 
 # target to generate assembly for a file
 LLMClient/base64.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/LLMClient/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/LLMClient/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/LLMClient/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/LLMClient/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/LLMClient/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/LLMClient/base64.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/LLMClient/base64.cpp.s
 .PHONY : LLMClient/base64.cpp.s
 
 agent/agent_loop.o: agent/agent_loop.cpp.o
@@ -316,8 +206,7 @@ agent/agent_loop.o: agent/agent_loop.cpp.o
 
 # target to build an object file
 agent/agent_loop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/agent_loop.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/agent_loop.cpp.o
 .PHONY : agent/agent_loop.cpp.o
 
 agent/agent_loop.i: agent/agent_loop.cpp.i
@@ -325,8 +214,7 @@ agent/agent_loop.i: agent/agent_loop.cpp.i
 
 # target to preprocess a source file
 agent/agent_loop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/agent_loop.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/agent_loop.cpp.i
 .PHONY : agent/agent_loop.cpp.i
 
 agent/agent_loop.s: agent/agent_loop.cpp.s
@@ -334,8 +222,7 @@ agent/agent_loop.s: agent/agent_loop.cpp.s
 
 # target to generate assembly for a file
 agent/agent_loop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/agent_loop.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/agent_loop.cpp.s
 .PHONY : agent/agent_loop.cpp.s
 
 agent/loop_detector.o: agent/loop_detector.cpp.o
@@ -343,8 +230,7 @@ agent/loop_detector.o: agent/loop_detector.cpp.o
 
 # target to build an object file
 agent/loop_detector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/loop_detector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/loop_detector.cpp.o
 .PHONY : agent/loop_detector.cpp.o
 
 agent/loop_detector.i: agent/loop_detector.cpp.i
@@ -352,8 +238,7 @@ agent/loop_detector.i: agent/loop_detector.cpp.i
 
 # target to preprocess a source file
 agent/loop_detector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/loop_detector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/loop_detector.cpp.i
 .PHONY : agent/loop_detector.cpp.i
 
 agent/loop_detector.s: agent/loop_detector.cpp.s
@@ -361,8 +246,7 @@ agent/loop_detector.s: agent/loop_detector.cpp.s
 
 # target to generate assembly for a file
 agent/loop_detector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/loop_detector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/loop_detector.cpp.s
 .PHONY : agent/loop_detector.cpp.s
 
 agent/skill_loader.o: agent/skill_loader.cpp.o
@@ -370,10 +254,7 @@ agent/skill_loader.o: agent/skill_loader.cpp.o
 
 # target to build an object file
 agent/skill_loader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/agent/skill_loader.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/agent/skill_loader.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/skill_loader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/skill_loader.cpp.o
 .PHONY : agent/skill_loader.cpp.o
 
 agent/skill_loader.i: agent/skill_loader.cpp.i
@@ -381,10 +262,7 @@ agent/skill_loader.i: agent/skill_loader.cpp.i
 
 # target to preprocess a source file
 agent/skill_loader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/agent/skill_loader.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/agent/skill_loader.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/skill_loader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/skill_loader.cpp.i
 .PHONY : agent/skill_loader.cpp.i
 
 agent/skill_loader.s: agent/skill_loader.cpp.s
@@ -392,138 +270,15 @@ agent/skill_loader.s: agent/skill_loader.cpp.s
 
 # target to generate assembly for a file
 agent/skill_loader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/agent/skill_loader.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/agent/skill_loader.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/agent/skill_loader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/agent/skill_loader.cpp.s
 .PHONY : agent/skill_loader.cpp.s
-
-main_test.o: main_test.cpp.o
-.PHONY : main_test.o
-
-# target to build an object file
-main_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/main_test.cpp.o
-.PHONY : main_test.cpp.o
-
-main_test.i: main_test.cpp.i
-.PHONY : main_test.i
-
-# target to preprocess a source file
-main_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/main_test.cpp.i
-.PHONY : main_test.cpp.i
-
-main_test.s: main_test.cpp.s
-.PHONY : main_test.s
-
-# target to generate assembly for a file
-main_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/main_test.cpp.s
-.PHONY : main_test.cpp.s
-
-test.o: test.cpp.o
-.PHONY : test.o
-
-# target to build an object file
-test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/test.cpp.o
-.PHONY : test.cpp.o
-
-test.i: test.cpp.i
-.PHONY : test.i
-
-# target to preprocess a source file
-test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/test.cpp.i
-.PHONY : test.cpp.i
-
-test.s: test.cpp.s
-.PHONY : test.s
-
-# target to generate assembly for a file
-test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/test.cpp.s
-.PHONY : test.cpp.s
-
-test_math.o: test_math.cpp.o
-.PHONY : test_math.o
-
-# target to build an object file
-test_math.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/test_math.cpp.o
-.PHONY : test_math.cpp.o
-
-test_math.i: test_math.cpp.i
-.PHONY : test_math.i
-
-# target to preprocess a source file
-test_math.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/test_math.cpp.i
-.PHONY : test_math.cpp.i
-
-test_math.s: test_math.cpp.s
-.PHONY : test_math.s
-
-# target to generate assembly for a file
-test_math.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/test_math.cpp.s
-.PHONY : test_math.cpp.s
-
-test_memory.o: test_memory.cpp.o
-.PHONY : test_memory.o
-
-# target to build an object file
-test_memory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/test_memory.cpp.o
-.PHONY : test_memory.cpp.o
-
-test_memory.i: test_memory.cpp.i
-.PHONY : test_memory.i
-
-# target to preprocess a source file
-test_memory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/test_memory.cpp.i
-.PHONY : test_memory.cpp.i
-
-test_memory.s: test_memory.cpp.s
-.PHONY : test_memory.s
-
-# target to generate assembly for a file
-test_memory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/test_memory.cpp.s
-.PHONY : test_memory.cpp.s
-
-test_web_search.o: test_web_search.cpp.o
-.PHONY : test_web_search.o
-
-# target to build an object file
-test_web_search.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/test_web_search.cpp.o
-.PHONY : test_web_search.cpp.o
-
-test_web_search.i: test_web_search.cpp.i
-.PHONY : test_web_search.i
-
-# target to preprocess a source file
-test_web_search.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/test_web_search.cpp.i
-.PHONY : test_web_search.cpp.i
-
-test_web_search.s: test_web_search.cpp.s
-.PHONY : test_web_search.s
-
-# target to generate assembly for a file
-test_web_search.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/test_web_search.cpp.s
-.PHONY : test_web_search.cpp.s
 
 tests/agent_loop_test.o: tests/agent_loop_test.cpp.o
 .PHONY : tests/agent_loop_test.o
 
 # target to build an object file
 tests/agent_loop_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tests/agent_loop_test.cpp.o
 .PHONY : tests/agent_loop_test.cpp.o
 
 tests/agent_loop_test.i: tests/agent_loop_test.cpp.i
@@ -531,7 +286,7 @@ tests/agent_loop_test.i: tests/agent_loop_test.cpp.i
 
 # target to preprocess a source file
 tests/agent_loop_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tests/agent_loop_test.cpp.i
 .PHONY : tests/agent_loop_test.cpp.i
 
 tests/agent_loop_test.s: tests/agent_loop_test.cpp.s
@@ -539,91 +294,15 @@ tests/agent_loop_test.s: tests/agent_loop_test.cpp.s
 
 # target to generate assembly for a file
 tests/agent_loop_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tests/agent_loop_test.cpp.s
 .PHONY : tests/agent_loop_test.cpp.s
-
-tests/llm_agent_test.o: tests/llm_agent_test.cpp.o
-.PHONY : tests/llm_agent_test.o
-
-# target to build an object file
-tests/llm_agent_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tests/llm_agent_test.cpp.o
-.PHONY : tests/llm_agent_test.cpp.o
-
-tests/llm_agent_test.i: tests/llm_agent_test.cpp.i
-.PHONY : tests/llm_agent_test.i
-
-# target to preprocess a source file
-tests/llm_agent_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tests/llm_agent_test.cpp.i
-.PHONY : tests/llm_agent_test.cpp.i
-
-tests/llm_agent_test.s: tests/llm_agent_test.cpp.s
-.PHONY : tests/llm_agent_test.s
-
-# target to generate assembly for a file
-tests/llm_agent_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tests/llm_agent_test.cpp.s
-.PHONY : tests/llm_agent_test.cpp.s
-
-tests/skill_loader_test.o: tests/skill_loader_test.cpp.o
-.PHONY : tests/skill_loader_test.o
-
-# target to build an object file
-tests/skill_loader_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/tests/skill_loader_test.cpp.o
-.PHONY : tests/skill_loader_test.cpp.o
-
-tests/skill_loader_test.i: tests/skill_loader_test.cpp.i
-.PHONY : tests/skill_loader_test.i
-
-# target to preprocess a source file
-tests/skill_loader_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/tests/skill_loader_test.cpp.i
-.PHONY : tests/skill_loader_test.cpp.i
-
-tests/skill_loader_test.s: tests/skill_loader_test.cpp.s
-.PHONY : tests/skill_loader_test.s
-
-# target to generate assembly for a file
-tests/skill_loader_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/skill_loader_test.dir/build.make CMakeFiles/skill_loader_test.dir/tests/skill_loader_test.cpp.s
-.PHONY : tests/skill_loader_test.cpp.s
-
-tests/test_tool_with_llm.o: tests/test_tool_with_llm.cpp.o
-.PHONY : tests/test_tool_with_llm.o
-
-# target to build an object file
-tests/test_tool_with_llm.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tests/test_tool_with_llm.cpp.o
-.PHONY : tests/test_tool_with_llm.cpp.o
-
-tests/test_tool_with_llm.i: tests/test_tool_with_llm.cpp.i
-.PHONY : tests/test_tool_with_llm.i
-
-# target to preprocess a source file
-tests/test_tool_with_llm.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tests/test_tool_with_llm.cpp.i
-.PHONY : tests/test_tool_with_llm.cpp.i
-
-tests/test_tool_with_llm.s: tests/test_tool_with_llm.cpp.s
-.PHONY : tests/test_tool_with_llm.s
-
-# target to generate assembly for a file
-tests/test_tool_with_llm.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tests/test_tool_with_llm.cpp.s
-.PHONY : tests/test_tool_with_llm.cpp.s
 
 tools/advanced_math_tool.o: tools/advanced_math_tool.cpp.o
 .PHONY : tools/advanced_math_tool.o
 
 # target to build an object file
 tools/advanced_math_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/advanced_math_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/advanced_math_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/advanced_math_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/advanced_math_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/advanced_math_tool.cpp.o
 .PHONY : tools/advanced_math_tool.cpp.o
 
 tools/advanced_math_tool.i: tools/advanced_math_tool.cpp.i
@@ -631,11 +310,7 @@ tools/advanced_math_tool.i: tools/advanced_math_tool.cpp.i
 
 # target to preprocess a source file
 tools/advanced_math_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/advanced_math_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/advanced_math_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/advanced_math_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/advanced_math_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/advanced_math_tool.cpp.i
 .PHONY : tools/advanced_math_tool.cpp.i
 
 tools/advanced_math_tool.s: tools/advanced_math_tool.cpp.s
@@ -643,11 +318,7 @@ tools/advanced_math_tool.s: tools/advanced_math_tool.cpp.s
 
 # target to generate assembly for a file
 tools/advanced_math_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/advanced_math_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/advanced_math_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/advanced_math_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/advanced_math_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/advanced_math_tool.cpp.s
 .PHONY : tools/advanced_math_tool.cpp.s
 
 tools/calculator_tool.o: tools/calculator_tool.cpp.o
@@ -655,11 +326,7 @@ tools/calculator_tool.o: tools/calculator_tool.cpp.o
 
 # target to build an object file
 tools/calculator_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/calculator_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/calculator_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/calculator_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/calculator_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/calculator_tool.cpp.o
 .PHONY : tools/calculator_tool.cpp.o
 
 tools/calculator_tool.i: tools/calculator_tool.cpp.i
@@ -667,11 +334,7 @@ tools/calculator_tool.i: tools/calculator_tool.cpp.i
 
 # target to preprocess a source file
 tools/calculator_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/calculator_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/calculator_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/calculator_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/calculator_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/calculator_tool.cpp.i
 .PHONY : tools/calculator_tool.cpp.i
 
 tools/calculator_tool.s: tools/calculator_tool.cpp.s
@@ -679,11 +342,7 @@ tools/calculator_tool.s: tools/calculator_tool.cpp.s
 
 # target to generate assembly for a file
 tools/calculator_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/calculator_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/calculator_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/calculator_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/tools/calculator_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/calculator_tool.cpp.s
 .PHONY : tools/calculator_tool.cpp.s
 
 tools/exec_tool.o: tools/exec_tool.cpp.o
@@ -691,10 +350,7 @@ tools/exec_tool.o: tools/exec_tool.cpp.o
 
 # target to build an object file
 tools/exec_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/exec_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/exec_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/tools/exec_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/exec_tool.cpp.o
 .PHONY : tools/exec_tool.cpp.o
 
 tools/exec_tool.i: tools/exec_tool.cpp.i
@@ -702,10 +358,7 @@ tools/exec_tool.i: tools/exec_tool.cpp.i
 
 # target to preprocess a source file
 tools/exec_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/exec_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/exec_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/tools/exec_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/exec_tool.cpp.i
 .PHONY : tools/exec_tool.cpp.i
 
 tools/exec_tool.s: tools/exec_tool.cpp.s
@@ -713,10 +366,7 @@ tools/exec_tool.s: tools/exec_tool.cpp.s
 
 # target to generate assembly for a file
 tools/exec_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/exec_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/exec_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/tools/exec_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/exec_tool.cpp.s
 .PHONY : tools/exec_tool.cpp.s
 
 tools/memory_tool.o: tools/memory_tool.cpp.o
@@ -724,11 +374,7 @@ tools/memory_tool.o: tools/memory_tool.cpp.o
 
 # target to build an object file
 tools/memory_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/memory_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/memory_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/memory_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/tools/memory_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/memory_tool.cpp.o
 .PHONY : tools/memory_tool.cpp.o
 
 tools/memory_tool.i: tools/memory_tool.cpp.i
@@ -736,11 +382,7 @@ tools/memory_tool.i: tools/memory_tool.cpp.i
 
 # target to preprocess a source file
 tools/memory_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/memory_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/memory_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/memory_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/tools/memory_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/memory_tool.cpp.i
 .PHONY : tools/memory_tool.cpp.i
 
 tools/memory_tool.s: tools/memory_tool.cpp.s
@@ -748,11 +390,7 @@ tools/memory_tool.s: tools/memory_tool.cpp.s
 
 # target to generate assembly for a file
 tools/memory_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/memory_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/memory_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/memory_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/tools/memory_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/memory_tool.cpp.s
 .PHONY : tools/memory_tool.cpp.s
 
 tools/tool_registry.o: tools/tool_registry.cpp.o
@@ -760,10 +398,7 @@ tools/tool_registry.o: tools/tool_registry.cpp.o
 
 # target to build an object file
 tools/tool_registry.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/tool_registry.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/tool_registry.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/tool_registry.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/tool_registry.cpp.o
 .PHONY : tools/tool_registry.cpp.o
 
 tools/tool_registry.i: tools/tool_registry.cpp.i
@@ -771,10 +406,7 @@ tools/tool_registry.i: tools/tool_registry.cpp.i
 
 # target to preprocess a source file
 tools/tool_registry.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/tool_registry.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/tool_registry.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/tool_registry.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/tool_registry.cpp.i
 .PHONY : tools/tool_registry.cpp.i
 
 tools/tool_registry.s: tools/tool_registry.cpp.s
@@ -782,10 +414,7 @@ tools/tool_registry.s: tools/tool_registry.cpp.s
 
 # target to generate assembly for a file
 tools/tool_registry.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_tool_test.dir/build.make CMakeFiles/math_tool_test.dir/tools/tool_registry.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/tool_registry.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/tool_registry.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/tool_registry.cpp.s
 .PHONY : tools/tool_registry.cpp.s
 
 tools/web_search_tool.o: tools/web_search_tool.cpp.o
@@ -793,10 +422,7 @@ tools/web_search_tool.o: tools/web_search_tool.cpp.o
 
 # target to build an object file
 tools/web_search_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/web_search_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/web_search_tool.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/tools/web_search_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/web_search_tool.cpp.o
 .PHONY : tools/web_search_tool.cpp.o
 
 tools/web_search_tool.i: tools/web_search_tool.cpp.i
@@ -804,10 +430,7 @@ tools/web_search_tool.i: tools/web_search_tool.cpp.i
 
 # target to preprocess a source file
 tools/web_search_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/web_search_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/web_search_tool.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/tools/web_search_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/web_search_tool.cpp.i
 .PHONY : tools/web_search_tool.cpp.i
 
 tools/web_search_tool.s: tools/web_search_tool.cpp.s
@@ -815,44 +438,8 @@ tools/web_search_tool.s: tools/web_search_tool.cpp.s
 
 # target to generate assembly for a file
 tools/web_search_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_tool_test.dir/build.make CMakeFiles/llm_tool_test.dir/tools/web_search_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/llm_agent_test.dir/build.make CMakeFiles/llm_agent_test.dir/tools/web_search_tool.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/tools/web_search_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_agent_loop.dir/build.make CMakeFiles/run_agent_loop.dir/tools/web_search_tool.cpp.s
 .PHONY : tools/web_search_tool.cpp.s
-
-utils/SystemUtils.o: utils/SystemUtils.cpp.o
-.PHONY : utils/SystemUtils.o
-
-# target to build an object file
-utils/SystemUtils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/utils/SystemUtils.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/utils/SystemUtils.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/utils/SystemUtils.cpp.o
-.PHONY : utils/SystemUtils.cpp.o
-
-utils/SystemUtils.i: utils/SystemUtils.cpp.i
-.PHONY : utils/SystemUtils.i
-
-# target to preprocess a source file
-utils/SystemUtils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/utils/SystemUtils.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/utils/SystemUtils.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/utils/SystemUtils.cpp.i
-.PHONY : utils/SystemUtils.cpp.i
-
-utils/SystemUtils.s: utils/SystemUtils.cpp.s
-.PHONY : utils/SystemUtils.s
-
-# target to generate assembly for a file
-utils/SystemUtils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/memory_tool_test.dir/build.make CMakeFiles/memory_tool_test.dir/utils/SystemUtils.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/math_llm_test.dir/build.make CMakeFiles/math_llm_test.dir/utils/SystemUtils.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/exec_tool_test.dir/build.make CMakeFiles/exec_tool_test.dir/utils/SystemUtils.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_search_test.dir/build.make CMakeFiles/web_search_test.dir/utils/SystemUtils.cpp.s
-.PHONY : utils/SystemUtils.cpp.s
 
 # Help Target
 help:
@@ -862,15 +449,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... agent_loop_test"
-	@echo "... exec_tool_test"
-	@echo "... llm_agent_test"
-	@echo "... llm_tool_test"
-	@echo "... math_llm_test"
-	@echo "... math_tool_test"
-	@echo "... memory_tool_test"
-	@echo "... skill_loader_test"
-	@echo "... web_search_test"
+	@echo "... run_agent_loop"
+	@echo "... Harness/environment.o"
+	@echo "... Harness/environment.i"
+	@echo "... Harness/environment.s"
 	@echo "... LLMClient/OllamaClient.o"
 	@echo "... LLMClient/OllamaClient.i"
 	@echo "... LLMClient/OllamaClient.s"
@@ -886,33 +468,9 @@ help:
 	@echo "... agent/skill_loader.o"
 	@echo "... agent/skill_loader.i"
 	@echo "... agent/skill_loader.s"
-	@echo "... main_test.o"
-	@echo "... main_test.i"
-	@echo "... main_test.s"
-	@echo "... test.o"
-	@echo "... test.i"
-	@echo "... test.s"
-	@echo "... test_math.o"
-	@echo "... test_math.i"
-	@echo "... test_math.s"
-	@echo "... test_memory.o"
-	@echo "... test_memory.i"
-	@echo "... test_memory.s"
-	@echo "... test_web_search.o"
-	@echo "... test_web_search.i"
-	@echo "... test_web_search.s"
 	@echo "... tests/agent_loop_test.o"
 	@echo "... tests/agent_loop_test.i"
 	@echo "... tests/agent_loop_test.s"
-	@echo "... tests/llm_agent_test.o"
-	@echo "... tests/llm_agent_test.i"
-	@echo "... tests/llm_agent_test.s"
-	@echo "... tests/skill_loader_test.o"
-	@echo "... tests/skill_loader_test.i"
-	@echo "... tests/skill_loader_test.s"
-	@echo "... tests/test_tool_with_llm.o"
-	@echo "... tests/test_tool_with_llm.i"
-	@echo "... tests/test_tool_with_llm.s"
 	@echo "... tools/advanced_math_tool.o"
 	@echo "... tools/advanced_math_tool.i"
 	@echo "... tools/advanced_math_tool.s"
@@ -931,9 +489,6 @@ help:
 	@echo "... tools/web_search_tool.o"
 	@echo "... tools/web_search_tool.i"
 	@echo "... tools/web_search_tool.s"
-	@echo "... utils/SystemUtils.o"
-	@echo "... utils/SystemUtils.i"
-	@echo "... utils/SystemUtils.s"
 .PHONY : help
 
 
