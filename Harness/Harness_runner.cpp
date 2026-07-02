@@ -33,6 +33,18 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
         nlohmann::json stepNode = nlohmann::json::object();
         stepNode["step_idx"] = stepCounter;
         stepNode["thought"] = step.thought;
+        
+        // === BỔ SUNG QUAN TRỌNG: Ghi lại Action và Observation ===
+        // Nếu không có 2 dòng này, file JSON của bạn sẽ không biết AI đã xài Tool gì!
+        stepNode["action"] = step.actionLog;
+        stepNode["observation"] = step.observation;
+        
+        // (Tùy chọn) Ghi thêm thời gian trễ để báo cáo xịn hơn
+        if (step.latencyMs > 0) {
+            stepNode["latency_ms"] = step.latencyMs;
+        }
+        // =========================================================
+
         reportJson["steps"].push_back(stepNode);
     });
 

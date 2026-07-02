@@ -47,6 +47,8 @@ struct Trajectory {
                 {"step_id",     step.stepId},
                 {"thought",     step.thought},
                 {"action",      actionJson},
+                {"action_log",  step.actionLog},  // Dữ liệu mới đã thêm
+                {"observation", step.observation},
                 {"tokens_used", step.tokensUsed},
                 {"latency_ms",  step.latencyMs}
             };

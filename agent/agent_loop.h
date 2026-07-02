@@ -34,7 +34,9 @@ class AgentLoop {
 public:
     // === THÊM MỚI: Bí danh (Alias) cho Hook Interface để code gọn gàng ===
     using StepHook = std::function<void(const Step&)>;
-
+    // t mới thêm
+private:
+    StepHook stepHook_;
 protected:
     LLMClient* llm_;
     ToolRegistry* registry_;
@@ -88,9 +90,11 @@ public:
     // Inject step hook từ HarnessRunner (Observer pattern).
     // AgentLoop không biết ai gọi — chỉ biết mình phải gọi hook sau mỗi step.
     // === CHỈNH SỬA: Đổi tham số sang dùng Alias StepHook ===
-    void setStepHook(StepHook hook) {
-        stepHook_ = std::move(hook);
-    }
+    // t tạm tắt
+    // void setStepHook(StepHook hook) {
+    //     stepHook_ = std::move(hook);
+    // }
+    void setStepHook(StepHook hook) { stepHook_ = hook; }
 
     void setMaxSteps(int n) { maxSteps_ = n; }
 
