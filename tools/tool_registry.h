@@ -1,39 +1,30 @@
-#ifndef TOOL_REGISTRY_H
-#define TOOL_REGISTRY_H
-
-#include <string>
-#include <unordered_map>
-#include <memory>
-#include <vector>
+#pragma once
 #include "tool.h"
+#include <unordered_map>
+#include <unordered_set> // Thêm thư viện để làm danh sách Blacklist
+#include <string>
+#include <memory>
 
 class ToolRegistry {
 private:
-    // Kho lưu trữ: Map giữa "Tên Tool" và "Con trỏ thông minh quản lý đối tượng Tool"
-    std::unordered_map<std::string, std::unique_ptr<Tool>> registry_;
+    std::unordered_map<std::string, std::unique_ptr<Tool>> tools_;
+    
+    // HIỆN THỰC TOOL POLICY: Lưu trữ danh sách tên các công cụ bị cấm
+    std::unordered_set<std::string> blacklist_; 
 
 public:
     ToolRegistry() = default;
-    
-    // Ngăn chặn việc sao chép vùng quản lý Registry để tránh xung đột con trỏ dữ liệu
-    ToolRegistry(const ToolRegistry&) = delete;
-    ToolRegistry& operator=(const ToolRegistry&) = delete;
 
-    // Move OK (unique_ptr bên trong hỗ trợ move)
-    ToolRegistry(ToolRegistry&&) = default;
-    ToolRegistry& operator=(ToolRegistry&&) = default;
-
-    // Đăng ký một công cụ mới vào hệ thống (Nhận vào một con trỏ unique_ptr)
+    // Hàm đăng ký công cụ vào hệ thống
     void registerTool(std::unique_ptr<Tool> tool);
 
-    // Tìm kiếm và lấy ra con trỏ của Tool dựa vào tên định danh
+    // CÁC HÀM MỚI: Quản lý chính sách Tool Policy theo yêu cầu đồ án
+    void banTool(const std::string& toolName);   // Thêm tool vào danh sách cấm
+    void unbanTool(const std::string& toolName); // Gỡ lệnh cấm cho tool
+    bool isAllowed(const std::string& toolName) const; // Kiểm tra chính sách cho phép
+
+    // Hàm truy xuất công cụ (Sẽ tích hợp kiểm tra Tool Policy)
     Tool* getTool(const std::string& name) const;
-
-    // Trả về danh sách tên của tất cả các Tool đang có (Phục vụ cho việc tạo System Prompt gửi AI)
-    std::vector<std::string> getAllToolNames() const;
-
-    // Sinh ra chuỗi văn bản mô tả tổng hợp tất cả các tool để nạp vào nhận thức của Agent
-    std::string generateToolsPrompt() const;
+    
+    const std::unordered_map<std::string, std::unique_ptr<Tool>>& getAllTools() const;
 };
-
-#endif // TOOL_REGISTRY_H

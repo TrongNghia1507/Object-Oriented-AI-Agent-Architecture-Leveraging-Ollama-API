@@ -2,38 +2,42 @@
 #include <iostream>
 
 void ToolRegistry::registerTool(std::unique_ptr<Tool> tool) {
-    if (tool == nullptr) return;
-    
-    std::string name = tool->getName();
-    // Nếu tool chưa tồn tại trong map, tiến hành nạp vào kho
-    if (registry_.find(name) == registry_.end()) {
-        registry_[name] = std::move(tool); // Chuyển quyền sở hữu con trỏ vào map
-    } else {
-        std::cout << "[Warning] Tool voi ten '" << name << "' da duoc dang ky truoc do." << std::endl;
+    if (tool) {
+        tools_[tool->getName()] = std::move(tool);
     }
 }
 
+// Thêm một tên công cụ vào danh sách đen (Banned list)
+void ToolRegistry::banTool(const std::string& toolName) {
+    blacklist_.insert(toolName);
+    std::cout << "[ToolPolicy] Da thiet lap cam cong cu: " << toolName << "\n";
+}
+
+// Loại bỏ công cụ khỏi danh sách đen
+void ToolRegistry::unbanTool(const std::string& toolName) {
+    blacklist_.erase(toolName);
+    std::cout << "[ToolPolicy] Da go lenh cam cho cong cu: " << toolName << "\n";
+}
+
+// Kiểm tra xem công cụ này có vi phạm chính sách bảo mật không
+bool ToolRegistry::isAllowed(const std::string& toolName) const {
+    // Nếu tên công cụ nằm trong blacklist_, trả về false (Denied)
+    return blacklist_.find(toolName) == blacklist_.end();
+}
+
+// SỬA LỖI TRUY XUẤT: Nếu Agent cố tình gọi Tool bị cấm, trả về nullptr để chặn thực thi
 Tool* ToolRegistry::getTool(const std::string& name) const {
-    auto it = registry_.find(name);
-    if (it != registry_.end()) {
-        return it->second.get(); // Trả về con trỏ thô (raw pointer) để sử dụng, không chuyển quyền sở hữu
+    // 1. Kiểm tra Tool Policy trước
+    if (!isAllowed(name)) {
+        std::cerr << "[ToolPolicy CANH BAO]: Agent co tinh goi cong cu dang bi cam: " << name << "\n";
+        return nullptr; // Trả về con trỏ rỗng để AgentLoop biết và báo lỗi cho LLM
     }
-    return nullptr; // Khong tim thay tool tương ứng
-}
 
-std::vector<std::string> ToolRegistry::getAllToolNames() const {
-    std::vector<std::string> names;
-    for (const auto& pair : registry_) {
-        names.push_back(pair.first);
+    // 2. Nếu an toàn, tiến hành tìm kiếm trong kho lưu trữ
+    auto it = tools_.find(name);
+    if (it != tools_.end()) {
+        return it->second.get();
     }
-    return names;
+    return nullptr;
 }
-
-std::string ToolRegistry::generateToolsPrompt() const {
-    std::string prompt = "He thong cua ban co cac cong cu (Tools) sau day de ho tro giai quyet bieu thuc:\n";
-    for (const auto& pair : registry_) {
-        prompt += "- Tên công cụ: " + pair.second->getName() + "\n";
-        prompt += "  Mo ta: " + pair.second->getDescription() + "\n\n";
-    }
-    return prompt;
-}
+//TODO: Reused old function after designed harness runner
