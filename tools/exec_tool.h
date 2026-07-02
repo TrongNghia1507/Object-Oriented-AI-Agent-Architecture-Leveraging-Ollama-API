@@ -2,52 +2,47 @@
 #include "tool.h"
 #include <functional>
 #include <string>
-#include <array>
 #include <memory>
 
-// Chính sách phê duyệt lệnh shell — Strategy pattern (IV.4.2).
-// AgentLoop/HarnessRunner inject policy phù hợp với ngữ cảnh:
-//   - Benchmark/test tự động: AlwaysAllow hoặc AlwaysDeny
-//   - Demo live: AskUser (dừng để người dùng xác nhận)
-// ExecTool KHÔNG tự quyết định — nó delegate cho policy.
-//
-// std::function (C++17): type-erased callable, dễ inject lambda từ ngoài.
 using ExecutionPolicy = std::function<bool(const std::string& command,
                                            const std::string& explanation)>;
 
-// Các policy dựng sẵn
 namespace ExecPolicy {
-    // Tự động chấp thuận mọi lệnh (dùng khi benchmark / CI)
     inline ExecutionPolicy AlwaysAllow() {
         return [](const std::string&, const std::string&) { return true; };
     }
-    // Từ chối mọi lệnh (dùng khi môi trường Sandbox)
     inline ExecutionPolicy AlwaysDeny() {
         return [](const std::string&, const std::string&) { return false; };
     }
-    // Hỏi người dùng qua stdin (chỉ dùng khi demo live, KHÔNG dùng trong benchmark)
+    
+    // CHÍNH SÁCH MỚI: Tự động phân tích chuỗi từ chối từ khóa cấm, giúp không bị treo luồng test tự động
+    inline ExecutionPolicy AutomatedBlacklist() {
+        return [](const std::string& command, const std::string&) {
+            if (command.find("rm -rf") != std::string::npos || 
+                command.find("sudo") != std::string::npos || 
+                command.find("shutdown") != std::string::npos) {
+                return false; // AutoDeny các lệnh phá hoại hệ thống
+            }
+            return true; // AutoAllow các lệnh an toàn
+        };
+    }
+    
     ExecutionPolicy AskUser();
 }
 
 class ExecTool : public Tool {
 private:
-    ExecutionPolicy policy_;
-    Environment* env_;
-    std::string runSystemCommand(const std::string& cmd);
+    Environment* env_;       // Bắt buộc phải có để ủy quyền thực thi
+    ExecutionPolicy policy_; // Bộ lọc bảo mật Strategy Pattern
 
 public:
-    // Constructor nhận policy — mặc định là AskUser (an toàn nhất cho môi trường tương tác).
-    explicit ExecTool(ExecutionPolicy policy = ExecPolicy::AskUser());
-
-
-    explicit ExecTool(Environment* env) : env_(env) {}
-
+    // SỬA LỖI: Gom thành một Constructor duy nhất sử dụng kỹ thuật Dependency Injection chuẩn xác
+    ExecTool(Environment* env, ExecutionPolicy policy = ExecPolicy::AutomatedBlacklist());
     
     std::string getName() const override { return "exec"; }
     std::string getDescription() const override {
-        return "Thuc thi lenh shell/bash. Tham so: lenh shell (vd: 'ls -la results/'). "
-               "Khong dung lenh tuong tac (nano, vim, top). "
-               "Moi lan goi la phien terminal moi (cd khong co tac dung tich luy).";
+        return "Thuc thi lenh shell/bash. Tham so: lenh shell (vd: 'ls -la'). "
+               "Khong dung lenh tuong tac (nano, vim).";
     }
     std::string execute(const std::string& arguments) override;
 };

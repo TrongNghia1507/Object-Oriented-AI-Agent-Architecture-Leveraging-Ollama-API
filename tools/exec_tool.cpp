@@ -1,16 +1,7 @@
 #include "exec_tool.h"
 #include <iostream>
-#include <cstdio>
+#include <stdexcept>
 
-#ifdef _WIN32
-    #define POPEN  _popen
-    #define PCLOSE _pclose
-#else
-    #define POPEN  popen
-    #define PCLOSE pclose
-#endif
-
-// ─── Policy: AskUser (định nghĩa ở đây để tránh iostream trong header) ───────
 ExecutionPolicy ExecPolicy::AskUser() {
     return [](const std::string& command, const std::string& explanation) -> bool {
         std::cout << "\n==================================================\n"
@@ -27,56 +18,35 @@ ExecutionPolicy ExecPolicy::AskUser() {
     };
 }
 
-// ─── Constructor ──────────────────────────────────────────────────────────────
-ExecTool::ExecTool(ExecutionPolicy policy) : policy_(std::move(policy)) {}
+// Cài đặt Constructor an toàn, bẫy lỗi ngay lập tức nếu dữ liệu đầu vào không hợp lệ
+ExecTool::ExecTool(Environment* env, ExecutionPolicy policy) 
+    : env_(env), policy_(std::move(policy)) {
+    if (!env_) {
+        throw std::runtime_error("Fatal Error: ExecTool can nhan mot con tro Environment hop le!");
+    }
+}
 
-// ─── execute(): nhận chuỗi lệnh thuần, không nhận JSON ──────────────────────
-// arguments = chuỗi lệnh shell (vd: "ls -la results/").
-// Nếu model gửi thêm explanation theo format "CMD | EXPLAIN", bóc tách ra.
 std::string ExecTool::execute(const std::string& arguments) {
     std::string command     = arguments;
     std::string explanation = "(khong co giai thich)";
 
-    // Format tùy chọn: "ls -la | Liet ke file ket qua"
     auto sep = arguments.find(" | ");
     if (sep != std::string::npos) {
         command     = arguments.substr(0, sep);
         explanation = arguments.substr(sep + 3);
     }
-    // Trim
-    while (!command.empty() && (command.back() == ' ' || command.back() == '\r'))
+    
+    // Làm sạch ký tự xuống dòng rác từ mô hình AI sinh ra
+    while (!command.empty() && (command.back() == ' ' || command.back() == '\r' || command.back() == '\n'))
         command.pop_back();
 
     if (command.empty()) return "Loi: lenh rong.";
 
-    // Delegate cho policy — không tự quyết định
+    // 1. Kiểm tra chính sách an toàn thông tin (Strategy Pattern)
     if (!policy_(command, explanation)) {
-        return "Da tu choi thuc thi lenh: " + command;
+        return "Da tu choi thuc thi lenh vi vi pham chinh sach bao mat: " + command;
     }
 
-    return runSystemCommand(command);
-}
-
-// ─── runSystemCommand ────────────────────────────────────────────────────────
-std::string ExecTool::runSystemCommand(const std::string& cmd) {
-    
-    // ĐÂY! Lấy lệnh cd từ môi trường ghép vào trước lệnh của AI
-    std::string prefix = env_->getDirectoryPrefix(); 
-    std::string safeCmd = prefix + cmd;
-    
-    std::string cmdWithStderr = safeCmd + " 2>&1"; // Lệnh hoàn chỉnh
-    std::array<char, 256> buffer;
-    std::string result;
-
-    // Vẫn gọi POPEN bình thường, test thả ga!
-    auto pipeDeleter = [](FILE* f) { PCLOSE(f); };
-    std::unique_ptr<FILE, decltype(pipeDeleter)> pipe(
-        POPEN(cmdWithStderr.c_str(), "r"), pipeDeleter);
-
-    if (!pipe) return "System Error: Khong the mo pipe.";
-
-    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
-        result += buffer.data();
-    }
-    return result.empty() ? "Lenh chay thanh cong." : result;
+    // 2. ỦY QUYỀN HOÀN TOÀN XUỐNG TẦNG HẠ TẦNG (Loose Coupling)
+    return env_->executeCommand(command);
 }
