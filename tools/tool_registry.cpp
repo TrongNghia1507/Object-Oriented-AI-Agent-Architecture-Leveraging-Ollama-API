@@ -40,4 +40,25 @@ Tool* ToolRegistry::getTool(const std::string& name) const {
     }
     return nullptr;
 }
-//TODO: Reused old function after designed harness runner
+
+// === getAllToolNames() — AgentLoop::doAct() gọi khi tool không tồn tại,
+// để liệt kê cho LLM biết các tool nào đang có sẵn. ===
+std::vector<std::string> ToolRegistry::getAllToolNames() const {
+    std::vector<std::string> names;
+    names.reserve(tools_.size());
+    for (const auto& [name, tool] : tools_) {
+        names.push_back(name);
+    }
+    return names;
+}
+
+// === generateToolsPrompt() — AgentLoop::buildSystemPrompt() gọi để
+// mô tả các tool cho LLM. Chỉ liệt kê tool đang được phép dùng (isAllowed). ===
+std::string ToolRegistry::generateToolsPrompt() const {
+    std::string prompt = "Danh sach cac tool ban co the su dung:\n";
+    for (const auto& [name, tool] : tools_) {
+        if (!isAllowed(name)) continue; // Tool bị cấm thì không cho LLM thấy
+        prompt += "- " + name + ": " + tool->getDescription() + "\n";
+    }
+    return prompt;
+}

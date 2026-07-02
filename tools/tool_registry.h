@@ -4,6 +4,7 @@
 #include <unordered_set> // Thêm thư viện để làm danh sách Blacklist
 #include <string>
 #include <memory>
+#include <vector>
 
 class ToolRegistry {
 private:
@@ -18,7 +19,7 @@ public:
     // Hàm đăng ký công cụ vào hệ thống
     void registerTool(std::unique_ptr<Tool> tool);
 
-    // CÁC HÀM MỚI: Quản lý chính sách Tool Policy theo yêu cầu đồ án
+    // Quản lý chính sách Tool Policy theo yêu cầu đồ án
     void banTool(const std::string& toolName);   // Thêm tool vào danh sách cấm
     void unbanTool(const std::string& toolName); // Gỡ lệnh cấm cho tool
     bool isAllowed(const std::string& toolName) const; // Kiểm tra chính sách cho phép
@@ -27,4 +28,13 @@ public:
     Tool* getTool(const std::string& name) const;
     
     const std::unordered_map<std::string, std::unique_ptr<Tool>>& getAllTools() const;
+
+    // Trả về danh sách tên tất cả tool đã đăng ký (kể cả tool đang bị blacklist,
+    // vì AgentLoop dùng hàm này chỉ để báo lỗi "tool X không tồn tại, các tool có: ...").
+    std::vector<std::string> getAllToolNames() const;
+
+    // Sinh đoạn text mô tả toàn bộ tool (name + description) để nhét vào system
+    // prompt cho LLM đọc. Bỏ qua các
+    // tool đang bị banTool() để LLM không thấy/không gọi được tool đã cấm.
+    std::string generateToolsPrompt() const;
 };
