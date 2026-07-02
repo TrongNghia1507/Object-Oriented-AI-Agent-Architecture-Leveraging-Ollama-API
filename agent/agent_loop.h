@@ -4,7 +4,7 @@
 #include "loop_detector.h"
 #include "../LLMClient/LLMClient.h"
 #include "../tools/tool_registry.h"
-#include "../agent/skill_loader.h"
+#include "skill_loader.h"
 
 #include <functional>
 #include <string>
