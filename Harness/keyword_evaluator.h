@@ -1,5 +1,6 @@
 #pragma once
 #include "evaluator.h"
+#include "../LLMClient/json.hpp"
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -7,17 +8,17 @@
 
 // ─── KeywordEvaluator — Bộ chấm điểm dựa trên từ khóa ────────────────────────
 //
-// Lớp này kế thừa từ Evaluator (Strategy Pattern).
-// Nhiệm vụ: Kiểm tra xem câu trả lời cuối cùng (finalAnswer) của Agent
-// có chứa các từ khóa được yêu cầu hay không. Mỗi từ khóa tìm thấy sẽ được cộng điểm.
+// Strategy Pattern: cùng interface Evaluator::evaluate() với FunctionalEvaluator.
+// Nhiệm vụ: đếm số từ khóa kỳ vọng xuất hiện trong finalAnswer, cộng điểm
+// theo từng từ, và quyết định PASS/FAIL dựa trên ngưỡng minRequired_.
 
 class KeywordEvaluator : public Evaluator {
 private:
     std::vector<std::string> expectedKeywords_;
     int scorePerKeyword_;
+    int minRequired_;      // == THÊM MỚI: số từ khóa tối thiểu để coi là "đạt"
+    int matchedCount_ = 0; // == THÊM MỚI: lưu lại số từ khóa khớp được của lần evaluate gần nhất
 
-    // Hàm phụ trợ: Chuyển chuỗi sang chữ in thường (Lowercase)
-    // Giúp việc chấm điểm chính xác hơn, không bị trượt do lỗi viết Hoa/thường
     std::string toLowerCase(std::string s) const {
         std::transform(s.begin(), s.end(), s.begin(),
             [](unsigned char c) { return std::tolower(c); });
@@ -26,46 +27,72 @@ private:
 
 public:
     /**
-     * @brief Khởi tạo bộ đánh giá từ khóa.
-     * @param keywords Danh sách các từ khóa kỳ vọng.
-     * @param score Điểm số cộng thêm cho mỗi từ khóa tìm thấy (mặc định là 1).
+     * @param keywords    Danh sách các từ khóa kỳ vọng.
+     * @param score       Điểm cộng thêm cho mỗi từ khóa tìm thấy.
+     * @param minRequired Số từ khóa tối thiểu cần khớp để coi là PASS.
+     *                    Mặc định = toàn bộ keywords (khớp hết mới đạt).
      */
-    KeywordEvaluator(const std::vector<std::string>& keywords, int score = 1)
-        : expectedKeywords_(keywords), scorePerKeyword_(score) {}
+    KeywordEvaluator(const std::vector<std::string>& keywords, int score = 1, int minRequired = -1)
+        : expectedKeywords_(keywords),
+          scorePerKeyword_(score),
+          minRequired_(minRequired < 0 ? static_cast<int>(keywords.size()) : minRequired) {}
 
-    // Ghi đè hàm getName() từ lớp cha
+    // == THÊM MỚI: Factory method — build trực tiếp từ 1 phần tử tasks.json ==
+    // Cho phép HarnessRunner build evaluator đúng theo từng task, thay vì
+    // dùng chung 1 danh sách từ khóa cứng cho cả batch.
+    // Kỳ vọng task JSON có dạng:
+    //   { "eval_type": "keyword",
+    //     "expected_keywords": ["Hà Nội", "nắng"],
+    //     "score_per_keyword": 10,
+    //     "min_required": 2 }
+    static std::shared_ptr<KeywordEvaluator> fromTaskJson(const nlohmann::json& taskDef) {
+        std::vector<std::string> keywords;
+        if (taskDef.contains("expected_keywords") && taskDef["expected_keywords"].is_array()) {
+            for (const auto& kw : taskDef["expected_keywords"]) {
+                keywords.push_back(kw.get<std::string>());
+            }
+        }
+        int score = taskDef.value("score_per_keyword", 1);
+        int minRequired = taskDef.value("min_required", -1);
+        return std::make_shared<KeywordEvaluator>(keywords, score, minRequired);
+    }
+
     std::string getName() const override {
         return "KeywordEvaluator";
     }
 
-    // === SỬA ĐỔI CHÍNH: Thêm tham số "Environment* env" vào cuối ===
-    // Ghi đè hàm evaluate() với kiểu trả về std::optional<int> theo chuẩn C++17
-    std::optional<int> evaluate(const std::string& finalAnswer, const Trajectory& trajectory, Environment* env) override {
-        // Mẹo C++: Báo cho trình biên dịch biết biến env cố tình không được dùng
-        // để tránh cảnh báo (warning: unused parameter)
-        (void)env; 
+    // == THÊM MỚI: cho HarnessRunner biết task này có PASS hay không ==
+    bool isPassed() const {
+        return matchedCount_ >= minRequired_;
+    }
 
-        // Nếu câu trả lời rỗng, có thể coi như không thể chấm điểm hoặc điểm 0
-        if (finalAnswer.empty()) {
-            return 0; // C++17 sẽ tự động gói số 0 này vào std::optional
+    int matchedCount() const { return matchedCount_; }
+
+    std::optional<int> evaluate(const std::string& finalAnswer, const Trajectory& trajectory, Environment* env) override {
+        (void)env;
+        (void)trajectory;
+
+        matchedCount_ = 0;
+
+        if (expectedKeywords_.empty()) {
+            return std::nullopt; // không có gì để chấm -> không chấm được
         }
 
-        int totalScore = 0;
-        
-        // Chuẩn hóa câu trả lời của Agent về chữ thường
-        std::string normalizedAnswer = toLowerCase(finalAnswer);
+        if (finalAnswer.empty()) {
+            return 0;
+        }
 
-        // Quét từng từ khóa
+        std::string normalizedAnswer = toLowerCase(finalAnswer);
+        int totalScore = 0;
+
         for (const auto& kw : expectedKeywords_) {
             std::string normalizedKw = toLowerCase(kw);
-            
-            // Nếu tìm thấy từ khóa trong câu trả lời -> Cộng điểm
             if (normalizedAnswer.find(normalizedKw) != std::string::npos) {
                 totalScore += scorePerKeyword_;
+                ++matchedCount_;
             }
         }
-        
-        // Trả về tổng điểm. Trình biên dịch C++17 sẽ tự động convert kiểu 'int' thành 'std::optional<int>'
-        return totalScore; 
+
+        return totalScore;
     }
 };
