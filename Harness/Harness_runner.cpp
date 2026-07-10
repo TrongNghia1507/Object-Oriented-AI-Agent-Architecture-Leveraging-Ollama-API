@@ -99,3 +99,84 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
     
     std::cout << "==================================================\n\n";
 }
+void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& agent) {
+    // 1. Đọc file JSON chứa danh sách task (định dạng mục 7.2 đề bài)
+    std::ifstream inFile(filename);
+    if (!inFile.is_open()) {
+        std::cerr << "[HARNESS RUNNER] Loi: khong mo duoc file task '" << filename << "'\n";
+        return;
+    }
+
+    nlohmann::json taskList;
+    try {
+        inFile >> taskList;
+    } catch (const nlohmann::json::parse_error& e) {
+        std::cerr << "[HARNESS RUNNER] Loi parse JSON: " << e.what() << "\n";
+        return;
+    }
+    if (!taskList.is_array()) {
+        std::cerr << "[HARNESS RUNNER] Loi: file task phai la JSON array.\n";
+        return;
+    }
+
+    int totalTasks = 0, passedTasks = 0;
+    nlohmann::json batchSummary = nlohmann::json::array();
+
+    // 2. Duyệt và chạy từng task trong benchmark
+    for (const auto& taskDef : taskList) {
+        std::string taskId      = taskDef.value("id", "unknown_task");
+        std::string instruction = taskDef.value("instruction",
+                                     taskDef.value("description", ""));
+        std::string evalType    = taskDef.value("eval_type", "keyword");
+        int maxSteps            = taskDef.value("max_steps", 10);
+
+        std::cout << "\n[HARNESS RUNNER] --> Task '" << taskId
+                   << "' (eval_type=" << evalType
+                   << ", max_steps=" << maxSteps << ")\n";
+
+        agent.setMaxSteps(maxSteps);
+
+        // Registry/Factory pattern: build evaluator đúng theo eval_type của từng task
+        clearEvaluators();
+        if (evalType == "keyword") {
+            addEvaluator(KeywordEvaluator::fromTaskJson(taskDef));
+        } else if (evalType == "functional") {
+            // [CẦN THÊM] class FunctionalEvaluator tổng quát nhận eval_script,
+            // xem gợi ý bên dưới — thay cho FunctionalMemoryEvaluator hard-code hiện tại
+            std::string evalScript = taskDef.value("eval_script", "");
+            addEvaluator(std::make_shared<FunctionalEvaluator>(evalScript));
+        } else {
+            std::cerr << "  [!] eval_type '" << evalType << "' khong ho tro, bo qua.\n";
+            continue;
+        }
+
+        runTask(taskId, instruction, agent);   // tái dùng pipeline setup->run->evaluate->record
+
+        totalTasks++;
+        // [CẦN THÊM] isPassed() phải được khai báo ảo (virtual) trong Evaluator gốc
+        bool passed = !evaluators_.empty() && evaluators_.front()->isPassed();
+        if (passed) passedTasks++;
+
+        batchSummary.push_back({
+            {"task_id", taskId}, {"eval_type", evalType}, {"passed", passed}
+        });
+    }
+
+    // 3. Xuất báo cáo success rate tổng hợp (yêu cầu 3.6 & 7.3)
+    double successRate = totalTasks ? (100.0 * passedTasks / totalTasks) : 0.0;
+    nlohmann::json finalReport = {
+        {"total_tasks", totalTasks},
+        {"passed_tasks", passedTasks},
+        {"success_rate_percent", successRate},
+        {"tasks", batchSummary}
+    };
+    std::ofstream summaryFile("benchmark_summary.json");
+    if (summaryFile.is_open()) {
+        summaryFile << std::setw(4) << finalReport << std::endl;
+    }
+
+    std::cout << "\n[HARNESS RUNNER] ===== BATCH EVALUATION =====\n"
+               << "  Tong task: " << totalTasks << " | PASS: " << passedTasks
+               << " | Success rate: " << successRate << "%\n"
+               << "  Da xuat: benchmark_summary.json\n";
+}

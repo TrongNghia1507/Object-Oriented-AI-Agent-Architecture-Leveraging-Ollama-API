@@ -17,4 +17,5 @@ public:
         const Trajectory& trajectory, 
         Environment* env
     ) = 0;
+    virtual bool isPassed() const = 0;
 };

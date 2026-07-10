@@ -7,6 +7,8 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include "keyword_evaluator.h"    
+#include "functional_evaluator.h"
 
 class HarnessRunner {
 private:
@@ -21,9 +23,13 @@ public:
     void setEnvironment(std::shared_ptr<Environment> env) {
         env_ = env;
     }
+    void clearEvaluators() {
+        evaluators_.clear();
+    }
     
-    void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& agent) ;
+    void loadTaskFromJson(const std::string& filename, AgentLoop& agent);
 
     void addEvaluator(std::shared_ptr<Evaluator> evaluator);
+    void clearEvaluators() { evaluators_.clear(); }  
     void runTask(const std::string& taskId, const std::string& task, AgentLoop& agent);
 };
