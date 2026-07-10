@@ -14,7 +14,7 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
     std::cout << "[HARNESS RUNNER] Bat dau kiem thu Task ID: " << taskId << "\n";
     std::cout << "==================================================\n";
 
-    // === 1. THIẾT LẬP MÔI TRƯỜNG TRƯỚC TIÊN (Bổ sung mới) ===
+    // === 1. THIẾT LẬP MÔI TRƯỜNG TRƯỚC TIÊN ===
     if (env_) {
         env_->setup(); 
     }
@@ -34,12 +34,12 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
         stepNode["step_idx"] = stepCounter;
         stepNode["thought"] = step.thought;
         
-        // === BỔ SUNG QUAN TRỌNG: Ghi lại Action và Observation ===
-        // Nếu không có 2 dòng này, file JSON của bạn sẽ không biết AI đã xài Tool gì!
+        // === BỔ SUNG: Ghi lại Action và Observation ===
+        // Nếu không có 2 dòng này, file JSON sẽ không biết AI đã xài Tool gì
         stepNode["action"] = step.actionLog;
         stepNode["observation"] = step.observation;
         
-        // (Tùy chọn) Ghi thêm thời gian trễ để báo cáo xịn hơn
+        // Ghithời gian trễ 
         if (step.latencyMs > 0) {
             stepNode["latency_ms"] = step.latencyMs;
         }
@@ -56,13 +56,13 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
 
     std::string finalAnswer = trajectory.finalAnswer; 
 
-    // === 5. TIẾN HÀNH CHẤM ĐIỂM TỰ ĐỘNG (SỬA DÒNG LỖI TẠI ĐÂY) ===
+    // === 5. TIẾN HÀNH CHẤM ĐIỂM TỰ ĐỘNG ===
     std::cout << "\n[HARNESS RUNNER] Dang kich hoat cac bo cham diem...\n";
     int totalScore = 0;
     nlohmann::json evalBreakdown = nlohmann::json::object();
 
     for (const auto& evaluator : evaluators_) {
-        // CHÍNH XÁC: Truyền thêm tham số thứ 3 là env_.get() để chuyển giao con trỏ Environment thô
+        // Truyền thêm tham số thứ 3 là env_.get() để chuyển giao con trỏ Environment thô
         std::optional<int> scoreResult = evaluator->evaluate(finalAnswer, trajectory, env_.get());
         
         if (scoreResult.has_value()) {
@@ -92,7 +92,7 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
         outFile.close();
     }
 
-    // === 6. DỌN DẸP MÔI TRƯỜNG SAU KHI THI XONG (Bổ sung mới) ===
+    // === 6. DỌN DẸP MÔI TRƯỜNG SAU KHI THI XONG ===
     if (env_) {
         env_->teardown(); 
     }
@@ -100,7 +100,7 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
     std::cout << "==================================================\n\n";
 }
 void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& agent) {
-    // 1. Đọc file JSON chứa danh sách task (định dạng mục 7.2 đề bài)
+    // 1. Đọc file JSON chứa danh sách task 
     std::ifstream inFile(filename);
     if (!inFile.is_open()) {
         std::cerr << "[HARNESS RUNNER] Loi: khong mo duoc file task '" << filename << "'\n";
@@ -162,7 +162,7 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
         });
     }
 
-    // 3. Xuất báo cáo success rate tổng hợp (yêu cầu 3.6 & 7.3)
+    // 3. Xuất báo cáo success rate tổng hợp 
     double successRate = totalTasks ? (100.0 * passedTasks / totalTasks) : 0.0;
     nlohmann::json finalReport = {
         {"total_tasks", totalTasks},

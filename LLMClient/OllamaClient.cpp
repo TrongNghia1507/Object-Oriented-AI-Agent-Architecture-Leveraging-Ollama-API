@@ -162,6 +162,17 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
 
     try {
         auto resJson = json::parse(*rawResponse);
+
+        // === BỔ SUNG: đọc token usage thật từ response Ollama ===
+        // Ollama's /api/chat trả kèm "prompt_eval_count" (số token của input)
+        // và "eval_count" (số token model sinh ra) ở object gốc, không nằm
+        // trong "message". Trước đây các trường này bị bỏ qua hoàn toàn nên
+        // Step::tokensUsed luôn = 0. Dùng .value(key, 0) để an toàn với các
+        // bản Ollama cũ/model không trả về các trường này.
+        int promptTokens = resJson.value("prompt_eval_count", 0);
+        int completionTokens = resJson.value("eval_count", 0);
+        lastTokenUsage_ = promptTokens + completionTokens;
+
         if (resJson.contains("message") && resJson["message"].contains("content")) {
             return resJson["message"]["content"].get<string>();
         }

@@ -3,7 +3,7 @@
 #include <string>
 #include <variant>
 
-// ─── Kiểu hành động — std::variant (C++17 bắt buộc) ─────────────────────────
+// ─── Kiểu hành động — std::variant ─────────────────────────
 // AgentLoop dùng std::visit + if constexpr để xử lý từng nhánh rõ ràng,
 // không cần dynamic_cast hay if-else theo string.
 

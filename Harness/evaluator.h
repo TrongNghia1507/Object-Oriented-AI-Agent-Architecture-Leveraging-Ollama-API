@@ -1,6 +1,6 @@
 #pragma once
 #include "../agent/trajectory.h"
-#include "environment.h" // Nhúng môi trường để Giám khảo kiểm tra
+#include "../environment/environment.h" // Nhúng môi trường để Giám khảo kiểm tra
 #include <string>
 #include <optional>
 

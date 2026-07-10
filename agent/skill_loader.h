@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-// SkillLoader (yêu cầu 3.3 đề bài):
+// SkillLoader :
 //   - Load skill từ file .md trong thư mục skills/ (dùng std::filesystem để quét thư mục).
 //   - Skill selection: chọn skill phù hợp với task dựa trên keyword matching.
 //   - Build đoạn text sẵn sàng inject vào system prompt trước mỗi agent run.

@@ -5,7 +5,6 @@
 #include <vector>
 
 // Trajectory: toàn bộ lịch sử 1 lần agent run.
-// Format toJson() khớp với mục 7.1 trong đề bài.
 // AgentLoop ghi vào → HarnessRunner đọc và lưu file trajectory_{taskId}.json.
 struct Trajectory {
     std::string taskId;

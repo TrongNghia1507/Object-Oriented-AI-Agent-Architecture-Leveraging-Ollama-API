@@ -60,7 +60,7 @@ public:
         
         std::string sqlCmd = "sqlite3 agent_memory.db \"SELECT COUNT(*) FROM agent_history WHERE content LIKE '%Ha Noi%';\"";
         
-        // SỬA LỖI: Đổi executeEvalCommand thành executeCommand
+        // Đổi executeEvalCommand thành executeCommand
         std::string result = env->executeCommand(sqlCmd);
 
         std::cout << "  -> [Functional Eval] Output OS tra ve: '" << result << "'\n";

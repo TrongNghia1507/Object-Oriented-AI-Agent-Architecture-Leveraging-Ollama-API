@@ -10,18 +10,18 @@
 #include <string>
 #include <vector>
 
-// ─── AgentLoop — vòng lặp ReAct chính (yêu cầu 3.4) ─────────────────────────
+// ─── AgentLoop — vòng lặp ReAct chính  ─────────────────────────
 //
-// DESIGN PATTERN 1: Template Method (IV.4.2 bắt buộc)
+// DESIGN PATTERN 1: Template Method 
 //   run() định nghĩa bộ khung cố định: Think → Act → Observe → lặp.
 //   Các bước con doThink() / parseAction() / doAct() / doObserve() là virtual
 //   → subclass override để mock (unit test) hoặc tuỳ chỉnh hành vi.
 //   Caller KHÔNG được override run().
 //
-// DESIGN PATTERN 2: Observer / Hook (IV.4.2 bắt buộc)
+// DESIGN PATTERN 2: Observer / Hook 
 //   HarnessRunner inject step_hook qua setStepHook() — 1 std::function<void(const Step&)>.
 //   AgentLoop gọi hook sau mỗi Step mà KHÔNG biết HarnessRunner là ai.
-//   Thoả nguyên tắc "AgentLoop KHÔNG biết Harness tồn tại" (bảng III đề bài).
+//   Thoả nguyên tắc "AgentLoop KHÔNG biết Harness tồn tại" .
 //
 // KỸ THUẬT C++17 SỬ DỤNG:
 //   std::variant<ToolCallAction, FinalAnswerAction>  → Action type

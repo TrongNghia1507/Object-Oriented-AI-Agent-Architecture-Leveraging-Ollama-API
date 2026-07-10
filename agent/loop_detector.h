@@ -2,14 +2,14 @@
 #include <string>
 #include <vector>
 
-// Mức độ loop (3.5: configurable warning vs critical)
+// Mức độ loop (configurable warning vs critical)
 enum class LoopStatus {
     Clear,    // bình thường
     Warning,  // lặp nhẹ — log cảnh báo nhưng tiếp tục
     Critical  // lặp nghiêm trọng — AgentLoop phải dừng
 };
 
-// LoopDetector phát hiện 2 loại loop theo yêu cầu 3.5:
+// LoopDetector phát hiện 2 loại loop:
 //
 //  1. Generic repeat: cùng (toolName, arguments) xuất hiện lần thứ N.
 //     Warning khi lần thứ warningThreshold, Critical khi lần thứ criticalThreshold.
