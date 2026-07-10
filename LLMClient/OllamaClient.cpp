@@ -49,7 +49,8 @@ string OllamaClient::buildPayload(const string& promptText, const string& base64
         {"stream", false},
         {"options", {
             {"temperature", temperature_},
-            {"num_predict", maxTokens_} // Ollama dùng num_predict thay vì max_tokens
+            {"num_predict", maxTokens_}, // Ollama dùng num_predict thay vì max_tokens
+            {"stop", {"Observation:", "Final Answer:"}}
         }}
     };
 
@@ -118,16 +119,66 @@ std::expected<string, LLMError> OllamaClient::executeCurl(const string& url, con
 }
 
 // Trả về endpoint /api/chat đầy đủ, theo đúng chế độ đã chọn khi khởi tạo.
+// std::expected<string, LLMError> OllamaClient::resolveEndpoint() {
+//     if (gistId_.empty()) {
+//         // Chế độ 1: baseUrl cố định.
+//         if (baseUrl_.empty()) {
+//             return std::unexpected(LLMError::ConnectionDenied);
+//         }
+//         return baseUrl_ + "/api/chat";
+//     }
+
+//     // Chế độ 2: dò URL động qua Gist.
+//     string gistApiUrl = "https://api.github.com/gists/" + gistId_;
+//     auto getResponse = executeCurl(gistApiUrl, "GET", "");
+//     if (!getResponse.has_value()) {
+//         return std::unexpected(getResponse.error());
+//     }
+
+//     try {
+//         auto gistJson = json::parse(*getResponse);
+//         // Tên file trong Gist phải khớp với script ghi URL (vd. ollama_url.txt)
+//         string pinggyUrl = gistJson["files"]["ollama_url.txt"]["content"];
+//         pinggyUrl.erase(pinggyUrl.find_last_not_of(" \n\r\t") + 1);
+//         return pinggyUrl + "/api/chat";
+//     } catch (const json::parse_error&) {
+//         return std::unexpected(LLMError::MalformedJson);
+//     } catch (const json::out_of_range&) {
+//         // Gist tồn tại nhưng không có file "ollama_url.txt" như mong đợi
+//         return std::unexpected(LLMError::MalformedJson);
+//     }
+// }
+
+// std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonPayload) {
+//     auto endpointResult = resolveEndpoint();
+//     if (!endpointResult.has_value()) {
+//         return std::unexpected(endpointResult.error());
+//     }
+//     string activeUrl = *endpointResult;
+
+//     auto rawResponse = executeCurl(activeUrl, "POST", jsonPayload);
+//     if (!rawResponse.has_value()) {
+//         return std::unexpected(rawResponse.error());
+//     }
+
+//     try {
+//         auto resJson = json::parse(*rawResponse);
+//         if (resJson.contains("message") && resJson["message"].contains("content")) {
+//             return resJson["message"]["content"].get<string>();
+//         }
+//         return std::unexpected(LLMError::MalformedJson);
+//     } catch (const json::parse_error&) {
+//         return std::unexpected(LLMError::MalformedJson);
+//     }
+// }
 std::expected<string, LLMError> OllamaClient::resolveEndpoint() {
     if (gistId_.empty()) {
-        // Chế độ 1: baseUrl cố định.
         if (baseUrl_.empty()) {
             return std::unexpected(LLMError::ConnectionDenied);
         }
         return baseUrl_ + "/api/chat";
     }
 
-    // Chế độ 2: dò URL động qua Gist.
     string gistApiUrl = "https://api.github.com/gists/" + gistId_;
     auto getResponse = executeCurl(gistApiUrl, "GET", "");
     if (!getResponse.has_value()) {
@@ -136,18 +187,29 @@ std::expected<string, LLMError> OllamaClient::resolveEndpoint() {
 
     try {
         auto gistJson = json::parse(*getResponse);
-        // Tên file trong Gist phải khớp với script ghi URL (vd. ollama_url.txt)
-        string pinggyUrl = gistJson["files"]["ollama_url.txt"]["content"];
+        
+        // --- MẮT THẦN SOI GITHUB ---
+        if (!gistJson.contains("files")) {
+            std::cout << "\033[31m[CRITICAL] Github Gist tu choi truy cap! Gist ID hoac Token cua bro co van de. Github chui:\033[0m\n" 
+                      << gistJson.dump(2) << "\n";
+            return std::unexpected(LLMError::MalformedJson);
+        }
+        
+        if (!gistJson["files"].contains("ollama_url.txt") || !gistJson["files"]["ollama_url.txt"].contains("content")) {
+            std::cout << "\033[31m[CRITICAL] Trong Gist khong co file 'ollama_url.txt' hoac file bi rong!\033[0m\n";
+            return std::unexpected(LLMError::MalformedJson);
+        }
+        // -----------------------------
+
+        string pinggyUrl = gistJson["files"]["ollama_url.txt"]["content"].get<string>();
         pinggyUrl.erase(pinggyUrl.find_last_not_of(" \n\r\t") + 1);
         return pinggyUrl + "/api/chat";
-    } catch (const json::parse_error&) {
-        return std::unexpected(LLMError::MalformedJson);
-    } catch (const json::out_of_range&) {
-        // Gist tồn tại nhưng không có file "ollama_url.txt" như mong đợi
+        
+    } catch (const std::exception& e) {
+        std::cout << "\033[31m[CRITICAL] Loi Parse Gist JSON: \033[0m" << e.what() << "\n";
         return std::unexpected(LLMError::MalformedJson);
     }
 }
-
 std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonPayload) {
     auto endpointResult = resolveEndpoint();
     if (!endpointResult.has_value()) {
@@ -155,22 +217,45 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
     }
     string activeUrl = *endpointResult;
 
+    // [MẮT THẦN 1] In ra URL để xem Pinggy có đúng không
+    std::cout << "\n\033[33m[DEBUG-LLM] Dang ket noi toi: \033[0m" << activeUrl << "\n";
+
     auto rawResponse = executeCurl(activeUrl, "POST", jsonPayload);
     if (!rawResponse.has_value()) {
+        std::cout << "\033[31m[DEBUG-LLM] Loi mang/Timeout roi!\033[0m\n";
         return std::unexpected(rawResponse.error());
     }
 
+    // [MẮT THẦN 2] In sạch sẽ toàn bộ những gì Server trả về trước khi Parse
+    std::cout << "\033[36m[DEBUG-LLM] Server tra ve nguyen goc:\n\033[0m" 
+              << *rawResponse << "\n\n";
+
     try {
         auto resJson = json::parse(*rawResponse);
-        if (resJson.contains("message") && resJson["message"].contains("content")) {
-            return resJson["message"]["content"].get<string>();
+        
+        // Nếu Server chửi (Ví dụ: sai tên model)
+        if (resJson.contains("error")) {
+            std::cout << "\033[31m[DEBUG-LLM] Ollama bao loi: \033[0m" << resJson["error"] << "\n";
+            return std::unexpected(LLMError::MalformedJson);
         }
+
+        if (resJson.contains("message") && resJson["message"].contains("content")) {
+            // [KHIÊN BẢO VỆ] Kiem tra chac chan no la Chuoi (String) roi moi lay ra!
+            if (resJson["message"]["content"].is_string()) {
+                return resJson["message"]["content"].get<string>();
+            } else {
+                std::cout << "\033[31m[DEBUG-LLM] Truong 'content' bi NULL hoac khong phai chuoi!\033[0m\n";
+                return std::unexpected(LLMError::MalformedJson);
+            }
+        }
+        
         return std::unexpected(LLMError::MalformedJson);
-    } catch (const json::parse_error&) {
+        
+    } catch (const json::parse_error& e) {
+        std::cout << "\033[31m[DEBUG-LLM] Khong the parse JSON. Loi: \033[0m" << e.what() << "\n";
         return std::unexpected(LLMError::MalformedJson);
     }
 }
-
 std::expected<string, LLMError> OllamaClient::sendPrompt(const string& text) {
     string payload = buildPayload(text, "");
     return processRequest(payload);
@@ -191,6 +276,7 @@ std::expected<string, LLMError> OllamaClient::sendMessages(const vector<Message>
         arr.push_back({{"role", m.role}, {"content", m.content}});
     }
     payload["messages"] = arr;
+    
     return processRequest(payload.dump());
 }
 

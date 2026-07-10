@@ -1,142 +1,43 @@
 cmake_minimum_required(VERSION 3.10)
-project(OOP_AI_Agent CXX)
+project(AgentSingleTest)
 
+# Cấu hình chuẩn C++23 cho dự án
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(SQLite3 REQUIRED)
-find_package(CURL REQUIRED)
+# Khai báo các thư mục chứa file Header (.h, .hpp) để tránh lỗi No such file
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/Harness
+    ${CMAKE_CURRENT_SOURCE_DIR}/LLMClient
+    ${CMAKE_CURRENT_SOURCE_DIR}/tools
+    ${CMAKE_CURRENT_SOURCE_DIR}/agent
+)
 
-# Nguồn Tool dùng chung (không cần Ollama)
-set(TOOL_SOURCES
-    tools/tool_registry.cpp
-    tools/calculator_tool.cpp
+# Gom tất cả các file mã nguồn .cpp nền của hệ thống
+set(CORE_SOURCES
+    LLMClient/OllamaClient.cpp 
+    LLMClient/base64.cpp
     tools/advanced_math_tool.cpp
-    tools/memory_tool.cpp
+    tools/calculator_tool.cpp
     tools/exec_tool.cpp
+    tools/memory_tool.cpp
+    tools/tool_registry.cpp
     tools/web_search_tool.cpp
-)
-
-# Nguồn SkillLoader
-set(SKILL_SOURCES
-    agent/skill_loader.cpp
-)
-
-# Nguồn AgentLoop (không cần Ollama, không cần CURL)
-set(AGENT_SOURCES
+    Harness/environment.cpp
+    Harness/Harness_runner.cpp
     agent/agent_loop.cpp
     agent/loop_detector.cpp
+    agent/skill_loader.cpp
+    # Thêm agent_loop.cpp vào đây nếu class AgentLoop nằm trong file .cpp riêng
 )
 
-# ---------------------------------------------------------------------------
-# Target 1: math_tool_test — test Tool layer, không cần Ollama
-# ---------------------------------------------------------------------------
-add_executable(math_tool_test
-    main_test.cpp
-    tools/calculator_tool.cpp
-    tools/advanced_math_tool.cpp
-    tools/memory_tool.cpp
-    tools/tool_registry.cpp
-)
-target_link_libraries(math_tool_test PRIVATE SQLite::SQLite3)
-
-# ---------------------------------------------------------------------------
-# Target 2: skill_loader_test — test SkillLoader, không cần Ollama
-# ---------------------------------------------------------------------------
-add_executable(skill_loader_test
-    tests/skill_loader_test.cpp
-    ${SKILL_SOURCES}
-)
-
-# ---------------------------------------------------------------------------
-# Target 3: agent_loop_test — test AgentLoop + LoopDetector OFFLINE (Mock LLM)
-# ---------------------------------------------------------------------------
-add_executable(agent_loop_test
+# Tạo file thực thi từ file test.cpp và các file nền
+# LƯU Ý: Nếu file test.cpp nằm trong thư mục tests/, hãy sửa thành tests/test.cpp
+add_executable(run_test 
     tests/agent_loop_test.cpp
-    ${AGENT_SOURCES}
-    ${SKILL_SOURCES}
-    tools/tool_registry.cpp
-    tools/calculator_tool.cpp
-    tools/advanced_math_tool.cpp
-    tools/memory_tool.cpp
-    tools/exec_tool.cpp
-    tools/web_search_tool.cpp
+    ${CORE_SOURCES}
 )
-target_link_libraries(agent_loop_test PRIVATE SQLite::SQLite3 CURL::libcurl)
 
-# ---------------------------------------------------------------------------
-# Target 4: llm_tool_test — test tool + Ollama thật (không có AgentLoop)
-# ---------------------------------------------------------------------------
-add_executable(llm_tool_test
-    tests/test_tool_with_llm.cpp
-    LLMClient/OllamaClient.cpp
-    LLMClient/base64.cpp
-    ${TOOL_SOURCES}
-    ${SKILL_SOURCES}
-)
-target_link_libraries(llm_tool_test PRIVATE SQLite::SQLite3 CURL::libcurl)
-
-# ---------------------------------------------------------------------------
-# Target 5: llm_agent_test — AgentLoop đầy đủ + Ollama thật (demo cuối)
-# ---------------------------------------------------------------------------
-add_executable(llm_agent_test
-    tests/llm_agent_test.cpp
-    LLMClient/OllamaClient.cpp
-    LLMClient/base64.cpp
-    ${TOOL_SOURCES}
-    ${SKILL_SOURCES}
-    ${AGENT_SOURCES}
-)
-target_link_libraries(llm_agent_test PRIVATE SQLite::SQLite3 CURL::libcurl)
-
-# ---------------------------------------------------------------------------
-# Target 4: memory_tool_test — test memory tool + Ollama
-# ---------------------------------------------------------------------------
-add_executable(memory_tool_test
-    test_memory.cpp
-    LLMClient/OllamaClient.cpp
-    LLMClient/base64.cpp
-    tools/memory_tool.cpp
-    utils/SystemUtils.cpp
-)
-target_link_libraries(memory_tool_test PRIVATE SQLite::SQLite3 CURL::libcurl)
-
-# ---------------------------------------------------------------------------
-# Target 5: math_llm_test — test math tools + Ollama
-# ---------------------------------------------------------------------------
-add_executable(math_llm_test
-    test_math.cpp
-    LLMClient/OllamaClient.cpp
-    LLMClient/base64.cpp
-    tools/calculator_tool.cpp
-    tools/advanced_math_tool.cpp
-    utils/SystemUtils.cpp
-)
-target_link_libraries(math_llm_test PRIVATE CURL::libcurl)
-
-# ---------------------------------------------------------------------------
-# Target 6: exec_tool_test — test ExecTool + Ollama
-# ---------------------------------------------------------------------------
-add_executable(exec_tool_test
-    test.cpp
-    LLMClient/OllamaClient.cpp
-    LLMClient/base64.cpp
-    tools/exec_tool.cpp
-    utils/SystemUtils.cpp
-)
-target_link_libraries(exec_tool_test PRIVATE CURL::libcurl)
-
-# ---------------------------------------------------------------------------
-# Target 7: web_search_test — test WebSearchTool + Ollama
-# ---------------------------------------------------------------------------
-add_executable(web_search_test
-    test_web_search.cpp
-    LLMClient/OllamaClient.cpp
-    LLMClient/base64.cpp
-    tools/web_search_tool.cpp
-    utils/SystemUtils.cpp
-)
-target_link_libraries(web_search_test PRIVATE CURL::libcurl)
-
-# Các test với LLM phải chạy từ thư mục gốc dự án (không phải từ build/)
-# vì đọc skills/*.md bằng đường dẫn tương đối.
+# Mở comment dòng dưới nếu OllamaClient hoặc WebSearchTool sử dụng libcurl để gọi API
+target_link_libraries(run_test curl)
+target_link_libraries(run_test sqlite3 curl)

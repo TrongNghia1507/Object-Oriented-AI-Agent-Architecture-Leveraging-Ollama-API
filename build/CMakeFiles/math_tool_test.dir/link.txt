@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/math_tool_test.dir/main_test.cpp.o CMakeFiles/math_tool_test.dir/tools/calculator_tool.cpp.o CMakeFiles/math_tool_test.dir/tools/advanced_math_tool.cpp.o CMakeFiles/math_tool_test.dir/tools/memory_tool.cpp.o CMakeFiles/math_tool_test.dir/tools/tool_registry.cpp.o -o math_tool_test  /usr/lib/x86_64-linux-gnu/libsqlite3.so 

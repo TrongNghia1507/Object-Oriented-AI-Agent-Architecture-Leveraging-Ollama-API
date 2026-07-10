@@ -108,9 +108,14 @@ double CalculatorTool::evaluatePostfix(const std::vector<std::string>& postfix) 
 }
 
 std::string CalculatorTool::execute(const std::string& arguments) {
+
     try {
         std::string clean = arguments;
         clean.erase(std::remove(clean.begin(), clean.end(), '"'), clean.end());
+        clean.erase(std::remove(clean.begin(), clean.end(), '\''), clean.end());
+
+        // 2. Lột sạch dấu nháy kép " (phòng hờ con AI đổi tính)
+        clean.erase(std::remove(clean.begin(),clean.end(), '\"'), clean.end());
         size_t s = clean.find_first_not_of(" \t\r\n");
         if (s == std::string::npos) return "Loi: bieu thuc rong";
         clean = clean.substr(s, clean.find_last_not_of(" \t\r\n") - s + 1);

@@ -97,7 +97,7 @@ std::string SandboxEnvironment::executeCommand(const std::string& command) {
 #else
     std::string safeCmd = "cd " + sandboxDir_ + " && " + command;
 #endif
-
+    safeCmd = "/bin/bash -c \"" + safeCmd + "\"";
     std::string cmdWithStderr = safeCmd + " 2>&1";
     std::array<char, 256> buffer;
     std::string result;

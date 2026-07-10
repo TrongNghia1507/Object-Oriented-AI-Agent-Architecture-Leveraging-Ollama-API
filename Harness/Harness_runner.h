@@ -22,7 +22,7 @@ public:
         env_ = env;
     }
     
-    void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& agent) ;
+    void loadTaskFromJson(const std::string& filename, AgentLoop& agent) ; // void HarnessRunner::loadTaskFromJson, xoá cái trc để test tương tác prompt thôi, test xong sửa lại
 
     void addEvaluator(std::shared_ptr<Evaluator> evaluator);
     void runTask(const std::string& taskId, const std::string& task, AgentLoop& agent);
