@@ -62,7 +62,7 @@ public:
     }
 
     // == THÊM MỚI: cho HarnessRunner biết task này có PASS hay không ==
-    bool isPassed() const {
+    bool isPassed() const override {
         return matchedCount_ >= minRequired_;
     }
 
