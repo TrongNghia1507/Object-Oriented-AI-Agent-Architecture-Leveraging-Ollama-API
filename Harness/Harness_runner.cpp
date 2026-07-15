@@ -9,54 +9,31 @@ void HarnessRunner::addEvaluator(std::shared_ptr<Evaluator> evaluator) {
     }
 }
 
-void HarnessRunner::runTask(const std::string& taskId, const std::string& task, AgentLoop& agent) {
+bool HarnessRunner::runTask(const std::string& taskId, const std::string& task, AgentLoop& agent) {
     std::cout << "\n==================================================\n";
     std::cout << "[HARNESS RUNNER] Bat dau kiem thu Task ID: " << taskId << "\n";
     std::cout << "==================================================\n";
 
     // === 1. THIẾT LẬP MÔI TRƯỜNG TRƯỚC TIÊN ===
     if (env_) {
-        env_->setup(); 
+        env_->setup();
     }
 
-    // 2. Khởi tạo cấu trúc cây JSON để xuất báo cáo quỹ đạo
-    nlohmann::json reportJson = nlohmann::json::object();
-    reportJson["task_id"] = taskId;
-    reportJson["prompt"] = task;
-    reportJson["steps"] = nlohmann::json::array();
-
-    int stepCounter = 0;
-
-    // 3. TIÊM HOOK GIÁM SÁT BÍ MẬT
-    agent.setStepHook([&reportJson, &stepCounter](const Step& step) {
-        stepCounter++;
-        nlohmann::json stepNode = nlohmann::json::object();
-        stepNode["step_idx"] = stepCounter;
-        stepNode["thought"] = step.thought;
-        
-        // === BỔ SUNG: Ghi lại Action và Observation ===
-        // Nếu không có 2 dòng này, file JSON sẽ không biết AI đã xài Tool gì
-        stepNode["action"] = step.actionLog;
-        stepNode["observation"] = step.observation;
-        
-        // Ghithời gian trễ 
-        if (step.latencyMs > 0) {
-            stepNode["latency_ms"] = step.latencyMs;
-        }
-        // =========================================================
-
-        reportJson["steps"].push_back(stepNode);
+    // 2. TIÊM HOOK GIÁM SÁT 
+    agent.setStepHook([](const Step& step) {
+        std::cout << " step_idx" << step.stepId
+                   << " ghi nhan (" << step.latencyMs << "ms)\n";
     });
 
-    // 4. KÍCH HOẠT AGENT LOOP CHẠY TỰ NHIÊN
+    // 3. KÍCH HOẠT AGENT LOOP CHẠY TỰ NHIÊN
     Trajectory trajectory = agent.run(taskId, task);
 
     // GỠ HOOK NGAY SAU KHI HOÀN THÀNH
     agent.setStepHook(nullptr);
 
-    std::string finalAnswer = trajectory.finalAnswer; 
+    std::string finalAnswer = trajectory.finalAnswer;
 
-    // === 5. TIẾN HÀNH CHẤM ĐIỂM TỰ ĐỘNG ===
+    // === 4. TIẾN HÀNH CHẤM ĐIỂM TỰ ĐỘNG ===
     std::cout << "\n[HARNESS RUNNER] Dang kich hoat cac bo cham diem...\n";
     int totalScore = 0;
     nlohmann::json evalBreakdown = nlohmann::json::object();
@@ -64,7 +41,7 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
     for (const auto& evaluator : evaluators_) {
         // Truyền thêm tham số thứ 3 là env_.get() để chuyển giao con trỏ Environment thô
         std::optional<int> scoreResult = evaluator->evaluate(finalAnswer, trajectory, env_.get());
-        
+
         if (scoreResult.has_value()) {
             int score = scoreResult.value();
             totalScore += score;
@@ -78,8 +55,10 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
 
     std::cout << "[HARNESS RUNNER] ---> Tong diem hieu nang dat duoc: " << totalScore << " diem.\n";
 
-    // ĐÓNG GÓI DỮ LIỆU JSON
-    reportJson["final_answer"] = finalAnswer;
+    // === 5. XUẤT JSON ===
+    // Dùng thẳng Trajectory::toJson() rồi merge thêm phần
+    // evaluation_results của Harness vào, thay vì tự dựng JSON rút gọn khác định dạng.
+    nlohmann::json reportJson = trajectory.toJson();
     reportJson["evaluation_results"] = {
         {"total_score", totalScore},
         {"breakdown", evalBreakdown}
@@ -94,10 +73,23 @@ void HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
 
     // === 6. DỌN DẸP MÔI TRƯỜNG SAU KHI THI XONG ===
     if (env_) {
-        env_->teardown(); 
+        env_->teardown();
     }
-    
+
     std::cout << "==================================================\n\n";
+
+    // Task được coi là PASS nếu có Evaluator xác nhận isPassed(), hoặc
+    // (khi không có Evaluator nào) nếu Agent tự kết thúc bằng Final Answer hợp lệ.
+    bool anyEvaluatorPassed = false;
+    bool anyEvaluatorRan = false;
+    for (const auto& evaluator : evaluators_) {
+        anyEvaluatorRan = true;
+        if (evaluator->isPassed()) {
+            anyEvaluatorPassed = true;
+            break;
+        }
+    }
+    return anyEvaluatorRan ? anyEvaluatorPassed : trajectory.success;
 }
 void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& agent) {
     // 1. Đọc file JSON chứa danh sách task 
@@ -141,8 +133,6 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
         if (evalType == "keyword") {
             addEvaluator(KeywordEvaluator::fromTaskJson(taskDef));
         } else if (evalType == "functional") {
-            // [CẦN THÊM] class FunctionalEvaluator tổng quát nhận eval_script,
-            // xem gợi ý bên dưới — thay cho FunctionalMemoryEvaluator hard-code hiện tại
             std::string evalScript = taskDef.value("eval_script", "");
             addEvaluator(std::make_shared<FunctionalEvaluator>(evalScript));
         } else {
@@ -150,11 +140,10 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
             continue;
         }
 
-        runTask(taskId, instruction, agent);   // tái dùng pipeline setup->run->evaluate->record
+        // tái dùng pipeline setup->run->evaluate->record, lấy kết quả PASS/FAIL trực tiếp
+        bool passed = runTask(taskId, instruction, agent);
 
         totalTasks++;
-        // [CẦN THÊM] isPassed() phải được khai báo ảo (virtual) trong Evaluator gốc
-        bool passed = !evaluators_.empty() && evaluators_.front()->isPassed();
         if (passed) passedTasks++;
 
         batchSummary.push_back({

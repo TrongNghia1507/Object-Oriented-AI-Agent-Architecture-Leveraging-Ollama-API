@@ -11,6 +11,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/LLMClient
     ${CMAKE_CURRENT_SOURCE_DIR}/tools
     ${CMAKE_CURRENT_SOURCE_DIR}/agent
+    ${CMAKE_CURRENT_SOURCE_DIR}/environment
 )
 
 # Gom tất cả các file mã nguồn .cpp nền của hệ thống
@@ -23,12 +24,11 @@ set(CORE_SOURCES
     tools/memory_tool.cpp
     tools/tool_registry.cpp
     tools/web_search_tool.cpp
-    Harness/environment.cpp
+    environment/environment.cpp
     Harness/Harness_runner.cpp
     agent/agent_loop.cpp
     agent/loop_detector.cpp
     agent/skill_loader.cpp
-    # Thêm agent_loop.cpp vào đây nếu class AgentLoop nằm trong file .cpp riêng
 )
 
 # Tạo file thực thi từ file test.cpp và các file nền

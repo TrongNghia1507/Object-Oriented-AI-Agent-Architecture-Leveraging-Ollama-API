@@ -15,7 +15,7 @@
 #include "../tools/advanced_math_tool.h"
 #include "../tools/memory_tool.h"
 #include "../tools/exec_tool.h"
-#include "../Harness/environment.h"
+#include "../environment/environment.h"
 #include <cassert>
 #include <iostream>
 #include <memory>
@@ -238,6 +238,7 @@ private:
 //     return 0;
 // }
 
+#include "../tools/file_tool.h"
 #include <memory>
 #include <filesystem>
 #include "../LLMClient/json.hpp"
@@ -249,7 +250,8 @@ int main() {
     std::cout << "==================================================\n\n";
     string modelName = "qwen2.5vl:3b";
     string myGistId = "865862ba7fdd9d97acd7d24ab6e07152";
-    string myGistPAT = "";
+    const char* patEnv = std::getenv("GITHUB_PAT");
+    string myGistPAT = patEnv ? patEnv : "";
     OllamaClient llmClient = OllamaClient::withGistDiscovery(modelName, myGistId, myGistPAT);
     // 2. THIẾT LẬP MÔI TRƯỜNG & TOOL REGISTRY
 
@@ -260,6 +262,8 @@ int main() {
     registry.registerTool(std::make_unique<CalculatorTool>());
     registry.registerTool(std::make_unique<AdvancedMathTool>());
     registry.registerTool(std::make_unique<ExecTool>(&env,ExecPolicy::AlwaysAllow()));
+    registry.registerTool(makeReadFileTool(&env));
+    registry.registerTool(makeWriteFileTool(&env));
     auto db = std::make_shared<DatabaseManager>();
     registry.registerTool(std::make_unique<MemorySaveTool>(db));
     registry.registerTool(std::make_unique<MemorySearchTool>(db));

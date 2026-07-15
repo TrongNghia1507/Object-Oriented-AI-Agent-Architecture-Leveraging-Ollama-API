@@ -7,6 +7,7 @@
 class FunctionalEvaluator : public Evaluator {
 private:
     std::string evalScript_;
+    int rewardScore_;
     bool isPassed_ = false;
 public:
     FunctionalEvaluator(const std::string& script) : evalScript_(script) {}
@@ -19,17 +20,18 @@ public:
         (void)finalAnswer;
         (void)traj;
         if (!env) return std::nullopt;
+        if (evalScript_.empty()) return std::nullopt;
 
         // Chạy script kiểm tra hệ thống do file JSON cung cấp
         std::string result = env->executeCommand(evalScript_);
         
         // Cần có logic để phân tích result (ví dụ: trả về 1 là pass)
-        // Ở đây giả lập đơn giản: Nếu kết quả có độ dài > 0 và không có chữ "Loi"
-        if (!result.empty() && result.find("Loi") == std::string::npos && result.find("Error") == std::string::npos) {
+        // Ở đây giả lập đơn giản: Nếu kết quả có chữ PASS -> trả về rewardScore
+        if (result.find("PASS") != std::string::npos) {
             isPassed_ = true;
-            return 100; // Đạt điểm tối đa
+            return rewardScore_;
         }
-        
+
         isPassed_ = false;
         return 0;
     }
@@ -58,9 +60,8 @@ public:
 
         std::cout << "  -> [Functional Eval] Dang vao hien truong de check DB...\n";
         
-        std::string sqlCmd = "sqlite3 agent_memory.db \"SELECT COUNT(*) FROM agent_history WHERE content LIKE '%Ha Noi%';\"";
+        std::string sqlCmd = "sqlite3 memory.db \"SELECT COUNT(*) FROM agent_memory WHERE content LIKE '%Ha Noi%';\"";
         
-        // Đổi executeEvalCommand thành executeCommand
         std::string result = env->executeCommand(sqlCmd);
 
         std::cout << "  -> [Functional Eval] Output OS tra ve: '" << result << "'\n";

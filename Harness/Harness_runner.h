@@ -23,13 +23,10 @@ public:
     void setEnvironment(std::shared_ptr<Environment> env) {
         env_ = env;
     }
-    void clearEvaluators() {
-        evaluators_.clear();
-    }
-    
+
     void loadTaskFromJson(const std::string& filename, AgentLoop& agent) ; // void HarnessRunner::loadTaskFromJson, xoá cái trc để test tương tác prompt thôi, test xong sửa lại
 
     void addEvaluator(std::shared_ptr<Evaluator> evaluator);
     void clearEvaluators() { evaluators_.clear(); }  
-    void runTask(const std::string& taskId, const std::string& task, AgentLoop& agent);
+    bool runTask(const std::string& taskId, const std::string& task, AgentLoop& agent);
 };
