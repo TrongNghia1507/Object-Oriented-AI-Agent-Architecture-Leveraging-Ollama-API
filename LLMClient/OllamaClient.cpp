@@ -22,6 +22,87 @@ OllamaClient::OllamaClient(string model, string baseUrl)
       baseUrl_(std::move(baseUrl)){}
 
 
+// === BỔ SUNG: withGistDiscovery + fetchBaseUrlFromGist ======================
+// Gọi GitHub API "GET /gists/{id}" kèm header Authorization Bearer <PAT>,
+// lấy nội dung file đầu tiên trong Gist (quy ước: script tunnel Pinggy/ngrok
+// ghi đúng 1 dòng base URL vào file đó), rồi dùng URL này làm baseUrl_.
+string OllamaClient::fetchBaseUrlFromGist(const string& gistId, const string& gistPat) {
+    CURL* curl = curl_easy_init();
+    if (!curl) {
+        std::cerr << "\033[31m[GistDiscovery] Khong the khoi tao curl.\033[0m\n";
+        return "";
+    }
+
+    string readBuffer;
+    string url = "https://api.github.com/gists/" + gistId;
+
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT, 30L);
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+
+    struct curl_slist* headers = NULL;
+    headers = curl_slist_append(headers, "User-Agent: C++-Agent-Client");
+    headers = curl_slist_append(headers, "Accept: application/vnd.github+json");
+    string authHeader = "Authorization: Bearer " + gistPat;
+    headers = curl_slist_append(headers, authHeader.c_str());
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+    CURLcode res = curl_easy_perform(curl);
+    curl_slist_free_all(headers);
+    curl_easy_cleanup(curl);
+
+    if (res != CURLE_OK) {
+        std::cerr << "\033[31m[GistDiscovery] Loi ket noi toi GitHub Gist API: \033[0m"
+                  << curl_easy_strerror(res) << "\n";
+        return "";
+    }
+
+    try {
+        json gistJson = json::parse(readBuffer);
+
+        if (gistJson.contains("message")) {
+            // GitHub trả lỗi (vd Gist ID sai / PAT sai / het quyen) dưới dạng {"message": "..."}
+            std::cerr << "\033[31m[GistDiscovery] GitHub tu choi request: \033[0m"
+                      << gistJson["message"].get<string>() << "\n";
+            return "";
+        }
+
+        if (!gistJson.contains("files") || gistJson["files"].empty()) {
+            std::cerr << "\033[31m[GistDiscovery] Gist khong co file nao.\033[0m\n";
+            return "";
+        }
+
+        // Lấy file đầu tiên trong Gist, cắt whitespace/newline thừa ở cuối.
+        for (auto& [filename, fileInfo] : gistJson["files"].items()) {
+            if (fileInfo.contains("content") && fileInfo["content"].is_string()) {
+                string content = fileInfo["content"].get<string>();
+                while (!content.empty() &&
+                       (content.back() == '\n' || content.back() == '\r' || content.back() == ' ')) {
+                    content.pop_back();
+                }
+                return content;
+            }
+        }
+    } catch (const json::parse_error& e) {
+        std::cerr << "\033[31m[GistDiscovery] Khong parse duoc JSON tu Gist: \033[0m"
+                  << e.what() << "\n";
+    }
+
+    return "";
+}
+
+OllamaClient OllamaClient::withGistDiscovery(const string& model, const string& gistId, const string& gistPat) {
+    string baseUrl = fetchBaseUrlFromGist(gistId, gistPat);
+    if (baseUrl.empty()) {
+        std::cerr << "\033[33m[GistDiscovery] Khong do duoc baseUrl tu Gist, "
+                  << "OllamaClient se dung endpoint mac dinh (OpenRouter).\033[0m\n";
+    }
+    return OllamaClient(model, baseUrl);
+}
+
 
 
 string OllamaClient::buildPayload(const string& promptText, const string& base64Image) {
