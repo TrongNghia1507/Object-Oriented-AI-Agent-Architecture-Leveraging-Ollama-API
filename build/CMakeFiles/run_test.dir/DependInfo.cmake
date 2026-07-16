@@ -9,19 +9,21 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspaces/AgentAI/Harness/Harness_runner.cpp" "CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o" "gcc" "CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o.d"
-  "/workspaces/AgentAI/Harness/environment.cpp" "CMakeFiles/run_test.dir/Harness/environment.cpp.o" "gcc" "CMakeFiles/run_test.dir/Harness/environment.cpp.o.d"
   "/workspaces/AgentAI/LLMClient/OllamaClient.cpp" "CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o" "gcc" "CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o.d"
-  "/workspaces/AgentAI/LLMClient/base64.cpp" "CMakeFiles/run_test.dir/LLMClient/base64.cpp.o" "gcc" "CMakeFiles/run_test.dir/LLMClient/base64.cpp.o.d"
   "/workspaces/AgentAI/agent/agent_loop.cpp" "CMakeFiles/run_test.dir/agent/agent_loop.cpp.o" "gcc" "CMakeFiles/run_test.dir/agent/agent_loop.cpp.o.d"
   "/workspaces/AgentAI/agent/loop_detector.cpp" "CMakeFiles/run_test.dir/agent/loop_detector.cpp.o" "gcc" "CMakeFiles/run_test.dir/agent/loop_detector.cpp.o.d"
   "/workspaces/AgentAI/agent/skill_loader.cpp" "CMakeFiles/run_test.dir/agent/skill_loader.cpp.o" "gcc" "CMakeFiles/run_test.dir/agent/skill_loader.cpp.o.d"
+  "/workspaces/AgentAI/environment/environment.cpp" "CMakeFiles/run_test.dir/environment/environment.cpp.o" "gcc" "CMakeFiles/run_test.dir/environment/environment.cpp.o.d"
   "/workspaces/AgentAI/tests/agent_loop_test.cpp" "CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o" "gcc" "CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o.d"
   "/workspaces/AgentAI/tools/advanced_math_tool.cpp" "CMakeFiles/run_test.dir/tools/advanced_math_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/advanced_math_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/calculator_tool.cpp" "CMakeFiles/run_test.dir/tools/calculator_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/calculator_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/exec_tool.cpp" "CMakeFiles/run_test.dir/tools/exec_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/exec_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/memory_tool.cpp" "CMakeFiles/run_test.dir/tools/memory_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/memory_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/tool_registry.cpp" "CMakeFiles/run_test.dir/tools/tool_registry.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/tool_registry.cpp.o.d"
+  "/workspaces/AgentAI/tools/translate_tool.cpp" "CMakeFiles/run_test.dir/tools/translate_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/translate_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/web_search_tool.cpp" "CMakeFiles/run_test.dir/tools/web_search_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/web_search_tool.cpp.o.d"
+  "/workspaces/AgentAI/utils/SystemUtils.cpp" "CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o" "gcc" "CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o.d"
+  "/workspaces/AgentAI/utils/base64.cpp" "CMakeFiles/run_test.dir/utils/base64.cpp.o" "gcc" "CMakeFiles/run_test.dir/utils/base64.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -121,7 +121,7 @@ CMakeFiles/run_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/ranges_util.h \
- /workspaces/AgentAI/tools/../Harness/environment.h \
+ /workspaces/AgentAI/tools/../environment/environment.h \
  /usr/include/sqlite3.h /usr/include/c++/13/memory \
  /usr/include/c++/13/bits/stl_tempbuf.h \
  /usr/include/c++/13/bits/stl_uninitialized.h \

@@ -284,7 +284,7 @@ CMakeFiles/run_test.dir/agent/agent_loop.cpp.o: \
  /usr/include/c++/13/expected \
  /workspaces/AgentAI/agent/../tools/tool_registry.h \
  /workspaces/AgentAI/agent/../tools/tool.h \
- /workspaces/AgentAI/agent/../tools/../Harness/environment.h \
+ /workspaces/AgentAI/agent/../tools/../environment/environment.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /workspaces/AgentAI/agent/skill_loader.h \
@@ -305,4 +305,5 @@ CMakeFiles/run_test.dir/agent/agent_loop.cpp.o: \
  /usr/include/c++/13/bits/regex_compiler.tcc \
  /usr/include/c++/13/bits/regex.h /usr/include/c++/13/bits/regex.tcc \
  /usr/include/c++/13/bits/regex_executor.h \
- /usr/include/c++/13/bits/regex_executor.tcc
+ /usr/include/c++/13/bits/regex_executor.tcc \
+ /workspaces/AgentAI/agent/../utils/SystemUtils.h

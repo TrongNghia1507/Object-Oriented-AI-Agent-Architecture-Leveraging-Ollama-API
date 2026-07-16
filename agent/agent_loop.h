@@ -103,5 +103,5 @@ public:
     // ── Template Method — KHÔNG override ──────────────────────────────────────
     // taskId: định danh task (dùng đặt tên file trajectory sau này).
     // task: câu lệnh người dùng / HarnessRunner truyền vào.
-    Trajectory run(const std::string& taskId, const std::string& task);
+    Trajectory run(const std::string& taskId, const std::string& task, const std::string& imagePath = "");
 };

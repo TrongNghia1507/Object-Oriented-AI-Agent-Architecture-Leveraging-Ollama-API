@@ -285,7 +285,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: \
  /usr/include/c++/13/expected \
  /workspaces/AgentAI/tests/../agent/../tools/tool_registry.h \
  /workspaces/AgentAI/tests/../agent/../tools/tool.h \
- /workspaces/AgentAI/tests/../agent/../tools/../Harness/environment.h \
+ /workspaces/AgentAI/tests/../agent/../tools/../environment/environment.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /workspaces/AgentAI/tests/../agent/skill_loader.h \
@@ -297,10 +297,13 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: \
  /workspaces/AgentAI/tests/../tools/advanced_math_tool.h \
  /workspaces/AgentAI/tests/../tools/memory_tool.h /usr/include/sqlite3.h \
  /workspaces/AgentAI/tests/../tools/exec_tool.h \
+ /workspaces/AgentAI/tests/../tools/translate_tool.h \
+ /workspaces/AgentAI/tests/../tools/web_search_tool.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/queue \
  /usr/include/c++/13/bits/stl_queue.h /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
+ /workspaces/AgentAI/tests/../tools/file_tool.h \
  /workspaces/AgentAI/tests/../LLMClient/json.hpp \
  /workspaces/AgentAI/tests/../LLMClient/OllamaClient.h

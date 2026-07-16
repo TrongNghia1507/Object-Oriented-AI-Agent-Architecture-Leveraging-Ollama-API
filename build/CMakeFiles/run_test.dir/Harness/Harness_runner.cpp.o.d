@@ -286,13 +286,15 @@ CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o: \
  /usr/include/c++/13/expected \
  /workspaces/AgentAI/Harness/../agent/../tools/tool_registry.h \
  /workspaces/AgentAI/Harness/../agent/../tools/tool.h \
- /workspaces/AgentAI/Harness/../agent/../tools/../Harness/environment.h \
+ /workspaces/AgentAI/Harness/../agent/../tools/../environment/environment.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /workspaces/AgentAI/Harness/../agent/skill_loader.h \
  /workspaces/AgentAI/Harness/../agent/skill.h \
  /workspaces/AgentAI/Harness/evaluator.h \
  /workspaces/AgentAI/Harness/../LLMClient/json.hpp \
+ /workspaces/AgentAI/Harness/keyword_evaluator.h \
+ /workspaces/AgentAI/Harness/functional_evaluator.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \

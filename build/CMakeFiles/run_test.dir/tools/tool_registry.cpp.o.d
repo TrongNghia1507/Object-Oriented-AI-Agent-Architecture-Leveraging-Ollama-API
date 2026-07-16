@@ -122,7 +122,7 @@ CMakeFiles/run_test.dir/tools/tool_registry.cpp.o: \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/ranges_util.h \
- /workspaces/AgentAI/tools/../Harness/environment.h \
+ /workspaces/AgentAI/tools/../environment/environment.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \

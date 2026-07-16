@@ -153,30 +153,6 @@ Harness/Harness_runner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.s
 .PHONY : Harness/Harness_runner.cpp.s
 
-Harness/environment.o: Harness/environment.cpp.o
-.PHONY : Harness/environment.o
-
-# target to build an object file
-Harness/environment.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/Harness/environment.cpp.o
-.PHONY : Harness/environment.cpp.o
-
-Harness/environment.i: Harness/environment.cpp.i
-.PHONY : Harness/environment.i
-
-# target to preprocess a source file
-Harness/environment.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/Harness/environment.cpp.i
-.PHONY : Harness/environment.cpp.i
-
-Harness/environment.s: Harness/environment.cpp.s
-.PHONY : Harness/environment.s
-
-# target to generate assembly for a file
-Harness/environment.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/Harness/environment.cpp.s
-.PHONY : Harness/environment.cpp.s
-
 LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.o
 
@@ -200,30 +176,6 @@ LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
 LLMClient/OllamaClient.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.s
 .PHONY : LLMClient/OllamaClient.cpp.s
-
-LLMClient/base64.o: LLMClient/base64.cpp.o
-.PHONY : LLMClient/base64.o
-
-# target to build an object file
-LLMClient/base64.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/LLMClient/base64.cpp.o
-.PHONY : LLMClient/base64.cpp.o
-
-LLMClient/base64.i: LLMClient/base64.cpp.i
-.PHONY : LLMClient/base64.i
-
-# target to preprocess a source file
-LLMClient/base64.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/LLMClient/base64.cpp.i
-.PHONY : LLMClient/base64.cpp.i
-
-LLMClient/base64.s: LLMClient/base64.cpp.s
-.PHONY : LLMClient/base64.s
-
-# target to generate assembly for a file
-LLMClient/base64.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/LLMClient/base64.cpp.s
-.PHONY : LLMClient/base64.cpp.s
 
 agent/agent_loop.o: agent/agent_loop.cpp.o
 .PHONY : agent/agent_loop.o
@@ -296,6 +248,30 @@ agent/skill_loader.s: agent/skill_loader.cpp.s
 agent/skill_loader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/agent/skill_loader.cpp.s
 .PHONY : agent/skill_loader.cpp.s
+
+environment/environment.o: environment/environment.cpp.o
+.PHONY : environment/environment.o
+
+# target to build an object file
+environment/environment.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/environment/environment.cpp.o
+.PHONY : environment/environment.cpp.o
+
+environment/environment.i: environment/environment.cpp.i
+.PHONY : environment/environment.i
+
+# target to preprocess a source file
+environment/environment.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/environment/environment.cpp.i
+.PHONY : environment/environment.cpp.i
+
+environment/environment.s: environment/environment.cpp.s
+.PHONY : environment/environment.s
+
+# target to generate assembly for a file
+environment/environment.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/environment/environment.cpp.s
+.PHONY : environment/environment.cpp.s
 
 tests/agent_loop_test.o: tests/agent_loop_test.cpp.o
 .PHONY : tests/agent_loop_test.o
@@ -441,6 +417,30 @@ tools/tool_registry.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/tool_registry.cpp.s
 .PHONY : tools/tool_registry.cpp.s
 
+tools/translate_tool.o: tools/translate_tool.cpp.o
+.PHONY : tools/translate_tool.o
+
+# target to build an object file
+tools/translate_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/translate_tool.cpp.o
+.PHONY : tools/translate_tool.cpp.o
+
+tools/translate_tool.i: tools/translate_tool.cpp.i
+.PHONY : tools/translate_tool.i
+
+# target to preprocess a source file
+tools/translate_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/translate_tool.cpp.i
+.PHONY : tools/translate_tool.cpp.i
+
+tools/translate_tool.s: tools/translate_tool.cpp.s
+.PHONY : tools/translate_tool.s
+
+# target to generate assembly for a file
+tools/translate_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/translate_tool.cpp.s
+.PHONY : tools/translate_tool.cpp.s
+
 tools/web_search_tool.o: tools/web_search_tool.cpp.o
 .PHONY : tools/web_search_tool.o
 
@@ -465,6 +465,54 @@ tools/web_search_tool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/web_search_tool.cpp.s
 .PHONY : tools/web_search_tool.cpp.s
 
+utils/SystemUtils.o: utils/SystemUtils.cpp.o
+.PHONY : utils/SystemUtils.o
+
+# target to build an object file
+utils/SystemUtils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o
+.PHONY : utils/SystemUtils.cpp.o
+
+utils/SystemUtils.i: utils/SystemUtils.cpp.i
+.PHONY : utils/SystemUtils.i
+
+# target to preprocess a source file
+utils/SystemUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/utils/SystemUtils.cpp.i
+.PHONY : utils/SystemUtils.cpp.i
+
+utils/SystemUtils.s: utils/SystemUtils.cpp.s
+.PHONY : utils/SystemUtils.s
+
+# target to generate assembly for a file
+utils/SystemUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/utils/SystemUtils.cpp.s
+.PHONY : utils/SystemUtils.cpp.s
+
+utils/base64.o: utils/base64.cpp.o
+.PHONY : utils/base64.o
+
+# target to build an object file
+utils/base64.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/utils/base64.cpp.o
+.PHONY : utils/base64.cpp.o
+
+utils/base64.i: utils/base64.cpp.i
+.PHONY : utils/base64.i
+
+# target to preprocess a source file
+utils/base64.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/utils/base64.cpp.i
+.PHONY : utils/base64.cpp.i
+
+utils/base64.s: utils/base64.cpp.s
+.PHONY : utils/base64.s
+
+# target to generate assembly for a file
+utils/base64.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/utils/base64.cpp.s
+.PHONY : utils/base64.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -477,15 +525,9 @@ help:
 	@echo "... Harness/Harness_runner.o"
 	@echo "... Harness/Harness_runner.i"
 	@echo "... Harness/Harness_runner.s"
-	@echo "... Harness/environment.o"
-	@echo "... Harness/environment.i"
-	@echo "... Harness/environment.s"
 	@echo "... LLMClient/OllamaClient.o"
 	@echo "... LLMClient/OllamaClient.i"
 	@echo "... LLMClient/OllamaClient.s"
-	@echo "... LLMClient/base64.o"
-	@echo "... LLMClient/base64.i"
-	@echo "... LLMClient/base64.s"
 	@echo "... agent/agent_loop.o"
 	@echo "... agent/agent_loop.i"
 	@echo "... agent/agent_loop.s"
@@ -495,6 +537,9 @@ help:
 	@echo "... agent/skill_loader.o"
 	@echo "... agent/skill_loader.i"
 	@echo "... agent/skill_loader.s"
+	@echo "... environment/environment.o"
+	@echo "... environment/environment.i"
+	@echo "... environment/environment.s"
 	@echo "... tests/agent_loop_test.o"
 	@echo "... tests/agent_loop_test.i"
 	@echo "... tests/agent_loop_test.s"
@@ -513,9 +558,18 @@ help:
 	@echo "... tools/tool_registry.o"
 	@echo "... tools/tool_registry.i"
 	@echo "... tools/tool_registry.s"
+	@echo "... tools/translate_tool.o"
+	@echo "... tools/translate_tool.i"
+	@echo "... tools/translate_tool.s"
 	@echo "... tools/web_search_tool.o"
 	@echo "... tools/web_search_tool.i"
 	@echo "... tools/web_search_tool.s"
+	@echo "... utils/SystemUtils.o"
+	@echo "... utils/SystemUtils.i"
+	@echo "... utils/SystemUtils.s"
+	@echo "... utils/base64.o"
+	@echo "... utils/base64.i"
+	@echo "... utils/base64.s"
 .PHONY : help
 
 

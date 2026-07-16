@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/workspaces/AgentAI/Harness -I/workspaces/AgentAI/LLMClient -I/workspaces/AgentAI/tools -I/workspaces/AgentAI/agent
+CXX_INCLUDES = -I/workspaces/AgentAI/Harness -I/workspaces/AgentAI/LLMClient -I/workspaces/AgentAI/tools -I/workspaces/AgentAI/agent -I/workspaces/AgentAI/environment
 
 CXX_FLAGS = -std=gnu++23
 

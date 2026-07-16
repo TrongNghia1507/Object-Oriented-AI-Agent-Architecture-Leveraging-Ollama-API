@@ -122,7 +122,7 @@ CMakeFiles/run_test.dir/tools/web_search_tool.cpp.o: \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/ranges_util.h \
- /workspaces/AgentAI/tools/../Harness/environment.h \
+ /workspaces/AgentAI/tools/../environment/environment.h \
  /workspaces/AgentAI/tools/../LLMClient/json.hpp \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \

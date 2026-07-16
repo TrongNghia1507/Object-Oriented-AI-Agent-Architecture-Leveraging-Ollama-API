@@ -15,6 +15,8 @@ enum class LLMError {
 struct Message {
     std::string role;    // "system" | "user" | "assistant"
     std::string content;
+    std::string image;
+    bool hasImage = false;
 };
 
 // Interface trừu tượng cho tầng LLM Client .

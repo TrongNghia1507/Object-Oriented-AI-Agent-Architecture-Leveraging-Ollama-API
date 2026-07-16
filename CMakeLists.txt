@@ -17,7 +17,7 @@ include_directories(
 # Gom tất cả các file mã nguồn .cpp nền của hệ thống
 set(CORE_SOURCES
     LLMClient/OllamaClient.cpp 
-    LLMClient/base64.cpp
+    utils/base64.cpp
     tools/advanced_math_tool.cpp
     tools/calculator_tool.cpp
     tools/exec_tool.cpp
@@ -30,6 +30,7 @@ set(CORE_SOURCES
     agent/agent_loop.cpp
     agent/loop_detector.cpp
     agent/skill_loader.cpp
+    utils/SystemUtils.cpp
 )
 
 # Tạo file thực thi từ file test.cpp và các file nền

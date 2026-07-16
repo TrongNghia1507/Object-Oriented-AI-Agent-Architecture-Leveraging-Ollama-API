@@ -3,7 +3,7 @@
 #include <iostream>
 #include <regex>
 #include <sstream>
-
+#include "../utils/SystemUtils.h"
 using namespace std::chrono;
 
 // ─── Constructor ──────────────────────────────────────────────────────────────
@@ -45,7 +45,8 @@ std::string AgentLoop::buildSystemPrompt(const std::string& task) {
         "TUYET DOI KHONG:\n"
         "- Khong them preamble truoc 3 dong tren.\n"
         "- Khong goi them tool sau khi da viet Final Answer.\n"
-        "- Khong de trong Action hoac Arguments.\n";
+        "- Khong de trong Action hoac Arguments.\n"
+        "Khi thực hiện lệnh ghi file vào Linux, luôn sử dụng lệnh printf thay vì echo để tránh lỗi cú pháp, và sử dụng > để đảm bảo ghi đè nội dung cũ.";
 
     return prompt;
 }
@@ -124,7 +125,7 @@ std::string AgentLoop::doObserve(const std::string& toolResult) {
 
 // ─── run() — Template Method (CODE THẬT ĐÃ ĐƯỢC MỞ KHÓA) ─────────────────────
 
-Trajectory AgentLoop::run(const std::string& taskId, const std::string& task) {
+Trajectory AgentLoop::run(const std::string& taskId, const std::string& task, const std::string& imagePath) {
     Trajectory traj;
     traj.taskId = taskId;
     traj.task   = task;
@@ -133,11 +134,16 @@ Trajectory AgentLoop::run(const std::string& taskId, const std::string& task) {
     traj.model  = (llm_) ? llm_->getModelName() : "Unknown_Model"; 
 
     loopDetector_.reset();
+    bool hasImage = !imagePath.empty();
+    std::string binaryImage = "";
 
+    if (hasImage){  
+        binaryImage = SystemUtils::encodeImageToBase64(imagePath);
+    }
     // ── Khởi tạo conversation history ────────────────────────────────────────
     std::vector<Message> messages = {
-        {"system", buildSystemPrompt(task)},
-        {"user",   task}
+        {"system", buildSystemPrompt(task), "",false},
+        {"user",   task, binaryImage, hasImage}
     };
 
     auto runStart = steady_clock::now();

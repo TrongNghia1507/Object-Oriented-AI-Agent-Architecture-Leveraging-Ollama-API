@@ -277,7 +277,6 @@ CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o: \
  /usr/include/c++/13/variant /usr/include/c++/13/numeric \
  /usr/include/c++/13/bits/stl_numeric.h \
  /usr/include/c++/13/pstl/glue_numeric_defs.h /usr/include/c++/13/any \
- /workspaces/AgentAI/LLMClient/base64.h \
  /usr/include/x86_64-linux-gnu/curl/curl.h \
  /usr/include/x86_64-linux-gnu/curl/curlver.h \
  /usr/include/x86_64-linux-gnu/curl/system.h \
@@ -308,4 +307,5 @@ CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o: \
  /usr/include/x86_64-linux-gnu/curl/mprintf.h /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
- /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/iostream
+ /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/iostream \
+ /workspaces/AgentAI/LLMClient/../utils/SystemUtils.h

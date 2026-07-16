@@ -128,7 +128,7 @@ CMakeFiles/run_test.dir/tools/calculator_tool.cpp.o: \
  /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
  /usr/include/c++/13/bits/deque.tcc /usr/include/c++/13/bits/stl_stack.h \
  /workspaces/AgentAI/tools/tool.h \
- /workspaces/AgentAI/tools/../Harness/environment.h \
+ /workspaces/AgentAI/tools/../environment/environment.h \
  /usr/include/c++/13/sstream /usr/include/c++/13/istream \
  /usr/include/c++/13/ios /usr/include/c++/13/exception \
  /usr/include/c++/13/bits/exception_ptr.h \
