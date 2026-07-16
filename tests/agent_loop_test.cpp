@@ -15,6 +15,8 @@
 #include "../tools/advanced_math_tool.h"
 #include "../tools/memory_tool.h"
 #include "../tools/exec_tool.h"
+#include "../tools/translate_tool.h"
+#include "../tools/web_search_tool.h"
 #include "../environment/environment.h"
 #include <cassert>
 #include <iostream>

@@ -24,6 +24,7 @@ set(CORE_SOURCES
     tools/memory_tool.cpp
     tools/tool_registry.cpp
     tools/web_search_tool.cpp
+    tools/translate_tool.cpp
     environment/environment.cpp
     Harness/Harness_runner.cpp
     agent/agent_loop.cpp
