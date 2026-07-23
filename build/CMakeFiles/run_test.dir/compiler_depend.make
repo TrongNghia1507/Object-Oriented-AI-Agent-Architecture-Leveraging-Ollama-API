@@ -1885,7 +1885,7 @@ CMakeFiles/run_test.dir/environment/environment.cpp.o: /workspaces/AgentAI/envir
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
   /workspaces/AgentAI/environment/environment.h
 
-CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/agent_loop_test.cpp \
+CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o: /workspaces/AgentAI/tests/agent_loop_test_v2.cpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -1893,6 +1893,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/algorithm \
   /usr/include/c++/13/any \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/atomic \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
@@ -1903,6 +1904,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/bits/allocator.h \
   /usr/include/c++/13/bits/atomic_base.h \
   /usr/include/c++/13/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/13/bits/atomic_timed_wait.h \
   /usr/include/c++/13/bits/atomic_wait.h \
   /usr/include/c++/13/bits/basic_ios.h \
   /usr/include/c++/13/bits/basic_ios.tcc \
@@ -1975,6 +1977,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/bits/ranges_util.h \
   /usr/include/c++/13/bits/refwrap.h \
   /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/semaphore_base.h \
   /usr/include/c++/13/bits/shared_ptr.h \
   /usr/include/c++/13/bits/shared_ptr_atomic.h \
   /usr/include/c++/13/bits/shared_ptr_base.h \
@@ -1984,6 +1987,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/bits/std_abs.h \
   /usr/include/c++/13/bits/std_function.h \
   /usr/include/c++/13/bits/std_mutex.h \
+  /usr/include/c++/13/bits/std_thread.h \
   /usr/include/c++/13/bits/stl_algo.h \
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
@@ -2011,7 +2015,9 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
+  /usr/include/c++/13/bits/this_thread_sleep.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
+  /usr/include/c++/13/bits/unique_lock.h \
   /usr/include/c++/13/bits/unique_ptr.h \
   /usr/include/c++/13/bits/unordered_map.h \
   /usr/include/c++/13/bits/unordered_set.h \
@@ -2032,6 +2038,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/codecvt \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
+  /usr/include/c++/13/condition_variable \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdint \
   /usr/include/c++/13/cstdio \
@@ -2067,6 +2074,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/locale \
   /usr/include/c++/13/map \
   /usr/include/c++/13/memory \
+  /usr/include/c++/13/mutex \
   /usr/include/c++/13/new \
   /usr/include/c++/13/numbers \
   /usr/include/c++/13/numeric \
@@ -2080,14 +2088,17 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/c++/13/queue \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/ratio \
+  /usr/include/c++/13/semaphore \
   /usr/include/c++/13/span \
   /usr/include/c++/13/sstream \
   /usr/include/c++/13/stack \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stop_token \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/system_error \
+  /usr/include/c++/13/thread \
   /usr/include/c++/13/tr1/bessel_function.tcc \
   /usr/include/c++/13/tr1/beta_function.tcc \
   /usr/include/c++/13/tr1/ell_integral.tcc \
@@ -2124,6 +2135,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
+  /usr/include/semaphore.h \
   /usr/include/sqlite3.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
@@ -2172,6 +2184,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/sched.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
@@ -2242,12 +2255,14 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/a
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/syscall.h \
+  /usr/include/x86_64-linux-gnu/sys/time.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
+  /workspaces/AgentAI/Harness/message_queue.h \
   /workspaces/AgentAI/LLMClient/OllamaClient.h \
   /workspaces/AgentAI/LLMClient/json.hpp \
   /workspaces/AgentAI/LLMClient/LLMClient.h \
@@ -4787,15 +4802,37 @@ CMakeFiles/run_test.dir/utils/base64.cpp.o: /workspaces/AgentAI/utils/base64.cpp
 
 /workspaces/AgentAI/tools/advanced_math_tool.h:
 
+/usr/include/x86_64-linux-gnu/bits/semaphore.h:
+
 /usr/include/sqlite3.h:
+
+/usr/include/semaphore.h:
+
+/usr/include/c++/13/stop_token:
+
+/usr/include/c++/13/semaphore:
 
 /usr/include/c++/13/queue:
 
+/usr/include/c++/13/mutex:
+
+/usr/include/c++/13/bits/unique_lock.h:
+
+/usr/include/c++/13/bits/this_thread_sleep.h:
+
 /usr/include/c++/13/bits/stl_queue.h:
 
-/workspaces/AgentAI/tests/agent_loop_test.cpp:
+/usr/include/c++/13/bits/semaphore_base.h:
+
+/usr/include/c++/13/bits/atomic_timed_wait.h:
+
+/usr/include/c++/13/atomic:
+
+/workspaces/AgentAI/tests/agent_loop_test_v2.cpp:
 
 /workspaces/AgentAI/utils/base64.cpp:
+
+/workspaces/AgentAI/Harness/message_queue.h:
 
 /workspaces/AgentAI/agent/loop_detector.cpp:
 
@@ -4955,6 +4992,8 @@ CMakeFiles/run_test.dir/utils/base64.cpp.o: /workspaces/AgentAI/utils/base64.cpp
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
+/usr/include/c++/13/condition_variable:
+
 /workspaces/AgentAI/agent/agent_loop.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
@@ -5020,6 +5059,8 @@ CMakeFiles/run_test.dir/utils/base64.cpp.o: /workspaces/AgentAI/utils/base64.cpp
 /usr/include/c++/13/bits/unique_ptr.h:
 
 /usr/include/c++/13/bits/align.h:
+
+/usr/include/c++/13/thread:
 
 /workspaces/AgentAI/Harness/Harness_runner.h:
 
@@ -5590,6 +5631,8 @@ CMakeFiles/run_test.dir/utils/base64.cpp.o: /workspaces/AgentAI/utils/base64.cpp
 /usr/include/c++/13/tr1/ell_integral.tcc:
 
 /usr/include/c++/13/tr1/exp_integral.tcc:
+
+/usr/include/c++/13/bits/std_thread.h:
 
 /usr/include/c++/13/tr1/bessel_function.tcc:
 
