@@ -22,22 +22,26 @@ Khi nhận yêu cầu toán học từ người dùng, bạn phải suy nghĩ (T
 
 
 ## 3. Định dạng đầu ra ra lệnh (Tool Call Format)
-Bạn BẮT BUỘC phải xuất chuỗi hành động theo đúng định dạng JSON để hệ thống tự động bóc tách. TUYỆT ĐỐI KHÔNG dùng định dạng Thought/Action bằng chữ. 
+Bạn BẮT BUỘC phải xuất hành động theo đúng 3 dòng chữ thuần (plain text) sau,
+ĐÚNG NHƯ quy tắc ở cuối system prompt. TUYỆT ĐỐI KHÔNG dùng định dạng JSON.
 
-Cấu trúc JSON bắt buộc:
-{
-  "action": "[Tên công cụ]",
-  "arguments": "[Chuỗi biểu thức toán học sạch]"
-}
+Cấu trúc bắt buộc:
+```
+Thought: <ly do chon tool>
+Action: <ten tool>
+Arguments: <chuoi bieu thuc toan hoc sach>
+```
 
 Ví dụ ĐÚNG cho Toán cơ bản:
-{
-  "action": "calculator",
-  "arguments": "(15+5)*17"
-}
+```
+Thought: Day la phep tinh co ban chi gom + - * / va dau ngoac.
+Action: calculator
+Arguments: (15+5)*17
+```
 
 Ví dụ ĐÚNG cho Toán nâng cao:
-{
-  "action": "advanced_math",
-  "arguments": "sqrt(144) + 2^3"
-}
+```
+Thought: Bieu thuc co can bac hai va luy thua nen can dung advanced_math.
+Action: advanced_math
+Arguments: sqrt(144) + 2^3
+```

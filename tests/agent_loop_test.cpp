@@ -6,6 +6,7 @@
 #include "../tools/exec_tool.h"
 #include "../tools/translate_tool.h"
 #include "../tools/web_search_tool.h"
+#include "../tools/datetime_tool.h"
 #include "../environment/environment.h"
 #include <cassert>
 #include <iostream>
@@ -42,6 +43,7 @@ int main() {
     registry.registerTool(std::make_unique<ExecTool>(&env, ExecPolicy::AlwaysAllow()));
     registry.registerTool(makeReadFileTool(&env));
     registry.registerTool(makeWriteFileTool(&env));
+    registry.registerTool(std::make_unique<DateTimeTool>());
     
     auto db = std::make_shared<DatabaseManager>();
     registry.registerTool(std::make_unique<MemorySaveTool>(db));
