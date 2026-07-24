@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspaces/AgentAI/tools/calculator_tool.cpp" "CMakeFiles/run_test.dir/tools/calculator_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/calculator_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/exec_tool.cpp" "CMakeFiles/run_test.dir/tools/exec_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/exec_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/memory_tool.cpp" "CMakeFiles/run_test.dir/tools/memory_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/memory_tool.cpp.o.d"
+  "/workspaces/AgentAI/tools/text_to_speech.cpp" "CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o.d"
   "/workspaces/AgentAI/tools/tool_registry.cpp" "CMakeFiles/run_test.dir/tools/tool_registry.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/tool_registry.cpp.o.d"
   "/workspaces/AgentAI/tools/translate_tool.cpp" "CMakeFiles/run_test.dir/tools/translate_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/translate_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/web_search_tool.cpp" "CMakeFiles/run_test.dir/tools/web_search_tool.cpp.o" "gcc" "CMakeFiles/run_test.dir/tools/web_search_tool.cpp.o.d"

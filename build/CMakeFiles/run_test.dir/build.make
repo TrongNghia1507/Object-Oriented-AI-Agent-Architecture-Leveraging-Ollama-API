@@ -209,10 +209,24 @@ CMakeFiles/run_test.dir/tools/translate_tool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run_test.dir/tools/translate_tool.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tools/translate_tool.cpp -o CMakeFiles/run_test.dir/tools/translate_tool.cpp.s
 
+CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o: CMakeFiles/run_test.dir/flags.make
+CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o: /workspaces/AgentAI/tools/text_to_speech.cpp
+CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o -MF CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o.d -o CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o -c /workspaces/AgentAI/tools/text_to_speech.cpp
+
+CMakeFiles/run_test.dir/tools/text_to_speech.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run_test.dir/tools/text_to_speech.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tools/text_to_speech.cpp > CMakeFiles/run_test.dir/tools/text_to_speech.cpp.i
+
+CMakeFiles/run_test.dir/tools/text_to_speech.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run_test.dir/tools/text_to_speech.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tools/text_to_speech.cpp -o CMakeFiles/run_test.dir/tools/text_to_speech.cpp.s
+
 CMakeFiles/run_test.dir/environment/environment.cpp.o: CMakeFiles/run_test.dir/flags.make
 CMakeFiles/run_test.dir/environment/environment.cpp.o: /workspaces/AgentAI/environment/environment.cpp
 CMakeFiles/run_test.dir/environment/environment.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/run_test.dir/environment/environment.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/run_test.dir/environment/environment.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/environment/environment.cpp.o -MF CMakeFiles/run_test.dir/environment/environment.cpp.o.d -o CMakeFiles/run_test.dir/environment/environment.cpp.o -c /workspaces/AgentAI/environment/environment.cpp
 
 CMakeFiles/run_test.dir/environment/environment.cpp.i: cmake_force
@@ -226,7 +240,7 @@ CMakeFiles/run_test.dir/environment/environment.cpp.s: cmake_force
 CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o: CMakeFiles/run_test.dir/flags.make
 CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o: /workspaces/AgentAI/Harness/Harness_runner.cpp
 CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o -MF CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o.d -o CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o -c /workspaces/AgentAI/Harness/Harness_runner.cpp
 
 CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.s: cmake_force
 CMakeFiles/run_test.dir/agent/agent_loop.cpp.o: CMakeFiles/run_test.dir/flags.make
 CMakeFiles/run_test.dir/agent/agent_loop.cpp.o: /workspaces/AgentAI/agent/agent_loop.cpp
 CMakeFiles/run_test.dir/agent/agent_loop.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/run_test.dir/agent/agent_loop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/run_test.dir/agent/agent_loop.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/agent/agent_loop.cpp.o -MF CMakeFiles/run_test.dir/agent/agent_loop.cpp.o.d -o CMakeFiles/run_test.dir/agent/agent_loop.cpp.o -c /workspaces/AgentAI/agent/agent_loop.cpp
 
 CMakeFiles/run_test.dir/agent/agent_loop.cpp.i: cmake_force
@@ -254,7 +268,7 @@ CMakeFiles/run_test.dir/agent/agent_loop.cpp.s: cmake_force
 CMakeFiles/run_test.dir/agent/loop_detector.cpp.o: CMakeFiles/run_test.dir/flags.make
 CMakeFiles/run_test.dir/agent/loop_detector.cpp.o: /workspaces/AgentAI/agent/loop_detector.cpp
 CMakeFiles/run_test.dir/agent/loop_detector.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/run_test.dir/agent/loop_detector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/run_test.dir/agent/loop_detector.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/agent/loop_detector.cpp.o -MF CMakeFiles/run_test.dir/agent/loop_detector.cpp.o.d -o CMakeFiles/run_test.dir/agent/loop_detector.cpp.o -c /workspaces/AgentAI/agent/loop_detector.cpp
 
 CMakeFiles/run_test.dir/agent/loop_detector.cpp.i: cmake_force
@@ -268,7 +282,7 @@ CMakeFiles/run_test.dir/agent/loop_detector.cpp.s: cmake_force
 CMakeFiles/run_test.dir/agent/skill_loader.cpp.o: CMakeFiles/run_test.dir/flags.make
 CMakeFiles/run_test.dir/agent/skill_loader.cpp.o: /workspaces/AgentAI/agent/skill_loader.cpp
 CMakeFiles/run_test.dir/agent/skill_loader.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/run_test.dir/agent/skill_loader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/run_test.dir/agent/skill_loader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/agent/skill_loader.cpp.o -MF CMakeFiles/run_test.dir/agent/skill_loader.cpp.o.d -o CMakeFiles/run_test.dir/agent/skill_loader.cpp.o -c /workspaces/AgentAI/agent/skill_loader.cpp
 
 CMakeFiles/run_test.dir/agent/skill_loader.cpp.i: cmake_force
@@ -282,7 +296,7 @@ CMakeFiles/run_test.dir/agent/skill_loader.cpp.s: cmake_force
 CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o: CMakeFiles/run_test.dir/flags.make
 CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o: /workspaces/AgentAI/utils/SystemUtils.cpp
 CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o -MF CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o.d -o CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o -c /workspaces/AgentAI/utils/SystemUtils.cpp
 
 CMakeFiles/run_test.dir/utils/SystemUtils.cpp.i: cmake_force
@@ -305,6 +319,7 @@ run_test_OBJECTS = \
 "CMakeFiles/run_test.dir/tools/tool_registry.cpp.o" \
 "CMakeFiles/run_test.dir/tools/web_search_tool.cpp.o" \
 "CMakeFiles/run_test.dir/tools/translate_tool.cpp.o" \
+"CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o" \
 "CMakeFiles/run_test.dir/environment/environment.cpp.o" \
 "CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o" \
 "CMakeFiles/run_test.dir/agent/agent_loop.cpp.o" \
@@ -325,6 +340,7 @@ run_test: CMakeFiles/run_test.dir/tools/memory_tool.cpp.o
 run_test: CMakeFiles/run_test.dir/tools/tool_registry.cpp.o
 run_test: CMakeFiles/run_test.dir/tools/web_search_tool.cpp.o
 run_test: CMakeFiles/run_test.dir/tools/translate_tool.cpp.o
+run_test: CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o
 run_test: CMakeFiles/run_test.dir/environment/environment.cpp.o
 run_test: CMakeFiles/run_test.dir/Harness/Harness_runner.cpp.o
 run_test: CMakeFiles/run_test.dir/agent/agent_loop.cpp.o
@@ -333,7 +349,7 @@ run_test: CMakeFiles/run_test.dir/agent/skill_loader.cpp.o
 run_test: CMakeFiles/run_test.dir/utils/SystemUtils.cpp.o
 run_test: CMakeFiles/run_test.dir/build.make
 run_test: CMakeFiles/run_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable run_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable run_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/run_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

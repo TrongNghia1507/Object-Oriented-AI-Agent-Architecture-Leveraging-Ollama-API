@@ -21,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/run_test.dir/tools/exec_tool.cpp.o.d"
   "CMakeFiles/run_test.dir/tools/memory_tool.cpp.o"
   "CMakeFiles/run_test.dir/tools/memory_tool.cpp.o.d"
+  "CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o"
+  "CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o.d"
   "CMakeFiles/run_test.dir/tools/tool_registry.cpp.o"
   "CMakeFiles/run_test.dir/tools/tool_registry.cpp.o.d"
   "CMakeFiles/run_test.dir/tools/translate_tool.cpp.o"

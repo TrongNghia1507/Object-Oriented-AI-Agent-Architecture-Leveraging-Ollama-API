@@ -393,6 +393,30 @@ tools/memory_tool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/memory_tool.cpp.s
 .PHONY : tools/memory_tool.cpp.s
 
+tools/text_to_speech.o: tools/text_to_speech.cpp.o
+.PHONY : tools/text_to_speech.o
+
+# target to build an object file
+tools/text_to_speech.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/text_to_speech.cpp.o
+.PHONY : tools/text_to_speech.cpp.o
+
+tools/text_to_speech.i: tools/text_to_speech.cpp.i
+.PHONY : tools/text_to_speech.i
+
+# target to preprocess a source file
+tools/text_to_speech.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/text_to_speech.cpp.i
+.PHONY : tools/text_to_speech.cpp.i
+
+tools/text_to_speech.s: tools/text_to_speech.cpp.s
+.PHONY : tools/text_to_speech.s
+
+# target to generate assembly for a file
+tools/text_to_speech.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tools/text_to_speech.cpp.s
+.PHONY : tools/text_to_speech.cpp.s
+
 tools/tool_registry.o: tools/tool_registry.cpp.o
 .PHONY : tools/tool_registry.o
 
@@ -555,6 +579,9 @@ help:
 	@echo "... tools/memory_tool.o"
 	@echo "... tools/memory_tool.i"
 	@echo "... tools/memory_tool.s"
+	@echo "... tools/text_to_speech.o"
+	@echo "... tools/text_to_speech.i"
+	@echo "... tools/text_to_speech.s"
 	@echo "... tools/tool_registry.o"
 	@echo "... tools/tool_registry.i"
 	@echo "... tools/tool_registry.s"

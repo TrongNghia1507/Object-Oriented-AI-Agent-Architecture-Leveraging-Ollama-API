@@ -301,6 +301,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o: \
  /workspaces/AgentAI/tests/../tools/translate_tool.h \
  /workspaces/AgentAI/tests/../tools/web_search_tool.h \
  /workspaces/AgentAI/tests/../tools/file_tool.h \
+ /workspaces/AgentAI/tests/../tools/text_to_speech.h \
  /workspaces/AgentAI/tests/../Harness/message_queue.h \
  /usr/include/c++/13/queue /usr/include/c++/13/bits/stl_queue.h \
  /usr/include/c++/13/mutex /usr/include/c++/13/bits/unique_lock.h \
