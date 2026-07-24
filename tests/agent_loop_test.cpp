@@ -6,6 +6,8 @@
 #include "../tools/exec_tool.h"
 #include "../tools/translate_tool.h"
 #include "../tools/web_search_tool.h"
+#include "../tools/text_to_speech.h"
+#include "../tools/file_tool.h"
 #include "../environment/environment.h"
 #include <cassert>
 #include <iostream>
@@ -13,12 +15,10 @@
 #include <queue>
 #include <string>
 #include <fstream>
-#include "../tools/file_tool.h"
 #include <memory>
 #include <filesystem>
 #include "../LLMClient/json.hpp"
 #include "../LLMClient/OllamaClient.h"
-#include "../tools/text_to_speech.h"
 using namespace std;
 
 int main() {

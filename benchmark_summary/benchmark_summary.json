@@ -1,0 +1,57 @@
+{
+    "passed_tasks": 0,
+    "success_rate_percent": 0.0,
+    "tasks": [
+        {
+            "eval_type": "keyword",
+            "passed": false,
+            "task_id": "task_001"
+        },
+        {
+            "eval_type": "functional",
+            "passed": false,
+            "task_id": "task_002"
+        },
+        {
+            "eval_type": "keyword",
+            "passed": false,
+            "task_id": "task_003"
+        },
+        {
+            "eval_type": "keyword",
+            "passed": false,
+            "task_id": "task_004"
+        },
+        {
+            "eval_type": "functional",
+            "passed": false,
+            "task_id": "task_005"
+        },
+        {
+            "eval_type": "functional",
+            "passed": false,
+            "task_id": "task_006"
+        },
+        {
+            "eval_type": "keyword",
+            "passed": false,
+            "task_id": "task_007"
+        },
+        {
+            "eval_type": "functional",
+            "passed": false,
+            "task_id": "task_008"
+        },
+        {
+            "eval_type": "functional",
+            "passed": false,
+            "task_id": "task_009"
+        },
+        {
+            "eval_type": "functional",
+            "passed": false,
+            "task_id": "task_010"
+        }
+    ],
+    "total_tasks": 10
+}
