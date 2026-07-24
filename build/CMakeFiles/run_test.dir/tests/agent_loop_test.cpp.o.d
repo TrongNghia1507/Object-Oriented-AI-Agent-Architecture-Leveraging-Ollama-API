@@ -306,4 +306,5 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: \
  /usr/include/c++/13/bits/fstream.tcc \
  /workspaces/AgentAI/tests/../tools/file_tool.h \
  /workspaces/AgentAI/tests/../LLMClient/json.hpp \
- /workspaces/AgentAI/tests/../LLMClient/OllamaClient.h
+ /workspaces/AgentAI/tests/../LLMClient/OllamaClient.h \
+ /workspaces/AgentAI/tests/../tools/text_to_speech.h

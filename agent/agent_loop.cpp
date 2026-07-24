@@ -159,7 +159,7 @@ Trajectory AgentLoop::run(const std::string& taskId, const std::string& task, co
         auto t0 = steady_clock::now();
         step.thought = doThink(messages);
         step.latencyMs = duration_cast<milliseconds>(steady_clock::now() - t0).count();
-
+        step.tokensUsed = llm_->getLastTokenUsage();
         std::cout << "\n[Step " << stepIdx << " | " << step.latencyMs << "ms]\n"
                   << step.thought << "\n";
 

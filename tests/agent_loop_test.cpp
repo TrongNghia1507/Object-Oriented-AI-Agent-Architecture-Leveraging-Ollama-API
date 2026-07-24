@@ -18,7 +18,7 @@
 #include <filesystem>
 #include "../LLMClient/json.hpp"
 #include "../LLMClient/OllamaClient.h"
-
+#include "../tools/text_to_speech.h"
 using namespace std;
 
 int main() {
@@ -33,7 +33,7 @@ int main() {
     OllamaClient llmClient(modelName, "https://openrouter.ai");
 
     // 2. THIẾT LẬP MÔI TRƯỜNG & TOOL REGISTRY
-    NativeEnvironment env; // Dùng Native để test thật trên máy
+    NativeEnvironment env;
     ToolRegistry registry;
 
     // Đăng ký các tool vào hệ thống
@@ -45,15 +45,14 @@ int main() {
     
     auto db = std::make_shared<DatabaseManager>();
     registry.registerTool(std::make_unique<MemorySaveTool>(db));
-    registry.registerTool(std::make_unique<MemorySearchTool>(db));
-
-    registry.registerTool(std::make_unique<TranslateTool>());
-    registry.registerTool(std::make_unique<WebSearchTool>());
-
+    registry.registerTool(std::make_unique<MemorySearchTool>(db));   
+    registry.registerTool(std::make_unique<TextToSpeechTool>());
     // 3. KHỞI TẠO AGENT LOOP
-    int maxSteps = 10;
+    int maxSteps = 20;
+    SkillLoader skillLoader("skills");
+    skillLoader.loadAll();
     // Truyền LLM, Registry, SkillLoader (để nullptr nếu chưa test skill), và Max Steps
-    AgentLoop agent(&llmClient, &registry, nullptr, maxSteps);
+    AgentLoop agent(&llmClient, &registry,&skillLoader, maxSteps);
 
     // [TÙY CHỌN] Cắm Hook để xem log trực tiếp trên Terminal lúc Agent chạy
     agent.setStepHook([](const Step& step) {
@@ -63,26 +62,9 @@ int main() {
     });
 
     // 4. KÍCH HOẠT AGENT THỰC THI TASK
-    // Tắt để test web search & translate
-    // std::string taskId = "test_pipeline_001";
-    // std::string prompt = "Quan sát bức ảnh được đính kèm và ghi kết quả tên của vật trong ảnh và trạng thái hình thể sang một file object_name.txt trong thư mục results";
-    // std::string imagePath = "/workspaces/AgentAI/image/ankaramessi.png";
-    // std::cout << "[Main] Giao viec cho Agent: " << prompt << "\n";
-
-
-    // std::string taskId = "test_pipeline_002";
-    // // Prompt này yêu cầu Agent dịch sang tiếng Anh và tìm kiếm trên web theo luật đã định
-    // std::string prompt = "Hãy tìm kiếm thông tin về 'Tháp Eiffel' trên mạng và cho tôi biết chiều cao của nó.";
-    // std::string imagePath = ""; // Để trống vì task này không cần ảnh
-    // // ======================================================
-
-    std::string taskId = "test_pipeline_003_memory";
-    
-    // === THÊM MỚI: Task để test Memory Save và Memory Search ===
-    std::string prompt = "Hãy làm 2 bước sau: 1. Sử dụng công cụ lưu trữ để ghi nhớ thông tin 'Mã số két sắt của tôi là 868686' với nhãn [personal_info]. 2. Sau đó, giả vờ như bạn không biết, hãy sử dụng công cụ tìm kiếm trong bộ nhớ với từ khóa 'két sắt' để lấy lại đoạn mã số đó và trả lời cho tôi.";
-    std::string imagePath = ""; 
-    // ===========================================================
-
+    std::string taskId = "test_pipeline_001";
+    std::string prompt = "Tìm cho tôi công thức tính diện tích và chu vi đường tròn, sau đó tính cho tôi biểu thức 15 nhân 07 + 07. Lưu 2 kết quả của 2 task này vào 1 file test_2.txt trong thư mục results";
+    std::string imagePath = "";
     std::cout << "[Main] Giao viec cho Agent: " << prompt << "\n";
     
     // Gọi hàm run(), hệ thống sẽ tự động loop theo quy trình ReAct
@@ -141,4 +123,5 @@ int main() {
     }
 
     return 0;
+    env.teardown();
 }

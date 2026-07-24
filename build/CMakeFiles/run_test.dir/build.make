@@ -69,19 +69,19 @@ include CMakeFiles/run_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/run_test.dir/flags.make
 
-CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o: CMakeFiles/run_test.dir/flags.make
-CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o: /workspaces/AgentAI/tests/agent_loop_test_v2.cpp
-CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o -MF CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o.d -o CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o -c /workspaces/AgentAI/tests/agent_loop_test_v2.cpp
+CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: CMakeFiles/run_test.dir/flags.make
+CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/agent_loop_test.cpp
+CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o: CMakeFiles/run_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o -MF CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o.d -o CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o -c /workspaces/AgentAI/tests/agent_loop_test.cpp
 
-CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tests/agent_loop_test_v2.cpp > CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.i
+CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tests/agent_loop_test.cpp > CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.i
 
-CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tests/agent_loop_test_v2.cpp -o CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.s
+CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tests/agent_loop_test.cpp -o CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.s
 
 CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o: CMakeFiles/run_test.dir/flags.make
 CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o: /workspaces/AgentAI/LLMClient/OllamaClient.cpp
@@ -309,7 +309,7 @@ CMakeFiles/run_test.dir/utils/SystemUtils.cpp.s: cmake_force
 
 # Object files for target run_test
 run_test_OBJECTS = \
-"CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o" \
+"CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o" \
 "CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o" \
 "CMakeFiles/run_test.dir/utils/base64.cpp.o" \
 "CMakeFiles/run_test.dir/tools/advanced_math_tool.cpp.o" \
@@ -330,7 +330,7 @@ run_test_OBJECTS = \
 # External object files for target run_test
 run_test_EXTERNAL_OBJECTS =
 
-run_test: CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o
+run_test: CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o
 run_test: CMakeFiles/run_test.dir/LLMClient/OllamaClient.cpp.o
 run_test: CMakeFiles/run_test.dir/utils/base64.cpp.o
 run_test: CMakeFiles/run_test.dir/tools/advanced_math_tool.cpp.o

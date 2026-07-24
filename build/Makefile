@@ -273,29 +273,29 @@ environment/environment.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/environment/environment.cpp.s
 .PHONY : environment/environment.cpp.s
 
-tests/agent_loop_test_v2.o: tests/agent_loop_test_v2.cpp.o
-.PHONY : tests/agent_loop_test_v2.o
+tests/agent_loop_test.o: tests/agent_loop_test.cpp.o
+.PHONY : tests/agent_loop_test.o
 
 # target to build an object file
-tests/agent_loop_test_v2.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.o
-.PHONY : tests/agent_loop_test_v2.cpp.o
+tests/agent_loop_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o
+.PHONY : tests/agent_loop_test.cpp.o
 
-tests/agent_loop_test_v2.i: tests/agent_loop_test_v2.cpp.i
-.PHONY : tests/agent_loop_test_v2.i
+tests/agent_loop_test.i: tests/agent_loop_test.cpp.i
+.PHONY : tests/agent_loop_test.i
 
 # target to preprocess a source file
-tests/agent_loop_test_v2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.i
-.PHONY : tests/agent_loop_test_v2.cpp.i
+tests/agent_loop_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.i
+.PHONY : tests/agent_loop_test.cpp.i
 
-tests/agent_loop_test_v2.s: tests/agent_loop_test_v2.cpp.s
-.PHONY : tests/agent_loop_test_v2.s
+tests/agent_loop_test.s: tests/agent_loop_test.cpp.s
+.PHONY : tests/agent_loop_test.s
 
 # target to generate assembly for a file
-tests/agent_loop_test_v2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tests/agent_loop_test_v2.cpp.s
-.PHONY : tests/agent_loop_test_v2.cpp.s
+tests/agent_loop_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_test.dir/build.make CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.s
+.PHONY : tests/agent_loop_test.cpp.s
 
 tools/advanced_math_tool.o: tools/advanced_math_tool.cpp.o
 .PHONY : tools/advanced_math_tool.o
@@ -564,9 +564,9 @@ help:
 	@echo "... environment/environment.o"
 	@echo "... environment/environment.i"
 	@echo "... environment/environment.s"
-	@echo "... tests/agent_loop_test_v2.o"
-	@echo "... tests/agent_loop_test_v2.i"
-	@echo "... tests/agent_loop_test_v2.s"
+	@echo "... tests/agent_loop_test.o"
+	@echo "... tests/agent_loop_test.i"
+	@echo "... tests/agent_loop_test.s"
 	@echo "... tools/advanced_math_tool.o"
 	@echo "... tools/advanced_math_tool.i"
 	@echo "... tools/advanced_math_tool.s"

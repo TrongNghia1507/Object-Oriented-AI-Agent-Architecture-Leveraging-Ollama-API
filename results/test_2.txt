@@ -1,0 +1,1 @@
+Công thức đường tròn: Diện tích S = pi * r^2, Chu vi C = 2 * pi * r. Kết quả phép tính 15 * 7 + 7 = 112.

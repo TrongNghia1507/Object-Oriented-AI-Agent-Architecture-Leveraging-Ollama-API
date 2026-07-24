@@ -37,7 +37,7 @@ set(CORE_SOURCES
 # Tạo file thực thi từ file test.cpp và các file nền
 # LƯU Ý: Nếu file test.cpp nằm trong thư mục tests/, hãy sửa thành tests/test.cpp
 add_executable(run_test 
-    tests/agent_loop_test_v2.cpp
+    tests/agent_loop_test.cpp
     ${CORE_SOURCES}
 )
 
