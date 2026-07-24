@@ -25,6 +25,7 @@ set(CORE_SOURCES
     tools/tool_registry.cpp
     tools/web_search_tool.cpp
     tools/translate_tool.cpp
+    tools/text_to_speech.cpp
     environment/environment.cpp
     Harness/Harness_runner.cpp
     agent/agent_loop.cpp
@@ -36,7 +37,7 @@ set(CORE_SOURCES
 # Tạo file thực thi từ file test.cpp và các file nền
 # LƯU Ý: Nếu file test.cpp nằm trong thư mục tests/, hãy sửa thành tests/test.cpp
 add_executable(run_test 
-    tests/agent_loop_test.cpp
+    tests/agent_loop_test_v2.cpp
     ${CORE_SOURCES}
 )
 

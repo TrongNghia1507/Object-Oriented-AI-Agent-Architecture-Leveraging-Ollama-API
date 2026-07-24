@@ -9,9 +9,9 @@ public:
 
     std::string getName() const override { return "web_search"; }
     std::string getDescription() const override {
-        return "Tim kiem tren DuckDuckGo (Instant Answer API — phu hop voi ten rieng, "
-               "dinh nghia, su kien lon). Tham so: tu khoa Tieng Anh ngan gon, "
-               "vi du: 'Eiffel Tower height' hay 'Albert Einstein'.";
+        return "Tim kiem tren SearXNG (Tong hop ket qua tu Google, Bing... — "
+               "phu hop de tim tin tuc, bai viet chi tiet, su kien thoi su). "
+               "Tham so: tu khoa Tieng Anh, vi du: 'Vietnam inflation rate' hay 'Albert Einstein'.";
     }
     // Nhận từ khóa tìm kiếm dạng chuỗi thuần.
     std::string execute(const std::string& arguments) override;
