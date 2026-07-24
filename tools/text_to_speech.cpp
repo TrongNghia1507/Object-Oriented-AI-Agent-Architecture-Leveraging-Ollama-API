@@ -92,7 +92,7 @@ bool TextToSpeechTool::callTtsApi(const std::string& text,
         return false;
     }
 
-    std::string fullUrl = apiUrl_ + (voiceId.empty() ? defaultVoiceId_ : voiceId);
+    std::string fullUrl = apiUrl_ + defaultVoiceId_;
 
     std::ostringstream body;
     body << "{"
@@ -160,13 +160,25 @@ std::string TextToSpeechTool::execute(const std::string& arguments) {
 
     if (parseArguments(arguments, parsed)) {
         text = parsed.text;
-        voiceId = parsed.voiceId;
         if (!parsed.outputFile.empty()) {
             outputFile = parsed.outputFile;
         }
-    } else {
-        text = arguments;
+        // Tool luon su dung defaultVoiceId_, bo qua voice_id do LLM cung cap.
+        if (!parsed.voiceId.empty()) {
+            std::cout << "[TTS Tool] Bo qua voice_id do Agent cung cap: "
+                  << parsed.voiceId << std::endl;
     }
+    } else {
+    text = arguments;
+
+    // Neu Agent truyen chuoi dang "hello"
+    // thi bo dau ngoac kep o hai dau.
+    if (text.size() >= 2 &&
+        text.front() == '"' &&
+        text.back() == '"') {
+        text = text.substr(1, text.size() - 2);
+    }
+}
 
     if (text.empty()) {
         return "[TTS Tool] Loi: khong co van ban nao de chuyen doi.";
