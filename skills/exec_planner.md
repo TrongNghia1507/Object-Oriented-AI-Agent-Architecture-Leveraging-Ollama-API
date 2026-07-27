@@ -5,16 +5,18 @@ keywords: exec, chay lenh, bash, shell, lenh, xoa file, tao file, tao thu muc, l
 Công cụ này cho phép bạn thực thi các lệnh Terminal/Bash/Shell trực tiếp trên hệ thống máy tính ảo.
 
 ### 1. ĐỊNH DẠNG DỮ LIỆU ĐẦU VÀO (ARGUMENTS)
-Khi gọi công cụ này, trường `arguments` PHẢI chứa DUY NHẤT một câu lệnh shell/bash hợp lệ.
-Đồng thời, bạn PHẢI bổ sung thêm trường `explanation` cùng cấp với `arguments` để giải thích lệnh cho người dùng.
+Bạn BẮT BUỘC phải xuất hành động theo đúng 3 dòng chữ thuần (plain text) sau,
+ĐÚNG NHƯ quy tắc ở cuối system prompt. TUYỆT ĐỐI KHÔNG dùng định dạng JSON.
+Dòng `Arguments` PHẢI chứa DUY NHẤT một câu lệnh shell/bash hợp lệ (không thêm
+giải thích hay chữ nào khác vào cùng dòng đó — phần giải thích đã nằm sẵn ở
+dòng `Thought`).
 
-Ví dụ JSON hợp lệ:
-{
-  "thought": "Cần xem danh sách file trong thư mục hiện tại.",
-  "action": "exec",
-  "arguments": "ls -la",
-  "explanation": "Liệt kê chi tiết các file và thư mục."
-}
+Ví dụ ĐÚNG:
+```
+Thought: Can xem danh sach file trong thu muc hien tai.
+Action: exec
+Arguments: ls -la
+```
 
 ### 2. QUY TẮC SỐNG CÒN (BẮT BUỘC TUÂN THỦ)
 Nếu vi phạm các quy tắc này, hệ thống sẽ bị treo hoặc sập:

@@ -2273,6 +2273,7 @@ CMakeFiles/run_test.dir/tests/agent_loop_test.cpp.o
  /workspaces/AgentAI/tools/exec_tool.h
  /workspaces/AgentAI/tools/file_tool.h
  /workspaces/AgentAI/tools/memory_tool.h
+ /workspaces/AgentAI/tools/text_to_speech.h
  /workspaces/AgentAI/tools/translate_tool.h
  /workspaces/AgentAI/tools/web_search_tool.h
 
