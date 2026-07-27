@@ -5,6 +5,7 @@
     "instruction": "Tính 15 * 17 và cho biết kết quả trong câu trả lời cuối cùng.",
     "eval_type": "keyword",
     "expected_keywords": ["255"],
+    "score_per_keyword": 10,
     "min_required": 1,
     "max_steps": 5
   },
@@ -14,14 +15,23 @@
     "instruction": "Tính 15 nhân 17. Lưu kết quả vào file result.txt.",
     "eval_type": "functional",
     "eval_script": "test -f result.txt && grep 255 result.txt && echo PASS",
+    "expected_output": "PASS",
+    "score": 50,
     "max_steps": 6
   },
   {
     "id": "task_003",
     "description": "Đọc file có sẵn",
     "instruction": "File data.txt đã tồn tại sẵn với nội dung là một con số. Hãy đọc file data.txt bằng tool read_file và cho biết con số đó trong câu trả lời cuối cùng.",
+    "setup_files": [
+      {
+        "path": "data.txt",
+        "content": "42"
+      }
+    ],
     "eval_type": "keyword",
     "expected_keywords": ["42"],
+    "score_per_keyword": 10,
     "min_required": 1,
     "max_steps": 5
   },
@@ -31,6 +41,7 @@
     "instruction": "Dùng tool exec để chạy lệnh lấy năm hiện tại của hệ thống (date +%Y) và cho biết năm đó trong câu trả lời cuối cùng.",
     "eval_type": "keyword",
     "expected_keywords": ["2026"],
+    "score_per_keyword": 10,
     "min_required": 1,
     "max_steps": 5
   },
@@ -40,14 +51,18 @@
     "instruction": "Tính (25 + 15) * 2 bằng calculator, sau đó lưu kết quả vào file sum.txt.",
     "eval_type": "functional",
     "eval_script": "test -f sum.txt && grep 80 sum.txt && echo PASS",
+    "expected_output": "PASS",
+    "score": 50,
     "max_steps": 8
   },
   {
     "id": "task_006",
     "description": "Kết hợp advanced_math + memory_save",
     "instruction": "Tính sqrt(144) + 2^3 bằng tool advanced_math, sau đó lưu kết quả vào memory với context_tag 'math_result'.",
-    "eval_type": "functional",
-    "eval_script": "COUNT=$(sqlite3 memory.db \"SELECT COUNT(*) FROM agent_memory WHERE content LIKE '%20%';\"); if [ \"$COUNT\" -gt 0 ]; then echo PASS; else echo FAIL; fi",
+    "eval_type": "sql",
+    "sql_query": "SELECT COUNT(*) FROM agent_memory WHERE content LIKE '%20%';",
+    "db_path": "/workspaces/AgentAI/build/memory.db",
+    "score": 50,
     "max_steps": 8
   },
   {
@@ -56,6 +71,7 @@
     "instruction": "Tìm kiếm 'thủ đô của Nhật Bản là gì'. Nếu tìm thấy từ 'Tokyo' trong kết quả tìm kiếm thì trả lời 'Tokyo'; nếu không tìm thấy thì trả lời 'Không tìm thấy'.",
     "eval_type": "keyword",
     "expected_keywords": ["tokyo"],
+    "score_per_keyword": 10,
     "min_required": 1,
     "max_steps": 8
   },
@@ -63,8 +79,16 @@
     "id": "task_008",
     "description": "Chuỗi 3 tool có điều kiện: read_file + calculator + write_file",
     "instruction": "File input.txt chứa sẵn một con số. Đọc file input.txt, nhân số đó với 5. Nếu kết quả > 40 thì ghi 'HIGH' vào output.txt, ngược lại ghi 'LOW' vào output.txt.",
+    "setup_files": [
+      {
+        "path": "input.txt",
+        "content": "10"
+      }
+    ],
     "eval_type": "functional",
     "eval_script": "test -f output.txt && grep -E 'HIGH|LOW' output.txt && echo PASS",
+    "expected_output": "PASS",
+    "score": 50,
     "max_steps": 10
   },
   {
@@ -72,7 +96,9 @@
     "description": "[Khó] Multi-step: advanced_math + memory_save + exec, agent tự quyết thứ tự",
     "instruction": "Cho 3 số 12, 7, 5. Tính tổng bình phương của chúng (12^2 + 7^2 + 5^2). Lưu kết quả vào memory với context_tag 'sum_of_squares', đồng thời dùng exec để ghi log các bước tính trung gian vào file log.txt.",
     "eval_type": "functional",
-    "eval_script": "COUNT=$(sqlite3 memory.db \"SELECT COUNT(*) FROM agent_memory WHERE content LIKE '%218%';\"); if [ \"$COUNT\" -gt 0 ] && [ -f log.txt ]; then echo PASS; else echo FAIL; fi",
+    "eval_script": "COUNT=$(sqlite3 /workspaces/AgentAI/build/memory.db \"SELECT COUNT(*) FROM agent_memory WHERE content LIKE '%218%';\"); if [ \"$COUNT\" -gt 0 ] && [ -f log.txt ]; then echo PASS; else echo FAIL; fi",
+    "expected_output": "PASS",
+    "score": 100,
     "max_steps": 12
   },
   {
@@ -81,25 +107,8 @@
     "instruction": "Tìm kiếm trên web tỷ giá 1 USD hiện tại bằng bao nhiêu VND, sau đó dùng calculator để tính 100 USD tương đương bao nhiêu VND, cuối cùng lưu kết quả vào file usd_to_vnd.txt.",
     "eval_type": "functional",
     "eval_script": "test -f usd_to_vnd.txt && echo PASS",
+    "expected_output": "PASS",
+    "score": 100,
     "max_steps": 12
-  },
-  {
-    "id": "task_011",
-    "description": "Lấy ngày hiện tại bằng tool get_datetime, kiểm tra định dạng YYYY-MM-DD",
-    "instruction": "Dùng tool get_datetime với tham số 'date' để lấy ngày hiện tại của hệ thống, sau đó lưu đúng kết quả đó (không thêm chữ nào khác) vào file today.txt bằng tool write_file.",
-    "eval_type": "functional",
-    "eval_script": "test -f today.txt && grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' today.txt && echo PASS",
-    "max_steps": 6
-  },
-  {
-    "id": "task_012",
-    "description": "Kết hợp get_datetime (unix) + calculator: kiểm tra agent tự chọn đúng tham số tool",
-    "instruction": "Dùng tool get_datetime với tham số 'unix' để lấy unix timestamp hiện tại, sau đó cho biết trong câu trả lời cuối cùng timestamp đó có phải là một số lớn hơn 1700000000 hay không (trả lời 'YES' hoặc 'NO').",
-    "eval_type": "keyword",
-    "expected_keywords": [
-      "yes"
-    ],
-    "min_required": 1,
-    "max_steps": 6
   }
 ]

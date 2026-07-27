@@ -28,5 +28,5 @@ public:
 
     void addEvaluator(std::shared_ptr<Evaluator> evaluator);
     void clearEvaluators() { evaluators_.clear(); }  
-    bool runTask(const std::string& taskId, const std::string& task, AgentLoop& agent);
+    bool runTask(const std::string& taskId, const std::string& task, AgentLoop& agent, const nlohmann::json& taskDef = nlohmann::json::object());
 };

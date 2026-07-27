@@ -16,7 +16,6 @@
 #include "../tools/translate_tool.h"
 #include "../tools/web_search_tool.h"
 #include "../tools/text_to_speech.h"
-#include "../tools/text_to_speech.h"
 #include "../tools/file_tool.h"
 using namespace std;
 
@@ -48,6 +47,8 @@ int main() {
     registry.registerTool(std::make_unique<MemorySaveTool>(db));
     registry.registerTool(std::make_unique<MemorySearchTool>(db));   
     registry.registerTool(std::make_unique<TextToSpeechTool>());
+    registry.registerTool(std::make_unique<TranslateTool>());
+    registry.registerTool(std::make_unique<WebSearchTool>());
     SkillLoader skillLoader("skills");
     skillLoader.loadAll();
 
