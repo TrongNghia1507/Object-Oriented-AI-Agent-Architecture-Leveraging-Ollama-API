@@ -1916,6 +1916,7 @@ CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/cxxabi_init_exception.h \
+  /usr/include/c++/13/bits/deque.tcc \
   /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
@@ -1986,6 +1987,7 @@ CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/
   /usr/include/c++/13/bits/stl_algobase.h \
   /usr/include/c++/13/bits/stl_bvector.h \
   /usr/include/c++/13/bits/stl_construct.h \
+  /usr/include/c++/13/bits/stl_deque.h \
   /usr/include/c++/13/bits/stl_function.h \
   /usr/include/c++/13/bits/stl_heap.h \
   /usr/include/c++/13/bits/stl_iterator.h \
@@ -1997,6 +1999,7 @@ CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/
   /usr/include/c++/13/bits/stl_pair.h \
   /usr/include/c++/13/bits/stl_raw_storage_iter.h \
   /usr/include/c++/13/bits/stl_relops.h \
+  /usr/include/c++/13/bits/stl_stack.h \
   /usr/include/c++/13/bits/stl_tempbuf.h \
   /usr/include/c++/13/bits/stl_tree.h \
   /usr/include/c++/13/bits/stl_uninitialized.h \
@@ -2037,6 +2040,7 @@ CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/
   /usr/include/c++/13/cwctype \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
+  /usr/include/c++/13/deque \
   /usr/include/c++/13/exception \
   /usr/include/c++/13/expected \
   /usr/include/c++/13/ext/aligned_buffer.h \
@@ -2074,6 +2078,7 @@ CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/
   /usr/include/c++/13/ratio \
   /usr/include/c++/13/span \
   /usr/include/c++/13/sstream \
+  /usr/include/c++/13/stack \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
@@ -2115,6 +2120,7 @@ CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/
   /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
+  /usr/include/sqlite3.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
@@ -2252,7 +2258,15 @@ CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/
   /workspaces/AgentAI/Harness/evaluator.h \
   /workspaces/AgentAI/Harness/functional_evaluator.h \
   /workspaces/AgentAI/Harness/keyword_evaluator.h \
-  /workspaces/AgentAI/LLMClient/OllamaClient.h
+  /workspaces/AgentAI/LLMClient/OllamaClient.h \
+  /workspaces/AgentAI/tools/advanced_math_tool.h \
+  /workspaces/AgentAI/tools/calculator_tool.h \
+  /workspaces/AgentAI/tools/exec_tool.h \
+  /workspaces/AgentAI/tools/file_tool.h \
+  /workspaces/AgentAI/tools/memory_tool.h \
+  /workspaces/AgentAI/tools/text_to_speech.h \
+  /workspaces/AgentAI/tools/translate_tool.h \
+  /workspaces/AgentAI/tools/web_search_tool.h
 
 CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.o: /workspaces/AgentAI/tools/advanced_math_tool.cpp \
   /usr/include/alloca.h \
@@ -5006,13 +5020,15 @@ CMakeFiles/harness_runner_test.dir/utils/base64.cpp.o: /workspaces/AgentAI/utils
 
 /workspaces/AgentAI/tools/translate_tool.cpp:
 
-/usr/include/sqlite3.h:
+/usr/include/c++/13/bits/stl_multiset.h:
+
+/workspaces/AgentAI/tools/file_tool.h:
 
 /workspaces/AgentAI/tools/calculator_tool.h:
 
 /workspaces/AgentAI/tools/advanced_math_tool.h:
 
-/usr/include/c++/13/bits/stl_multiset.h:
+/usr/include/sqlite3.h:
 
 /workspaces/AgentAI/utils/base64.cpp:
 

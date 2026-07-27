@@ -13,14 +13,14 @@
 class HarnessRunner {
 private:
     std::vector<std::shared_ptr<Evaluator>> evaluators_;
-    std::shared_ptr<Environment> env_; // === THÊM MỚI: Harness nắm giữ thực thể Environment ===
+    Environment* env_; // === THÊM MỚI: Harness nắm giữ thực thể Environment ===
 
 public:
     HarnessRunner() = default;
     ~HarnessRunner() = default;
 
     // === THÊM MỚI: Hàm gán Môi trường thực thi cho bộ đai Harness ===
-    void setEnvironment(std::shared_ptr<Environment> env) {
+    void setEnvironment(Environment* env) {
         env_ = env;
     }
 

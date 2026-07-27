@@ -8,6 +8,8 @@
 #include "../tools/web_search_tool.h"
 #include "../tools/datetime_tool.h"
 #include "../environment/environment.h"
+#include "../tools/file_tool.h"
+#include "../tools/text_to_speech.h"
 #include <cassert>
 #include <iostream>
 #include <memory>

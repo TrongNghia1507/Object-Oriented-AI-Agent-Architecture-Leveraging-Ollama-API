@@ -15,12 +15,12 @@
                 "type": "tool_call"
             },
             "action_log": "",
-            "latency_ms": 4368,
+            "latency_ms": 2006,
             "observation": "",
             "step_id": 0,
-            "thought": "Thought: Biểu thức chỉ chứa phép nhân cơ bản giữa hai số nguyên, do đó tôi sẽ sử dụng công cụ calculator.\nAction: calculator\nArguments: 15 * 17",
-            "tokens_used": 943,
-            "tool_result": "[LOI] Tool 'calculator' khong ton tai. Cac tool co san: (khong co)"
+            "thought": "Thought: Đây là phép tính cơ bản chỉ gồm phép nhân, nên sử dụng công cụ calculator.\nAction: calculator\nArguments: 15 * 17",
+            "tokens_used": 1358,
+            "tool_result": "255"
         },
         {
             "action": {
@@ -28,11 +28,11 @@
                 "type": "final_answer"
             },
             "action_log": "",
-            "latency_ms": 2124,
+            "latency_ms": 1378,
             "observation": "",
             "step_id": 1,
             "thought": "Final Answer: Kết quả của phép tính 15 * 17 là 255.",
-            "tokens_used": 941
+            "tokens_used": 1395
         }
     ],
     "stopped_by_loop": false,
@@ -40,6 +40,6 @@
     "success": true,
     "task": "Tính 15 * 17 và cho biết kết quả trong câu trả lời cuối cùng.",
     "task_id": "task_001",
-    "total_time_ms": 6494,
-    "total_tokens": 1884
+    "total_time_ms": 3386,
+    "total_tokens": 2753
 }

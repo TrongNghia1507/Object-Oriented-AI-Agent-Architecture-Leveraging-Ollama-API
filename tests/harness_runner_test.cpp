@@ -36,7 +36,7 @@ int main() {
 
     // Đăng ký các tool vào hệ thống
     
-    auto env = std::make_shared<NativeEnvironment>();
+    NativeEnvironment env;
 
     registry.registerTool(std::make_unique<CalculatorTool>());
     registry.registerTool(std::make_unique<AdvancedMathTool>());
@@ -59,7 +59,7 @@ int main() {
     // HarnessRunner nhận std::shared_ptr<Environment> nên mày cần dùng make_shared
     // 5. Khởi tạo HarnessRunner
     HarnessRunner runner;
-    runner.setEnvironment(env);
+    runner.setEnvironment(&env);
 
     // 6. Chạy Benchmark từ file JSON
     std::string taskFile = "/workspaces/AgentAI/benchmark/task.json"; 
