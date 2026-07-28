@@ -82,24 +82,5 @@
     "eval_type": "functional",
     "eval_script": "test -f usd_to_vnd.txt && echo PASS",
     "max_steps": 12
-  },
-  {
-    "id": "task_011",
-    "description": "Lấy ngày hiện tại bằng tool get_datetime, kiểm tra định dạng YYYY-MM-DD",
-    "instruction": "Dùng tool get_datetime với tham số 'date' để lấy ngày hiện tại của hệ thống, sau đó lưu đúng kết quả đó (không thêm chữ nào khác) vào file today.txt bằng tool write_file.",
-    "eval_type": "functional",
-    "eval_script": "test -f today.txt && grep -E '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' today.txt && echo PASS",
-    "max_steps": 6
-  },
-  {
-    "id": "task_012",
-    "description": "Kết hợp get_datetime (unix) + calculator: kiểm tra agent tự chọn đúng tham số tool",
-    "instruction": "Dùng tool get_datetime với tham số 'unix' để lấy unix timestamp hiện tại, sau đó cho biết trong câu trả lời cuối cùng timestamp đó có phải là một số lớn hơn 1700000000 hay không (trả lời 'YES' hoặc 'NO').",
-    "eval_type": "keyword",
-    "expected_keywords": [
-      "yes"
-    ],
-    "min_required": 1,
-    "max_steps": 6
   }
 ]

@@ -40,7 +40,7 @@ bool HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
 
     for (const auto& evaluator : evaluators_) {
         // Truyền thêm tham số thứ 3 là env_.get() để chuyển giao con trỏ Environment thô
-        std::optional<int> scoreResult = evaluator->evaluate(finalAnswer, trajectory, env_);
+        std::optional<int> scoreResult = evaluator->evaluate(finalAnswer, trajectory, env_.get());
 
         if (scoreResult.has_value()) {
             int score = scoreResult.value();
@@ -159,7 +159,7 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
         {"success_rate_percent", successRate},
         {"tasks", batchSummary}
     };
-    std::ofstream summaryFile("/workspaces/AgentAI/benchmark_summary/benchmark_summary.json");
+    std::ofstream summaryFile("benchmark_summary.json");
     if (summaryFile.is_open()) {
         summaryFile << std::setw(4) << finalReport << std::endl;
     }
