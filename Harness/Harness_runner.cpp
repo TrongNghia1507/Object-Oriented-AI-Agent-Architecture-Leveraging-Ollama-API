@@ -40,7 +40,7 @@ bool HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
 
     for (const auto& evaluator : evaluators_) {
         // Truyền thêm tham số thứ 3 là env_.get() để chuyển giao con trỏ Environment thô
-        std::optional<int> scoreResult = evaluator->evaluate(finalAnswer, trajectory, env_.get());
+        std::optional<int> scoreResult = evaluator->evaluate(finalAnswer, trajectory, env_);
 
         if (scoreResult.has_value()) {
             int score = scoreResult.value();
