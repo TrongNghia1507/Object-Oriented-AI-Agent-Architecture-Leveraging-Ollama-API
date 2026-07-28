@@ -14,7 +14,7 @@
         },
         {
             "eval_type": "keyword",
-            "passed": false,
+            "passed": true,
             "task_id": "task_003"
         },
         {
@@ -29,7 +29,7 @@
         },
         {
             "eval_type": "functional",
-            "passed": true,
+            "passed": false,
             "task_id": "task_006"
         },
         {
@@ -44,12 +44,12 @@
         },
         {
             "eval_type": "functional",
-            "passed": true,
+            "passed": false,
             "task_id": "task_009"
         },
         {
             "eval_type": "functional",
-            "passed": false,
+            "passed": true,
             "task_id": "task_010"
         },
         {

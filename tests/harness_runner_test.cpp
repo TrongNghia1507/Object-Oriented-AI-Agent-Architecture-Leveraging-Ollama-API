@@ -36,18 +36,26 @@ int main() {
 
     // Đăng ký các tool vào hệ thống
     
-    NativeEnvironment env;
+    SandboxEnvironment env("sandbox");
 
     registry.registerTool(std::make_unique<CalculatorTool>());
     registry.registerTool(std::make_unique<AdvancedMathTool>());
+
     registry.registerTool(std::make_unique<ExecTool>(&env, ExecPolicy::AlwaysAllow()));
+
     registry.registerTool(makeReadFileTool(&env));
     registry.registerTool(makeWriteFileTool(&env));
+
+    registry.registerTool(std::make_unique<WebSearchTool>());
     
     auto db = std::make_shared<DatabaseManager>();
     registry.registerTool(std::make_unique<MemorySaveTool>(db));
     registry.registerTool(std::make_unique<MemorySearchTool>(db));   
+
     registry.registerTool(std::make_unique<TextToSpeechTool>());
+    
+    registry.registerTool(std::make_unique<TranslateTool>());
+
     SkillLoader skillLoader("skills");
     skillLoader.loadAll();
 
