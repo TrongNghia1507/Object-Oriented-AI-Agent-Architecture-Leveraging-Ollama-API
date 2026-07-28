@@ -9,6 +9,7 @@
 
 namespace fs = std::filesystem;
 
+// Xử lý macro tương thích đa nền tảng hệ điều hành cho việc gọi luồng Terminal
 #ifdef _WIN32
     #define POPEN  _popen
     #define PCLOSE _pclose
@@ -18,38 +19,40 @@ namespace fs = std::filesystem;
 #endif
 
 // ============================================================================
-// HIỆN THỰC HÓA CHI TIẾT NATIVE ENVIRONMENT
+// HIỆN THỰC HÓA CHI TIẾT NATIVE ENVIRONMENT (MÔI TRƯỜNG MÁY THẬT)
 // ============================================================================
 
 void NativeEnvironment::setup() {
-    // Giữ nguyên log ở console của bạn, vì Agent không đọc được stdout của C++ runner
     std::cout << "[NativeEnvironment] Setup: San sang thuc thi truc tiep tren he dieu hanh vat ly.\n";
 }
 
 std::string NativeEnvironment::executeCommand(const std::string& command) {
+    // Kỹ thuật gộp luồng lỗi stderr (2>&1) vào chung luồng stdout 
+    // Giúp mô hình LLM nhận biết và tự sửa lỗi cú pháp nếu gõ sai lệnh Terminal
     std::string cmdWithStderr = command + " 2>&1";
     std::array<char, 256> buffer;
     std::string result;
 
+    // Áp dụng Nguyên lý RAII: Tự động đóng luồng Pipe hệ thống bằng Custom Lambda Deleter
     auto pipeDeleter = [](FILE* f) { if (f) PCLOSE(f); };
     std::unique_ptr<FILE, decltype(pipeDeleter)> pipe(POPEN(cmdWithStderr.c_str(), "r"), pipeDeleter);
 
     if (!pipe) {
-        return "bash: fork: Resource temporarily unavailable\n"; // Giả lập lỗi OS thật
+        return "System Error: Khong the mo luong pipe ket noi Terminal tren Native OS.";
     }
 
+    // Đọc tuần tự luồng dữ liệu kết quả trả về từ Terminal OS
     while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
         result += buffer.data();
     }
 
-    // Terminal thật thường không trả về gì nếu lệnh chạy đúng
-    return result; 
+    return result.empty() ? "Success: Lenh thuc thi thanh cong (Khong co output)." : result;
 }
 
 std::string NativeEnvironment::readFile(const std::string& path) {
     std::ifstream file(path);
     if (!file.is_open()) {
-        return "cat: " + path + ": No such file or directory\n"; // Giả lập lỗi cat của Linux
+        return "Loi Native: Khong the mo file tai duong dan: " + path;
     }
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -59,10 +62,10 @@ std::string NativeEnvironment::readFile(const std::string& path) {
 std::string NativeEnvironment::writeFile(const std::string& path, const std::string& content) {
     std::ofstream file(path);
     if (!file.is_open()) {
-        return "bash: " + path + ": Permission denied\n"; // Giả lập lỗi ghi file
+        return "Loi Native: Khong the tao/ghi file tai duong dan: " + path;
     }
     file << content;
-    return ""; // Thành công thì im lặng
+    return "Success: Da ghi tap tin thanh cong len o dia vat ly.";
 }
 
 void NativeEnvironment::teardown() {
@@ -71,7 +74,7 @@ void NativeEnvironment::teardown() {
 
 
 // ============================================================================
-// HIỆN THỰC HÓA CHI TIẾT SANDBOX ENVIRONMENT
+// HIỆN THỰC HÓA CHI TIẾT SANDBOX ENVIRONMENT (MÔI TRƯỜNG HỘP CÁT AN TOÀN)
 // ============================================================================
 
 SandboxEnvironment::SandboxEnvironment(std::string sandboxDir) 
@@ -80,6 +83,7 @@ SandboxEnvironment::SandboxEnvironment(std::string sandboxDir)
 void SandboxEnvironment::setup() {
     std::cout << "[SandboxEnvironment] Setup: Khoi tao vung dem cach ly an toan tai: " << sandboxDir_ << "\n";
     try {
+        // Áp dụng C++17 std::filesystem tự động tạo cấu trúc cây thư mục nếu chưa tồn tại
         fs::create_directories(sandboxDir_);
     } catch (const std::exception& e) {
         std::cerr << "Loi ha tang: Khong the tao thu muc Sandbox: " << e.what() << "\n";
@@ -87,6 +91,7 @@ void SandboxEnvironment::setup() {
 }
 
 std::string SandboxEnvironment::executeCommand(const std::string& command) {
+    // BẮT BUỘC: ÉP TIẾN TRÌNH DI CHUYỂN VÀO THƯ MỤC SANDBOX TRƯỚC KHI CHẠY LỆNH CỦA AI
 #ifdef _WIN32
     std::string safeCmd = "cd /d " + sandboxDir_ + " && " + command;
 #else
@@ -101,23 +106,24 @@ std::string SandboxEnvironment::executeCommand(const std::string& command) {
     std::unique_ptr<FILE, decltype(pipeDeleter)> pipe(POPEN(cmdWithStderr.c_str(), "r"), pipeDeleter);
 
     if (!pipe) {
-        return "bash: fork: Resource temporarily unavailable\n";
+        return "System Error: Khong the mo luong pipe ket noi Terminal trong Sandbox.";
     }
 
     while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
         result += buffer.data();
     }
 
-    return result; 
+    return result.empty() ? "Success: Lenh Sandbox thuc thi thanh cong." : result;
 }
 
 std::string SandboxEnvironment::readFile(const std::string& path) {
+    // KỸ THUẬT PATH MIRRORING: Chỉ lấy tên file, ép buộc đường dẫn luôn nằm bên trong sandboxDir_
+    // Ngăn chặn triệt để đòn tấn công Directory Traversal (AI truyền tham số "../../etc/passwd")
     fs::path safePath = fs::path(sandboxDir_) / fs::path(path).filename();
     
     std::ifstream file(safePath);
     if (!file.is_open()) {
-        // AI chỉ biết cái path nó truyền vào, không được để lộ path thật của sandbox
-        return "cat: " + path + ": No such file or directory\n"; 
+        return "Loi Sandbox: Chan truy cap! Khong tim thay file hoac file nam ngoai vung cach ly: " + path;
     }
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -125,14 +131,15 @@ std::string SandboxEnvironment::readFile(const std::string& path) {
 }
 
 std::string SandboxEnvironment::writeFile(const std::string& path, const std::string& content) {
+    // Bảo vệ an toàn hệ thống máy chủ vật lý của người chấm điểm
     fs::path safePath = fs::path(sandboxDir_) / fs::path(path).filename();
 
     std::ofstream file(safePath);
     if (!file.is_open()) {
-        return "bash: " + path + ": Permission denied\n";
+        return "Loi Sandbox: Tu choi quyen tao file tai duong dan: " + safePath.string();
     }
     file << content;
-    return ""; // Thành công thì im lặng
+    return "Success: Ghi tap tin an toan vao vung dem Sandbox hoàn tất.";
 }
 
 void SandboxEnvironment::teardown() {
