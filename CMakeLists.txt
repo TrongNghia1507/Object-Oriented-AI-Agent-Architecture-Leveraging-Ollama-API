@@ -26,6 +26,9 @@ set(CORE_SOURCES
     tools/web_search_tool.cpp
     tools/translate_tool.cpp
     tools/text_to_speech.cpp
+    tools/file_tool.cpp
+    tools/datetime_tool.cpp
+    tools/todolist_tool.cpp
     environment/environment.cpp
     Harness/Harness_runner.cpp
     agent/agent_loop.cpp
