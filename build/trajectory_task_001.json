@@ -1,9 +1,9 @@
 {
     "evaluation_results": {
         "breakdown": {
-            "KeywordEvaluator": 10
+            "KeywordEvaluator": 1
         },
-        "total_score": 10
+        "total_score": 1
     },
     "final_answer": "Kết quả của phép tính 15 * 17 là 255.",
     "model": "google/gemma-4-31b-it",
@@ -15,7 +15,7 @@
                 "type": "tool_call"
             },
             "action_log": "",
-            "latency_ms": 3682,
+            "latency_ms": 2960,
             "observation": "",
             "step_id": 0,
             "thought": "Thought: Tôi cần tính kết quả của phép nhân 15 * 17.\nAction: calculator\nArguments: 15*17",
@@ -28,11 +28,11 @@
                 "type": "final_answer"
             },
             "action_log": "",
-            "latency_ms": 1065,
+            "latency_ms": 1897,
             "observation": "",
             "step_id": 1,
             "thought": "Final Answer: Kết quả của phép tính 15 * 17 là 255.",
-            "tokens_used": 900
+            "tokens_used": 902
         }
     ],
     "stopped_by_loop": false,
@@ -40,6 +40,6 @@
     "success": true,
     "task": "Tính 15 * 17 và cho biết kết quả trong câu trả lời cuối cùng.",
     "task_id": "task_001",
-    "total_time_ms": 4749,
-    "total_tokens": 1765
+    "total_time_ms": 4860,
+    "total_tokens": 1767
 }

@@ -223,10 +223,52 @@ CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tools/text_to_speech.cpp -o CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.s
 
+CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
+CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o: /workspaces/AgentAI/tools/datetime_tool.cpp
+CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o -MF CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o.d -o CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o -c /workspaces/AgentAI/tools/datetime_tool.cpp
+
+CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tools/datetime_tool.cpp > CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.i
+
+CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tools/datetime_tool.cpp -o CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.s
+
+CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
+CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o: /workspaces/AgentAI/tools/file_tool.cpp
+CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o -MF CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o.d -o CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o -c /workspaces/AgentAI/tools/file_tool.cpp
+
+CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tools/file_tool.cpp > CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.i
+
+CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tools/file_tool.cpp -o CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.s
+
+CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
+CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o: /workspaces/AgentAI/tools/todolist_tool.cpp
+CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o -MF CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o.d -o CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o -c /workspaces/AgentAI/tools/todolist_tool.cpp
+
+CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tools/todolist_tool.cpp > CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.i
+
+CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tools/todolist_tool.cpp -o CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.s
+
 CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
 CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o: /workspaces/AgentAI/environment/environment.cpp
 CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o -MF CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o.d -o CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o -c /workspaces/AgentAI/environment/environment.cpp
 
 CMakeFiles/harness_runner_test.dir/environment/environment.cpp.i: cmake_force
@@ -240,7 +282,7 @@ CMakeFiles/harness_runner_test.dir/environment/environment.cpp.s: cmake_force
 CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
 CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o: /workspaces/AgentAI/Harness/Harness_runner.cpp
 CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o -MF CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o.d -o CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o -c /workspaces/AgentAI/Harness/Harness_runner.cpp
 
 CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.i: cmake_force
@@ -254,7 +296,7 @@ CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.s: cmake_force
 CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
 CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o: /workspaces/AgentAI/agent/agent_loop.cpp
 CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o -MF CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o.d -o CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o -c /workspaces/AgentAI/agent/agent_loop.cpp
 
 CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.i: cmake_force
@@ -268,7 +310,7 @@ CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.s: cmake_force
 CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
 CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o: /workspaces/AgentAI/agent/loop_detector.cpp
 CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o -MF CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o.d -o CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o -c /workspaces/AgentAI/agent/loop_detector.cpp
 
 CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.i: cmake_force
@@ -282,7 +324,7 @@ CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.s: cmake_force
 CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
 CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o: /workspaces/AgentAI/agent/skill_loader.cpp
 CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o -MF CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o.d -o CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o -c /workspaces/AgentAI/agent/skill_loader.cpp
 
 CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.i: cmake_force
@@ -296,7 +338,7 @@ CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.s: cmake_force
 CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
 CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o: /workspaces/AgentAI/utils/SystemUtils.cpp
 CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o -MF CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o.d -o CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o -c /workspaces/AgentAI/utils/SystemUtils.cpp
 
 CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.i: cmake_force
@@ -320,6 +362,9 @@ harness_runner_test_OBJECTS = \
 "CMakeFiles/harness_runner_test.dir/tools/web_search_tool.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/tools/translate_tool.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.o" \
+"CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o" \
+"CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o" \
+"CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o" \
@@ -341,6 +386,9 @@ harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/tool_registry.cpp.
 harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/web_search_tool.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/translate_tool.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.o
+harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/datetime_tool.cpp.o
+harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/file_tool.cpp.o
+harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/todolist_tool.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o
@@ -349,7 +397,7 @@ harness_runner_test: CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/build.make
 harness_runner_test: CMakeFiles/harness_runner_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable harness_runner_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable harness_runner_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/harness_runner_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
