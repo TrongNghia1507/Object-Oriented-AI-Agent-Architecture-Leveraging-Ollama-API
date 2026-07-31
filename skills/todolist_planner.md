@@ -3,12 +3,21 @@ keywords: ke hoach, kế hoạch, danh sach task, danh sách task, todo, viec ca
 ---
 ## CÔNG CỤ: todo_list
 
-Dùng tool này khi task YÊU CẦU NHIỀU BƯỚC (từ 3 bước trở lên, hoặc cần tự
-quyết định thứ tự thực hiện) — giúp bạn không bị quên bước nào và có thể
-theo dõi tiến độ rõ ràng.
+### 0. QUY TẮC QUYẾT ĐỊNH (BẮT BUỘC làm trước, ngay trong Thought đầu tiên)
 
-KHÔNG dùng tool này cho task đơn giản (1-2 bước, ví dụ chỉ tính toán rồi trả
-lời ngay) — sẽ làm task chậm không cần thiết.
+Trước khi hành động, tự đếm số LẦN GỌI TOOL riêng biệt cần thiết để hoàn
+thành task (không tính chính todo_list):
+
+- **Đếm được ≤ 2 lần gọi tool** (vd: chỉ `calculator` rồi trả lời; hoặc
+  `calculator` xong `write_file`) → **TUYỆT ĐỐI KHÔNG gọi `todo_list`**. Thực
+  hiện thẳng các tool cần thiết rồi viết `Final Answer`.
+- **Đếm được ≥ 3 lần gọi tool khác nhau**, HOẶC không chắc thứ tự thực hiện,
+  HOẶC có nhánh điều kiện (nếu... thì...) → gọi `todo_list` để lập kế hoạch
+  trước khi làm.
+
+Vi phạm quy tắc này (gọi todo_list cho task ≤2 bước) bị coi là dùng sai tool,
+làm task chậm và tốn token không cần thiết — luôn ưu tiên đường đi ngắn nhất
+khi task đơn giản.
 
 ### 1. Các lệnh (Arguments)
 
@@ -36,11 +45,13 @@ PHẢI đọc đúng số id đó, không tự đoán.
 
 ### 3. Ví dụ đúng chuẩn (1 hành động mỗi lượt)
 
-Thêm task con:
+Thêm task con (task này cần 3 lần gọi tool: advanced_math, memory_save, exec
+→ ĐỦ điều kiện dùng todo_list theo quy tắc ở mục 0):
 ```
-Thought: Task nay co 2 buoc: tinh toan va luu file. Can lap ke hoach truoc.
+Thought: Task nay can 3 lan goi tool khac nhau (advanced_math, memory_save,
+exec) va agent phai tu quyet dinh thu tu. Can lap ke hoach truoc.
 Action: todo_list
-Arguments: add | Tinh (25+15)*2 bang calculator
+Arguments: add | Tinh sqrt(144) + 2^3 bang advanced_math
 ```
 
 Bắt đầu thực hiện task #1:
@@ -57,7 +68,24 @@ Action: todo_list
 Arguments: done | 1
 ```
 
-### 4. Lỗi thường gặp cần tránh
+### 4. Ví dụ SAI cần tránh — task đơn giản KHÔNG được dùng todo_list
+
+Task: "Tính 15 * 17 và cho biết kết quả." → chỉ cần 1 lần gọi `calculator`
+rồi `Final Answer` ngay. KHÔNG được làm thế này:
+```
+Thought: Can lap ke hoach truoc khi tinh.
+Action: todo_list
+Arguments: add | Tinh 15*17
+```
+Làm ĐÚNG:
+```
+Thought: Day la phep tinh don gian, chi can 1 lan goi calculator, khong can
+lap ke hoach.
+Action: calculator
+Arguments: 15*17
+```
+
+### 5. Lỗi thường gặp cần tránh
 
 - Không gọi `start`/`done`/`remove` với id chưa từng `add` — tool sẽ báo lỗi
   "khong tim thay task".

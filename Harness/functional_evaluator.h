@@ -10,7 +10,7 @@ private:
     int rewardScore_;
     bool isPassed_ = false;
 public:
-    FunctionalEvaluator(const std::string& script) : evalScript_(script) {}
+    FunctionalEvaluator(const std::string& script, int rewardScore) : evalScript_(script), rewardScore_(rewardScore)  {}
 
     std::string getName() const override { return "FunctionalEvaluator"; }
 
