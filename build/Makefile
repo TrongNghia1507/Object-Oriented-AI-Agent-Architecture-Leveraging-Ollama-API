@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named harness_runner_test
+# Target rules for targets named agent_loop_test
 
 # Build rule for target.
-harness_runner_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 harness_runner_test
-.PHONY : harness_runner_test
+agent_loop_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 agent_loop_test
+.PHONY : agent_loop_test
 
 # fast build rule for target.
-harness_runner_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/build
-.PHONY : harness_runner_test/fast
+agent_loop_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/build
+.PHONY : agent_loop_test/fast
 
 Harness/Harness_runner.o: Harness/Harness_runner.cpp.o
 .PHONY : Harness/Harness_runner.o
 
 # target to build an object file
 Harness/Harness_runner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/Harness/Harness_runner.cpp.o
 .PHONY : Harness/Harness_runner.cpp.o
 
 Harness/Harness_runner.i: Harness/Harness_runner.cpp.i
@@ -142,7 +142,7 @@ Harness/Harness_runner.i: Harness/Harness_runner.cpp.i
 
 # target to preprocess a source file
 Harness/Harness_runner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/Harness/Harness_runner.cpp.i
 .PHONY : Harness/Harness_runner.cpp.i
 
 Harness/Harness_runner.s: Harness/Harness_runner.cpp.s
@@ -150,7 +150,7 @@ Harness/Harness_runner.s: Harness/Harness_runner.cpp.s
 
 # target to generate assembly for a file
 Harness/Harness_runner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/Harness/Harness_runner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/Harness/Harness_runner.cpp.s
 .PHONY : Harness/Harness_runner.cpp.s
 
 LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
@@ -158,7 +158,7 @@ LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
 
 # target to build an object file
 LLMClient/OllamaClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/LLMClient/OllamaClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/LLMClient/OllamaClient.cpp.o
 .PHONY : LLMClient/OllamaClient.cpp.o
 
 LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
@@ -166,7 +166,7 @@ LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
 
 # target to preprocess a source file
 LLMClient/OllamaClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/LLMClient/OllamaClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/LLMClient/OllamaClient.cpp.i
 .PHONY : LLMClient/OllamaClient.cpp.i
 
 LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
@@ -174,7 +174,7 @@ LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
 
 # target to generate assembly for a file
 LLMClient/OllamaClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/LLMClient/OllamaClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/LLMClient/OllamaClient.cpp.s
 .PHONY : LLMClient/OllamaClient.cpp.s
 
 agent/agent_loop.o: agent/agent_loop.cpp.o
@@ -182,7 +182,7 @@ agent/agent_loop.o: agent/agent_loop.cpp.o
 
 # target to build an object file
 agent/agent_loop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.o
 .PHONY : agent/agent_loop.cpp.o
 
 agent/agent_loop.i: agent/agent_loop.cpp.i
@@ -190,7 +190,7 @@ agent/agent_loop.i: agent/agent_loop.cpp.i
 
 # target to preprocess a source file
 agent/agent_loop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.i
 .PHONY : agent/agent_loop.cpp.i
 
 agent/agent_loop.s: agent/agent_loop.cpp.s
@@ -198,7 +198,7 @@ agent/agent_loop.s: agent/agent_loop.cpp.s
 
 # target to generate assembly for a file
 agent/agent_loop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/agent_loop.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.s
 .PHONY : agent/agent_loop.cpp.s
 
 agent/loop_detector.o: agent/loop_detector.cpp.o
@@ -206,7 +206,7 @@ agent/loop_detector.o: agent/loop_detector.cpp.o
 
 # target to build an object file
 agent/loop_detector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.o
 .PHONY : agent/loop_detector.cpp.o
 
 agent/loop_detector.i: agent/loop_detector.cpp.i
@@ -214,7 +214,7 @@ agent/loop_detector.i: agent/loop_detector.cpp.i
 
 # target to preprocess a source file
 agent/loop_detector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.i
 .PHONY : agent/loop_detector.cpp.i
 
 agent/loop_detector.s: agent/loop_detector.cpp.s
@@ -222,7 +222,7 @@ agent/loop_detector.s: agent/loop_detector.cpp.s
 
 # target to generate assembly for a file
 agent/loop_detector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.s
 .PHONY : agent/loop_detector.cpp.s
 
 agent/skill_loader.o: agent/skill_loader.cpp.o
@@ -230,7 +230,7 @@ agent/skill_loader.o: agent/skill_loader.cpp.o
 
 # target to build an object file
 agent/skill_loader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.o
 .PHONY : agent/skill_loader.cpp.o
 
 agent/skill_loader.i: agent/skill_loader.cpp.i
@@ -238,7 +238,7 @@ agent/skill_loader.i: agent/skill_loader.cpp.i
 
 # target to preprocess a source file
 agent/skill_loader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.i
 .PHONY : agent/skill_loader.cpp.i
 
 agent/skill_loader.s: agent/skill_loader.cpp.s
@@ -246,7 +246,7 @@ agent/skill_loader.s: agent/skill_loader.cpp.s
 
 # target to generate assembly for a file
 agent/skill_loader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.s
 .PHONY : agent/skill_loader.cpp.s
 
 environment/environment.o: environment/environment.cpp.o
@@ -254,7 +254,7 @@ environment/environment.o: environment/environment.cpp.o
 
 # target to build an object file
 environment/environment.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/environment/environment.cpp.o
 .PHONY : environment/environment.cpp.o
 
 environment/environment.i: environment/environment.cpp.i
@@ -262,7 +262,7 @@ environment/environment.i: environment/environment.cpp.i
 
 # target to preprocess a source file
 environment/environment.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/environment/environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/environment/environment.cpp.i
 .PHONY : environment/environment.cpp.i
 
 environment/environment.s: environment/environment.cpp.s
@@ -270,39 +270,39 @@ environment/environment.s: environment/environment.cpp.s
 
 # target to generate assembly for a file
 environment/environment.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/environment/environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/environment/environment.cpp.s
 .PHONY : environment/environment.cpp.s
 
-tests/harness_runner_test.o: tests/harness_runner_test.cpp.o
-.PHONY : tests/harness_runner_test.o
+tests/agent_loop_test.o: tests/agent_loop_test.cpp.o
+.PHONY : tests/agent_loop_test.o
 
 # target to build an object file
-tests/harness_runner_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o
-.PHONY : tests/harness_runner_test.cpp.o
+tests/agent_loop_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.o
+.PHONY : tests/agent_loop_test.cpp.o
 
-tests/harness_runner_test.i: tests/harness_runner_test.cpp.i
-.PHONY : tests/harness_runner_test.i
+tests/agent_loop_test.i: tests/agent_loop_test.cpp.i
+.PHONY : tests/agent_loop_test.i
 
 # target to preprocess a source file
-tests/harness_runner_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.i
-.PHONY : tests/harness_runner_test.cpp.i
+tests/agent_loop_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.i
+.PHONY : tests/agent_loop_test.cpp.i
 
-tests/harness_runner_test.s: tests/harness_runner_test.cpp.s
-.PHONY : tests/harness_runner_test.s
+tests/agent_loop_test.s: tests/agent_loop_test.cpp.s
+.PHONY : tests/agent_loop_test.s
 
 # target to generate assembly for a file
-tests/harness_runner_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.s
-.PHONY : tests/harness_runner_test.cpp.s
+tests/agent_loop_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.s
+.PHONY : tests/agent_loop_test.cpp.s
 
 tools/advanced_math_tool.o: tools/advanced_math_tool.cpp.o
 .PHONY : tools/advanced_math_tool.o
 
 # target to build an object file
 tools/advanced_math_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.o
 .PHONY : tools/advanced_math_tool.cpp.o
 
 tools/advanced_math_tool.i: tools/advanced_math_tool.cpp.i
@@ -310,7 +310,7 @@ tools/advanced_math_tool.i: tools/advanced_math_tool.cpp.i
 
 # target to preprocess a source file
 tools/advanced_math_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.i
 .PHONY : tools/advanced_math_tool.cpp.i
 
 tools/advanced_math_tool.s: tools/advanced_math_tool.cpp.s
@@ -318,7 +318,7 @@ tools/advanced_math_tool.s: tools/advanced_math_tool.cpp.s
 
 # target to generate assembly for a file
 tools/advanced_math_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.s
 .PHONY : tools/advanced_math_tool.cpp.s
 
 tools/calculator_tool.o: tools/calculator_tool.cpp.o
@@ -326,7 +326,7 @@ tools/calculator_tool.o: tools/calculator_tool.cpp.o
 
 # target to build an object file
 tools/calculator_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/calculator_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.o
 .PHONY : tools/calculator_tool.cpp.o
 
 tools/calculator_tool.i: tools/calculator_tool.cpp.i
@@ -334,7 +334,7 @@ tools/calculator_tool.i: tools/calculator_tool.cpp.i
 
 # target to preprocess a source file
 tools/calculator_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/calculator_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.i
 .PHONY : tools/calculator_tool.cpp.i
 
 tools/calculator_tool.s: tools/calculator_tool.cpp.s
@@ -342,7 +342,7 @@ tools/calculator_tool.s: tools/calculator_tool.cpp.s
 
 # target to generate assembly for a file
 tools/calculator_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/calculator_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.s
 .PHONY : tools/calculator_tool.cpp.s
 
 tools/exec_tool.o: tools/exec_tool.cpp.o
@@ -350,7 +350,7 @@ tools/exec_tool.o: tools/exec_tool.cpp.o
 
 # target to build an object file
 tools/exec_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/exec_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o
 .PHONY : tools/exec_tool.cpp.o
 
 tools/exec_tool.i: tools/exec_tool.cpp.i
@@ -358,7 +358,7 @@ tools/exec_tool.i: tools/exec_tool.cpp.i
 
 # target to preprocess a source file
 tools/exec_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/exec_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.i
 .PHONY : tools/exec_tool.cpp.i
 
 tools/exec_tool.s: tools/exec_tool.cpp.s
@@ -366,7 +366,7 @@ tools/exec_tool.s: tools/exec_tool.cpp.s
 
 # target to generate assembly for a file
 tools/exec_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/exec_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.s
 .PHONY : tools/exec_tool.cpp.s
 
 tools/memory_tool.o: tools/memory_tool.cpp.o
@@ -374,7 +374,7 @@ tools/memory_tool.o: tools/memory_tool.cpp.o
 
 # target to build an object file
 tools/memory_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/memory_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o
 .PHONY : tools/memory_tool.cpp.o
 
 tools/memory_tool.i: tools/memory_tool.cpp.i
@@ -382,7 +382,7 @@ tools/memory_tool.i: tools/memory_tool.cpp.i
 
 # target to preprocess a source file
 tools/memory_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/memory_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.i
 .PHONY : tools/memory_tool.cpp.i
 
 tools/memory_tool.s: tools/memory_tool.cpp.s
@@ -390,7 +390,7 @@ tools/memory_tool.s: tools/memory_tool.cpp.s
 
 # target to generate assembly for a file
 tools/memory_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/memory_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.s
 .PHONY : tools/memory_tool.cpp.s
 
 tools/text_to_speech.o: tools/text_to_speech.cpp.o
@@ -398,7 +398,7 @@ tools/text_to_speech.o: tools/text_to_speech.cpp.o
 
 # target to build an object file
 tools/text_to_speech.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o
 .PHONY : tools/text_to_speech.cpp.o
 
 tools/text_to_speech.i: tools/text_to_speech.cpp.i
@@ -406,7 +406,7 @@ tools/text_to_speech.i: tools/text_to_speech.cpp.i
 
 # target to preprocess a source file
 tools/text_to_speech.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.i
 .PHONY : tools/text_to_speech.cpp.i
 
 tools/text_to_speech.s: tools/text_to_speech.cpp.s
@@ -414,7 +414,7 @@ tools/text_to_speech.s: tools/text_to_speech.cpp.s
 
 # target to generate assembly for a file
 tools/text_to_speech.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/text_to_speech.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.s
 .PHONY : tools/text_to_speech.cpp.s
 
 tools/tool_registry.o: tools/tool_registry.cpp.o
@@ -422,7 +422,7 @@ tools/tool_registry.o: tools/tool_registry.cpp.o
 
 # target to build an object file
 tools/tool_registry.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/tool_registry.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.o
 .PHONY : tools/tool_registry.cpp.o
 
 tools/tool_registry.i: tools/tool_registry.cpp.i
@@ -430,7 +430,7 @@ tools/tool_registry.i: tools/tool_registry.cpp.i
 
 # target to preprocess a source file
 tools/tool_registry.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/tool_registry.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.i
 .PHONY : tools/tool_registry.cpp.i
 
 tools/tool_registry.s: tools/tool_registry.cpp.s
@@ -438,7 +438,7 @@ tools/tool_registry.s: tools/tool_registry.cpp.s
 
 # target to generate assembly for a file
 tools/tool_registry.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/tool_registry.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.s
 .PHONY : tools/tool_registry.cpp.s
 
 tools/translate_tool.o: tools/translate_tool.cpp.o
@@ -446,7 +446,7 @@ tools/translate_tool.o: tools/translate_tool.cpp.o
 
 # target to build an object file
 tools/translate_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/translate_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.o
 .PHONY : tools/translate_tool.cpp.o
 
 tools/translate_tool.i: tools/translate_tool.cpp.i
@@ -454,7 +454,7 @@ tools/translate_tool.i: tools/translate_tool.cpp.i
 
 # target to preprocess a source file
 tools/translate_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/translate_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.i
 .PHONY : tools/translate_tool.cpp.i
 
 tools/translate_tool.s: tools/translate_tool.cpp.s
@@ -462,7 +462,7 @@ tools/translate_tool.s: tools/translate_tool.cpp.s
 
 # target to generate assembly for a file
 tools/translate_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/translate_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.s
 .PHONY : tools/translate_tool.cpp.s
 
 tools/web_search_tool.o: tools/web_search_tool.cpp.o
@@ -470,7 +470,7 @@ tools/web_search_tool.o: tools/web_search_tool.cpp.o
 
 # target to build an object file
 tools/web_search_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/web_search_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.o
 .PHONY : tools/web_search_tool.cpp.o
 
 tools/web_search_tool.i: tools/web_search_tool.cpp.i
@@ -478,7 +478,7 @@ tools/web_search_tool.i: tools/web_search_tool.cpp.i
 
 # target to preprocess a source file
 tools/web_search_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/web_search_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.i
 .PHONY : tools/web_search_tool.cpp.i
 
 tools/web_search_tool.s: tools/web_search_tool.cpp.s
@@ -486,7 +486,7 @@ tools/web_search_tool.s: tools/web_search_tool.cpp.s
 
 # target to generate assembly for a file
 tools/web_search_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/tools/web_search_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.s
 .PHONY : tools/web_search_tool.cpp.s
 
 utils/SystemUtils.o: utils/SystemUtils.cpp.o
@@ -494,7 +494,7 @@ utils/SystemUtils.o: utils/SystemUtils.cpp.o
 
 # target to build an object file
 utils/SystemUtils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/SystemUtils.cpp.o
 .PHONY : utils/SystemUtils.cpp.o
 
 utils/SystemUtils.i: utils/SystemUtils.cpp.i
@@ -502,7 +502,7 @@ utils/SystemUtils.i: utils/SystemUtils.cpp.i
 
 # target to preprocess a source file
 utils/SystemUtils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/SystemUtils.cpp.i
 .PHONY : utils/SystemUtils.cpp.i
 
 utils/SystemUtils.s: utils/SystemUtils.cpp.s
@@ -510,7 +510,7 @@ utils/SystemUtils.s: utils/SystemUtils.cpp.s
 
 # target to generate assembly for a file
 utils/SystemUtils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/SystemUtils.cpp.s
 .PHONY : utils/SystemUtils.cpp.s
 
 utils/base64.o: utils/base64.cpp.o
@@ -518,7 +518,7 @@ utils/base64.o: utils/base64.cpp.o
 
 # target to build an object file
 utils/base64.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/utils/base64.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/base64.cpp.o
 .PHONY : utils/base64.cpp.o
 
 utils/base64.i: utils/base64.cpp.i
@@ -526,7 +526,7 @@ utils/base64.i: utils/base64.cpp.i
 
 # target to preprocess a source file
 utils/base64.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/utils/base64.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/base64.cpp.i
 .PHONY : utils/base64.cpp.i
 
 utils/base64.s: utils/base64.cpp.s
@@ -534,7 +534,7 @@ utils/base64.s: utils/base64.cpp.s
 
 # target to generate assembly for a file
 utils/base64.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner_test.dir/build.make CMakeFiles/harness_runner_test.dir/utils/base64.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/base64.cpp.s
 .PHONY : utils/base64.cpp.s
 
 # Help Target
@@ -545,7 +545,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... harness_runner_test"
+	@echo "... agent_loop_test"
 	@echo "... Harness/Harness_runner.o"
 	@echo "... Harness/Harness_runner.i"
 	@echo "... Harness/Harness_runner.s"
@@ -564,9 +564,9 @@ help:
 	@echo "... environment/environment.o"
 	@echo "... environment/environment.i"
 	@echo "... environment/environment.s"
-	@echo "... tests/harness_runner_test.o"
-	@echo "... tests/harness_runner_test.i"
-	@echo "... tests/harness_runner_test.s"
+	@echo "... tests/agent_loop_test.o"
+	@echo "... tests/agent_loop_test.i"
+	@echo "... tests/agent_loop_test.s"
 	@echo "... tools/advanced_math_tool.o"
 	@echo "... tools/advanced_math_tool.i"
 	@echo "... tools/advanced_math_tool.s"

@@ -35,7 +35,7 @@ int main() {
 
     // Đăng ký các tool vào hệ thống
     
-    SandboxEnvironment env("sandbox");
+    NativeEnvironment env;
 
     registry.registerTool(std::make_unique<CalculatorTool>());
     registry.registerTool(std::make_unique<AdvancedMathTool>());

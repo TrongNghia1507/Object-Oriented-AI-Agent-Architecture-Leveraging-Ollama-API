@@ -10,6 +10,7 @@
 #include "../environment/environment.h"
 #include "../tools/file_tool.h"
 #include "../tools/text_to_speech.h"
+#include "../tools/todolist_tool.h"
 #include <cassert>
 #include <iostream>
 #include <memory>
@@ -20,6 +21,7 @@
 #include <filesystem>
 #include "../LLMClient/json.hpp"
 #include "../LLMClient/OllamaClient.h"
+#include "../utils/SystemUtils.h"
 using namespace std;
 
 int main() {
@@ -40,16 +42,23 @@ int main() {
     // Đăng ký các tool vào hệ thống
     registry.registerTool(std::make_unique<CalculatorTool>());
     registry.registerTool(std::make_unique<AdvancedMathTool>());
+
     registry.registerTool(std::make_unique<ExecTool>(&env, ExecPolicy::AlwaysAllow()));
+
     registry.registerTool(makeReadFileTool(&env));
     registry.registerTool(makeWriteFileTool(&env));
-    registry.registerTool(std::make_unique<DateTimeTool>());
+
+    registry.registerTool(std::make_unique<WebSearchTool>());
     
     auto db = std::make_shared<DatabaseManager>();
     registry.registerTool(std::make_unique<MemorySaveTool>(db));
     registry.registerTool(std::make_unique<MemorySearchTool>(db));   
+
     registry.registerTool(std::make_unique<TextToSpeechTool>());
-    // 3. KHỞI TẠO AGENT LOOP
+    
+    registry.registerTool(std::make_unique<TranslateTool>());
+
+    // registry.registerTool(std::make_unique<TodoListTool>());
     int maxSteps = 20;
     SkillLoader skillLoader("skills");
     skillLoader.loadAll();
@@ -64,9 +73,14 @@ int main() {
     });
 
     // 4. KÍCH HOẠT AGENT THỰC THI TASK
-    std::string taskId = "test_pipeline_001";
-    std::string prompt = "Tìm cho tôi công thức tính diện tích và chu vi đường tròn, sau đó tính cho tôi biểu thức 15 nhân 07 + 07. Lưu 2 kết quả của 2 task này vào 1 file test_2.txt trong thư mục results";
-    std::string imagePath = "";
+    std::string taskId = "agent_loop_001";
+    std::string prompt = "";
+    std::string imagePath = SystemUtils::selectImageFromFolder("/workspaces/AgentAI/image");
+    cout << "Yeu cau AI: ";
+    cin.ignore();
+    getline(cin,prompt);
+    cout << endl;
+
     std::cout << "[Main] Giao viec cho Agent: " << prompt << "\n";
     
     // Gọi hàm run(), hệ thống sẽ tự động loop theo quy trình ReAct

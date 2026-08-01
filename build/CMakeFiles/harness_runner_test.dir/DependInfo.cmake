@@ -14,7 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspaces/AgentAI/agent/loop_detector.cpp" "CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/agent/loop_detector.cpp.o.d"
   "/workspaces/AgentAI/agent/skill_loader.cpp" "CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/agent/skill_loader.cpp.o.d"
   "/workspaces/AgentAI/environment/environment.cpp" "CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/environment/environment.cpp.o.d"
-  "/workspaces/AgentAI/tests/harness_runner_test.cpp" "CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o.d"
+  "/workspaces/AgentAI/tests/agent_loop_test.cpp" "CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o.d"
   "/workspaces/AgentAI/tools/advanced_math_tool.cpp" "CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/calculator_tool.cpp" "CMakeFiles/harness_runner_test.dir/tools/calculator_tool.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/tools/calculator_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/exec_tool.cpp" "CMakeFiles/harness_runner_test.dir/tools/exec_tool.cpp.o" "gcc" "CMakeFiles/harness_runner_test.dir/tools/exec_tool.cpp.o.d"

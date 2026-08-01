@@ -69,19 +69,19 @@ include CMakeFiles/harness_runner_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/harness_runner_test.dir/flags.make
 
-CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
-CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: /workspaces/AgentAI/tests/harness_runner_test.cpp
-CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o -MF CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o.d -o CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o -c /workspaces/AgentAI/tests/harness_runner_test.cpp
+CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
+CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o: /workspaces/AgentAI/tests/agent_loop_test.cpp
+CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o: CMakeFiles/harness_runner_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o -MF CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o.d -o CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o -c /workspaces/AgentAI/tests/agent_loop_test.cpp
 
-CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tests/harness_runner_test.cpp > CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.i
+CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/AgentAI/tests/agent_loop_test.cpp > CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.i
 
-CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tests/harness_runner_test.cpp -o CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.s
+CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/AgentAI/tests/agent_loop_test.cpp -o CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.s
 
 CMakeFiles/harness_runner_test.dir/LLMClient/OllamaClient.cpp.o: CMakeFiles/harness_runner_test.dir/flags.make
 CMakeFiles/harness_runner_test.dir/LLMClient/OllamaClient.cpp.o: /workspaces/AgentAI/LLMClient/OllamaClient.cpp
@@ -309,7 +309,7 @@ CMakeFiles/harness_runner_test.dir/utils/SystemUtils.cpp.s: cmake_force
 
 # Object files for target harness_runner_test
 harness_runner_test_OBJECTS = \
-"CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o" \
+"CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/LLMClient/OllamaClient.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/utils/base64.cpp.o" \
 "CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.o" \
@@ -330,7 +330,7 @@ harness_runner_test_OBJECTS = \
 # External object files for target harness_runner_test
 harness_runner_test_EXTERNAL_OBJECTS =
 
-harness_runner_test: CMakeFiles/harness_runner_test.dir/tests/harness_runner_test.cpp.o
+harness_runner_test: CMakeFiles/harness_runner_test.dir/tests/agent_loop_test.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/LLMClient/OllamaClient.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/utils/base64.cpp.o
 harness_runner_test: CMakeFiles/harness_runner_test.dir/tools/advanced_math_tool.cpp.o

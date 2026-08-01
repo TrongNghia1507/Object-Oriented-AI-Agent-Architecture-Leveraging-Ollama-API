@@ -39,7 +39,6 @@ bool HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
     nlohmann::json evalBreakdown = nlohmann::json::object();
 
     for (const auto& evaluator : evaluators_) {
-        // Truyền thêm tham số thứ 3 là env_.get() để chuyển giao con trỏ Environment thô
         std::optional<int> scoreResult = evaluator->evaluate(finalAnswer, trajectory, env_);
 
         if (scoreResult.has_value()) {
@@ -64,7 +63,7 @@ bool HarnessRunner::runTask(const std::string& taskId, const std::string& task, 
         {"breakdown", evalBreakdown}
     };
 
-    std::string outputFilename = "trajectory_" + taskId + ".json";
+    std::string outputFilename = "benchmark_summary/trajectory_" + taskId + ".json";
     std::ofstream outFile(outputFilename);
     if (outFile.is_open()) {
         outFile << std::setw(4) << reportJson << std::endl;
@@ -159,7 +158,7 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
         {"success_rate_percent", successRate},
         {"tasks", batchSummary}
     };
-    std::ofstream summaryFile("benchmark_summary.json");
+    std::ofstream summaryFile("../benchmark_summary/benchmark_summary.json");
     if (summaryFile.is_open()) {
         summaryFile << std::setw(4) << finalReport << std::endl;
     }

@@ -7,7 +7,7 @@
 class FunctionalEvaluator : public Evaluator {
 private:
     std::string evalScript_;
-    int rewardScore_;
+    int rewardScore_ ;
     bool isPassed_ = false;
 public:
     FunctionalEvaluator(const std::string& script) : evalScript_(script) {}
