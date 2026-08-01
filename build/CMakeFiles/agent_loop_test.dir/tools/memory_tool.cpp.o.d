@@ -122,12 +122,7 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/ranges_util.h \
  /workspaces/AgentAI/tools/../environment/environment.h \
-<<<<<<< HEAD
- /usr/include/sqlite3.h /usr/include/c++/13/memory \
- /usr/include/c++/13/bits/stl_tempbuf.h \
-=======
  /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
  /usr/include/c++/13/bits/align.h \
@@ -204,15 +199,6 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/ranges_uninitialized.h \
  /usr/include/c++/13/bits/ranges_algobase.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
-<<<<<<< HEAD
- /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/iostream \
- /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
- /usr/include/c++/13/chrono /usr/include/c++/13/bits/chrono.h \
- /usr/include/c++/13/ratio /usr/include/c++/13/limits \
- /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
- /usr/include/c++/13/sstream /usr/include/c++/13/bits/sstream.tcc \
- /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
-=======
  /usr/include/c++/13/pstl/execution_defs.h /usr/include/sqlite3.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/fstream \
@@ -225,7 +211,6 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/parse_numbers.h /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/vector \
  /usr/include/c++/13/bits/stl_vector.h \
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
@@ -236,20 +221,12 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/locale_facets_nonio.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
-<<<<<<< HEAD
- /usr/include/libintl.h /usr/include/c++/13/bits/codecvt.h \
- /usr/include/c++/13/bits/locale_facets_nonio.tcc \
-=======
  /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
  /usr/include/c++/13/bits/locale_conv.h \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
  /usr/include/c++/13/array /usr/include/c++/13/charconv \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
-<<<<<<< HEAD
- /usr/include/c++/13/span /usr/include/c++/13/variant
-=======
  /usr/include/c++/13/span /usr/include/c++/13/variant \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -382,4 +359,3 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/nlohmann/ordered_map.hpp /usr/include/c++/13/any \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8

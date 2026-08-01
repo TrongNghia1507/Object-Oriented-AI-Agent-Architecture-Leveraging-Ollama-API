@@ -133,7 +133,13 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
             addEvaluator(KeywordEvaluator::fromTaskJson(taskDef));
         } else if (evalType == "functional") {
             std::string evalScript = taskDef.value("eval_script", "");
-            addEvaluator(std::make_shared<FunctionalEvaluator>(evalScript));
+            
+            // 1. Trích xuất điểm số từ file JSON (mặc định là 1 nếu trong JSON không khai báo)
+            int rewardScore = taskDef.value("reward_score", 1); 
+            
+            // 2. Truyền cả evalScript và rewardScore vào FunctionalEvaluator
+            addEvaluator(std::make_shared<FunctionalEvaluator>(evalScript, rewardScore)); 
+            
         } else {
             std::cerr << "  [!] eval_type '" << evalType << "' khong ho tro, bo qua.\n";
             continue;
