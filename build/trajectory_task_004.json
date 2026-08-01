@@ -1,9 +1,9 @@
 {
     "evaluation_results": {
         "breakdown": {
-            "KeywordEvaluator": 10
+            "KeywordEvaluator": 1
         },
-        "total_score": 10
+        "total_score": 1
     },
     "final_answer": "Năm hiện tại của hệ thống là 2026.",
     "model": "google/gemma-4-31b-it",
@@ -15,11 +15,11 @@
                 "type": "tool_call"
             },
             "action_log": "",
-            "latency_ms": 1618,
+            "latency_ms": 1133,
             "observation": "",
             "step_id": 0,
-            "thought": "Thought: Tôi cần lấy năm hiện tại của hệ thống bằng cách sử dụng lệnh shell `date +%Y` thông qua tool `exec`.\nAction: exec\nArguments: date +%Y",
-            "tokens_used": 884,
+            "thought": "Thought: Tôi cần lấy năm hiện tại của hệ thống bằng cách chạy lệnh shell `date +%Y`.\nAction: exec\nArguments: date +%Y",
+            "tokens_used": 916,
             "tool_result": "2026\n"
         },
         {
@@ -28,11 +28,11 @@
                 "type": "final_answer"
             },
             "action_log": "",
-            "latency_ms": 1857,
+            "latency_ms": 1014,
             "observation": "",
             "step_id": 1,
             "thought": "Final Answer: Năm hiện tại của hệ thống là 2026.",
-            "tokens_used": 917
+            "tokens_used": 949
         }
     ],
     "stopped_by_loop": false,
@@ -40,6 +40,6 @@
     "success": true,
     "task": "Dùng tool exec để chạy lệnh lấy năm hiện tại của hệ thống (date +%Y) và cho biết năm đó trong câu trả lời cuối cùng.",
     "task_id": "task_004",
-    "total_time_ms": 3485,
-    "total_tokens": 1801
+    "total_time_ms": 2154,
+    "total_tokens": 1865
 }

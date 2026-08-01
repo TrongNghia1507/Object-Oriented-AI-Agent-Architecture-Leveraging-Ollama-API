@@ -17,9 +17,18 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspaces/AgentAI/tests/agent_loop_test.cpp" "CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.o.d"
   "/workspaces/AgentAI/tools/advanced_math_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/calculator_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.o.d"
+<<<<<<< HEAD
   "/workspaces/AgentAI/tools/exec_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/memory_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/text_to_speech.cpp" "CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o.d"
+=======
+  "/workspaces/AgentAI/tools/datetime_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.o.d"
+  "/workspaces/AgentAI/tools/exec_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o.d"
+  "/workspaces/AgentAI/tools/file_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.o.d"
+  "/workspaces/AgentAI/tools/memory_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o.d"
+  "/workspaces/AgentAI/tools/text_to_speech.cpp" "CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o.d"
+  "/workspaces/AgentAI/tools/todolist_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.o.d"
+>>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
   "/workspaces/AgentAI/tools/tool_registry.cpp" "CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.o.d"
   "/workspaces/AgentAI/tools/translate_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.o.d"
   "/workspaces/AgentAI/tools/web_search_tool.cpp" "CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.o" "gcc" "CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.o.d"

@@ -300,16 +300,25 @@ CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.o: \
  /workspaces/AgentAI/tests/../tools/translate_tool.h \
  /workspaces/AgentAI/tests/../tools/web_search_tool.h \
  /workspaces/AgentAI/tests/../tools/datetime_tool.h \
+<<<<<<< HEAD
  /usr/include/c++/13/chrono /usr/include/c++/13/bits/chrono_io.h \
  /usr/include/c++/13/format /usr/include/c++/13/charconv \
  /workspaces/AgentAI/tests/../tools/file_tool.h \
  /workspaces/AgentAI/tests/../tools/text_to_speech.h \
  /workspaces/AgentAI/tests/../tools/todolist_tool.h \
+=======
+ /workspaces/AgentAI/tests/../tools/file_tool.h \
+ /workspaces/AgentAI/tests/../tools/text_to_speech.h \
+>>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
  /usr/include/c++/13/iostream /usr/include/c++/13/queue \
  /usr/include/c++/13/bits/stl_queue.h /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc \
  /workspaces/AgentAI/tests/../LLMClient/json.hpp \
+<<<<<<< HEAD
  /workspaces/AgentAI/tests/../LLMClient/OllamaClient.h \
  /workspaces/AgentAI/tests/../utils/SystemUtils.h
+=======
+ /workspaces/AgentAI/tests/../LLMClient/OllamaClient.h
+>>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8

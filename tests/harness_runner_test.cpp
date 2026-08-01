@@ -17,6 +17,8 @@
 #include "../tools/web_search_tool.h"
 #include "../tools/text_to_speech.h"
 #include "../tools/file_tool.h"
+#include "../tools/datetime_tool.h"
+#include "../tools/todolist_tool.h"
 using namespace std;
 
 int main() {
@@ -50,7 +52,8 @@ int main() {
     auto db = std::make_shared<DatabaseManager>();
     registry.registerTool(std::make_unique<MemorySaveTool>(db));
     registry.registerTool(std::make_unique<MemorySearchTool>(db));   
-
+    registry.registerTool(std::make_unique<DateTimeTool>());
+    registry.registerTool(std::make_unique<TodoListTool>());
     registry.registerTool(std::make_unique<TextToSpeechTool>());
     
     registry.registerTool(std::make_unique<TranslateTool>());
@@ -69,7 +72,7 @@ int main() {
     runner.setEnvironment(&env);
 
     // 6. Chạy Benchmark từ file JSON
-    std::string taskFile = "/workspaces/AgentAI/benchmark/task.json"; 
+    std::string taskFile = "/workspaces/AgentAI/benchmark/tasks.json"; 
     std::cout << "[MAIN] Bat dau load file: " << taskFile << "\n";
     
     // Hàm này sẽ tự động đọc file, reset env, tạo evaluator, chạy agent và chấm điểm!

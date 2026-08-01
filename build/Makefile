@@ -345,6 +345,30 @@ tools/calculator_tool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.s
 .PHONY : tools/calculator_tool.cpp.s
 
+tools/datetime_tool.o: tools/datetime_tool.cpp.o
+.PHONY : tools/datetime_tool.o
+
+# target to build an object file
+tools/datetime_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.o
+.PHONY : tools/datetime_tool.cpp.o
+
+tools/datetime_tool.i: tools/datetime_tool.cpp.i
+.PHONY : tools/datetime_tool.i
+
+# target to preprocess a source file
+tools/datetime_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.i
+.PHONY : tools/datetime_tool.cpp.i
+
+tools/datetime_tool.s: tools/datetime_tool.cpp.s
+.PHONY : tools/datetime_tool.s
+
+# target to generate assembly for a file
+tools/datetime_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.s
+.PHONY : tools/datetime_tool.cpp.s
+
 tools/exec_tool.o: tools/exec_tool.cpp.o
 .PHONY : tools/exec_tool.o
 
@@ -368,6 +392,30 @@ tools/exec_tool.s: tools/exec_tool.cpp.s
 tools/exec_tool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.s
 .PHONY : tools/exec_tool.cpp.s
+
+tools/file_tool.o: tools/file_tool.cpp.o
+.PHONY : tools/file_tool.o
+
+# target to build an object file
+tools/file_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.o
+.PHONY : tools/file_tool.cpp.o
+
+tools/file_tool.i: tools/file_tool.cpp.i
+.PHONY : tools/file_tool.i
+
+# target to preprocess a source file
+tools/file_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.i
+.PHONY : tools/file_tool.cpp.i
+
+tools/file_tool.s: tools/file_tool.cpp.s
+.PHONY : tools/file_tool.s
+
+# target to generate assembly for a file
+tools/file_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.s
+.PHONY : tools/file_tool.cpp.s
 
 tools/memory_tool.o: tools/memory_tool.cpp.o
 .PHONY : tools/memory_tool.o
@@ -416,6 +464,30 @@ tools/text_to_speech.s: tools/text_to_speech.cpp.s
 tools/text_to_speech.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.s
 .PHONY : tools/text_to_speech.cpp.s
+
+tools/todolist_tool.o: tools/todolist_tool.cpp.o
+.PHONY : tools/todolist_tool.o
+
+# target to build an object file
+tools/todolist_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.o
+.PHONY : tools/todolist_tool.cpp.o
+
+tools/todolist_tool.i: tools/todolist_tool.cpp.i
+.PHONY : tools/todolist_tool.i
+
+# target to preprocess a source file
+tools/todolist_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.i
+.PHONY : tools/todolist_tool.cpp.i
+
+tools/todolist_tool.s: tools/todolist_tool.cpp.s
+.PHONY : tools/todolist_tool.s
+
+# target to generate assembly for a file
+tools/todolist_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.s
+.PHONY : tools/todolist_tool.cpp.s
 
 tools/tool_registry.o: tools/tool_registry.cpp.o
 .PHONY : tools/tool_registry.o
@@ -573,15 +645,24 @@ help:
 	@echo "... tools/calculator_tool.o"
 	@echo "... tools/calculator_tool.i"
 	@echo "... tools/calculator_tool.s"
+	@echo "... tools/datetime_tool.o"
+	@echo "... tools/datetime_tool.i"
+	@echo "... tools/datetime_tool.s"
 	@echo "... tools/exec_tool.o"
 	@echo "... tools/exec_tool.i"
 	@echo "... tools/exec_tool.s"
+	@echo "... tools/file_tool.o"
+	@echo "... tools/file_tool.i"
+	@echo "... tools/file_tool.s"
 	@echo "... tools/memory_tool.o"
 	@echo "... tools/memory_tool.i"
 	@echo "... tools/memory_tool.s"
 	@echo "... tools/text_to_speech.o"
 	@echo "... tools/text_to_speech.i"
 	@echo "... tools/text_to_speech.s"
+	@echo "... tools/todolist_tool.o"
+	@echo "... tools/todolist_tool.i"
+	@echo "... tools/todolist_tool.s"
 	@echo "... tools/tool_registry.o"
 	@echo "... tools/tool_registry.i"
 	@echo "... tools/tool_registry.s"
