@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <sqlite3.h>
 #include <curl/curl.h>
-#include <nlohmann/json.hpp> 
+#include "../LLMClient/json.hpp"
 
 using json = nlohmann::json;
 

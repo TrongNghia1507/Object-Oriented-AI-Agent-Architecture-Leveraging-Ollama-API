@@ -122,12 +122,7 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /usr/include/c++/13/bits/ranges_util.h \
  /workspaces/AgentAI/tools/../environment/environment.h \
-<<<<<<< HEAD
- /usr/include/sqlite3.h /usr/include/c++/13/memory \
- /usr/include/c++/13/bits/stl_tempbuf.h \
-=======
  /usr/include/c++/13/memory /usr/include/c++/13/bits/stl_tempbuf.h \
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
  /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_raw_storage_iter.h \
  /usr/include/c++/13/bits/align.h \
@@ -204,15 +199,6 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/ranges_uninitialized.h \
  /usr/include/c++/13/bits/ranges_algobase.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
-<<<<<<< HEAD
- /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/iostream \
- /usr/include/c++/13/istream /usr/include/c++/13/bits/istream.tcc \
- /usr/include/c++/13/chrono /usr/include/c++/13/bits/chrono.h \
- /usr/include/c++/13/ratio /usr/include/c++/13/limits \
- /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
- /usr/include/c++/13/sstream /usr/include/c++/13/bits/sstream.tcc \
- /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
-=======
  /usr/include/c++/13/pstl/execution_defs.h /usr/include/sqlite3.h \
  /usr/include/c++/13/iostream /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/fstream \
@@ -225,7 +211,6 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/parse_numbers.h /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/vector \
  /usr/include/c++/13/bits/stl_vector.h \
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
@@ -236,20 +221,12 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/locale_facets_nonio.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
-<<<<<<< HEAD
- /usr/include/libintl.h /usr/include/c++/13/bits/codecvt.h \
- /usr/include/c++/13/bits/locale_facets_nonio.tcc \
-=======
  /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
  /usr/include/c++/13/bits/locale_conv.h \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
  /usr/include/c++/13/array /usr/include/c++/13/charconv \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
-<<<<<<< HEAD
- /usr/include/c++/13/span /usr/include/c++/13/variant
-=======
  /usr/include/c++/13/span /usr/include/c++/13/variant \
  /usr/include/c++/13/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
@@ -305,8 +282,8 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/x86_64-linux-gnu/curl/header.h \
  /usr/include/x86_64-linux-gnu/curl/websockets.h \
  /usr/include/x86_64-linux-gnu/curl/mprintf.h \
- /usr/include/nlohmann/json.hpp /usr/include/c++/13/functional \
- /usr/include/c++/13/bits/std_function.h \
+ /workspaces/AgentAI/tools/../LLMClient/json.hpp \
+ /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
@@ -316,11 +293,8 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/move_only_function.h \
  /usr/include/c++/13/bits/mofunc_impl.h /usr/include/c++/13/iterator \
  /usr/include/c++/13/bits/stream_iterator.h /usr/include/c++/13/utility \
- /usr/include/c++/13/bits/stl_relops.h \
- /usr/include/nlohmann/adl_serializer.hpp \
- /usr/include/nlohmann/detail/abi_macros.hpp \
- /usr/include/nlohmann/detail/conversions/from_json.hpp \
- /usr/include/c++/13/forward_list /usr/include/c++/13/bits/forward_list.h \
+ /usr/include/c++/13/bits/stl_relops.h /usr/include/c++/13/forward_list \
+ /usr/include/c++/13/bits/forward_list.h \
  /usr/include/c++/13/bits/forward_list.tcc /usr/include/c++/13/map \
  /usr/include/c++/13/bits/stl_tree.h /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h /usr/include/c++/13/valarray \
@@ -332,54 +306,12 @@ CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o: \
  /usr/include/c++/13/bits/gslice.h \
  /usr/include/c++/13/bits/gslice_array.h \
  /usr/include/c++/13/bits/mask_array.h \
- /usr/include/c++/13/bits/indirect_array.h \
- /usr/include/nlohmann/detail/exceptions.hpp \
- /usr/include/nlohmann/detail/value_t.hpp \
- /usr/include/nlohmann/detail/macro_scope.hpp \
- /usr/include/nlohmann/detail/meta/detected.hpp \
- /usr/include/nlohmann/detail/meta/void_t.hpp \
- /usr/include/nlohmann/thirdparty/hedley/hedley.hpp \
- /usr/include/c++/13/version /usr/include/c++/13/cassert \
- /usr/include/assert.h /usr/include/nlohmann/detail/string_escape.hpp \
- /usr/include/nlohmann/detail/input/position_t.hpp \
- /usr/include/nlohmann/detail/meta/cpp_future.hpp \
- /usr/include/nlohmann/detail/meta/type_traits.hpp \
- /usr/include/nlohmann/detail/iterators/iterator_traits.hpp \
- /usr/include/nlohmann/detail/meta/call_std/begin.hpp \
- /usr/include/nlohmann/detail/meta/call_std/end.hpp \
- /usr/include/nlohmann/json_fwd.hpp \
- /usr/include/nlohmann/detail/string_concat.hpp \
+ /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/version \
+ /usr/include/c++/13/cassert /usr/include/assert.h \
  /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
- /usr/include/nlohmann/detail/meta/identity_tag.hpp \
- /usr/include/nlohmann/detail/meta/std_fs.hpp \
  /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
  /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
- /usr/include/nlohmann/detail/conversions/to_json.hpp \
- /usr/include/nlohmann/detail/iterators/iteration_proxy.hpp \
- /usr/include/c++/13/ranges \
- /usr/include/nlohmann/byte_container_with_subtype.hpp \
- /usr/include/nlohmann/detail/hash.hpp \
- /usr/include/nlohmann/detail/input/binary_reader.hpp \
- /usr/include/nlohmann/detail/input/input_adapters.hpp \
- /usr/include/c++/13/numeric /usr/include/c++/13/bits/stl_numeric.h \
- /usr/include/c++/13/pstl/glue_numeric_defs.h \
- /usr/include/nlohmann/detail/input/json_sax.hpp \
- /usr/include/nlohmann/detail/input/lexer.hpp \
- /usr/include/nlohmann/detail/meta/is_sax.hpp \
- /usr/include/nlohmann/detail/input/parser.hpp \
- /usr/include/nlohmann/detail/iterators/internal_iterator.hpp \
- /usr/include/nlohmann/detail/iterators/primitive_iterator.hpp \
- /usr/include/nlohmann/detail/iterators/iter_impl.hpp \
- /usr/include/nlohmann/detail/iterators/json_reverse_iterator.hpp \
- /usr/include/nlohmann/detail/json_custom_base_class.hpp \
- /usr/include/nlohmann/detail/json_pointer.hpp \
- /usr/include/nlohmann/detail/json_ref.hpp \
- /usr/include/nlohmann/detail/output/binary_writer.hpp \
- /usr/include/nlohmann/detail/output/output_adapters.hpp \
- /usr/include/nlohmann/detail/output/serializer.hpp \
- /usr/include/nlohmann/detail/conversions/to_chars.hpp \
- /usr/include/nlohmann/ordered_map.hpp /usr/include/c++/13/any \
- /usr/include/nlohmann/detail/macro_unscope.hpp \
- /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
+ /usr/include/c++/13/ranges /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h \
+ /usr/include/c++/13/pstl/glue_numeric_defs.h /usr/include/c++/13/any

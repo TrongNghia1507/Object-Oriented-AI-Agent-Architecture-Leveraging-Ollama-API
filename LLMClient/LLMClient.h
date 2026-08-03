@@ -43,13 +43,5 @@ public:
     virtual void setTemperature(float temperature) = 0;
     virtual void setMaxTokens(int maxTokens) = 0;
     virtual std::string getModelName() const = 0;
-
-    // === BỔ SUNG (khắc phục tokens_used luôn = 0 trong Trajectory) ===
-    // Trả về tổng số token (prompt + completion) của LẦN GỌI GẦN NHẤT tới
-    // sendPrompt()/sendMessages()/sendPromptWithImage(). Không phải pure
-    // virtual (có định nghĩa mặc định = 0) để KHÔNG phá vỡ các LLMClient con
-    // đã tồn tại (ví dụ MockLLMClient trong test) — chúng không cần quan tâm
-    // tới token, chỉ OllamaClient (client thật, có API trả eval_count) mới
-    // cần override.
-    virtual int getLastTokenUsage() const { return 0; }
+    
 };

@@ -88,7 +88,6 @@ std::vector<std::string> CalculatorTool::infixToPostfix(const std::string& expr)
 
     return postfix;
 }
-
 double CalculatorTool::evaluatePostfix(const std::vector<std::string>& postfix) {
     std::stack<double> valStack;
 

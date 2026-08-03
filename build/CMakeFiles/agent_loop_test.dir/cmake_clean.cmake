@@ -17,26 +17,18 @@ file(REMOVE_RECURSE
   "CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.o.d"
   "CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.o.d"
-<<<<<<< HEAD
-  "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o"
-  "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o.d"
-=======
   "CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.o.d"
   "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o.d"
   "CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.o.d"
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
   "CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o.d"
   "CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o.d"
-<<<<<<< HEAD
-=======
   "CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.o.d"
->>>>>>> 4e96d6bbf8c91a24c7cdb41ce10d269f99ea2ce8
   "CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.o"
   "CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.o.d"
   "CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.o"
