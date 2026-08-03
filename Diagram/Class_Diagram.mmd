@@ -1,0 +1,346 @@
+classDiagram
+    direction TB
+
+    %% ===================== TOOL LAYER =====================
+    class Tool {
+        <<interface>>
+        +getName()* string
+        +getDescription()* string
+        +execute(arguments string)* string
+    }
+    class AdvancedMathTool
+    class CalculatorTool {
+        -getPrecedence(op char) int
+        -isOperator(c char) bool
+        -applyOp(a double, b double, op char) double
+        -infixToPostfix(expr string) vector~string~
+        -evaluatePostfix(postfix vector~string~) double
+    }
+    class DateTimeTool{
+        -normalize(s string) string
+    }
+    class ExecTool {
+        -env_ Environment*
+        -policy_ ExecutionPolicy
+    }
+    class Mode{
+        <<enumeration>>
+        Read
+        Write
+    }
+    class FileTool {
+        -env_ Environment*
+        -mode_ Mode
+    }
+    class MemorySaveTool {
+        -dbManager shared_ptr~DatabaseManager~
+    }
+    class MemorySearchTool {
+        -dbManager shared_ptr~DatabaseManager~
+    }
+    class ParsedArgs{
+        <<struct>>
+        +text string
+        +voiceId string
+        +outputFile string
+    }
+    class TextToSpeechTool {
+        -apiUrl_ string
+        -apiKey_ string
+        -defaultVoiceId_ string
+        -loadApiKey() string
+        -jsonEscape(input string) string
+        -parseArguments(arguments string,out ParsedArgs) bool
+        -callTtsApi(text string, voiceId string, outputFile string,errorMessage string) bool
+    }
+    class Status{
+        <<enumeration>>
+        Pending
+        InProgress
+        Done
+    }
+    class TodoItem{
+        <<struct>>
+        +id int
+        +content string
+        +status Status
+    }
+    class TodoListTool {
+        -items_ vector~TodoItem~
+        -nextId_ int
+        -trim(s string)$ string
+        -statusSymbol(s Status)$ char
+        -renderList() string
+        -findById(id int) TodoItem*
+        -splitCommand(args string)$ pair~string,string~
+        -parseId(s string, outId int)$ bool
+    }
+    class TranslateTool{
+        -urlEncode(value string) string
+        -callTranslateApi(text string, sourceLang,string, targetLang string, errorOut string) string
+        -splitPipe(s string)$ vector~string~
+        -trim(s string)$ string
+    }
+    class WebSearchTool{
+        -urlEncode(value string) string
+    }
+    class DatabaseManager {
+        -db sqlite3*
+        +getDB() sqlite3*
+    }
+    class ToolRegistry {
+        -tools_ map~string,unique_ptr~Tool~~
+        -blacklist_ set~string~
+        +registerTool(Tool unique_ptr~Tool~)
+        +banTool(name string)
+        +unbanTool(name string)
+        +isAllowed(name string) bool
+        +getTool(name string) Tool*
+        +getAllToolNames() vector~string~
+        +generateToolsPrompt() string
+    }
+
+    Tool <|.. AdvancedMathTool : realize
+    Tool <|.. CalculatorTool : realize
+    Tool <|.. DateTimeTool : realize
+    Tool <|.. ExecTool : realize
+    Tool <|.. FileTool : realize
+    Tool <|.. MemorySaveTool : realize
+    Tool <|.. MemorySearchTool : realize
+    Tool <|.. TextToSpeechTool : realize
+    Tool <|.. TodoListTool : realize
+    Tool <|.. TranslateTool : realize
+    Tool <|.. WebSearchTool : realize
+    ToolRegistry o-- "0..*" Tool : owns (unique_ptr)
+    ExecTool --> Environment : uses (raw ptr, không sở hữu)
+    FileTool --> Environment : uses (raw ptr, không sở hữu)
+    MemorySaveTool *-- DatabaseManager : sở hữu chung (shared_ptr)
+    MemorySearchTool *-- DatabaseManager : sở hữu chung (shared_ptr)
+    FileTool *-- Mode
+    TextToSpeechTool *-- ParsedArgs: định nghĩa trong thuộc tính private
+    TodoListTool *-- Status
+    TodoListTool *-- TodoItem
+
+
+
+
+
+    %% ===================== ENVIRONMENT LAYER =====================
+    class Environment {
+        <<interface>>
+        +setup()*
+        +executeCommand(cmd string)* string
+        +readFile(path string)* string
+        +writeFile(path string, content string)* string
+        +teardown()*
+    }
+    class NativeEnvironment
+    class SandboxEnvironment {
+        -sandboxDir_ string
+    }
+    Environment <|.. NativeEnvironment : realize
+    Environment <|.. SandboxEnvironment : realize
+
+
+
+
+
+
+    %% ===================== LLM CLIENT LAYER =====================
+    class LLMClient {
+        <<interface>>
+        +sendPrompt(text string)* expected~string,LLMError~
+        +sendMessages(messages vector~Message~)* expected~string,LLMError~
+        +sendPromptWithImage(text string,imagePath string)* expected~string,LLMError~
+        +setTemperature(t)*
+        +setMaxTokens(n)*
+        +getModelName()* string
+    }
+    class LLMError{
+        <<enumeration>>
+        Timeout
+        ConnectionDenied
+        MalformedJson
+        UnknownNetworkError
+    }
+
+    class Message {
+        <<struct>>
+        +role string
+        +content string
+        +image string
+        +hasImage bool
+    }
+    class OllamaClient {
+        -modelName_ string
+        -baseUrl_ string
+        -temperature_ float
+        -maxTokens_ int
+        -lastTokenUsage_ int
+        -buildPayload(promptText string, base64Image string) string
+        -executeCurl(url string, method string, payload string) expected~string,LLMError~
+        -resolveEndpoint() expected~string,LLMError~
+        -processRequest(jsonPayload string) expected~string,LLMError~
+    }
+    LLMClient <|.. OllamaClient : implementation
+    LLMClient ..> Message : sendMessages(vector~Message~)
+    LLMClient ..> LLMError: kieu tra ve expected co chua LLMError
+
+
+
+
+
+
+
+    %% ===================== AGENT LAYER =====================
+    class Skill {
+        +name string
+        +filePath string
+        +keywords vector~string~
+        +content string
+    }
+    class SkillLoader {
+        -skillsDir_ path
+        -skills_ vector~Skill~
+        +loadAll() size_t
+        +selectSkillsForTask(task) vector~Skill*~
+        +buildSkillPrompt(task) string
+    }
+    SkillLoader --> "0..*" Skill : owns
+
+    class LoopDetector {
+        -history_ vector~ActionRecord~
+        -warningThreshold_ int
+        -criticalThreshold_ int
+        +check(tool,args) LoopStatus
+        +reset()
+    }
+    class LoopStatus {
+        <<enumeration>>
+        Clear
+        Warning
+        Critical
+    }
+    LoopDetector ..> LoopStatus : trả về
+
+    class ToolCallAction {
+        <<struct>>
+        +toolName string
+        +arguments string
+    }
+    class FinalAnswerAction {
+        <<struct>>
+        +text string
+    }
+    class Step {
+        +stepId int
+        +thought string
+        +action Action
+        +toolResult optional~string~
+        +actionLog string
+        +observation string
+        +tokensUsed int
+        +latencyMs long
+    }
+    Step ..> ToolCallAction : action(variant)
+    Step ..> FinalAnswerAction : action(variant)
+
+    class Trajectory {
+        <<struct>>
+        +taskId string
+        +task string
+        +model string
+        +finalAnswer string
+        +success bool
+        +stoppedByLoop bool
+        +stoppedByMaxSteps bool
+        +totalTimeMs long long
+        +totalTokens int
+        +steps vector~Step~
+        +toJson() json
+    }
+    Trajectory --> "0..*" Step : owns
+
+    class AgentLoop {
+        <<Template Method>>
+        #llm_ LLMClient*
+        #registry_ ToolRegistry*
+        #skillLoader_ SkillLoader*
+        #maxSteps_ int
+        #loopDetector_ LoopDetector
+        #stepHook_ StepHook
+
+        #doThink(messages vector~Message~)$ string
+        #parseAction(thought string)$ Action
+        #doAct(action ToolCallAction)$ string
+        #doObserve(toolResult string)$ string
+        #buildSystemPrompt(task string)$ string
+        #notifyHook(current_step Step)
+        +run(taskId string,task string,imagePath string) Trajectory
+        +setStepHook(hook StepHook)
+        +setMaxSteps(n int)
+        +setLoopThresholds(warning int, critical int)
+    }
+    AgentLoop --> LLMClient : dùng (raw ptr, không sở hữu)
+    AgentLoop --> ToolRegistry : dùng (raw ptr, không sở hữu)
+    AgentLoop --> SkillLoader : dùng (raw ptr, optional)
+    AgentLoop --> LoopDetector : sở hữu (by value)
+    AgentLoop ..> Trajectory : tạo & trả về
+    AgentLoop ..> Message : xây conversation history
+    AgentLoop ..> Step : tạo mỗi vòng lặp
+    AgentLoop ..> SystemUtils : encodeImageToBase64()
+
+
+
+
+
+
+    %% ===================== HARNESS LAYER =====================
+    class Evaluator {
+        <<interface>>
+        +getName()$ string
+        +evaluate(answer string,traj Trajectory,env Environment*)$ optional~int~
+        +isPassed()$ bool
+    }
+    class KeywordEvaluator {
+        -expectedKeywords_ vector~string~
+        -scorePerKeyword_ int
+        -minRequired_ int
+        +fromTaskJson(json) shared_ptr~KeywordEvaluator~
+    }
+    class FunctionalEvaluator {
+        -evalScript_ string
+        -rewardScore_ int
+        -isPassed_ bool
+        +FunctionalEvaluator(script string,rewardScore int)
+    }
+    Evaluator <|.. KeywordEvaluator : realize
+    Evaluator <|.. FunctionalEvaluator : realize
+    Evaluator ..> Environment : evaluate(...,env)
+    Evaluator ..> Trajectory : evaluate(...,traj)
+
+    class HarnessRunner {
+        -evaluators_ vector~shared_ptr~Evaluator~~
+        -env_ Environment*
+        +setEnvironment(env)
+        +loadTaskFromJson(file, agent)
+        +addEvaluator(eval)
+        +runTask(taskId,task,agent) bool
+    }
+    HarnessRunner 0-- "0..*" Evaluator : owns (shared_ptr)
+    HarnessRunner --> Environment : dùng (raw ptr)
+    HarnessRunner ..> AgentLoop : điều phối run()
+    HarnessRunner ..> Trajectory : đọc kết quả
+
+    class AgentMessage {
+        +sender string
+        +receiver string
+        +content string
+    }
+    class ThreadSafeMessageQueue {
+        -queue_ queue~AgentMessage~
+        -mutex_ mutex
+        +push(msg)
+        +pop() AgentMessage
+    }
+    ThreadSafeMessageQueue 0-- "0..*" AgentMessage : chứa
