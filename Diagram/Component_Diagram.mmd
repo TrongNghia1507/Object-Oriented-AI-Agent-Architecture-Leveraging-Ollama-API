@@ -1,0 +1,164 @@
+flowchart LR
+
+%% ===============================
+%% Harness Module
+%% ===============================
+subgraph HM["Harness Module"]
+    HR["HarnessRunner"]
+    EV["Evaluator"]
+    KE["KeywordEvaluator"]
+    FE["FunctionalEvaluator"]
+end
+
+%% ===============================
+%% Agent Core Module
+%% ===============================
+subgraph AC["Agent Core Module"]
+    AL["AgentLoop"]
+    LD["LoopDetector"]
+    SL["SkillLoader"]
+end
+
+%% ===============================
+%% LLM Interface
+%% ===============================
+subgraph LLM["LLM Interface"]
+    LC["LLMClient"]
+    OC["OllamaClient"]
+end
+
+%% ===============================
+%% Tools Module
+%% ===============================
+subgraph TM["Tools Module"]
+
+    TR["ToolRegistry"]
+
+    CT["CalculatorTool"]
+    AM["AdvancedMathTool"]
+
+    ET["ExecTool"]
+
+    FR["FileTool (read_file)"]
+    FW["FileTool (write_file)"]
+
+    WS["WebSearchTool"]
+
+    MS["MemorySaveTool"]
+    MR["MemorySearchTool"]
+
+    DB["DatabaseManager"]
+
+    TTS["TextToSpeechTool"]
+    TT["TranslateTool"]
+    DT["DateTimeTool"]
+    TODO["TodoListTool"]
+
+end
+
+%% ===============================
+%% Environment
+%% ===============================
+subgraph ENV["Environment Module"]
+    ENVIF["Environment"]
+    NENV["NativeEnvironment"]
+end
+
+%% ===============================
+%% External Dependencies
+%% ===============================
+subgraph EXT["External Dependencies"]
+
+    SQLITE["SQLite3"]
+
+    CURL["libcurl"]
+
+    JSON["nlohmann/json"]
+
+    SXNG["SearXNG Service"]
+
+end
+
+%% =====================================
+%% Harness
+%% =====================================
+
+HR -->|Batch Evaluation| AL
+
+HR -->|Evaluate Result| EV
+
+KE -.implements.-> EV
+FE -.implements.-> EV
+
+%% =====================================
+%% Agent Core
+%% =====================================
+
+AL -->|Loop Detection| LD
+
+AL -->|Load Prompt| SL
+
+AL -->|Prompt / History| LC
+
+AL -->|Tool Action| TR
+
+%% =====================================
+%% LLM
+%% =====================================
+
+OC -.implements.-> LC
+
+OC -->|HTTP| CURL
+
+OC -->|JSON Parse| JSON
+
+%% =====================================
+%% Tool Registry
+%% =====================================
+
+TR --> CT
+TR --> AM
+TR --> ET
+
+TR --> FR
+TR --> FW
+
+TR --> WS
+
+TR --> MS
+TR --> MR
+
+TR --> TTS
+TR --> TT
+TR --> DT
+TR --> TODO
+
+%% =====================================
+%% Memory
+%% =====================================
+
+MS --> DB
+
+MR --> DB
+
+DB -->|Store / Query| SQLITE
+
+%% =====================================
+%% Search
+%% =====================================
+
+WS -->|HTTP| CURL
+
+WS -->|Search| SXNG
+
+%% =====================================
+%% Environment
+%% =====================================
+
+ET -->|Execute| ENVIF
+
+FR -->|Read| ENVIF
+
+FW -->|Write| ENVIF
+
+NENV -.implements.-> ENVIF

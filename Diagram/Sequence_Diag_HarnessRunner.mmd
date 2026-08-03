@@ -1,0 +1,75 @@
+sequenceDiagram
+    autonumber
+
+    actor User
+    participant Harness as HarnessRunner
+    participant Agent as AgentLoop
+    participant LLM as OllamaClient
+    participant Registry as ToolRegistry
+    participant Env as Environment
+
+    User->>Harness: Load benchmark.json
+    Harness->>Harness: Parse task list
+
+    loop For each Task
+
+        Harness->>Harness: Create Evaluator
+        Harness->>Agent: setMaxSteps(maxSteps)
+        Harness->>Env: setup()
+        Harness->>Agent: registerStepHook()
+
+        Harness->>Agent: run(taskId, task)
+        activate Agent
+
+        loop ReAct Loop
+
+            Agent->>LLM: Send History + System Prompt
+            activate LLM
+            LLM-->>Agent: Thought + Action
+            deactivate LLM
+
+            alt Tool Call
+
+                Agent->>Registry: getTool(toolName)
+                activate Registry
+
+                Registry-->>Agent: Tool Instance
+
+                Agent->>Registry: execute(arguments)
+
+                opt File / Exec Tool
+                    Registry->>Env: execute()
+                    Env-->>Registry: Result
+                end
+
+                Registry-->>Agent: Observation
+                deactivate Registry
+
+                Agent-->>Harness: stepHook(step)
+
+            else Final Answer
+
+                Agent-->>Harness: stepHook(step)
+
+            end
+
+        end
+
+        Agent-->>Harness: Return Trajectory
+        deactivate Agent
+
+        Harness->>Agent: clearStepHook()
+
+        loop Evaluate
+
+            Harness->>Harness: evaluator.evaluate()
+
+        end
+
+        Harness->>Harness: Save trajectory.json
+        Harness->>Env: teardown()
+
+    end
+
+    Harness->>Harness: Save benchmark_summary.json
+    Harness-->>User: Batch Evaluation Complete

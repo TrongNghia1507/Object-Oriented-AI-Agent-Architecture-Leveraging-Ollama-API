@@ -1,0 +1,69 @@
+sequenceDiagram
+    actor Caller as HarnessRunner / main
+    participant AL as AgentLoop
+    participant SL as SkillLoader
+    participant TR as ToolRegistry
+    participant LLM as OllamaClient
+    participant Srv as Ollama Server
+    participant LD as LoopDetector
+    participant T as Tool
+
+    Caller->>AL: run(taskId, task, imagePath)
+    activate AL
+    AL->>TR: generateToolsPrompt()
+    TR-->>AL: Tool descriptions
+    AL->>SL: buildSkillPrompt(task, fallback)
+    SL-->>AL: Matched skill content
+    Note over AL: buildSystemPrompt() combines<br/>tools + skill + ReAct rules
+    AL->>AL: init messages [system, user]
+    AL->>LD: reset()
+
+    loop stepIdx from 0 to maxSteps-1
+        AL->>LLM: sendMessages(messages)
+        activate LLM
+        LLM->>Srv: POST /api/chat (JSON payload)
+        Srv-->>LLM: HTTP JSON response
+        LLM-->>AL: expected<string, LLMError>
+        deactivate LLM
+        AL->>AL: tokensUsed = getLastTokenUsage()
+
+        alt thought starts with "__ERROR__"
+            AL->>AL: traj.steps.push_back(step)
+            AL->>Caller: stepHook_(step) [Observer]
+            Note over AL: break loop (LLM/network error)
+        else Valid LLM response
+            AL->>AL: parseAction(thought) - regex
+
+            alt Action = Final Answer
+                AL->>AL: traj.finalAnswer = text<br/>traj.success = true
+            else Action = Tool Call
+                AL->>LD: check(toolName, arguments)
+                LD-->>AL: LoopStatus
+                alt status = Critical
+                    AL->>AL: traj.stoppedByLoop = true
+                else Not critical
+                    AL->>TR: getTool(toolName)
+                    TR-->>AL: Tool* (may be nullptr)
+                    alt tool found
+                        AL->>T: execute(arguments)
+                        T-->>AL: tool result
+                    else tool == nullptr
+                        AL->>AL: build "[LOI] Tool khong ton tai" string<br/>(treated as result, not a hard stop)
+                    end
+                    AL->>AL: doObserve() + append<br/>assistant/user messages
+                end
+            end
+
+            Note over AL: traj.totalTokens += tokensUsed<br/>traj.steps.push_back(step)
+            AL->>Caller: stepHook_(step) [Observer]
+
+            alt Final Answer OR Critical Loop
+                Note over AL: break loop
+            else stepIdx == maxSteps-1
+                AL->>AL: traj.stoppedByMaxSteps = true
+            end
+        end
+    end
+
+    AL-->>Caller: Trajectory (finalAnswer, steps,<br/>totalTokens, totalTimeMs)
+    deactivate AL
