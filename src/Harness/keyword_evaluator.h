@@ -5,7 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
-
+#include <format>
 // ─── KeywordEvaluator — Bộ chấm điểm dựa trên từ khóa ────────────────────────
 //
 // Strategy Pattern: cùng interface Evaluator::evaluate() với FunctionalEvaluator.
@@ -95,4 +95,7 @@ public:
 
         return totalScore;
     }
+    std::string getDetail() const override {
+    return format("Khop {}/{} tu khoa (can toi thieu {})",std::to_string(matchedCount_),std::to_string(expectedKeywords_.size()),std::to_string(minRequired_));
+}
 };

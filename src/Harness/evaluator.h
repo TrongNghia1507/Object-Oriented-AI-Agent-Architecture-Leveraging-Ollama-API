@@ -18,4 +18,5 @@ public:
         Environment* env
     ) = 0;
     virtual bool isPassed() const = 0;
+    virtual std::string getDetail() const =0;
 };

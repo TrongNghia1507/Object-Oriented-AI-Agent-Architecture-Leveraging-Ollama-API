@@ -2,6 +2,7 @@
 #include "evaluator.h"
 #include <iostream>
 #include <string>
+#include <format>
 
 
 class FunctionalEvaluator : public Evaluator {
@@ -9,6 +10,7 @@ private:
     std::string evalScript_;
     int rewardScore_ = 100;
     bool isPassed_ = false;
+    std::string lastResult_;
 public:
     FunctionalEvaluator(const std::string& script, int rewardScore) : evalScript_(script), rewardScore_(rewardScore)  {}
 
@@ -24,7 +26,7 @@ public:
 
         // Chạy script kiểm tra hệ thống do file JSON cung cấp
         std::string result = env->executeCommand(evalScript_);
-        
+        lastResult_ =result;
         // Cần có logic để phân tích result (ví dụ: trả về 1 là pass)
         // Ở đây giả lập đơn giản: Nếu kết quả có chữ PASS -> trả về rewardScore
         if (result.find("PASS") != std::string::npos) {
@@ -34,5 +36,8 @@ public:
 
         isPassed_ = false;
         return 0;
+    }
+    std::string getDetail() const override {
+        return format("Script output: {}\n", lastResult_);
     }
 };

@@ -4,6 +4,6 @@ current_ram = 16
 current_vram = 4
 
 if current_ram >= min_ram and current_vram >= min_vram:
-    print("The computer meets the minimum requirements and can run Hogwarts Legacy.")
+    print("Your computer meets the minimum requirements. The game should run.")
 else:
-    print("The computer does not meet the minimum requirements to run Hogwarts Legacy.")
+    print("Your computer does not meet the minimum requirements. The game may not run smoothly.")

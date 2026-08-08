@@ -46,7 +46,7 @@ std::string AgentLoop::buildSystemPrompt(const std::string& task) {
         "- Khong them preamble truoc 3 dong tren.\n"
         "- Khong goi them tool sau khi da viet Final Answer.\n"
         "- Khong de trong Action hoac Arguments.\n"
-        "Khi thực hiện lệnh ghi file vào Linux, luôn sử dụng lệnh printf thay vì echo để tránh lỗi cú pháp, và sử dụng > để đảm bảo ghi đè nội dung cũ.";
+        "Khi thực hiện lệnh shell để ghi file, TUYỆT ĐỐI không dùng lệnh echo. Phải sử dụng lệnh printf với cú pháp định dạng '%b' (Ví dụ: printf '%b' '- Dòng 1\\n- Dòng 2') để tránh lỗi khi chuỗi bắt đầu bằng dấu gạch ngang, và sử dụng > để ghi đè.";
 
     return prompt;
 }

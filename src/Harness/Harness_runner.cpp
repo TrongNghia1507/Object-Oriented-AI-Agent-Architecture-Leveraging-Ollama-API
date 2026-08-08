@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <print>
 
 void HarnessRunner::addEvaluator(std::shared_ptr<Evaluator> evaluator) {
     if (evaluator) {
@@ -10,9 +11,9 @@ void HarnessRunner::addEvaluator(std::shared_ptr<Evaluator> evaluator) {
 }
 
 bool HarnessRunner::runTask(const std::string& taskId, const std::string& task, AgentLoop& agent) {
-    std::cout << "\n==================================================\n";
-    std::cout << "[HARNESS RUNNER] Bat dau kiem thu Task ID: " << taskId << "\n";
-    std::cout << "==================================================\n";
+    std::println("\n==================================================");
+    std::println("[HARNESS RUNNER] Bat dau kiem thu Task ID: {}", taskId);
+    std::println("==================================================");
 
     // === 1. THIẾT LẬP MÔI TRƯỜNG TRƯỚC TIÊN ===
     if (env_) {
@@ -149,11 +150,18 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
         bool passed = runTask(taskId, instruction, agent);
 
         totalTasks++;
-        if (passed) passedTasks++;
-
-        batchSummary.push_back({
-            {"task_id", taskId}, {"eval_type", evalType}, {"passed", passed}
-        });
+        if (passed){
+            passedTasks++;    
+            batchSummary.push_back({
+                {"task_id", taskId}, {"eval_type", evalType}, {"passed", passed}
+            });  
+        } 
+        else{    
+            batchSummary.push_back({
+                {"task_id", taskId}, {"eval_type", evalType}, {"passed", passed},{"Description", evaluators_[0]->getDetail()}
+            });
+        }
+        
     }
 
     // 3. Xuất báo cáo success rate tổng hợp 

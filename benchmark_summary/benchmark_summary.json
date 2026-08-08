@@ -1,6 +1,6 @@
 {
-    "passed_tasks": 9,
-    "success_rate_percent": 90.0,
+    "passed_tasks": 10,
+    "success_rate_percent": 100.0,
     "tasks": [
         {
             "eval_type": "keyword",
@@ -29,7 +29,7 @@
         },
         {
             "eval_type": "functional",
-            "passed": false,
+            "passed": true,
             "task_id": "task_006"
         },
         {

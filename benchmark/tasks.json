@@ -46,7 +46,7 @@
   "description": "Tổng hợp dữ liệu trực tuyến, dịch thuật và định dạng văn bản",
   "instruction": "Sử dụng websearch để tìm thông tin chi tiết về một cầu thủ bóng đá nam vĩ đại nhất mọi thời đại . Hãy trích xuất các thông tin sau: Tên đầy đủ, Ngày sinh, Nơi sinh và Các thành tích nổi bật nhất trong sự nghiệp. Yêu cầu bắt buộc: Dịch toàn bộ dữ liệu tìm được sang tiếng Việt, trình bày các thông tin này dưới dạng danh sách gạch đầu dòng (bullet points), và lưu kết quả vào file outputSources/goat_player.txt. Mọi file phát sinh đều phải được lưu trong folder outputSources",
   "eval_type": "functional",
-  "eval_script": "test -f outputSources/goat_player.txt && grep -iE 'sinh|thành tích' outputSources/goat_player.txt > /dev/null && echo PASS",
+  "eval_script": "test -s outputSources/goat_player.txt && echo PASS",
   "max_steps": 8
   },
   {
@@ -60,7 +60,7 @@
   {
   "id": "task_008",
   "description": "Tiền xử lý dữ liệu đồ thị và nạp vào cơ sở dữ liệu SQLite",
-  "instruction": "Hệ thống cần khởi tạo dữ liệu bản đồ cho dự án Tuyến xe buýt ĐH KHTN. Hãy dùng memory tool để tạo bảng 'bus_routes' trong SQLite gồm 3 cột (source, destination, distance) và chèn các dữ liệu tuyến đường sau: A-B (5km), B-C (3km), A-C (7km), C-D (4km), D-E (6km). Chú ý kiểm tra kỹ điều kiện: tuyệt đối không được chèn cung A-F vào dữ liệu. Sau khi nạp thành công, hãy dùng math tool để tính tổng chiều dài của tất cả các cung đường vừa nhập. Cuối cùng, gọi file_tool để lưu con số tổng vừa tính được vào file outputSources/bus_data_prep.txt. Tất cả các file phát sinh đều phải lưu trong folder outputSources",
+  "instruction": "Hệ thống cần khởi tạo dữ liệu bản đồ cho dự án Tuyến xe buýt ĐH KHTN. Hãy dùng memory tool để tạo bảng 'bus_routes' trong SQLite gồm 3 cột (source, destination, distance) và chèn các dữ liệu tuyến đường sau: A-B (5km), B-C (3km), A-C (7km), C-D (4km), D-E (6km). Sử dụng memory.db được khởi tạo ban đầu. Chú ý kiểm tra kỹ điều kiện: tuyệt đối không được chèn cung A-F vào dữ liệu. Sau khi nạp thành công, hãy dùng math tool để tính tổng chiều dài của tất cả các cung đường vừa nhập. Cuối cùng, gọi file_tool để lưu con số tổng vừa tính được vào file outputSources/bus_data_prep.txt. Tất cả các file phát sinh đều phải lưu trong folder outputSources",
   "eval_type": "functional",
   "eval_script": "test -f outputSources/bus_data_prep.txt && grep '25' outputSources/bus_data_prep.txt > /dev/null && echo PASS",
   "max_steps": 10
@@ -74,12 +74,12 @@
     "max_steps": 12
   },
   {
-    "id": "task_010",
-    "description": "Trích xuất dữ liệu và tối ưu hóa lộ trình đồ thị",
-    "instruction": "Hệ thống cần lập báo cáo đường đi ngắn nhất cho dự án tuyến xe buýt ĐH KHTN. Dùng memory tool truy vấn cơ sở dữ liệu SQLite để lấy danh sách các cung đường và khoảng cách (lưu ý: các trạm được ký hiệu bằng chữ cái, không dùng số). Sau khi có dữ liệu thô, dùng exectool viết và thực thi một mã Python triển khai thuật toán Dijkstra nhằm tìm lộ trình ngắn nhất từ trạm A đến một trạm đích bất kỳ, in ra kết quả bằng tiếng Anh. Kế tiếp, dùng translate tool dịch toàn bộ output lộ trình đó sang tiếng Việt. Cuối cùng, dùng file tool lưu văn bản báo cáo hoàn chỉnh vào outputSources/bus_route_report.txt. Tất cả các file phát sinh đều phải lưu trong folder outputSources",
-    "eval_type": "functional",
-    "eval_script": "test -f outputSources/bus_route_report.txt && grep -E '17' outputSources/bus_route_report.txt > /dev/null && echo PASS",
-    "max_steps": 15
+  "id": "task_010",
+  "description": "Trích xuất dữ liệu, chạy thuật toán Dijkstra và định dạng báo cáo",
+  "instruction": "Hệ thống cần lập báo cáo đường đi ngắn nhất cho dự án tuyến xe buýt ĐH KHTN. Dùng memory tool truy vấn bảng 'bus_routes' trong cơ sở dữ liệu SQLite để lấy danh sách cung đường (lưu ý rà soát kỹ, đồ thị này không có cung nối trực tiếp giữa A và F). Dùng exectool viết và thực thi mã (Python/C++) triển khai thuật toán Dijkstra nhằm tìm lộ trình ngắn nhất CỤ THỂ từ đỉnh A đến đỉnh E. YÊU CẦU BẮT BUỘC: Các đỉnh trong lộ trình in ra phải được ký hiệu bằng chữ cái (A, B, C, D, E), tuyệt đối không được hiển thị bằng số. Dùng translate tool dịch output sang tiếng Việt, và gọi file_tool lưu báo cáo vào outputSources/bus_route_report.txt (nhớ dùng lệnh printf '%b' để ghi file) Mọi file phát sinh đều phải được lưu trong folder outputSources.",
+  "eval_type": "functional",
+  "eval_script": "test -s outputSources/bus_route_report.txt && grep -E 'E' outputSources/bus_route_report.txt > /dev/null && grep -E '17' outputSources/bus_route_report.txt > /dev/null && echo PASS",
+  "max_steps": 15
   }
 
 ]

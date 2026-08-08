@@ -46,7 +46,7 @@ Tool* ToolRegistry::getTool(const std::string& name) const {
 std::vector<std::string> ToolRegistry::getAllToolNames() const {
     std::vector<std::string> names;
     names.reserve(tools_.size());
-    for (const auto& [name, tool] : tools_) {
+    for (const auto& [name, _] : tools_) {
         names.push_back(name);
     }
     return names;

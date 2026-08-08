@@ -1,1 +1,12 @@
-Máy tính đáp ứng các yêu cầu tối thiểu và có thể chạy Hogwarts Legacy.
+Hogwarts Legacy Hardware Compatibility Report
+------------------------------------------
+Minimum Requirements:
+- RAM: 16GB
+- VRAM: 4GB
+
+Current System Specs:
+- RAM: 16GB
+- VRAM: 4GB
+
+Conclusion (EN): Your computer meets the minimum requirements. The game should run.
+Conclusion (VI): Máy tính của bạn đáp ứng các yêu cầu tối thiểu. Trò chơi sẽ bắt đầu.
