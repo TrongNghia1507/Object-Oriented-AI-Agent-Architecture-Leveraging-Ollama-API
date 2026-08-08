@@ -117,497 +117,497 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named agent_loop_test
+# Target rules for targets named harness
 
 # Build rule for target.
-agent_loop_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 agent_loop_test
-.PHONY : agent_loop_test
+harness: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 harness
+.PHONY : harness
 
 # fast build rule for target.
-agent_loop_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/build
-.PHONY : agent_loop_test/fast
+harness/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/build
+.PHONY : harness/fast
 
-Harness/Harness_runner.o: Harness/Harness_runner.cpp.o
-.PHONY : Harness/Harness_runner.o
-
-# target to build an object file
-Harness/Harness_runner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/Harness/Harness_runner.cpp.o
-.PHONY : Harness/Harness_runner.cpp.o
-
-Harness/Harness_runner.i: Harness/Harness_runner.cpp.i
-.PHONY : Harness/Harness_runner.i
-
-# target to preprocess a source file
-Harness/Harness_runner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/Harness/Harness_runner.cpp.i
-.PHONY : Harness/Harness_runner.cpp.i
-
-Harness/Harness_runner.s: Harness/Harness_runner.cpp.s
-.PHONY : Harness/Harness_runner.s
-
-# target to generate assembly for a file
-Harness/Harness_runner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/Harness/Harness_runner.cpp.s
-.PHONY : Harness/Harness_runner.cpp.s
-
-LLMClient/OllamaClient.o: LLMClient/OllamaClient.cpp.o
-.PHONY : LLMClient/OllamaClient.o
+src/Harness/Harness_runner.o: src/Harness/Harness_runner.cpp.o
+.PHONY : src/Harness/Harness_runner.o
 
 # target to build an object file
-LLMClient/OllamaClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/LLMClient/OllamaClient.cpp.o
-.PHONY : LLMClient/OllamaClient.cpp.o
+src/Harness/Harness_runner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/Harness/Harness_runner.cpp.o
+.PHONY : src/Harness/Harness_runner.cpp.o
 
-LLMClient/OllamaClient.i: LLMClient/OllamaClient.cpp.i
-.PHONY : LLMClient/OllamaClient.i
+src/Harness/Harness_runner.i: src/Harness/Harness_runner.cpp.i
+.PHONY : src/Harness/Harness_runner.i
 
 # target to preprocess a source file
-LLMClient/OllamaClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/LLMClient/OllamaClient.cpp.i
-.PHONY : LLMClient/OllamaClient.cpp.i
+src/Harness/Harness_runner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/Harness/Harness_runner.cpp.i
+.PHONY : src/Harness/Harness_runner.cpp.i
 
-LLMClient/OllamaClient.s: LLMClient/OllamaClient.cpp.s
-.PHONY : LLMClient/OllamaClient.s
+src/Harness/Harness_runner.s: src/Harness/Harness_runner.cpp.s
+.PHONY : src/Harness/Harness_runner.s
 
 # target to generate assembly for a file
-LLMClient/OllamaClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/LLMClient/OllamaClient.cpp.s
-.PHONY : LLMClient/OllamaClient.cpp.s
+src/Harness/Harness_runner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/Harness/Harness_runner.cpp.s
+.PHONY : src/Harness/Harness_runner.cpp.s
 
-agent/agent_loop.o: agent/agent_loop.cpp.o
-.PHONY : agent/agent_loop.o
+src/LLMClient/OllamaClient.o: src/LLMClient/OllamaClient.cpp.o
+.PHONY : src/LLMClient/OllamaClient.o
 
 # target to build an object file
-agent/agent_loop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.o
-.PHONY : agent/agent_loop.cpp.o
+src/LLMClient/OllamaClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/LLMClient/OllamaClient.cpp.o
+.PHONY : src/LLMClient/OllamaClient.cpp.o
 
-agent/agent_loop.i: agent/agent_loop.cpp.i
-.PHONY : agent/agent_loop.i
+src/LLMClient/OllamaClient.i: src/LLMClient/OllamaClient.cpp.i
+.PHONY : src/LLMClient/OllamaClient.i
 
 # target to preprocess a source file
-agent/agent_loop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.i
-.PHONY : agent/agent_loop.cpp.i
+src/LLMClient/OllamaClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/LLMClient/OllamaClient.cpp.i
+.PHONY : src/LLMClient/OllamaClient.cpp.i
 
-agent/agent_loop.s: agent/agent_loop.cpp.s
-.PHONY : agent/agent_loop.s
+src/LLMClient/OllamaClient.s: src/LLMClient/OllamaClient.cpp.s
+.PHONY : src/LLMClient/OllamaClient.s
 
 # target to generate assembly for a file
-agent/agent_loop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/agent_loop.cpp.s
-.PHONY : agent/agent_loop.cpp.s
+src/LLMClient/OllamaClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/LLMClient/OllamaClient.cpp.s
+.PHONY : src/LLMClient/OllamaClient.cpp.s
 
-agent/loop_detector.o: agent/loop_detector.cpp.o
-.PHONY : agent/loop_detector.o
+src/agent/agent_loop.o: src/agent/agent_loop.cpp.o
+.PHONY : src/agent/agent_loop.o
 
 # target to build an object file
-agent/loop_detector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.o
-.PHONY : agent/loop_detector.cpp.o
+src/agent/agent_loop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/agent_loop.cpp.o
+.PHONY : src/agent/agent_loop.cpp.o
 
-agent/loop_detector.i: agent/loop_detector.cpp.i
-.PHONY : agent/loop_detector.i
+src/agent/agent_loop.i: src/agent/agent_loop.cpp.i
+.PHONY : src/agent/agent_loop.i
 
 # target to preprocess a source file
-agent/loop_detector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.i
-.PHONY : agent/loop_detector.cpp.i
+src/agent/agent_loop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/agent_loop.cpp.i
+.PHONY : src/agent/agent_loop.cpp.i
 
-agent/loop_detector.s: agent/loop_detector.cpp.s
-.PHONY : agent/loop_detector.s
+src/agent/agent_loop.s: src/agent/agent_loop.cpp.s
+.PHONY : src/agent/agent_loop.s
 
 # target to generate assembly for a file
-agent/loop_detector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/loop_detector.cpp.s
-.PHONY : agent/loop_detector.cpp.s
+src/agent/agent_loop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/agent_loop.cpp.s
+.PHONY : src/agent/agent_loop.cpp.s
 
-agent/skill_loader.o: agent/skill_loader.cpp.o
-.PHONY : agent/skill_loader.o
+src/agent/loop_detector.o: src/agent/loop_detector.cpp.o
+.PHONY : src/agent/loop_detector.o
 
 # target to build an object file
-agent/skill_loader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.o
-.PHONY : agent/skill_loader.cpp.o
+src/agent/loop_detector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/loop_detector.cpp.o
+.PHONY : src/agent/loop_detector.cpp.o
 
-agent/skill_loader.i: agent/skill_loader.cpp.i
-.PHONY : agent/skill_loader.i
+src/agent/loop_detector.i: src/agent/loop_detector.cpp.i
+.PHONY : src/agent/loop_detector.i
 
 # target to preprocess a source file
-agent/skill_loader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.i
-.PHONY : agent/skill_loader.cpp.i
+src/agent/loop_detector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/loop_detector.cpp.i
+.PHONY : src/agent/loop_detector.cpp.i
 
-agent/skill_loader.s: agent/skill_loader.cpp.s
-.PHONY : agent/skill_loader.s
+src/agent/loop_detector.s: src/agent/loop_detector.cpp.s
+.PHONY : src/agent/loop_detector.s
 
 # target to generate assembly for a file
-agent/skill_loader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/agent/skill_loader.cpp.s
-.PHONY : agent/skill_loader.cpp.s
+src/agent/loop_detector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/loop_detector.cpp.s
+.PHONY : src/agent/loop_detector.cpp.s
 
-environment/environment.o: environment/environment.cpp.o
-.PHONY : environment/environment.o
+src/agent/skill_loader.o: src/agent/skill_loader.cpp.o
+.PHONY : src/agent/skill_loader.o
 
 # target to build an object file
-environment/environment.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/environment/environment.cpp.o
-.PHONY : environment/environment.cpp.o
+src/agent/skill_loader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/skill_loader.cpp.o
+.PHONY : src/agent/skill_loader.cpp.o
 
-environment/environment.i: environment/environment.cpp.i
-.PHONY : environment/environment.i
+src/agent/skill_loader.i: src/agent/skill_loader.cpp.i
+.PHONY : src/agent/skill_loader.i
 
 # target to preprocess a source file
-environment/environment.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/environment/environment.cpp.i
-.PHONY : environment/environment.cpp.i
+src/agent/skill_loader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/skill_loader.cpp.i
+.PHONY : src/agent/skill_loader.cpp.i
 
-environment/environment.s: environment/environment.cpp.s
-.PHONY : environment/environment.s
+src/agent/skill_loader.s: src/agent/skill_loader.cpp.s
+.PHONY : src/agent/skill_loader.s
 
 # target to generate assembly for a file
-environment/environment.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/environment/environment.cpp.s
-.PHONY : environment/environment.cpp.s
+src/agent/skill_loader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/skill_loader.cpp.s
+.PHONY : src/agent/skill_loader.cpp.s
 
-tests/agent_loop_test.o: tests/agent_loop_test.cpp.o
-.PHONY : tests/agent_loop_test.o
+src/environment/environment.o: src/environment/environment.cpp.o
+.PHONY : src/environment/environment.o
 
 # target to build an object file
-tests/agent_loop_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.o
-.PHONY : tests/agent_loop_test.cpp.o
+src/environment/environment.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/environment/environment.cpp.o
+.PHONY : src/environment/environment.cpp.o
 
-tests/agent_loop_test.i: tests/agent_loop_test.cpp.i
-.PHONY : tests/agent_loop_test.i
+src/environment/environment.i: src/environment/environment.cpp.i
+.PHONY : src/environment/environment.i
 
 # target to preprocess a source file
-tests/agent_loop_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.i
-.PHONY : tests/agent_loop_test.cpp.i
+src/environment/environment.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/environment/environment.cpp.i
+.PHONY : src/environment/environment.cpp.i
 
-tests/agent_loop_test.s: tests/agent_loop_test.cpp.s
-.PHONY : tests/agent_loop_test.s
+src/environment/environment.s: src/environment/environment.cpp.s
+.PHONY : src/environment/environment.s
 
 # target to generate assembly for a file
-tests/agent_loop_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tests/agent_loop_test.cpp.s
-.PHONY : tests/agent_loop_test.cpp.s
+src/environment/environment.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/environment/environment.cpp.s
+.PHONY : src/environment/environment.cpp.s
 
-tools/advanced_math_tool.o: tools/advanced_math_tool.cpp.o
-.PHONY : tools/advanced_math_tool.o
+src/tools/advanced_math_tool.o: src/tools/advanced_math_tool.cpp.o
+.PHONY : src/tools/advanced_math_tool.o
 
 # target to build an object file
-tools/advanced_math_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.o
-.PHONY : tools/advanced_math_tool.cpp.o
+src/tools/advanced_math_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/advanced_math_tool.cpp.o
+.PHONY : src/tools/advanced_math_tool.cpp.o
 
-tools/advanced_math_tool.i: tools/advanced_math_tool.cpp.i
-.PHONY : tools/advanced_math_tool.i
+src/tools/advanced_math_tool.i: src/tools/advanced_math_tool.cpp.i
+.PHONY : src/tools/advanced_math_tool.i
 
 # target to preprocess a source file
-tools/advanced_math_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.i
-.PHONY : tools/advanced_math_tool.cpp.i
+src/tools/advanced_math_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/advanced_math_tool.cpp.i
+.PHONY : src/tools/advanced_math_tool.cpp.i
 
-tools/advanced_math_tool.s: tools/advanced_math_tool.cpp.s
-.PHONY : tools/advanced_math_tool.s
+src/tools/advanced_math_tool.s: src/tools/advanced_math_tool.cpp.s
+.PHONY : src/tools/advanced_math_tool.s
 
 # target to generate assembly for a file
-tools/advanced_math_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/advanced_math_tool.cpp.s
-.PHONY : tools/advanced_math_tool.cpp.s
+src/tools/advanced_math_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/advanced_math_tool.cpp.s
+.PHONY : src/tools/advanced_math_tool.cpp.s
 
-tools/calculator_tool.o: tools/calculator_tool.cpp.o
-.PHONY : tools/calculator_tool.o
+src/tools/calculator_tool.o: src/tools/calculator_tool.cpp.o
+.PHONY : src/tools/calculator_tool.o
 
 # target to build an object file
-tools/calculator_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.o
-.PHONY : tools/calculator_tool.cpp.o
+src/tools/calculator_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/calculator_tool.cpp.o
+.PHONY : src/tools/calculator_tool.cpp.o
 
-tools/calculator_tool.i: tools/calculator_tool.cpp.i
-.PHONY : tools/calculator_tool.i
+src/tools/calculator_tool.i: src/tools/calculator_tool.cpp.i
+.PHONY : src/tools/calculator_tool.i
 
 # target to preprocess a source file
-tools/calculator_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.i
-.PHONY : tools/calculator_tool.cpp.i
+src/tools/calculator_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/calculator_tool.cpp.i
+.PHONY : src/tools/calculator_tool.cpp.i
 
-tools/calculator_tool.s: tools/calculator_tool.cpp.s
-.PHONY : tools/calculator_tool.s
+src/tools/calculator_tool.s: src/tools/calculator_tool.cpp.s
+.PHONY : src/tools/calculator_tool.s
 
 # target to generate assembly for a file
-tools/calculator_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/calculator_tool.cpp.s
-.PHONY : tools/calculator_tool.cpp.s
+src/tools/calculator_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/calculator_tool.cpp.s
+.PHONY : src/tools/calculator_tool.cpp.s
 
-tools/datetime_tool.o: tools/datetime_tool.cpp.o
-.PHONY : tools/datetime_tool.o
+src/tools/datetime_tool.o: src/tools/datetime_tool.cpp.o
+.PHONY : src/tools/datetime_tool.o
 
 # target to build an object file
-tools/datetime_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.o
-.PHONY : tools/datetime_tool.cpp.o
+src/tools/datetime_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/datetime_tool.cpp.o
+.PHONY : src/tools/datetime_tool.cpp.o
 
-tools/datetime_tool.i: tools/datetime_tool.cpp.i
-.PHONY : tools/datetime_tool.i
+src/tools/datetime_tool.i: src/tools/datetime_tool.cpp.i
+.PHONY : src/tools/datetime_tool.i
 
 # target to preprocess a source file
-tools/datetime_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.i
-.PHONY : tools/datetime_tool.cpp.i
+src/tools/datetime_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/datetime_tool.cpp.i
+.PHONY : src/tools/datetime_tool.cpp.i
 
-tools/datetime_tool.s: tools/datetime_tool.cpp.s
-.PHONY : tools/datetime_tool.s
+src/tools/datetime_tool.s: src/tools/datetime_tool.cpp.s
+.PHONY : src/tools/datetime_tool.s
 
 # target to generate assembly for a file
-tools/datetime_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/datetime_tool.cpp.s
-.PHONY : tools/datetime_tool.cpp.s
+src/tools/datetime_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/datetime_tool.cpp.s
+.PHONY : src/tools/datetime_tool.cpp.s
 
-tools/exec_tool.o: tools/exec_tool.cpp.o
-.PHONY : tools/exec_tool.o
+src/tools/exec_tool.o: src/tools/exec_tool.cpp.o
+.PHONY : src/tools/exec_tool.o
 
 # target to build an object file
-tools/exec_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.o
-.PHONY : tools/exec_tool.cpp.o
+src/tools/exec_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/exec_tool.cpp.o
+.PHONY : src/tools/exec_tool.cpp.o
 
-tools/exec_tool.i: tools/exec_tool.cpp.i
-.PHONY : tools/exec_tool.i
+src/tools/exec_tool.i: src/tools/exec_tool.cpp.i
+.PHONY : src/tools/exec_tool.i
 
 # target to preprocess a source file
-tools/exec_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.i
-.PHONY : tools/exec_tool.cpp.i
+src/tools/exec_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/exec_tool.cpp.i
+.PHONY : src/tools/exec_tool.cpp.i
 
-tools/exec_tool.s: tools/exec_tool.cpp.s
-.PHONY : tools/exec_tool.s
+src/tools/exec_tool.s: src/tools/exec_tool.cpp.s
+.PHONY : src/tools/exec_tool.s
 
 # target to generate assembly for a file
-tools/exec_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/exec_tool.cpp.s
-.PHONY : tools/exec_tool.cpp.s
+src/tools/exec_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/exec_tool.cpp.s
+.PHONY : src/tools/exec_tool.cpp.s
 
-tools/file_tool.o: tools/file_tool.cpp.o
-.PHONY : tools/file_tool.o
+src/tools/file_tool.o: src/tools/file_tool.cpp.o
+.PHONY : src/tools/file_tool.o
 
 # target to build an object file
-tools/file_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.o
-.PHONY : tools/file_tool.cpp.o
+src/tools/file_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/file_tool.cpp.o
+.PHONY : src/tools/file_tool.cpp.o
 
-tools/file_tool.i: tools/file_tool.cpp.i
-.PHONY : tools/file_tool.i
+src/tools/file_tool.i: src/tools/file_tool.cpp.i
+.PHONY : src/tools/file_tool.i
 
 # target to preprocess a source file
-tools/file_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.i
-.PHONY : tools/file_tool.cpp.i
+src/tools/file_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/file_tool.cpp.i
+.PHONY : src/tools/file_tool.cpp.i
 
-tools/file_tool.s: tools/file_tool.cpp.s
-.PHONY : tools/file_tool.s
+src/tools/file_tool.s: src/tools/file_tool.cpp.s
+.PHONY : src/tools/file_tool.s
 
 # target to generate assembly for a file
-tools/file_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/file_tool.cpp.s
-.PHONY : tools/file_tool.cpp.s
+src/tools/file_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/file_tool.cpp.s
+.PHONY : src/tools/file_tool.cpp.s
 
-tools/memory_tool.o: tools/memory_tool.cpp.o
-.PHONY : tools/memory_tool.o
+src/tools/memory_tool.o: src/tools/memory_tool.cpp.o
+.PHONY : src/tools/memory_tool.o
 
 # target to build an object file
-tools/memory_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.o
-.PHONY : tools/memory_tool.cpp.o
+src/tools/memory_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/memory_tool.cpp.o
+.PHONY : src/tools/memory_tool.cpp.o
 
-tools/memory_tool.i: tools/memory_tool.cpp.i
-.PHONY : tools/memory_tool.i
+src/tools/memory_tool.i: src/tools/memory_tool.cpp.i
+.PHONY : src/tools/memory_tool.i
 
 # target to preprocess a source file
-tools/memory_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.i
-.PHONY : tools/memory_tool.cpp.i
+src/tools/memory_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/memory_tool.cpp.i
+.PHONY : src/tools/memory_tool.cpp.i
 
-tools/memory_tool.s: tools/memory_tool.cpp.s
-.PHONY : tools/memory_tool.s
+src/tools/memory_tool.s: src/tools/memory_tool.cpp.s
+.PHONY : src/tools/memory_tool.s
 
 # target to generate assembly for a file
-tools/memory_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/memory_tool.cpp.s
-.PHONY : tools/memory_tool.cpp.s
+src/tools/memory_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/memory_tool.cpp.s
+.PHONY : src/tools/memory_tool.cpp.s
 
-tools/text_to_speech.o: tools/text_to_speech.cpp.o
-.PHONY : tools/text_to_speech.o
+src/tools/text_to_speech.o: src/tools/text_to_speech.cpp.o
+.PHONY : src/tools/text_to_speech.o
 
 # target to build an object file
-tools/text_to_speech.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.o
-.PHONY : tools/text_to_speech.cpp.o
+src/tools/text_to_speech.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/text_to_speech.cpp.o
+.PHONY : src/tools/text_to_speech.cpp.o
 
-tools/text_to_speech.i: tools/text_to_speech.cpp.i
-.PHONY : tools/text_to_speech.i
+src/tools/text_to_speech.i: src/tools/text_to_speech.cpp.i
+.PHONY : src/tools/text_to_speech.i
 
 # target to preprocess a source file
-tools/text_to_speech.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.i
-.PHONY : tools/text_to_speech.cpp.i
+src/tools/text_to_speech.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/text_to_speech.cpp.i
+.PHONY : src/tools/text_to_speech.cpp.i
 
-tools/text_to_speech.s: tools/text_to_speech.cpp.s
-.PHONY : tools/text_to_speech.s
+src/tools/text_to_speech.s: src/tools/text_to_speech.cpp.s
+.PHONY : src/tools/text_to_speech.s
 
 # target to generate assembly for a file
-tools/text_to_speech.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/text_to_speech.cpp.s
-.PHONY : tools/text_to_speech.cpp.s
+src/tools/text_to_speech.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/text_to_speech.cpp.s
+.PHONY : src/tools/text_to_speech.cpp.s
 
-tools/todolist_tool.o: tools/todolist_tool.cpp.o
-.PHONY : tools/todolist_tool.o
+src/tools/todolist_tool.o: src/tools/todolist_tool.cpp.o
+.PHONY : src/tools/todolist_tool.o
 
 # target to build an object file
-tools/todolist_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.o
-.PHONY : tools/todolist_tool.cpp.o
+src/tools/todolist_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/todolist_tool.cpp.o
+.PHONY : src/tools/todolist_tool.cpp.o
 
-tools/todolist_tool.i: tools/todolist_tool.cpp.i
-.PHONY : tools/todolist_tool.i
+src/tools/todolist_tool.i: src/tools/todolist_tool.cpp.i
+.PHONY : src/tools/todolist_tool.i
 
 # target to preprocess a source file
-tools/todolist_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.i
-.PHONY : tools/todolist_tool.cpp.i
+src/tools/todolist_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/todolist_tool.cpp.i
+.PHONY : src/tools/todolist_tool.cpp.i
 
-tools/todolist_tool.s: tools/todolist_tool.cpp.s
-.PHONY : tools/todolist_tool.s
+src/tools/todolist_tool.s: src/tools/todolist_tool.cpp.s
+.PHONY : src/tools/todolist_tool.s
 
 # target to generate assembly for a file
-tools/todolist_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/todolist_tool.cpp.s
-.PHONY : tools/todolist_tool.cpp.s
+src/tools/todolist_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/todolist_tool.cpp.s
+.PHONY : src/tools/todolist_tool.cpp.s
 
-tools/tool_registry.o: tools/tool_registry.cpp.o
-.PHONY : tools/tool_registry.o
+src/tools/tool_registry.o: src/tools/tool_registry.cpp.o
+.PHONY : src/tools/tool_registry.o
 
 # target to build an object file
-tools/tool_registry.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.o
-.PHONY : tools/tool_registry.cpp.o
+src/tools/tool_registry.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/tool_registry.cpp.o
+.PHONY : src/tools/tool_registry.cpp.o
 
-tools/tool_registry.i: tools/tool_registry.cpp.i
-.PHONY : tools/tool_registry.i
+src/tools/tool_registry.i: src/tools/tool_registry.cpp.i
+.PHONY : src/tools/tool_registry.i
 
 # target to preprocess a source file
-tools/tool_registry.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.i
-.PHONY : tools/tool_registry.cpp.i
+src/tools/tool_registry.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/tool_registry.cpp.i
+.PHONY : src/tools/tool_registry.cpp.i
 
-tools/tool_registry.s: tools/tool_registry.cpp.s
-.PHONY : tools/tool_registry.s
+src/tools/tool_registry.s: src/tools/tool_registry.cpp.s
+.PHONY : src/tools/tool_registry.s
 
 # target to generate assembly for a file
-tools/tool_registry.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/tool_registry.cpp.s
-.PHONY : tools/tool_registry.cpp.s
+src/tools/tool_registry.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/tool_registry.cpp.s
+.PHONY : src/tools/tool_registry.cpp.s
 
-tools/translate_tool.o: tools/translate_tool.cpp.o
-.PHONY : tools/translate_tool.o
+src/tools/translate_tool.o: src/tools/translate_tool.cpp.o
+.PHONY : src/tools/translate_tool.o
 
 # target to build an object file
-tools/translate_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.o
-.PHONY : tools/translate_tool.cpp.o
+src/tools/translate_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/translate_tool.cpp.o
+.PHONY : src/tools/translate_tool.cpp.o
 
-tools/translate_tool.i: tools/translate_tool.cpp.i
-.PHONY : tools/translate_tool.i
+src/tools/translate_tool.i: src/tools/translate_tool.cpp.i
+.PHONY : src/tools/translate_tool.i
 
 # target to preprocess a source file
-tools/translate_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.i
-.PHONY : tools/translate_tool.cpp.i
+src/tools/translate_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/translate_tool.cpp.i
+.PHONY : src/tools/translate_tool.cpp.i
 
-tools/translate_tool.s: tools/translate_tool.cpp.s
-.PHONY : tools/translate_tool.s
+src/tools/translate_tool.s: src/tools/translate_tool.cpp.s
+.PHONY : src/tools/translate_tool.s
 
 # target to generate assembly for a file
-tools/translate_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/translate_tool.cpp.s
-.PHONY : tools/translate_tool.cpp.s
+src/tools/translate_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/translate_tool.cpp.s
+.PHONY : src/tools/translate_tool.cpp.s
 
-tools/web_search_tool.o: tools/web_search_tool.cpp.o
-.PHONY : tools/web_search_tool.o
+src/tools/web_search_tool.o: src/tools/web_search_tool.cpp.o
+.PHONY : src/tools/web_search_tool.o
 
 # target to build an object file
-tools/web_search_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.o
-.PHONY : tools/web_search_tool.cpp.o
+src/tools/web_search_tool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/web_search_tool.cpp.o
+.PHONY : src/tools/web_search_tool.cpp.o
 
-tools/web_search_tool.i: tools/web_search_tool.cpp.i
-.PHONY : tools/web_search_tool.i
+src/tools/web_search_tool.i: src/tools/web_search_tool.cpp.i
+.PHONY : src/tools/web_search_tool.i
 
 # target to preprocess a source file
-tools/web_search_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.i
-.PHONY : tools/web_search_tool.cpp.i
+src/tools/web_search_tool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/web_search_tool.cpp.i
+.PHONY : src/tools/web_search_tool.cpp.i
 
-tools/web_search_tool.s: tools/web_search_tool.cpp.s
-.PHONY : tools/web_search_tool.s
+src/tools/web_search_tool.s: src/tools/web_search_tool.cpp.s
+.PHONY : src/tools/web_search_tool.s
 
 # target to generate assembly for a file
-tools/web_search_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/tools/web_search_tool.cpp.s
-.PHONY : tools/web_search_tool.cpp.s
+src/tools/web_search_tool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/web_search_tool.cpp.s
+.PHONY : src/tools/web_search_tool.cpp.s
 
-utils/SystemUtils.o: utils/SystemUtils.cpp.o
-.PHONY : utils/SystemUtils.o
+src/utils/SystemUtils.o: src/utils/SystemUtils.cpp.o
+.PHONY : src/utils/SystemUtils.o
 
 # target to build an object file
-utils/SystemUtils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/SystemUtils.cpp.o
-.PHONY : utils/SystemUtils.cpp.o
+src/utils/SystemUtils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/SystemUtils.cpp.o
+.PHONY : src/utils/SystemUtils.cpp.o
 
-utils/SystemUtils.i: utils/SystemUtils.cpp.i
-.PHONY : utils/SystemUtils.i
+src/utils/SystemUtils.i: src/utils/SystemUtils.cpp.i
+.PHONY : src/utils/SystemUtils.i
 
 # target to preprocess a source file
-utils/SystemUtils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/SystemUtils.cpp.i
-.PHONY : utils/SystemUtils.cpp.i
+src/utils/SystemUtils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/SystemUtils.cpp.i
+.PHONY : src/utils/SystemUtils.cpp.i
 
-utils/SystemUtils.s: utils/SystemUtils.cpp.s
-.PHONY : utils/SystemUtils.s
+src/utils/SystemUtils.s: src/utils/SystemUtils.cpp.s
+.PHONY : src/utils/SystemUtils.s
 
 # target to generate assembly for a file
-utils/SystemUtils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/SystemUtils.cpp.s
-.PHONY : utils/SystemUtils.cpp.s
+src/utils/SystemUtils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/SystemUtils.cpp.s
+.PHONY : src/utils/SystemUtils.cpp.s
 
-utils/base64.o: utils/base64.cpp.o
-.PHONY : utils/base64.o
+src/utils/base64.o: src/utils/base64.cpp.o
+.PHONY : src/utils/base64.o
 
 # target to build an object file
-utils/base64.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/base64.cpp.o
-.PHONY : utils/base64.cpp.o
+src/utils/base64.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/base64.cpp.o
+.PHONY : src/utils/base64.cpp.o
 
-utils/base64.i: utils/base64.cpp.i
-.PHONY : utils/base64.i
+src/utils/base64.i: src/utils/base64.cpp.i
+.PHONY : src/utils/base64.i
 
 # target to preprocess a source file
-utils/base64.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/base64.cpp.i
-.PHONY : utils/base64.cpp.i
+src/utils/base64.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/base64.cpp.i
+.PHONY : src/utils/base64.cpp.i
 
-utils/base64.s: utils/base64.cpp.s
-.PHONY : utils/base64.s
+src/utils/base64.s: src/utils/base64.cpp.s
+.PHONY : src/utils/base64.s
 
 # target to generate assembly for a file
-utils/base64.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/agent_loop_test.dir/build.make CMakeFiles/agent_loop_test.dir/utils/base64.cpp.s
-.PHONY : utils/base64.cpp.s
+src/utils/base64.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/base64.cpp.s
+.PHONY : src/utils/base64.cpp.s
+
+tests/harness_runner_test.o: tests/harness_runner_test.cpp.o
+.PHONY : tests/harness_runner_test.o
+
+# target to build an object file
+tests/harness_runner_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/tests/harness_runner_test.cpp.o
+.PHONY : tests/harness_runner_test.cpp.o
+
+tests/harness_runner_test.i: tests/harness_runner_test.cpp.i
+.PHONY : tests/harness_runner_test.i
+
+# target to preprocess a source file
+tests/harness_runner_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/tests/harness_runner_test.cpp.i
+.PHONY : tests/harness_runner_test.cpp.i
+
+tests/harness_runner_test.s: tests/harness_runner_test.cpp.s
+.PHONY : tests/harness_runner_test.s
+
+# target to generate assembly for a file
+tests/harness_runner_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/tests/harness_runner_test.cpp.s
+.PHONY : tests/harness_runner_test.cpp.s
 
 # Help Target
 help:
@@ -617,67 +617,67 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... agent_loop_test"
-	@echo "... Harness/Harness_runner.o"
-	@echo "... Harness/Harness_runner.i"
-	@echo "... Harness/Harness_runner.s"
-	@echo "... LLMClient/OllamaClient.o"
-	@echo "... LLMClient/OllamaClient.i"
-	@echo "... LLMClient/OllamaClient.s"
-	@echo "... agent/agent_loop.o"
-	@echo "... agent/agent_loop.i"
-	@echo "... agent/agent_loop.s"
-	@echo "... agent/loop_detector.o"
-	@echo "... agent/loop_detector.i"
-	@echo "... agent/loop_detector.s"
-	@echo "... agent/skill_loader.o"
-	@echo "... agent/skill_loader.i"
-	@echo "... agent/skill_loader.s"
-	@echo "... environment/environment.o"
-	@echo "... environment/environment.i"
-	@echo "... environment/environment.s"
-	@echo "... tests/agent_loop_test.o"
-	@echo "... tests/agent_loop_test.i"
-	@echo "... tests/agent_loop_test.s"
-	@echo "... tools/advanced_math_tool.o"
-	@echo "... tools/advanced_math_tool.i"
-	@echo "... tools/advanced_math_tool.s"
-	@echo "... tools/calculator_tool.o"
-	@echo "... tools/calculator_tool.i"
-	@echo "... tools/calculator_tool.s"
-	@echo "... tools/datetime_tool.o"
-	@echo "... tools/datetime_tool.i"
-	@echo "... tools/datetime_tool.s"
-	@echo "... tools/exec_tool.o"
-	@echo "... tools/exec_tool.i"
-	@echo "... tools/exec_tool.s"
-	@echo "... tools/file_tool.o"
-	@echo "... tools/file_tool.i"
-	@echo "... tools/file_tool.s"
-	@echo "... tools/memory_tool.o"
-	@echo "... tools/memory_tool.i"
-	@echo "... tools/memory_tool.s"
-	@echo "... tools/text_to_speech.o"
-	@echo "... tools/text_to_speech.i"
-	@echo "... tools/text_to_speech.s"
-	@echo "... tools/todolist_tool.o"
-	@echo "... tools/todolist_tool.i"
-	@echo "... tools/todolist_tool.s"
-	@echo "... tools/tool_registry.o"
-	@echo "... tools/tool_registry.i"
-	@echo "... tools/tool_registry.s"
-	@echo "... tools/translate_tool.o"
-	@echo "... tools/translate_tool.i"
-	@echo "... tools/translate_tool.s"
-	@echo "... tools/web_search_tool.o"
-	@echo "... tools/web_search_tool.i"
-	@echo "... tools/web_search_tool.s"
-	@echo "... utils/SystemUtils.o"
-	@echo "... utils/SystemUtils.i"
-	@echo "... utils/SystemUtils.s"
-	@echo "... utils/base64.o"
-	@echo "... utils/base64.i"
-	@echo "... utils/base64.s"
+	@echo "... harness"
+	@echo "... src/Harness/Harness_runner.o"
+	@echo "... src/Harness/Harness_runner.i"
+	@echo "... src/Harness/Harness_runner.s"
+	@echo "... src/LLMClient/OllamaClient.o"
+	@echo "... src/LLMClient/OllamaClient.i"
+	@echo "... src/LLMClient/OllamaClient.s"
+	@echo "... src/agent/agent_loop.o"
+	@echo "... src/agent/agent_loop.i"
+	@echo "... src/agent/agent_loop.s"
+	@echo "... src/agent/loop_detector.o"
+	@echo "... src/agent/loop_detector.i"
+	@echo "... src/agent/loop_detector.s"
+	@echo "... src/agent/skill_loader.o"
+	@echo "... src/agent/skill_loader.i"
+	@echo "... src/agent/skill_loader.s"
+	@echo "... src/environment/environment.o"
+	@echo "... src/environment/environment.i"
+	@echo "... src/environment/environment.s"
+	@echo "... src/tools/advanced_math_tool.o"
+	@echo "... src/tools/advanced_math_tool.i"
+	@echo "... src/tools/advanced_math_tool.s"
+	@echo "... src/tools/calculator_tool.o"
+	@echo "... src/tools/calculator_tool.i"
+	@echo "... src/tools/calculator_tool.s"
+	@echo "... src/tools/datetime_tool.o"
+	@echo "... src/tools/datetime_tool.i"
+	@echo "... src/tools/datetime_tool.s"
+	@echo "... src/tools/exec_tool.o"
+	@echo "... src/tools/exec_tool.i"
+	@echo "... src/tools/exec_tool.s"
+	@echo "... src/tools/file_tool.o"
+	@echo "... src/tools/file_tool.i"
+	@echo "... src/tools/file_tool.s"
+	@echo "... src/tools/memory_tool.o"
+	@echo "... src/tools/memory_tool.i"
+	@echo "... src/tools/memory_tool.s"
+	@echo "... src/tools/text_to_speech.o"
+	@echo "... src/tools/text_to_speech.i"
+	@echo "... src/tools/text_to_speech.s"
+	@echo "... src/tools/todolist_tool.o"
+	@echo "... src/tools/todolist_tool.i"
+	@echo "... src/tools/todolist_tool.s"
+	@echo "... src/tools/tool_registry.o"
+	@echo "... src/tools/tool_registry.i"
+	@echo "... src/tools/tool_registry.s"
+	@echo "... src/tools/translate_tool.o"
+	@echo "... src/tools/translate_tool.i"
+	@echo "... src/tools/translate_tool.s"
+	@echo "... src/tools/web_search_tool.o"
+	@echo "... src/tools/web_search_tool.i"
+	@echo "... src/tools/web_search_tool.s"
+	@echo "... src/utils/SystemUtils.o"
+	@echo "... src/utils/SystemUtils.i"
+	@echo "... src/utils/SystemUtils.s"
+	@echo "... src/utils/base64.o"
+	@echo "... src/utils/base64.i"
+	@echo "... src/utils/base64.s"
+	@echo "... tests/harness_runner_test.o"
+	@echo "... tests/harness_runner_test.i"
+	@echo "... tests/harness_runner_test.s"
 .PHONY : help
 
 

@@ -72,11 +72,41 @@ std::string AgentLoop::doThink(const std::vector<Message>& messages) {
 
 // ─── parseAction ─────────────────────────────────────────────────────────────
 
+// Action AgentLoop::parseAction(const std::string& thought) {
+//     std::smatch m;
+
+//     // 1. Kiểm tra "Final Answer:" trước (ưu tiên cao hơn)
+//     std::regex finalRe(R"(Final Answer:\s*(.+))", std::regex::icase);
+//     if (std::regex_search(thought, m, finalRe)) {
+//         std::string text = m[1].str();
+//         while (!text.empty() && (text.back() == '\r' || text.back() == '\n'))
+//             text.pop_back();
+//         return FinalAnswerAction{text};
+//     }
+
+//     // 2. Parse "Action: <tool>" và "Arguments: <args>"
+//     std::regex actionRe(R"(Action:\s*([A-Za-z0-9_]+))");
+//     std::regex argsRe(R"(Arguments:\s*(.+))");
+
+//     std::string toolName, args;
+//     if (std::regex_search(thought, m, actionRe)) toolName = m[1].str();
+//     if (std::regex_search(thought, m, argsRe)) {
+//         args = m[1].str();
+//         while (!args.empty() &&
+//                (args.back() == '\r' || args.back() == '\n' || args.back() == ' '))
+//             args.pop_back();
+//     }
+
+//     if (!toolName.empty()) return ToolCallAction{toolName, args};
+
+//     // 3. Không parse được → coi toàn bộ thought là Final Answer
+//     return FinalAnswerAction{thought};
+// }
 Action AgentLoop::parseAction(const std::string& thought) {
     std::smatch m;
 
-    // 1. Kiểm tra "Final Answer:" trước (ưu tiên cao hơn)
-    std::regex finalRe(R"(Final Answer:\s*(.+))", std::regex::icase);
+    // 1. SỬA REGEX FINAL ANSWER: Dùng [\s\S]+ để bắt toàn bộ văn bản nhiều dòng đến cuối chuỗi
+    std::regex finalRe(R"(Final Answer:\s*([\s\S]+))", std::regex::icase);
     if (std::regex_search(thought, m, finalRe)) {
         std::string text = m[1].str();
         while (!text.empty() && (text.back() == '\r' || text.back() == '\n'))
@@ -84,14 +114,16 @@ Action AgentLoop::parseAction(const std::string& thought) {
         return FinalAnswerAction{text};
     }
 
-    // 2. Parse "Action: <tool>" và "Arguments: <args>"
+    // 2. SỬA REGEX ARGUMENTS: Tương tự, dùng [\s\S]+ để gom mọi dòng tham số
     std::regex actionRe(R"(Action:\s*([A-Za-z0-9_]+))");
-    std::regex argsRe(R"(Arguments:\s*(.+))");
+    std::regex argsRe(R"(Arguments:\s*([\s\S]+))");
 
     std::string toolName, args;
     if (std::regex_search(thought, m, actionRe)) toolName = m[1].str();
+    
     if (std::regex_search(thought, m, argsRe)) {
         args = m[1].str();
+        // Vòng lặp làm sạch phía sau của bạn viết rất tốt, giữ nguyên!
         while (!args.empty() &&
                (args.back() == '\r' || args.back() == '\n' || args.back() == ' '))
             args.pop_back();
@@ -102,7 +134,6 @@ Action AgentLoop::parseAction(const std::string& thought) {
     // 3. Không parse được → coi toàn bộ thought là Final Answer
     return FinalAnswerAction{thought};
 }
-
 // ─── doAct ───────────────────────────────────────────────────────────────────
 
 std::string AgentLoop::doAct(const ToolCallAction& action) {

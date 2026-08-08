@@ -11,76 +11,75 @@
   {
     "id": "task_002",
     "description": "Ghi kết quả tính toán ra file",
-    "instruction": "Tính 15 nhân 17. Lưu kết quả vào file result.txt.",
+    "instruction": "Tính 10*11 - 111. Lưu kết quả vào file result.txt trong thư mục outputSources.",
     "eval_type": "functional",
-    "eval_script": "test -f result.txt && grep 255 result.txt && echo PASS",
+    "eval_script": "test -f outputSources/result.txt && grep -e \"-1\" outputSources/result.txt > /dev/null && echo PASS",
     "max_steps": 6
   },
   {
     "id": "task_003",
     "description": "Đọc file có sẵn",
-    "instruction": "File data.txt đã tồn tại sẵn với nội dung là một con số. Hãy đọc file data.txt bằng tool read_file và cho biết con số đó trong câu trả lời cuối cùng.",
+    "instruction": "File data.txt đã tồn tại sẵn với nội dung là một con số. Hãy đọc file data.txt trong inputSources bằng tool read_file và cho biết con số đó trong câu trả lời cuối cùng.",
     "eval_type": "keyword",
-    "expected_keywords": ["42"],
+    "expected_keywords": ["100143337"],
     "min_required": 1,
     "max_steps": 5
   },
   {
     "id": "task_004",
-    "description": "Kết hợp tìm kiếm thông tin kỹ thuật và dịch thuật",
-    "instruction": "Tìm thông số nhông xích (sprocket) chuẩn của dòng xe máy K-Pipe 50. Dịch thông tin tóm tắt tìm được sang tiếng Việt bằng translate tool và ghi kết quả vào file outputSources/kpipe_specs.txt.",
+    "description": "Lấy thông tin năm hiện tại và ghi ra file",
+    "instruction": "Hãy lấy năm của hệ thống hiện tại và lưu vào file year.txt trong folder outputSources",
     "eval_type": "functional",
-    "eval_script": "test -f outputSources/kpipe_specs.txt && echo PASS",
+    "eval_script": "test -f outputSources/year.txt && grep '2026' outputSources/year.txt > /dev/null && echo PASS",
     "max_steps": 8
   },
   {
-    "id": "task_005",
-    "description": "Thực hiện tính toán đồ thị theo điều kiện ràng buộc và lưu file",
-    "instruction": "Cho một đồ thị có các đỉnh bằng chữ cái. Đỉnh A có 3 cạnh nối đến các node con và 1 cạnh nối từ node cha. Với quy định chuẩn là 'bậc của node chỉ tính số bậc nối con', hãy dùng math tool để xác định bậc của node A, sau đó lưu con số kết quả vào file outputSources/node_degree.txt.",
-    "eval_type": "functional",
-    "eval_script": "test -f outputSources/node_degree.txt && grep 3 outputSources/node_degree.txt > /dev/null && echo PASS",
-    "max_steps": 6
+  "id": "task_005",
+  "description": "Lập trình kiểm tra số nguyên tố và luân chuyển dữ liệu qua SQLite",
+  "instruction": "Cho mảng số nguyên [17, 24, 29, 35, 47, 50]. Hãy dùng exectool để viết và chạy một chương trình C++ đếm xem có bao nhiêu số nguyên tố trong mảng này. Yêu cầu bắt buộc: Trong code C++ phải tự định nghĩa và gọi một hàm có tên là 'isprime'. Sau khi chạy ra kết quả, dùng memory tool để tạo và lưu con số đếm được vào bảng 'prime_stats' trong cơ sở dữ liệu SQLite. Cuối cùng, gọi file tool để trích xuất số liệu này từ SQLite và lưu vào file outputSources/prime_count.txt. Mọi file phát sinh đều phải được lưu trong folder outputSources",
+  "eval_type": "functional",
+  "eval_script": "test -f outputSources/prime_count.txt && grep -E '3' outputSources/prime_count.txt > /dev/null && echo PASS",
+  "max_steps": 12
   },
   {
-    "id": "task_006",
-    "description": "Viết script tự động hóa MMO và chuyển hướng đầu ra",
-    "instruction": "Dùng exectool để viết và chạy một script Python giả lập việc scrape dữ liệu cho Telegram bot. Script chỉ cần in ra dòng chữ 'Bot Scraper Initiated'. Lưu đầu ra của script này vào file outputSources/mmo_bot.txt.",
-    "eval_type": "functional",
-    "eval_script": "test -f outputSources/mmo_bot.txt && grep 'Bot Scraper Initiated' outputSources/mmo_bot.txt > /dev/null && echo PASS",
-    "max_steps": 8
+  "id": "task_006",
+  "description": "Tổng hợp dữ liệu trực tuyến, dịch thuật và định dạng văn bản",
+  "instruction": "Sử dụng websearch để tìm thông tin chi tiết về một cầu thủ bóng đá nam vĩ đại nhất mọi thời đại . Hãy trích xuất các thông tin sau: Tên đầy đủ, Ngày sinh, Nơi sinh và Các thành tích nổi bật nhất trong sự nghiệp. Yêu cầu bắt buộc: Dịch toàn bộ dữ liệu tìm được sang tiếng Việt, trình bày các thông tin này dưới dạng danh sách gạch đầu dòng (bullet points), và lưu kết quả vào file outputSources/goat_player.txt. Mọi file phát sinh đều phải được lưu trong folder outputSources",
+  "eval_type": "functional",
+  "eval_script": "test -f outputSources/goat_player.txt && grep -iE 'sinh|thành tích' outputSources/goat_player.txt > /dev/null && echo PASS",
+  "max_steps": 8
   },
   {
     "id": "task_007",
     "description": "Lưu trữ log hệ thống và tổng hợp tệp âm thanh",
-    "instruction": "Lưu cảnh báo 'Bank Fraud Detection System Triggered' vào bảng log trong SQLite bằng memory tool. Sau đó truy xuất lại dòng cảnh báo này và dùng text to speech để tạo ra file âm thanh outputSources/fraud_alert.wav.",
+    "instruction": "Lưu cảnh báo 'Bank Fraud Detection System Triggered' vào bảng log trong SQLite bằng memory tool. Sau đó truy xuất lại dòng cảnh báo này và dùng text to speech để tạo ra file âm thanh outputSources/fraud_alert.wav. Mọi file phát sinh đều phải được lưu trong folder outputSources",
     "eval_type": "functional",
     "eval_script": "test -f outputSources/fraud_alert.wav && echo PASS",
     "max_steps": 10
   },
   {
-    "id": "task_008",
-    "description": "Quy trình xử lý cấu trúc dữ liệu nhiều bước độc lập",
-    "instruction": "Cho mảng số nguyên [12, 5, 78, 34]. Trước tiên, hãy dùng memory tool để khởi tạo và lưu mảng này vào cơ sở dữ liệu SQLite. Sau đó, Agent phải tự gọi exectool để viết và chạy một mã C++ hoặc Python nhằm đọc dữ liệu, xây dựng cấu trúc Max Heap từ mảng đó, lấy ra phần tử lớn nhất (root) và ghi con số kết quả vào file outputSources/max_heap.txt.",
-    "eval_type": "functional",
-    "eval_script": "test -f outputSources/max_heap.txt && grep 78 outputSources/max_heap.txt > /dev/null && echo PASS",
-    "max_steps": 15
+  "id": "task_008",
+  "description": "Tiền xử lý dữ liệu đồ thị và nạp vào cơ sở dữ liệu SQLite",
+  "instruction": "Hệ thống cần khởi tạo dữ liệu bản đồ cho dự án Tuyến xe buýt ĐH KHTN. Hãy dùng memory tool để tạo bảng 'bus_routes' trong SQLite gồm 3 cột (source, destination, distance) và chèn các dữ liệu tuyến đường sau: A-B (5km), B-C (3km), A-C (7km), C-D (4km), D-E (6km). Chú ý kiểm tra kỹ điều kiện: tuyệt đối không được chèn cung A-F vào dữ liệu. Sau khi nạp thành công, hãy dùng math tool để tính tổng chiều dài của tất cả các cung đường vừa nhập. Cuối cùng, gọi file_tool để lưu con số tổng vừa tính được vào file outputSources/bus_data_prep.txt. Tất cả các file phát sinh đều phải lưu trong folder outputSources",
+  "eval_type": "functional",
+  "eval_script": "test -f outputSources/bus_data_prep.txt && grep '25' outputSources/bus_data_prep.txt > /dev/null && echo PASS",
+  "max_steps": 10
   },
   {
     "id": "task_009",
-    "description": "Mô phỏng bài toán tài chính tự động định tuyến",
-    "instruction": "Giả lập một chiến lược bán khống (short selling) với số vốn 40000000 VND. Tự quyết định việc sử dụng exectool hoặc math tool để tính toán số tiền lợi nhuận thu được (bằng VND) nếu thị trường sập và tài sản giảm giá 20% (nghĩa là bạn lãi 20% trên số vốn). Ghi số tiền lợi nhuận chính xác vào file outputSources/short_profit.txt.",
+    "description": "Tự động hóa luồng kiểm tra cấu hình phần cứng",
+    "instruction": "Hãy tự động kiểm tra khả năng tương thích của máy tính với tựa game Hogwarts Legacy. Đầu tiên, dùng websearch tìm yêu cầu cấu hình tối thiểu (Minimum Requirements) của game này, tập trung thu thập chính xác dung lượng RAM và VRAM. Tiếp theo, dùng exectool viết và chạy một script Python để so sánh cấu hình tối thiểu vừa tìm được với thông số máy tính hiện tại (RAM 16GB, VRAM 4GB). Script cần xuất ra kết luận bằng tiếng Anh về việc máy có đủ sức chạy mượt không. Sau đó, dùng translate tool dịch kết luận đó sang tiếng Việt, và cuối cùng dùng file tool lưu báo cáo này vào file outputSources/game_hardware_check.txt. Mọi file phát sinh đều phải được lưu trong folder outputSources",
     "eval_type": "functional",
-    "eval_script": "test -f outputSources/short_profit.txt && grep 8000000 outputSources/short_profit.txt > /dev/null && echo PASS",
+    "eval_script": "test -f outputSources/game_hardware_check.txt && echo PASS",
     "max_steps": 12
   },
-  
   {
     "id": "task_010",
-    "description": "Kết hợp phân tích vật lý, tính toán và thực thi script bash",
-    "instruction": "Cho một hệ ròng rọc (đĩa tròn đặc) có khối lượng m = 2kg và bán kính R = 0.1m. Lưu ý điều kiện hệ thống: ròng rọc này KHÔNG tịnh tiến, chỉ có chuyển động quay quanh trục. Hãy dùng math/advanced math tool để tính mô-men quán tính (I = 0.5 * m * R^2). Sau đó, dùng exectool để tạo một bash script đơn giản, thực thi script này nhằm ghi trực tiếp kết quả I vừa tính được vào file outputSources/pulley.txt.",
+    "description": "Trích xuất dữ liệu và tối ưu hóa lộ trình đồ thị",
+    "instruction": "Hệ thống cần lập báo cáo đường đi ngắn nhất cho dự án tuyến xe buýt ĐH KHTN. Dùng memory tool truy vấn cơ sở dữ liệu SQLite để lấy danh sách các cung đường và khoảng cách (lưu ý: các trạm được ký hiệu bằng chữ cái, không dùng số). Sau khi có dữ liệu thô, dùng exectool viết và thực thi một mã Python triển khai thuật toán Dijkstra nhằm tìm lộ trình ngắn nhất từ trạm A đến một trạm đích bất kỳ, in ra kết quả bằng tiếng Anh. Kế tiếp, dùng translate tool dịch toàn bộ output lộ trình đó sang tiếng Việt. Cuối cùng, dùng file tool lưu văn bản báo cáo hoàn chỉnh vào outputSources/bus_route_report.txt. Tất cả các file phát sinh đều phải lưu trong folder outputSources",
     "eval_type": "functional",
-    "eval_script": "test -f outputSources/pulley.txt && grep '0.01' outputSources/pulley.txt > /dev/null && echo PASS",
-    "max_steps": 12
+    "eval_script": "test -f outputSources/bus_route_report.txt && grep -E '17' outputSources/bus_route_report.txt > /dev/null && echo PASS",
+    "max_steps": 15
   }
 
 ]

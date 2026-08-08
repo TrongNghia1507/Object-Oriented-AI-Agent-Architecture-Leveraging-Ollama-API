@@ -164,7 +164,7 @@ void HarnessRunner::loadTaskFromJson(const std::string& filename, AgentLoop& age
         {"success_rate_percent", successRate},
         {"tasks", batchSummary}
     };
-    std::ofstream summaryFile("../benchmark_summary/benchmark_summary.json");
+    std::ofstream summaryFile("benchmark_summary/benchmark_summary.json");
     if (summaryFile.is_open()) {
         summaryFile << std::setw(4) << finalReport << std::endl;
     }

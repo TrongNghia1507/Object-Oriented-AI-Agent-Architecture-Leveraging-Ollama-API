@@ -1,6 +1,6 @@
 {
-    "passed_tasks": 6,
-    "success_rate_percent": 60.0,
+    "passed_tasks": 9,
+    "success_rate_percent": 90.0,
     "tasks": [
         {
             "eval_type": "keyword",
@@ -14,11 +14,11 @@
         },
         {
             "eval_type": "keyword",
-            "passed": false,
+            "passed": true,
             "task_id": "task_003"
         },
         {
-            "eval_type": "keyword",
+            "eval_type": "functional",
             "passed": true,
             "task_id": "task_004"
         },
@@ -33,18 +33,18 @@
             "task_id": "task_006"
         },
         {
-            "eval_type": "keyword",
+            "eval_type": "functional",
             "passed": true,
             "task_id": "task_007"
         },
         {
             "eval_type": "functional",
-            "passed": false,
+            "passed": true,
             "task_id": "task_008"
         },
         {
             "eval_type": "functional",
-            "passed": false,
+            "passed": true,
             "task_id": "task_009"
         },
         {

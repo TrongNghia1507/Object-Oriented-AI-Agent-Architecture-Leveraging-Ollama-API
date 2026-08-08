@@ -1,0 +1,1 @@
+Báo cáo lộ trình xe buýt ĐH KHTN\n------------------------------\nKết quả tìm kiếm đường đi ngắn nhất:\nĐường đi ngắn nhất từ A đến E: A -> C -> D -> E với tổng khoảng cách là 17.0.

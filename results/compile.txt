@@ -1,1 +1,0 @@
-gcc results/hello.c -o results/hello

@@ -43,5 +43,5 @@ public:
     virtual void setTemperature(float temperature) = 0;
     virtual void setMaxTokens(int maxTokens) = 0;
     virtual std::string getModelName() const = 0;
-    
+    virtual int getLastTokenUsage() const = 0;
 };

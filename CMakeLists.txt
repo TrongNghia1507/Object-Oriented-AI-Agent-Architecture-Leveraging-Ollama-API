@@ -16,25 +16,25 @@ include_directories(
 
 # Gom tất cả các file mã nguồn .cpp nền của hệ thống
 set(CORE_SOURCES
-    LLMClient/OllamaClient.cpp
-    utils/base64.cpp
-    tools/advanced_math_tool.cpp
-    tools/calculator_tool.cpp
-    tools/exec_tool.cpp
-    tools/memory_tool.cpp
-    tools/tool_registry.cpp
-    tools/web_search_tool.cpp
-    tools/translate_tool.cpp
-    tools/text_to_speech.cpp
-    tools/file_tool.cpp
-    tools/datetime_tool.cpp
-    tools/todolist_tool.cpp
-    environment/environment.cpp
-    Harness/Harness_runner.cpp
-    agent/agent_loop.cpp
-    agent/loop_detector.cpp
-    agent/skill_loader.cpp
-    utils/SystemUtils.cpp
+    src/LLMClient/OllamaClient.cpp
+    src/utils/base64.cpp
+    src/tools/advanced_math_tool.cpp
+    src/tools/calculator_tool.cpp
+    src/tools/exec_tool.cpp
+    src/tools/memory_tool.cpp
+    src/tools/tool_registry.cpp
+    src/tools/web_search_tool.cpp
+    src/tools/translate_tool.cpp
+    src/tools/text_to_speech.cpp
+    src/tools/file_tool.cpp
+    src/tools/datetime_tool.cpp
+    src/tools/todolist_tool.cpp
+    src/environment/environment.cpp
+    src/Harness/Harness_runner.cpp
+    src/agent/agent_loop.cpp
+    src/agent/loop_detector.cpp
+    src/agent/skill_loader.cpp
+    src/utils/SystemUtils.cpp
 )
 
 # Tạo file thực thi từ file test.cpp và các file nền
@@ -49,13 +49,13 @@ set(CORE_SOURCES
 # target_link_libraries(harness_runner_test sqlite3 curl)
 
 # Tạo file thực thi từ file agent_loop_test.cpp
-add_executable(agent_loop_test
-    tests/agent_loop_test.cpp
+add_executable(harness
+    tests/harness_runner_test.cpp
     ${CORE_SOURCES}
 )
 
 # LƯU Ý QUAN TRỌNG: Link thư viện curl (cho API/Ollama/OpenRouter) và sqlite3 (cho Memory Database)
-target_link_libraries(agent_loop_test
+target_link_libraries(harness
     curl
     sqlite3
 )

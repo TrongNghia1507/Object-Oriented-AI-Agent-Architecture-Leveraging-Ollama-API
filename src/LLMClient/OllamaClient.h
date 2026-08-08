@@ -32,4 +32,5 @@ public:
     void setTemperature(float temperature) override { temperature_ = temperature; }
     void setMaxTokens(int maxTokens) override { maxTokens_ = maxTokens; }
     std::string getModelName() const override { return modelName_; }
+    int getLastTokenUsage() const override {return lastTokenUsage_;}
 };
