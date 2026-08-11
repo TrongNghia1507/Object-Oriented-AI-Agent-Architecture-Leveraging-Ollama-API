@@ -1,3 +1,3 @@
-/workspaces/AgentAI/build/CMakeFiles/harness.dir
+/workspaces/AgentAI/build/CMakeFiles/agent_loop_test.dir
 /workspaces/AgentAI/build/CMakeFiles/edit_cache.dir
 /workspaces/AgentAI/build/CMakeFiles/rebuild_cache.dir

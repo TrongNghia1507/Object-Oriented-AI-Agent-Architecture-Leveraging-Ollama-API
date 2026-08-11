@@ -1,16 +1,16 @@
-#include "../agent/agent_loop.h"
-#include "../tools/tool_registry.h"
-#include "../tools/calculator_tool.h"
-#include "../tools/advanced_math_tool.h"
-#include "../tools/memory_tool.h"
-#include "../tools/exec_tool.h"
-#include "../tools/translate_tool.h"
-#include "../tools/web_search_tool.h"
-#include "../tools/datetime_tool.h"
-#include "../environment/environment.h"
-#include "../tools/file_tool.h"
-#include "../tools/text_to_speech.h"
-#include "../tools/todolist_tool.h"
+#include "../src/agent/agent_loop.h"
+#include "../src/tools/tool_registry.h"
+#include "../src/tools/calculator_tool.h"
+#include "../src/tools/advanced_math_tool.h"
+#include "../src/tools/memory_tool.h"
+#include "../src/tools/exec_tool.h"
+#include "../src/tools/translate_tool.h"
+#include "../src/tools/web_search_tool.h"
+#include "../src/tools/datetime_tool.h"
+#include "../src/environment/environment.h"
+#include "../src/tools/file_tool.h"
+#include "../src/tools/text_to_speech.h"
+#include "../src/tools/todolist_tool.h"
 #include <cassert>
 #include <iostream>
 #include <memory>
@@ -19,9 +19,9 @@
 #include <fstream>
 #include <memory>
 #include <filesystem>
-#include "../LLMClient/json.hpp"
-#include "../LLMClient/OllamaClient.h"
-#include "../utils/SystemUtils.h"
+#include "../src/LLMClient/json.hpp"
+#include "../src/LLMClient/OllamaClient.h"
+#include "../src/utils/SystemUtils.h"
 using namespace std;
 
 int main() {

@@ -49,13 +49,13 @@ set(CORE_SOURCES
 # target_link_libraries(harness_runner_test sqlite3 curl)
 
 # Tạo file thực thi từ file agent_loop_test.cpp
-add_executable(harness
-    tests/harness_runner_test.cpp
+add_executable(agent_loop_test
+    tests/agent_loop_test.cpp
     ${CORE_SOURCES}
 )
 
 # LƯU Ý QUAN TRỌNG: Link thư viện curl (cho API/Ollama/OpenRouter) và sqlite3 (cho Memory Database)
-target_link_libraries(harness
+target_link_libraries(agent_loop_test
     curl
     sqlite3
 )
