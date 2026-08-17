@@ -1,8 +1,4 @@
 #include "../src/agent/agent_loop.h"
-#include "../src/LLMClient/OllamaClient.h"
-#include "../src/tools/tool_registry.h"
-#include "../src/agent/skill_loader.h"
-#include "../src/environment/environment.h"
 #include "../src/tools/tool_registry.h"
 #include "../src/tools/calculator_tool.h"
 #include "../src/tools/advanced_math_tool.h"
@@ -10,9 +6,10 @@
 #include "../src/tools/exec_tool.h"
 #include "../src/tools/translate_tool.h"
 #include "../src/tools/web_search_tool.h"
-#include "../src/tools/text_to_speech.h"
-#include "../src/tools/file_tool.h"
 #include "../src/tools/datetime_tool.h"
+#include "../src/environment/environment.h"
+#include "../src/tools/file_tool.h"
+#include "../src/tools/text_to_speech.h"
 #include "../src/tools/todolist_tool.h"
 #include <cassert>
 #include <iostream>
