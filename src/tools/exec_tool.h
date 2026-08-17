@@ -32,11 +32,10 @@ namespace ExecPolicy {
 
 class ExecTool : public Tool {
 private:
-    Environment* env_;       // Bắt buộc phải có để ủy quyền thực thi
-    ExecutionPolicy policy_; // Bộ lọc bảo mật Strategy Pattern
+    Environment* env_;      
+    ExecutionPolicy policy_;
 
 public:
-    // SỬA LỖI: Gom thành một Constructor duy nhất sử dụng kỹ thuật Dependency Injection chuẩn xác
     ExecTool(Environment* env, ExecutionPolicy policy = ExecPolicy::AutomatedBlacklist());
     
     std::string getName() const override { return "exec"; }

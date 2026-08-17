@@ -63,7 +63,8 @@ CMAKE_BINARY_DIR = /workspaces/AgentAI/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/harness.dir/all
+all: CMakeFiles/harness_runner.dir/all
+all: CMakeFiles/interact_model.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +72,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/harness.dir/clean
+clean: CMakeFiles/harness_runner.dir/clean
+clean: CMakeFiles/interact_model.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/harness.dir
+# Target rules for target CMakeFiles/harness_runner.dir
 
 # All Build rule for target.
-CMakeFiles/harness.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target harness"
-.PHONY : CMakeFiles/harness.dir/all
+CMakeFiles/harness_runner.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 "Built target harness_runner"
+.PHONY : CMakeFiles/harness_runner.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/harness.dir/rule: cmake_check_build_system
+CMakeFiles/harness_runner.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/AgentAI/build/CMakeFiles 21
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/harness.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/harness_runner.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/AgentAI/build/CMakeFiles 0
-.PHONY : CMakeFiles/harness.dir/rule
+.PHONY : CMakeFiles/harness_runner.dir/rule
 
 # Convenience name for target.
-harness: CMakeFiles/harness.dir/rule
-.PHONY : harness
+harness_runner: CMakeFiles/harness_runner.dir/rule
+.PHONY : harness_runner
 
 # clean rule for target.
-CMakeFiles/harness.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/clean
-.PHONY : CMakeFiles/harness.dir/clean
+CMakeFiles/harness_runner.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/clean
+.PHONY : CMakeFiles/harness_runner.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/interact_model.dir
+
+# All Build rule for target.
+CMakeFiles/interact_model.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspaces/AgentAI/build/CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42 "Built target interact_model"
+.PHONY : CMakeFiles/interact_model.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/interact_model.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/AgentAI/build/CMakeFiles 21
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/interact_model.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/AgentAI/build/CMakeFiles 0
+.PHONY : CMakeFiles/interact_model.dir/rule
+
+# Convenience name for target.
+interact_model: CMakeFiles/interact_model.dir/rule
+.PHONY : interact_model
+
+# clean rule for target.
+CMakeFiles/interact_model.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/clean
+.PHONY : CMakeFiles/interact_model.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

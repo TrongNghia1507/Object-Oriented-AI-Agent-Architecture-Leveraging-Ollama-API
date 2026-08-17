@@ -14,9 +14,6 @@ static size_t WriteCallback(void* contents, size_t size, size_t nmemb, string* u
     return size * nmemb;
 }
 
-// Constructor đầy đủ (private) - không khai default argument lại ở đây,
-// vì đó là nguyên nhân gây lỗi biên dịch "redefinition of default argument"
-// (default argument chỉ được khai DUY NHẤT một lần, ở khai báo trong .h).
 OllamaClient::OllamaClient(string model, string baseUrl)
     : modelName_(std::move(model)),
       baseUrl_(std::move(baseUrl)){}
@@ -25,8 +22,6 @@ string OllamaClient::buildPayload(const string& promptText, const string& base64
     json payload = {
         {"model", modelName_},
         {"stream", false},
-        
-        // CỦA OPENROUTER: Đưa toàn bộ config ra ngoài cùng, không bọc trong "options" nữa
         {"temperature", temperature_},
         {"max_tokens", maxTokens_}, 
         {"stop", {"Observation:", "Final Answer:"}}
@@ -69,20 +64,17 @@ std::expected<string, LLMError> OllamaClient::executeCurl(const string& url, con
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
     curl_easy_setopt(curl, CURLOPT_TIMEOUT, 60L); // Có thể tăng lên 120L nếu model suy luận lâu
-
-    // Bypass SSL checks (Bạn có thể đổi thành 1L nếu máy đã cài đủ chứng chỉ SSL, 
-    // OpenRouter dùng HTTPS chuẩn nên rất an toàn)
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
 
     struct curl_slist* headers = NULL;
     headers = curl_slist_append(headers, "User-Agent: C++-Agent-Client");
     headers = curl_slist_append(headers, "HTTP-Referer: https://localhost");
-    // Chỉ tập trung xử lý POST để gửi Prompt lên OpenRouter
+    // Chỉ tập trung xử lý POST để gửi Prompt lên OpenRouter, không cần get như ban đầu làm ollama bên colab
     if (method == "POST") {
         headers = curl_slist_append(headers, "Content-Type: application/json");
 
-        // Đọc API Key từ file .env (MỤC 2)
+        // Đọc API Key từ file .env
         const char* apiKeyEnv = std::getenv("OPENROUTER_API_KEY");
         if (apiKeyEnv) {
             std::string key(apiKeyEnv);
@@ -94,8 +86,6 @@ std::expected<string, LLMError> OllamaClient::executeCurl(const string& url, con
             std::string authHeader = "Authorization: Bearer " + std::string(apiKeyEnv);
             headers = curl_slist_append(headers, authHeader.c_str());
         }
-
-        // Định danh bắt buộc của OpenRouter (MỤC 2)
 
         // Ép Header và Payload vào cURL
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
@@ -141,7 +131,6 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
     }
     string activeUrl = *endpointResult;
 
-    // [MẮT THẦN 1] In ra URL (chữ Pinggy giờ không còn ý nghĩa, ta đang chĩa thẳng lên Cloud)
     std::cout << "\n\033[33m[DEBUG-LLM] Dang ket noi toi: \033[0m" << activeUrl << "\n";
 
     auto rawResponse = executeCurl(activeUrl, "POST", jsonPayload);
@@ -176,7 +165,7 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
             auto& firstChoice = resJson["choices"][0];
             
             if (firstChoice.contains("message") && firstChoice["message"].contains("content")) {
-                // [KHIÊN BẢO VỆ] Kiem tra chac chan no la Chuoi (String) roi moi lay ra!
+                // Kiem tra chac chan no la Chuoi (String) roi moi lay ra!
                 if (firstChoice["message"]["content"].is_string()) {
                     return firstChoice["message"]["content"].get<string>();
                 } else {

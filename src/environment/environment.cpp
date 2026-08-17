@@ -17,18 +17,11 @@ namespace fs = std::filesystem;
     #define POPEN  popen
     #define PCLOSE pclose
 #endif
-
-// ============================================================================
-// HIỆN THỰC HÓA CHI TIẾT NATIVE ENVIRONMENT (MÔI TRƯỜNG MÁY THẬT)
-// ============================================================================
-
 void NativeEnvironment::setup() {
     std::cout << "[NativeEnvironment] Setup: San sang thuc thi truc tiep tren he dieu hanh vat ly.\n";
 }
 
 std::string NativeEnvironment::executeCommand(const std::string& command) {
-    // Kỹ thuật gộp luồng lỗi stderr (2>&1) vào chung luồng stdout 
-    // Giúp mô hình LLM nhận biết và tự sửa lỗi cú pháp nếu gõ sai lệnh Terminal
     std::string cmdWithStderr = command + " 2>&1";
     std::array<char, 256> buffer;
     std::string result;
@@ -72,18 +65,12 @@ void NativeEnvironment::teardown() {
     std::cout << "[NativeEnvironment] Teardown: Ket thuc chu ky thuc thi tren may that.\n";
 }
 
-
-// ============================================================================
-// HIỆN THỰC HÓA CHI TIẾT SANDBOX ENVIRONMENT (MÔI TRƯỜNG HỘP CÁT AN TOÀN)
-// ============================================================================
-
 SandboxEnvironment::SandboxEnvironment(std::string sandboxDir) 
     : sandboxDir_(std::move(sandboxDir)) {}
 
 void SandboxEnvironment::setup() {
     std::cout << "[SandboxEnvironment] Setup: Khoi tao vung dem cach ly an toan tai: " << sandboxDir_ << "\n";
     try {
-        // Áp dụng C++17 std::filesystem tự động tạo cấu trúc cây thư mục nếu chưa tồn tại
         fs::create_directories(sandboxDir_);
     } catch (const std::exception& e) {
         std::cerr << "Loi ha tang: Khong the tao thu muc Sandbox: " << e.what() << "\n";

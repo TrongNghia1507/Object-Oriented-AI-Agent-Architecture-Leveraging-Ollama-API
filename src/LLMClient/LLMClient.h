@@ -35,7 +35,7 @@ public:
     virtual std::expected<std::string, LLMError>
         sendMessages(const std::vector<Message>& messages) = 0;
 
-    // Multimodal (text + ảnh), cùng interface với sendPrompt (yêu cầu 3.1).
+    // Multimodal (text + ảnh), cùng interface với sendPrompt .
     virtual std::expected<std::string, LLMError>
         sendPromptWithImage(const std::string& text,
                             const std::string& imagePath) = 0;

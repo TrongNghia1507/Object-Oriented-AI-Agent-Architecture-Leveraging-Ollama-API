@@ -7,10 +7,10 @@ class OllamaClient : public LLMClient {
 private:
     std::string modelName_;
     std::string baseUrl_;
-    float temperature_ = 0.7f;   // có giá trị mặc định hợp lý, KHÔNG còn để rác chưa khởi tạo
+    float temperature_ = 0.7f; 
     int maxTokens_ = 2048;
 
-    // === BỔ SUNG: lưu tổng token (prompt_eval_count + eval_count) mà Ollama
+    // lưu tổng token (prompt_eval_count + eval_count) mà Ollama
     // trả về ở lần gọi processRequest() gần nhất, để AgentLoop đọc lại qua
     // getLastTokenUsage() sau mỗi bước và ghi đúng vào Step::tokensUsed.
     int lastTokenUsage_ = 0;

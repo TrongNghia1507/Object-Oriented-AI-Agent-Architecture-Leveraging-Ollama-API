@@ -117,24 +117,86 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named harness
+# Target rules for targets named harness_runner
 
 # Build rule for target.
-harness: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 harness
-.PHONY : harness
+harness_runner: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 harness_runner
+.PHONY : harness_runner
 
 # fast build rule for target.
-harness/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/build
-.PHONY : harness/fast
+harness_runner/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/build
+.PHONY : harness_runner/fast
+
+#=============================================================================
+# Target rules for targets named interact_model
+
+# Build rule for target.
+interact_model: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 interact_model
+.PHONY : interact_model
+
+# fast build rule for target.
+interact_model/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/build
+.PHONY : interact_model/fast
+
+main/harness_runner.o: main/harness_runner.cpp.o
+.PHONY : main/harness_runner.o
+
+# target to build an object file
+main/harness_runner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/main/harness_runner.cpp.o
+.PHONY : main/harness_runner.cpp.o
+
+main/harness_runner.i: main/harness_runner.cpp.i
+.PHONY : main/harness_runner.i
+
+# target to preprocess a source file
+main/harness_runner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/main/harness_runner.cpp.i
+.PHONY : main/harness_runner.cpp.i
+
+main/harness_runner.s: main/harness_runner.cpp.s
+.PHONY : main/harness_runner.s
+
+# target to generate assembly for a file
+main/harness_runner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/main/harness_runner.cpp.s
+.PHONY : main/harness_runner.cpp.s
+
+main/interact_model.o: main/interact_model.cpp.o
+.PHONY : main/interact_model.o
+
+# target to build an object file
+main/interact_model.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/main/interact_model.cpp.o
+.PHONY : main/interact_model.cpp.o
+
+main/interact_model.i: main/interact_model.cpp.i
+.PHONY : main/interact_model.i
+
+# target to preprocess a source file
+main/interact_model.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/main/interact_model.cpp.i
+.PHONY : main/interact_model.cpp.i
+
+main/interact_model.s: main/interact_model.cpp.s
+.PHONY : main/interact_model.s
+
+# target to generate assembly for a file
+main/interact_model.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/main/interact_model.cpp.s
+.PHONY : main/interact_model.cpp.s
 
 src/Harness/Harness_runner.o: src/Harness/Harness_runner.cpp.o
 .PHONY : src/Harness/Harness_runner.o
 
 # target to build an object file
 src/Harness/Harness_runner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/Harness/Harness_runner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/Harness/Harness_runner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/Harness/Harness_runner.cpp.o
 .PHONY : src/Harness/Harness_runner.cpp.o
 
 src/Harness/Harness_runner.i: src/Harness/Harness_runner.cpp.i
@@ -142,7 +204,8 @@ src/Harness/Harness_runner.i: src/Harness/Harness_runner.cpp.i
 
 # target to preprocess a source file
 src/Harness/Harness_runner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/Harness/Harness_runner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/Harness/Harness_runner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/Harness/Harness_runner.cpp.i
 .PHONY : src/Harness/Harness_runner.cpp.i
 
 src/Harness/Harness_runner.s: src/Harness/Harness_runner.cpp.s
@@ -150,7 +213,8 @@ src/Harness/Harness_runner.s: src/Harness/Harness_runner.cpp.s
 
 # target to generate assembly for a file
 src/Harness/Harness_runner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/Harness/Harness_runner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/Harness/Harness_runner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/Harness/Harness_runner.cpp.s
 .PHONY : src/Harness/Harness_runner.cpp.s
 
 src/LLMClient/OllamaClient.o: src/LLMClient/OllamaClient.cpp.o
@@ -158,7 +222,8 @@ src/LLMClient/OllamaClient.o: src/LLMClient/OllamaClient.cpp.o
 
 # target to build an object file
 src/LLMClient/OllamaClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/LLMClient/OllamaClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/LLMClient/OllamaClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/LLMClient/OllamaClient.cpp.o
 .PHONY : src/LLMClient/OllamaClient.cpp.o
 
 src/LLMClient/OllamaClient.i: src/LLMClient/OllamaClient.cpp.i
@@ -166,7 +231,8 @@ src/LLMClient/OllamaClient.i: src/LLMClient/OllamaClient.cpp.i
 
 # target to preprocess a source file
 src/LLMClient/OllamaClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/LLMClient/OllamaClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/LLMClient/OllamaClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/LLMClient/OllamaClient.cpp.i
 .PHONY : src/LLMClient/OllamaClient.cpp.i
 
 src/LLMClient/OllamaClient.s: src/LLMClient/OllamaClient.cpp.s
@@ -174,7 +240,8 @@ src/LLMClient/OllamaClient.s: src/LLMClient/OllamaClient.cpp.s
 
 # target to generate assembly for a file
 src/LLMClient/OllamaClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/LLMClient/OllamaClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/LLMClient/OllamaClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/LLMClient/OllamaClient.cpp.s
 .PHONY : src/LLMClient/OllamaClient.cpp.s
 
 src/agent/agent_loop.o: src/agent/agent_loop.cpp.o
@@ -182,7 +249,8 @@ src/agent/agent_loop.o: src/agent/agent_loop.cpp.o
 
 # target to build an object file
 src/agent/agent_loop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/agent_loop.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/agent_loop.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/agent_loop.cpp.o
 .PHONY : src/agent/agent_loop.cpp.o
 
 src/agent/agent_loop.i: src/agent/agent_loop.cpp.i
@@ -190,7 +258,8 @@ src/agent/agent_loop.i: src/agent/agent_loop.cpp.i
 
 # target to preprocess a source file
 src/agent/agent_loop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/agent_loop.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/agent_loop.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/agent_loop.cpp.i
 .PHONY : src/agent/agent_loop.cpp.i
 
 src/agent/agent_loop.s: src/agent/agent_loop.cpp.s
@@ -198,7 +267,8 @@ src/agent/agent_loop.s: src/agent/agent_loop.cpp.s
 
 # target to generate assembly for a file
 src/agent/agent_loop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/agent_loop.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/agent_loop.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/agent_loop.cpp.s
 .PHONY : src/agent/agent_loop.cpp.s
 
 src/agent/loop_detector.o: src/agent/loop_detector.cpp.o
@@ -206,7 +276,8 @@ src/agent/loop_detector.o: src/agent/loop_detector.cpp.o
 
 # target to build an object file
 src/agent/loop_detector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/loop_detector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/loop_detector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/loop_detector.cpp.o
 .PHONY : src/agent/loop_detector.cpp.o
 
 src/agent/loop_detector.i: src/agent/loop_detector.cpp.i
@@ -214,7 +285,8 @@ src/agent/loop_detector.i: src/agent/loop_detector.cpp.i
 
 # target to preprocess a source file
 src/agent/loop_detector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/loop_detector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/loop_detector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/loop_detector.cpp.i
 .PHONY : src/agent/loop_detector.cpp.i
 
 src/agent/loop_detector.s: src/agent/loop_detector.cpp.s
@@ -222,7 +294,8 @@ src/agent/loop_detector.s: src/agent/loop_detector.cpp.s
 
 # target to generate assembly for a file
 src/agent/loop_detector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/loop_detector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/loop_detector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/loop_detector.cpp.s
 .PHONY : src/agent/loop_detector.cpp.s
 
 src/agent/skill_loader.o: src/agent/skill_loader.cpp.o
@@ -230,7 +303,8 @@ src/agent/skill_loader.o: src/agent/skill_loader.cpp.o
 
 # target to build an object file
 src/agent/skill_loader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/skill_loader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/skill_loader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/skill_loader.cpp.o
 .PHONY : src/agent/skill_loader.cpp.o
 
 src/agent/skill_loader.i: src/agent/skill_loader.cpp.i
@@ -238,7 +312,8 @@ src/agent/skill_loader.i: src/agent/skill_loader.cpp.i
 
 # target to preprocess a source file
 src/agent/skill_loader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/skill_loader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/skill_loader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/skill_loader.cpp.i
 .PHONY : src/agent/skill_loader.cpp.i
 
 src/agent/skill_loader.s: src/agent/skill_loader.cpp.s
@@ -246,7 +321,8 @@ src/agent/skill_loader.s: src/agent/skill_loader.cpp.s
 
 # target to generate assembly for a file
 src/agent/skill_loader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/agent/skill_loader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/agent/skill_loader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/agent/skill_loader.cpp.s
 .PHONY : src/agent/skill_loader.cpp.s
 
 src/environment/environment.o: src/environment/environment.cpp.o
@@ -254,7 +330,8 @@ src/environment/environment.o: src/environment/environment.cpp.o
 
 # target to build an object file
 src/environment/environment.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/environment/environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/environment/environment.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/environment/environment.cpp.o
 .PHONY : src/environment/environment.cpp.o
 
 src/environment/environment.i: src/environment/environment.cpp.i
@@ -262,7 +339,8 @@ src/environment/environment.i: src/environment/environment.cpp.i
 
 # target to preprocess a source file
 src/environment/environment.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/environment/environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/environment/environment.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/environment/environment.cpp.i
 .PHONY : src/environment/environment.cpp.i
 
 src/environment/environment.s: src/environment/environment.cpp.s
@@ -270,7 +348,8 @@ src/environment/environment.s: src/environment/environment.cpp.s
 
 # target to generate assembly for a file
 src/environment/environment.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/environment/environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/environment/environment.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/environment/environment.cpp.s
 .PHONY : src/environment/environment.cpp.s
 
 src/tools/advanced_math_tool.o: src/tools/advanced_math_tool.cpp.o
@@ -278,7 +357,8 @@ src/tools/advanced_math_tool.o: src/tools/advanced_math_tool.cpp.o
 
 # target to build an object file
 src/tools/advanced_math_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/advanced_math_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/advanced_math_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/advanced_math_tool.cpp.o
 .PHONY : src/tools/advanced_math_tool.cpp.o
 
 src/tools/advanced_math_tool.i: src/tools/advanced_math_tool.cpp.i
@@ -286,7 +366,8 @@ src/tools/advanced_math_tool.i: src/tools/advanced_math_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/advanced_math_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/advanced_math_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/advanced_math_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/advanced_math_tool.cpp.i
 .PHONY : src/tools/advanced_math_tool.cpp.i
 
 src/tools/advanced_math_tool.s: src/tools/advanced_math_tool.cpp.s
@@ -294,7 +375,8 @@ src/tools/advanced_math_tool.s: src/tools/advanced_math_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/advanced_math_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/advanced_math_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/advanced_math_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/advanced_math_tool.cpp.s
 .PHONY : src/tools/advanced_math_tool.cpp.s
 
 src/tools/calculator_tool.o: src/tools/calculator_tool.cpp.o
@@ -302,7 +384,8 @@ src/tools/calculator_tool.o: src/tools/calculator_tool.cpp.o
 
 # target to build an object file
 src/tools/calculator_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/calculator_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/calculator_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/calculator_tool.cpp.o
 .PHONY : src/tools/calculator_tool.cpp.o
 
 src/tools/calculator_tool.i: src/tools/calculator_tool.cpp.i
@@ -310,7 +393,8 @@ src/tools/calculator_tool.i: src/tools/calculator_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/calculator_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/calculator_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/calculator_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/calculator_tool.cpp.i
 .PHONY : src/tools/calculator_tool.cpp.i
 
 src/tools/calculator_tool.s: src/tools/calculator_tool.cpp.s
@@ -318,7 +402,8 @@ src/tools/calculator_tool.s: src/tools/calculator_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/calculator_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/calculator_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/calculator_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/calculator_tool.cpp.s
 .PHONY : src/tools/calculator_tool.cpp.s
 
 src/tools/datetime_tool.o: src/tools/datetime_tool.cpp.o
@@ -326,7 +411,8 @@ src/tools/datetime_tool.o: src/tools/datetime_tool.cpp.o
 
 # target to build an object file
 src/tools/datetime_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/datetime_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/datetime_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/datetime_tool.cpp.o
 .PHONY : src/tools/datetime_tool.cpp.o
 
 src/tools/datetime_tool.i: src/tools/datetime_tool.cpp.i
@@ -334,7 +420,8 @@ src/tools/datetime_tool.i: src/tools/datetime_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/datetime_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/datetime_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/datetime_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/datetime_tool.cpp.i
 .PHONY : src/tools/datetime_tool.cpp.i
 
 src/tools/datetime_tool.s: src/tools/datetime_tool.cpp.s
@@ -342,7 +429,8 @@ src/tools/datetime_tool.s: src/tools/datetime_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/datetime_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/datetime_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/datetime_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/datetime_tool.cpp.s
 .PHONY : src/tools/datetime_tool.cpp.s
 
 src/tools/exec_tool.o: src/tools/exec_tool.cpp.o
@@ -350,7 +438,8 @@ src/tools/exec_tool.o: src/tools/exec_tool.cpp.o
 
 # target to build an object file
 src/tools/exec_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/exec_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/exec_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/exec_tool.cpp.o
 .PHONY : src/tools/exec_tool.cpp.o
 
 src/tools/exec_tool.i: src/tools/exec_tool.cpp.i
@@ -358,7 +447,8 @@ src/tools/exec_tool.i: src/tools/exec_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/exec_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/exec_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/exec_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/exec_tool.cpp.i
 .PHONY : src/tools/exec_tool.cpp.i
 
 src/tools/exec_tool.s: src/tools/exec_tool.cpp.s
@@ -366,7 +456,8 @@ src/tools/exec_tool.s: src/tools/exec_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/exec_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/exec_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/exec_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/exec_tool.cpp.s
 .PHONY : src/tools/exec_tool.cpp.s
 
 src/tools/file_tool.o: src/tools/file_tool.cpp.o
@@ -374,7 +465,8 @@ src/tools/file_tool.o: src/tools/file_tool.cpp.o
 
 # target to build an object file
 src/tools/file_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/file_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/file_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/file_tool.cpp.o
 .PHONY : src/tools/file_tool.cpp.o
 
 src/tools/file_tool.i: src/tools/file_tool.cpp.i
@@ -382,7 +474,8 @@ src/tools/file_tool.i: src/tools/file_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/file_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/file_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/file_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/file_tool.cpp.i
 .PHONY : src/tools/file_tool.cpp.i
 
 src/tools/file_tool.s: src/tools/file_tool.cpp.s
@@ -390,7 +483,8 @@ src/tools/file_tool.s: src/tools/file_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/file_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/file_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/file_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/file_tool.cpp.s
 .PHONY : src/tools/file_tool.cpp.s
 
 src/tools/memory_tool.o: src/tools/memory_tool.cpp.o
@@ -398,7 +492,8 @@ src/tools/memory_tool.o: src/tools/memory_tool.cpp.o
 
 # target to build an object file
 src/tools/memory_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/memory_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/memory_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/memory_tool.cpp.o
 .PHONY : src/tools/memory_tool.cpp.o
 
 src/tools/memory_tool.i: src/tools/memory_tool.cpp.i
@@ -406,7 +501,8 @@ src/tools/memory_tool.i: src/tools/memory_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/memory_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/memory_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/memory_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/memory_tool.cpp.i
 .PHONY : src/tools/memory_tool.cpp.i
 
 src/tools/memory_tool.s: src/tools/memory_tool.cpp.s
@@ -414,7 +510,8 @@ src/tools/memory_tool.s: src/tools/memory_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/memory_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/memory_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/memory_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/memory_tool.cpp.s
 .PHONY : src/tools/memory_tool.cpp.s
 
 src/tools/text_to_speech.o: src/tools/text_to_speech.cpp.o
@@ -422,7 +519,8 @@ src/tools/text_to_speech.o: src/tools/text_to_speech.cpp.o
 
 # target to build an object file
 src/tools/text_to_speech.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/text_to_speech.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/text_to_speech.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/text_to_speech.cpp.o
 .PHONY : src/tools/text_to_speech.cpp.o
 
 src/tools/text_to_speech.i: src/tools/text_to_speech.cpp.i
@@ -430,7 +528,8 @@ src/tools/text_to_speech.i: src/tools/text_to_speech.cpp.i
 
 # target to preprocess a source file
 src/tools/text_to_speech.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/text_to_speech.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/text_to_speech.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/text_to_speech.cpp.i
 .PHONY : src/tools/text_to_speech.cpp.i
 
 src/tools/text_to_speech.s: src/tools/text_to_speech.cpp.s
@@ -438,7 +537,8 @@ src/tools/text_to_speech.s: src/tools/text_to_speech.cpp.s
 
 # target to generate assembly for a file
 src/tools/text_to_speech.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/text_to_speech.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/text_to_speech.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/text_to_speech.cpp.s
 .PHONY : src/tools/text_to_speech.cpp.s
 
 src/tools/todolist_tool.o: src/tools/todolist_tool.cpp.o
@@ -446,7 +546,8 @@ src/tools/todolist_tool.o: src/tools/todolist_tool.cpp.o
 
 # target to build an object file
 src/tools/todolist_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/todolist_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/todolist_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/todolist_tool.cpp.o
 .PHONY : src/tools/todolist_tool.cpp.o
 
 src/tools/todolist_tool.i: src/tools/todolist_tool.cpp.i
@@ -454,7 +555,8 @@ src/tools/todolist_tool.i: src/tools/todolist_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/todolist_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/todolist_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/todolist_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/todolist_tool.cpp.i
 .PHONY : src/tools/todolist_tool.cpp.i
 
 src/tools/todolist_tool.s: src/tools/todolist_tool.cpp.s
@@ -462,7 +564,8 @@ src/tools/todolist_tool.s: src/tools/todolist_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/todolist_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/todolist_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/todolist_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/todolist_tool.cpp.s
 .PHONY : src/tools/todolist_tool.cpp.s
 
 src/tools/tool_registry.o: src/tools/tool_registry.cpp.o
@@ -470,7 +573,8 @@ src/tools/tool_registry.o: src/tools/tool_registry.cpp.o
 
 # target to build an object file
 src/tools/tool_registry.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/tool_registry.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/tool_registry.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/tool_registry.cpp.o
 .PHONY : src/tools/tool_registry.cpp.o
 
 src/tools/tool_registry.i: src/tools/tool_registry.cpp.i
@@ -478,7 +582,8 @@ src/tools/tool_registry.i: src/tools/tool_registry.cpp.i
 
 # target to preprocess a source file
 src/tools/tool_registry.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/tool_registry.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/tool_registry.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/tool_registry.cpp.i
 .PHONY : src/tools/tool_registry.cpp.i
 
 src/tools/tool_registry.s: src/tools/tool_registry.cpp.s
@@ -486,7 +591,8 @@ src/tools/tool_registry.s: src/tools/tool_registry.cpp.s
 
 # target to generate assembly for a file
 src/tools/tool_registry.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/tool_registry.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/tool_registry.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/tool_registry.cpp.s
 .PHONY : src/tools/tool_registry.cpp.s
 
 src/tools/translate_tool.o: src/tools/translate_tool.cpp.o
@@ -494,7 +600,8 @@ src/tools/translate_tool.o: src/tools/translate_tool.cpp.o
 
 # target to build an object file
 src/tools/translate_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/translate_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/translate_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/translate_tool.cpp.o
 .PHONY : src/tools/translate_tool.cpp.o
 
 src/tools/translate_tool.i: src/tools/translate_tool.cpp.i
@@ -502,7 +609,8 @@ src/tools/translate_tool.i: src/tools/translate_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/translate_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/translate_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/translate_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/translate_tool.cpp.i
 .PHONY : src/tools/translate_tool.cpp.i
 
 src/tools/translate_tool.s: src/tools/translate_tool.cpp.s
@@ -510,7 +618,8 @@ src/tools/translate_tool.s: src/tools/translate_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/translate_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/translate_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/translate_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/translate_tool.cpp.s
 .PHONY : src/tools/translate_tool.cpp.s
 
 src/tools/web_search_tool.o: src/tools/web_search_tool.cpp.o
@@ -518,7 +627,8 @@ src/tools/web_search_tool.o: src/tools/web_search_tool.cpp.o
 
 # target to build an object file
 src/tools/web_search_tool.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/web_search_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/web_search_tool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/web_search_tool.cpp.o
 .PHONY : src/tools/web_search_tool.cpp.o
 
 src/tools/web_search_tool.i: src/tools/web_search_tool.cpp.i
@@ -526,7 +636,8 @@ src/tools/web_search_tool.i: src/tools/web_search_tool.cpp.i
 
 # target to preprocess a source file
 src/tools/web_search_tool.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/web_search_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/web_search_tool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/web_search_tool.cpp.i
 .PHONY : src/tools/web_search_tool.cpp.i
 
 src/tools/web_search_tool.s: src/tools/web_search_tool.cpp.s
@@ -534,7 +645,8 @@ src/tools/web_search_tool.s: src/tools/web_search_tool.cpp.s
 
 # target to generate assembly for a file
 src/tools/web_search_tool.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/tools/web_search_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/tools/web_search_tool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/tools/web_search_tool.cpp.s
 .PHONY : src/tools/web_search_tool.cpp.s
 
 src/utils/SystemUtils.o: src/utils/SystemUtils.cpp.o
@@ -542,7 +654,8 @@ src/utils/SystemUtils.o: src/utils/SystemUtils.cpp.o
 
 # target to build an object file
 src/utils/SystemUtils.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/SystemUtils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/utils/SystemUtils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/utils/SystemUtils.cpp.o
 .PHONY : src/utils/SystemUtils.cpp.o
 
 src/utils/SystemUtils.i: src/utils/SystemUtils.cpp.i
@@ -550,7 +663,8 @@ src/utils/SystemUtils.i: src/utils/SystemUtils.cpp.i
 
 # target to preprocess a source file
 src/utils/SystemUtils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/SystemUtils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/utils/SystemUtils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/utils/SystemUtils.cpp.i
 .PHONY : src/utils/SystemUtils.cpp.i
 
 src/utils/SystemUtils.s: src/utils/SystemUtils.cpp.s
@@ -558,7 +672,8 @@ src/utils/SystemUtils.s: src/utils/SystemUtils.cpp.s
 
 # target to generate assembly for a file
 src/utils/SystemUtils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/SystemUtils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/utils/SystemUtils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/utils/SystemUtils.cpp.s
 .PHONY : src/utils/SystemUtils.cpp.s
 
 src/utils/base64.o: src/utils/base64.cpp.o
@@ -566,7 +681,8 @@ src/utils/base64.o: src/utils/base64.cpp.o
 
 # target to build an object file
 src/utils/base64.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/base64.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/utils/base64.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/utils/base64.cpp.o
 .PHONY : src/utils/base64.cpp.o
 
 src/utils/base64.i: src/utils/base64.cpp.i
@@ -574,7 +690,8 @@ src/utils/base64.i: src/utils/base64.cpp.i
 
 # target to preprocess a source file
 src/utils/base64.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/base64.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/utils/base64.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/utils/base64.cpp.i
 .PHONY : src/utils/base64.cpp.i
 
 src/utils/base64.s: src/utils/base64.cpp.s
@@ -582,32 +699,9 @@ src/utils/base64.s: src/utils/base64.cpp.s
 
 # target to generate assembly for a file
 src/utils/base64.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/src/utils/base64.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness_runner.dir/build.make CMakeFiles/harness_runner.dir/src/utils/base64.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/interact_model.dir/build.make CMakeFiles/interact_model.dir/src/utils/base64.cpp.s
 .PHONY : src/utils/base64.cpp.s
-
-tests/harness_runner_test.o: tests/harness_runner_test.cpp.o
-.PHONY : tests/harness_runner_test.o
-
-# target to build an object file
-tests/harness_runner_test.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/tests/harness_runner_test.cpp.o
-.PHONY : tests/harness_runner_test.cpp.o
-
-tests/harness_runner_test.i: tests/harness_runner_test.cpp.i
-.PHONY : tests/harness_runner_test.i
-
-# target to preprocess a source file
-tests/harness_runner_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/tests/harness_runner_test.cpp.i
-.PHONY : tests/harness_runner_test.cpp.i
-
-tests/harness_runner_test.s: tests/harness_runner_test.cpp.s
-.PHONY : tests/harness_runner_test.s
-
-# target to generate assembly for a file
-tests/harness_runner_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/harness.dir/build.make CMakeFiles/harness.dir/tests/harness_runner_test.cpp.s
-.PHONY : tests/harness_runner_test.cpp.s
 
 # Help Target
 help:
@@ -617,7 +711,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... harness"
+	@echo "... harness_runner"
+	@echo "... interact_model"
+	@echo "... main/harness_runner.o"
+	@echo "... main/harness_runner.i"
+	@echo "... main/harness_runner.s"
+	@echo "... main/interact_model.o"
+	@echo "... main/interact_model.i"
+	@echo "... main/interact_model.s"
 	@echo "... src/Harness/Harness_runner.o"
 	@echo "... src/Harness/Harness_runner.i"
 	@echo "... src/Harness/Harness_runner.s"
@@ -675,9 +776,6 @@ help:
 	@echo "... src/utils/base64.o"
 	@echo "... src/utils/base64.i"
 	@echo "... src/utils/base64.s"
-	@echo "... tests/harness_runner_test.o"
-	@echo "... tests/harness_runner_test.i"
-	@echo "... tests/harness_runner_test.s"
 .PHONY : help
 
 

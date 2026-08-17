@@ -1,3 +1,4 @@
-/workspaces/AgentAI/build/CMakeFiles/harness.dir
+/workspaces/AgentAI/build/CMakeFiles/harness_runner.dir
+/workspaces/AgentAI/build/CMakeFiles/interact_model.dir
 /workspaces/AgentAI/build/CMakeFiles/edit_cache.dir
 /workspaces/AgentAI/build/CMakeFiles/rebuild_cache.dir

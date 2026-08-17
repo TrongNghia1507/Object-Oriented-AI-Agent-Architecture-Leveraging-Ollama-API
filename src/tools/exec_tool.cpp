@@ -18,7 +18,6 @@ ExecutionPolicy ExecPolicy::AskUser() {
     };
 }
 
-// Cài đặt Constructor an toàn, bẫy lỗi ngay lập tức nếu dữ liệu đầu vào không hợp lệ
 ExecTool::ExecTool(Environment* env, ExecutionPolicy policy) 
     : env_(env), policy_(std::move(policy)) {
     if (!env_) {
@@ -42,11 +41,9 @@ std::string ExecTool::execute(const std::string& arguments) {
 
     if (command.empty()) return "Loi: lenh rong.";
 
-    // 1. Kiểm tra chính sách an toàn thông tin (Strategy Pattern)
     if (!policy_(command, explanation)) {
         return "Da tu choi thuc thi lenh vi vi pham chinh sach bao mat: " + command;
     }
 
-    // 2. ỦY QUYỀN HOÀN TOÀN XUỐNG TẦNG HẠ TẦNG (Loose Coupling)
     return env_->executeCommand(command);
 }
