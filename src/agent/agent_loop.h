@@ -23,16 +23,9 @@
 //   AgentLoop gọi hook sau mỗi Step mà KHÔNG biết HarnessRunner là ai.
 //   Thoả nguyên tắc "AgentLoop KHÔNG biết Harness tồn tại" .
 //
-// KỸ THUẬT C++17 SỬ DỤNG:
-//   std::variant<ToolCallAction, FinalAnswerAction>  → Action type
-//   std::optional<string>                            → tool result trong Step
-//   std::function<void(const Step&)>                 → step hook
-//   std::visit + if constexpr                        → xử lý variant không cần dynamic_cast
-//   structured bindings (trong ToolRegistry loop)    → auto& [k, v]
 
 class AgentLoop {
 public:
-    // === THÊM MỚI: Bí danh (Alias) cho Hook Interface để code gọn gàng ===
     using StepHook = std::function<void(const Step&)>;
 
 protected:
@@ -43,7 +36,6 @@ protected:
     LoopDetector  loopDetector_;
 
     // Observer hook — nullptr khi không có HarnessRunner
-    // === CHỈNH SỬA: Sử dụng Alias và khởi tạo mặc định nullptr cho an toàn ===
     StepHook stepHook_ = nullptr;
 
     // ── Các bước có thể override (Template Method) ────────────────────────────
@@ -52,7 +44,7 @@ protected:
     // Override để inject mock response trong unit test.
     virtual std::string doThink(const std::vector<Message>& messages);
 
-    // Parse: tách raw thought → Action (ToolCallAction | FinalAnswerAction).
+    // Parse: tách raw thought -> Action (ToolCallAction | FinalAnswerAction).
     // Override để hỗ trợ định dạng khác (vd: JSON tool call).
     virtual Action parseAction(const std::string& thought);
 
@@ -67,8 +59,6 @@ protected:
     // Build system prompt (tool descriptions + skill content phù hợp với task).
     virtual std::string buildSystemPrompt(const std::string& task);
 
-    // === THÊM MỚI: Hàm bọc an toàn (Safe Wrapper) để kích hoạt Hook ===
-    // Gọi hàm này trong file .cpp thay vì gọi trực tiếp stepHook_
     void notifyHook(const Step& current_step) const {
         if (stepHook_) {
             stepHook_(current_step);
@@ -87,11 +77,7 @@ public:
 
     // Inject step hook từ HarnessRunner (Observer pattern).
     // AgentLoop không biết ai gọi — chỉ biết mình phải gọi hook sau mỗi step.
-    // === CHỈNH SỬA: Đổi tham số sang dùng Alias StepHook ===
-    // t tạm tắt
-    // void setStepHook(StepHook hook) {
-    //     stepHook_ = std::move(hook);
-    // }
+
     void setStepHook(StepHook hook) { stepHook_ = hook; }
 
     void setMaxSteps(int n) { maxSteps_ = n; }

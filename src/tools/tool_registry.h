@@ -1,7 +1,7 @@
 #pragma once
 #include "tool.h"
 #include <unordered_map>
-#include <unordered_set> // Thêm thư viện để làm danh sách Blacklist
+#include <unordered_set> 
 #include <string>
 #include <memory>
 #include <vector>
@@ -10,7 +10,7 @@ class ToolRegistry {
 private:
     std::unordered_map<std::string, std::unique_ptr<Tool>> tools_;
     
-    // HIỆN THỰC TOOL POLICY: Lưu trữ danh sách tên các công cụ bị cấm
+    // TOOL POLICY: Lưu trữ danh sách tên các công cụ bị cấm
     std::unordered_set<std::string> blacklist_; 
 
 public:
@@ -19,7 +19,7 @@ public:
     // Hàm đăng ký công cụ vào hệ thống
     void registerTool(std::unique_ptr<Tool> tool);
 
-    // Quản lý chính sách Tool Policy theo yêu cầu đồ án
+    // Quản lý chính sách Tool Policy 
     void banTool(const std::string& toolName);   // Thêm tool vào danh sách cấm
     void unbanTool(const std::string& toolName); // Gỡ lệnh cấm cho tool
     bool isAllowed(const std::string& toolName) const; // Kiểm tra chính sách cho phép

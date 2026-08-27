@@ -131,7 +131,4 @@ std::string SandboxEnvironment::writeFile(const std::string& path, const std::st
 
 void SandboxEnvironment::teardown() {
     std::cout << "[SandboxEnvironment] Teardown: Don dep moi truong hop cat.\n";
-    // MẸO: Thầy cô chấm bài rất thích việc dọn sạch thư mục tạm sau mỗi bài test để tránh rò rỉ dữ liệu.
-    // Nếu muốn dọn sạch hoàn toàn thư mục hộp cát khi kết thúc bài test, bạn hãy bỏ comment dòng dưới đây:
-    // fs::remove_all(sandboxDir_);
 }

@@ -1,7 +1,7 @@
 #ifndef MEMORY_TOOL_H
 #define MEMORY_TOOL_H
 
-#include "tool.h" // Yêu cầu bắt buộc để AgentAI nhận diện Tool
+#include "tool.h" 
 #include <memory>
 #include <string>
 #include <sqlite3.h>
@@ -12,7 +12,7 @@ private:
     sqlite3* db;
 
 public:
-    // Đặt giá trị mặc định là "memory.db" để tránh lỗi khi khởi tạo nếu quên truyền tham số
+    // Đặt giá trị mặc định là "memory.db"
     explicit DatabaseManager(const std::string& dbPath = "memory.db");
     ~DatabaseManager();
 

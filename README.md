@@ -1,5 +1,4 @@
 # AgentAI
-
 Hệ thống gồm 5 tầng độc lập nhưng phối hợp thành một pipeline hoàn chỉnh:
 
 * **LLMClient** — giao tiếp với LLM (text, multi-turn, multimodal ảnh).
@@ -29,7 +28,7 @@ AgentAI-main/
 │   └── tasks.json         # Tập 10 task benchmark
 ├── benchmark_summary/     # Kết quả chạy: trajectory_*.json + benchmark_summary.json
 ├── docs/                  # Class/Sequence/Component diagram (Mermaid)
-└── tests/                 # harness_runner_test.cpp và các test khác
+└── main/                  # interact_model.cpp (build mặc định), harness_runner.cpp, multi_agent.cpp
 ```
 
 ---
@@ -41,7 +40,7 @@ AgentAI-main/
 | `exec` | `exec_tool.cpp` | Chạy lệnh shell, trả stdout/stderr |
 | `read_file` / `write_file` | `file_tool.cpp` | Đọc/ghi file qua `Environment` |
 | `web_search` | `web_search_tool.cpp` | Tìm kiếm qua SearXNG/DuckDuckGo |
-| `memory_save` / `memory_search` | `memory_tool.cpp` | Lưu & truy vấn memory qua SQLite, có embedding (nomic-embed-text) + cosine similarity |
+| `memory_save` / `memory_search` | `memory_tool.cpp` | Lưu & truy vấn memory qua SQLite, cosine similarity |
 | `calculator` | `calculator_tool.cpp` | Tính biểu thức số học |
 | `advanced_math` | `advanced_math_tool.cpp` | Tính toán nâng cao (dùng `exprtk`) |
 | `datetime` | `datetime_tool.cpp` | Lấy ngày giờ theo timezone (`std::chrono::zoned_time`) |
@@ -100,8 +99,6 @@ MEMORY_RECENCY_WEIGHT=0.2
 MEMORY_EMBEDDING_MODEL=nomic-embed-text
 ```
 
-> ⚠️ **Bảo mật:** `model.env` chứa API key thật, **không được commit lên git**. File này phải nằm trong `.gitignore`. Nếu key đã từng bị commit/push, hãy revoke và tạo key mới ngay lập tức trên OpenRouter / nhà cung cấp TTS.
-
 ---
 
 ## Biên dịch dự án
@@ -119,27 +116,23 @@ cmake .. -DCMAKE_CXX_COMPILER=g++-14 -DCMAKE_C_COMPILER=gcc-14
 cmake --build . -j
 ```
 
-Target được tạo ra tên là **`harness`** (khai báo bởi `add_executable(harness ...)` trong `CMakeLists.txt`). 
-
 ## Chạy chương trình
 
 ```bash
-./harness
+./interact_model
 ```
 
-Chương trình sẽ chạy toàn bộ tập task trong `benchmark/tasks.json`, ghi từng trajectory ra `benchmark_summary/trajectory_task_XXX.json` và tổng hợp kết quả vào `benchmark_summary/benchmark_summary.json`.
+### Chạy batch benchmark qua HarnessRunner (10 task, ghi trajectory JSON)
 
-Nếu muốn build thêm executable khác (ví dụ để chạy `tests/agent_loop_test.cpp`), thêm target mới trong `CMakeLists.txt`:
-
-```cmake
-add_executable(agent_loop_test
-    tests/agent_loop_test.cpp
-    ${CORE_SOURCES}
-)
-target_link_libraries(agent_loop_test curl sqlite3)
+```bash
+./harness_runner
 ```
 
----
+### Chạy multi-agent song song 
+
+```bash
+./multi_agent
+```
 
 ## Skill system
 
@@ -174,11 +167,12 @@ Danh sách skill hiện có: `datetime_planner`, `exec_planner`, `file_planner`,
 | **Strategy** | `Evaluator` (abstract) với `KeywordEvaluator`, `FunctionalEvaluator` dùng chung `evaluate()` |
 | **Registry / Factory** | `ToolRegistry` đăng ký và tra cứu `Tool` theo tên tại runtime |
 
-## Kỹ thuật C++ hiện đại đã dùng
+## Kỹ thuật C++ đã dùng
 
 * **C++17**: `std::variant`, `std::optional`, `std::filesystem`, `structured bindings`, `std::visit` + `if constexpr`, `smart pointers`, `pure virtual interfaces`, `lambda`, `range-based for`.
 * **C++20**: `std::chrono::zoned_time`, `std::format`.
 * **C++23**: `std::expected` / `std::unexpected` (LLMClient), `std::println` (Harness_runner.cpp).
+* **C++26**: `placeholder`.
 
 ---
 
@@ -189,18 +183,6 @@ Danh sách skill hiện có: `datetime_planner`, `exec_planner`, `file_planner`,
 * libcurl — HTTP client cho LLMClient, web_search, translate, TTS
 * SQLite3 — lưu trữ memory
 
----
-
-## Tests
-
-```text
-tests/
-├── agent_loop_test.cpp
-├── agent_loop_test_v2.cpp
-└── harness_runner_test.cpp  
-```
-
----
 
 ## Tài liệu thiết kế
 

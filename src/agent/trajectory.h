@@ -5,7 +5,7 @@
 #include <vector>
 
 // Trajectory: toàn bộ lịch sử 1 lần agent run.
-// AgentLoop ghi vào → HarnessRunner đọc và lưu file trajectory_{taskId}.json.
+// AgentLoop ghi vào -> HarnessRunner đọc và lưu file trajectory_{taskId}.json.
 struct Trajectory {
     std::string taskId;
     std::string task;
@@ -18,8 +18,7 @@ struct Trajectory {
     int totalTokens        = 0;
     std::vector<Step> steps;
 
-    // Xuất JSON theo format đề bài mục 7.1.
-    // Dùng std::visit + if constexpr (C++17) để xử lý std::variant<Action>.
+    // Xuất JSON
     nlohmann::json toJson() const {
         using json = nlohmann::json;
         json stepsArr = json::array();

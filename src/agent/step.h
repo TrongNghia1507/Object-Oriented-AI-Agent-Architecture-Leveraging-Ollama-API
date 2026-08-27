@@ -22,19 +22,6 @@ using Action = std::variant<ToolCallAction, FinalAnswerAction>;
 // ─── Step: 1 bước trong vòng lặp ReAct ───────────────────────────────────────
 // Data class thuần — AgentLoop tạo, Trajectory lưu, HarnessRunner đọc.
 // Không có dependency ngược: Step không biết ai tạo ra nó.
-// struct Step {
-//     int stepId = 0;
-
-//     std::string thought;    // toàn bộ raw text từ model (Thought + Action + Arguments)
-//     Action action;          // kết quả parse (ToolCallAction hoặc FinalAnswerAction)
-
-//     // std::optional (C++17): empty nếu là FinalAnswerAction,
-//     // có giá trị nếu tool đã được gọi và trả về kết quả.
-//     std::optional<std::string> toolResult;
-
-//     int tokensUsed = 0;
-//     long long latencyMs = 0;
-// };
 
 struct Step {
     int stepId = 0;

@@ -70,38 +70,6 @@ std::string AgentLoop::doThink(const std::vector<Message>& messages) {
     return *result;
 }
 
-// ─── parseAction ─────────────────────────────────────────────────────────────
-
-// Action AgentLoop::parseAction(const std::string& thought) {
-//     std::smatch m;
-
-//     // 1. Kiểm tra "Final Answer:" trước (ưu tiên cao hơn)
-//     std::regex finalRe(R"(Final Answer:\s*(.+))", std::regex::icase);
-//     if (std::regex_search(thought, m, finalRe)) {
-//         std::string text = m[1].str();
-//         while (!text.empty() && (text.back() == '\r' || text.back() == '\n'))
-//             text.pop_back();
-//         return FinalAnswerAction{text};
-//     }
-
-//     // 2. Parse "Action: <tool>" và "Arguments: <args>"
-//     std::regex actionRe(R"(Action:\s*([A-Za-z0-9_]+))");
-//     std::regex argsRe(R"(Arguments:\s*(.+))");
-
-//     std::string toolName, args;
-//     if (std::regex_search(thought, m, actionRe)) toolName = m[1].str();
-//     if (std::regex_search(thought, m, argsRe)) {
-//         args = m[1].str();
-//         while (!args.empty() &&
-//                (args.back() == '\r' || args.back() == '\n' || args.back() == ' '))
-//             args.pop_back();
-//     }
-
-//     if (!toolName.empty()) return ToolCallAction{toolName, args};
-
-//     // 3. Không parse được → coi toàn bộ thought là Final Answer
-//     return FinalAnswerAction{thought};
-// }
 Action AgentLoop::parseAction(const std::string& thought) {
     std::smatch m;
 
@@ -154,7 +122,7 @@ std::string AgentLoop::doObserve(const std::string& toolResult) {
     return "Observation: " + toolResult;
 }
 
-// ─── run() — Template Method (CODE THẬT ĐÃ ĐƯỢC MỞ KHÓA) ─────────────────────
+// ─── run() ─────────────────────
 
 Trajectory AgentLoop::run(const std::string& taskId, const std::string& task, const std::string& imagePath) {
     Trajectory traj;
@@ -194,7 +162,7 @@ Trajectory AgentLoop::run(const std::string& taskId, const std::string& task, co
         std::cout << "\n[Step " << stepIdx << " | " << step.latencyMs << "ms]\n"
                   << step.thought << "\n";
 
-        // Lỗi từ LLM → dừng ngay
+        // Lỗi từ LLM -> dừng ngay
         if (step.thought.rfind("__ERROR__", 0) == 0) {
             std::cerr << "[AgentLoop] LLM error: " << step.thought << "\n";
             traj.steps.push_back(step);
@@ -207,7 +175,7 @@ Trajectory AgentLoop::run(const std::string& taskId, const std::string& task, co
         // ── PARSE ACTION ──────────────────────────────────────────────────────
         step.action = parseAction(step.thought);
 
-        // ── Xử lý từng nhánh Action bằng std::visit + if constexpr (C++17) ──
+        // ── Xử lý từng nhánh Action bằng std::visit + if constexpr ──
         bool shouldStop = std::visit([&](const auto& a) -> bool {
             using T = std::decay_t<decltype(a)>;
 

@@ -44,6 +44,14 @@ target_link_libraries(harness_runner
     curl
     sqlite3
 )
+add_executable(multi_agent
+    main/multi_agent.cpp
+    ${CORE_SOURCES}
+)
+target_link_libraries(harness_runner
+    curl
+    sqlite3
+)
 add_executable(interact_model
     main/interact_model.cpp
     ${CORE_SOURCES}

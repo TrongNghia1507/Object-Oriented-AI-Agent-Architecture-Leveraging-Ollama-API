@@ -16,8 +16,8 @@ class KeywordEvaluator : public Evaluator {
 private:
     std::vector<std::string> expectedKeywords_;
     int scorePerKeyword_;
-    int minRequired_;      // == THÊM MỚI: số từ khóa tối thiểu để coi là "đạt"
-    int matchedCount_ = 0; // == THÊM MỚI: lưu lại số từ khóa khớp được của lần evaluate gần nhất
+    int minRequired_;      // số từ khóa tối thiểu để coi là "đạt"
+    int matchedCount_ = 0; // lưu lại số từ khóa khớp được của lần evaluate gần nhất
 
     std::string toLowerCase(std::string s) const {
         std::transform(s.begin(), s.end(), s.begin(),
@@ -37,9 +37,6 @@ public:
           scorePerKeyword_(score),
           minRequired_(minRequired < 0 ? static_cast<int>(keywords.size()) : minRequired) {}
 
-    // == THÊM MỚI: Factory method — build trực tiếp từ 1 phần tử tasks.json ==
-    // Cho phép HarnessRunner build evaluator đúng theo từng task, thay vì
-    // dùng chung 1 danh sách từ khóa cứng cho cả batch.
     // Kỳ vọng task JSON có dạng:
     //   { "eval_type": "keyword",
     //     "expected_keywords": ["Hà Nội", "nắng"],
@@ -61,7 +58,7 @@ public:
         return "KeywordEvaluator";
     }
 
-    // == THÊM MỚI: cho HarnessRunner biết task này có PASS hay không ==
+    // Cho HarnessRunner biết task này có PASS hay không ==
     bool isPassed() const override {
         return matchedCount_ >= minRequired_;
     }

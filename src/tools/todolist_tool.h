@@ -8,12 +8,6 @@
 // nhiều bước — agent ghi lại các bước con, đánh dấu bước nào đang làm/đã
 // xong, thay vì phải "nhớ" kế hoạch chỉ trong văn bản suy nghĩ tự do.
 //
-// Khác với MemoryTool (SQLite, tồn tại xuyên suốt nhiều lần chạy agent),
-// TodoListTool lưu state trong bộ nhớ (in-memory) vì danh sách việc cần làm
-// chỉ có ý nghĩa trong phạm vi MỘT lần agent.run() — mỗi Task của Harness
-// tạo ToolRegistry mới nên state tự động được reset sạch giữa các task,
-// không cần dọn dẹp thủ công.
-//
 // Định dạng lệnh (arguments), phân tách bằng " | ":
 //   "add | <noi dung>"    -> them 1 task moi, trang thai pending
 //   "start | <id>"        -> danh dau task dang lam (in_progress);

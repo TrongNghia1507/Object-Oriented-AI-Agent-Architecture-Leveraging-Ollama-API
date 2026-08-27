@@ -141,7 +141,7 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
     try {
         auto resJson = json::parse(*rawResponse);
 
-        // === BỔ SUNG: Xử lý báo lỗi từ OpenRouter (Rất quan trọng) ===
+        // Xử lý báo lỗi từ OpenRouter ===
         // Nếu API Key sai, hết hạn mức, hoặc tên model viết sai, OpenRouter sẽ trả về object "error"
         if (resJson.contains("error")) {
             std::cout << "\033[31m[DEBUG-LLM] OpenRouter tu choi request. Loi:\n\033[0m" 
@@ -149,7 +149,7 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
             return std::unexpected(LLMError::ConnectionDenied);
         }
 
-        // === CẬP NHẬT 1: Đọc Token Usage theo chuẩn OpenRouter ===
+        // Đọc Token Usage theo chuẩn OpenRouter ===
         // OpenRouter gom toàn bộ thông tin token vào object con tên là "usage"
         if (resJson.contains("usage")) {
             int promptTokens = resJson["usage"].value("prompt_tokens", 0);
@@ -159,8 +159,8 @@ std::expected<string, LLMError> OllamaClient::processRequest(const string& jsonP
             lastTokenUsage_ = 0;
         }
 
-        // === CẬP NHẬT 2: Trích xuất nội dung tin nhắn ===
-        // Đường dẫn mới là: resJson -> "choices" (Array) -> phần tử 0 -> "message" -> "content"
+        // Trích xuất nội dung tin nhắn ===
+        // Đường dẫn: resJson -> "choices" (Array) -> phần tử 0 -> "message" -> "content"
         if (resJson.contains("choices") && resJson["choices"].is_array() && !resJson["choices"].empty()) {
             auto& firstChoice = resJson["choices"][0];
             

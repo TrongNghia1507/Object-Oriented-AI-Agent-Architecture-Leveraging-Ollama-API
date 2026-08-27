@@ -3,10 +3,6 @@
 #include <string>
 
 // DateTimeTool
-// Không phụ thuộc Environment/LLMClient — tool "thuần" nhất trong hệ thống,
-// nên không cần constructor injection như ExecTool/FileTool/VisionTool.
-//
-// Kỹ thuật C++20 sử dụng: std::chrono::zoned_time + std::format
 
 class DateTimeTool : public Tool {
 private:
