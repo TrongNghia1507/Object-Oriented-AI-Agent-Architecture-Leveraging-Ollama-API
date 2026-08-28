@@ -33,7 +33,7 @@ std::string FileTool::execute(const std::string& arguments) {
         return "Loi: sai dinh dang. Can 'duong_dan | noi_dung'.";
     }
     std::string path = arguments.substr(0, sep);
-    std::string content = arguments.substr(sep + 3);
+    std::string content = SystemUtils::unescapeContent(arguments.substr(sep + 3));
     return env_->writeFile(path, content);
 }
 

@@ -34,6 +34,21 @@ namespace SystemUtils {
         string binaryData = ostrm.str();
         return base64_encode(reinterpret_cast<const unsigned char*>(binaryData.data()), binaryData.size());
     }
+    
+    std::string unescapeContent(const std::string& input) {
+        std::string result;
+        result.reserve(input.size());
+        for (size_t i = 0; i < input.size(); ++i) {
+            if (input[i] == '\\' && i + 1 < input.size()) {
+                char next = input[i + 1];
+                if (next == 'n') { result += '\n'; ++i; continue; }
+                if (next == 't') { result += '\t'; ++i; continue; }
+                if (next == '\\') { result += '\\'; ++i; continue; }
+            }
+            result += input[i];
+        }
+        return result;
+    }
 
 // Hàm tạo menu chọn ảnh
     std::string selectImageFromFolder(const std::string& folderPath) {

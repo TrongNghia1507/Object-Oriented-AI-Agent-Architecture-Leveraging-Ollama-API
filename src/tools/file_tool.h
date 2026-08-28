@@ -1,5 +1,6 @@
 #pragma once
 #include "tool.h"
+#include "../utils/SystemUtils.h"
 #include <string>
 #include <memory>
 #include <stdexcept>

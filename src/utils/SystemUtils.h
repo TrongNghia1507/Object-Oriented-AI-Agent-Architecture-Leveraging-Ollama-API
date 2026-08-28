@@ -5,4 +5,5 @@ namespace SystemUtils {
     std::string getSystemContext();
     std::string selectImageFromFolder(const std::string& folderPath);
     std::string encodeImageToBase64(const std::string& filePath);
+    std::string unescapeContent(const std::string& input);
 }

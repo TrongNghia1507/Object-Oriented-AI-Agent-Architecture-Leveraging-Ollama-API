@@ -47,20 +47,16 @@ std::string AgentLoop::buildSystemPrompt(const std::string& task) {
         "- Khong goi them tool sau khi da viet Final Answer.\n"
         "- Khong de trong Action hoac Arguments.\n"
         "\n=== GHI FILE ===\n"
-        "Khi can tao/ghi noi dung vao file (dac biet la code C/C++/Python), LUON UU TIEN "
-        "dung tool 'write_file' voi Arguments dung dinh dang 'duong_dan | noi_dung'. "
-        "Tool nay ghi truc tiep, KHONG di qua shell nen khong can escape bat ky ky tu nao: "
-        "% , dau backslash, dau nhay don, dau nhay kep... deu giu nguyen y het nhu ban viet.\n"
-        "CHI dung 'exec' de ghi file khi that su bat buoc phai dung shell (vi du can pipe, "
-        "redirect phuc tap, hoac thao tac ma cac tool khac khong ho tro). Khi do:\n"
-        "- TUYET DOI KHONG dung 'echo' (hanh vi khong nhat quan giua cac shell).\n"
-        "- Dung 'printf %s' (KHONG phai '%b') roi > de ghi de, vi du: printf '%s' '...noi dung...' > file.\n"
-        "  Ly do bat buoc dung %s: '%b' tu dong dien giai cac chuoi backslash (\\n, \\t, \\\\...) "
-        "ben trong noi dung thanh ky tu that. Neu code C/C++ ban sinh ra co chua \\n hoac \\t "
-        "(vi du printf(\"...\\n\")), '%b' se cat/hong dong code do ngay khi ghi file. '%s' "
-        "giu nguyen noi dung y het, khong dien giai gi ca.\n"
-        "- Neu noi dung can ghi co chua dau nhay don ('), KHONG dung exec+shell — bat buoc "
-        "chuyen sang dung 'write_file' vi dau nhay don se lam gay cau lenh shell giua chung.";
+        "Khi can tao/ghi/sua noi dung file (dac biet la code C/C++/Python), BAT BUOC "
+        "dung tool 'write_file' voi Arguments dang 'duong_dan | noi_dung'. Day la "
+        "CACH DUY NHAT duoc phep de ghi file - KHONG CO NGOAI LE nao, du noi dung "
+        "don gian hay phuc tap den dau, du chua dau nhay don/kep hay ky tu dac biet gi.\n"
+        "Dung \\n de xuong dong khi can ghi nhieu dong trong noi_dung - tool tu dong "
+        "chuyen thanh xuong dong that, KHONG can tu escape them bat ky ky tu nao khac.\n"
+        "TUYET DOI KHONG dung 'exec' voi 'echo' hoac 'printf' de ghi file trong bat ky "
+        "truong hop nao - lenh se bi tu choi ngay lap tuc va bao loi. Tool 'exec' CHI "
+        "duoc dung de CHAY/BIEN DICH file da duoc tao san bang 'write_file' truoc do "
+        "(vi du: g++ file.cpp -o app && ./app), khong duoc dung de tao noi dung file.";
 
     return prompt;
 }
