@@ -162,7 +162,7 @@ int main() {
 
     // 1. KHỞI TẠO LLM CLIENT CHO 2 AGENT
     string modelName1 = "google/gemma-4-26b-a4b-it:free";
-    string modelName2 = "google/gemma-4-31b-it"; 
+    string modelName2 = "google/gemma-4-26b-a4b-it:free"; 
     
     OllamaClient llmClient1(modelName1, "https://openrouter.ai");
     OllamaClient llmClient2(modelName2, "https://openrouter.ai");

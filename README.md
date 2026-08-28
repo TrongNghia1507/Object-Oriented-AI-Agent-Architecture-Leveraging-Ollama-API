@@ -68,9 +68,9 @@ Chính sách tool (allow/deny theo tên) được quản lý qua `ToolRegistry::
 
 ```bash
 # Cấp quyền thực thi và thiết lập môi trường
-chmod +x setup_env.sh
-./setup_env.sh
-chmod +x run.sh
+chmod +x setup_sear_ollama.sh
+./setup_sear_ollama.sh
+chmod +x run.sh #(Chạy lệnh này và các lệnh dưới trong một terminal mới, terminal hiện tại thì để cho Ollama chạy ngầm vector database)
 ```
 
 ### Windows (MSYS2)
