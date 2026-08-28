@@ -15,7 +15,7 @@ namespace ExecPolicy {
         return [](const std::string&, const std::string&) { return false; };
     }
     
-    // CHÍNH SÁCH MỚI: Tự động phân tích chuỗi từ chối từ khóa cấm, giúp không bị treo luồng test tự động
+    // Tự động phân tích chuỗi từ chối từ khóa cấm, giúp không bị treo luồng test tự động
     inline ExecutionPolicy AutomatedBlacklist() {
         return [](const std::string& command, const std::string&) {
             if (command.find("rm -rf") != std::string::npos || 

@@ -28,7 +28,7 @@ AgentAI-main/
 │   └── tasks.json         # Tập 10 task benchmark
 ├── benchmark_summary/     # Kết quả chạy: trajectory_*.json + benchmark_summary.json
 ├── docs/                  # Class/Sequence/Component diagram (Mermaid)
-└── main/                  # interact_model.cpp (build mặc định), harness_runner.cpp, multi_agent.cpp
+└── main/                  # interact_model.cpp (build mặc định), run_harnesscpp, multi_agent.cpp
 ```
 
 ---
@@ -55,7 +55,7 @@ Chính sách tool (allow/deny theo tên) được quản lý qua `ToolRegistry::
 ## Yêu cầu hệ thống
 
 * CMake ≥ 3.10
-* Trình biên dịch hỗ trợ **C++23** đầy đủ, bao gồm `<expected>` và `<print>`:
+* Trình biên dịch hỗ trợ **C++26** đầy đủ:
   * **GCC ≥ 14** 
   * Hoặc Clang ≥ 17 / MSVC tương ứng
 * libcurl (dev headers)
@@ -67,11 +67,10 @@ Chính sách tool (allow/deny theo tên) được quản lý qua `ToolRegistry::
 ### Ubuntu / GitHub Codespaces
 
 ```bash
-sudo apt update
-sudo apt install -y build-essential cmake libcurl4-openssl-dev libsqlite3-dev
-
-# Nếu compiler mặc định là GCC 13, cài thêm GCC 14:
-sudo apt install -y g++-14 gcc-14
+# Cấp quyền thực thi và thiết lập môi trường
+chmod +x setup_env.sh
+./setup_env.sh
+chmod +x run.sh
 ```
 
 ### Windows (MSYS2)
@@ -104,34 +103,29 @@ MEMORY_EMBEDDING_MODEL=nomic-embed-text
 ## Biên dịch dự án
 
 ```bash
-cd AgentAI-main
-mkdir build && cd build
+# 1. Cấu hình dự án bằng trình biên dịch GCC 14 và tạo thư mục build
+CC=gcc-14 CXX=g++-14 cmake -S . -B build
 
-# Nếu compiler mặc định đã là GCC 14 trở lên:
-cmake ..
-
-# Nếu cần chỉ định rõ compiler C++23:
-cmake .. -DCMAKE_CXX_COMPILER=g++-14 -DCMAKE_C_COMPILER=gcc-14
-
-cmake --build . -j
+# 2. Thực hiện biên dịch tất cả các target
+cmake --build build
 ```
 
-## Chạy chương trình
+## Chạy chương trình tương tác cơ bản 
 
 ```bash
-./interact_model
+./run.sh ./build/interact_model
 ```
 
 ### Chạy batch benchmark qua HarnessRunner (10 task, ghi trajectory JSON)
 
 ```bash
-./harness_runner
+./run.sh ./build/harness_runner
 ```
 
 ### Chạy multi-agent song song 
 
 ```bash
-./multi_agent
+./run.sh ./build/multi_agent
 ```
 
 ## Skill system

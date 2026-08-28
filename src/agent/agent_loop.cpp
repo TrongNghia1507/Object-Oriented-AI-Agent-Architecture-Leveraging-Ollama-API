@@ -46,7 +46,21 @@ std::string AgentLoop::buildSystemPrompt(const std::string& task) {
         "- Khong them preamble truoc 3 dong tren.\n"
         "- Khong goi them tool sau khi da viet Final Answer.\n"
         "- Khong de trong Action hoac Arguments.\n"
-        "Khi thực hiện lệnh shell để ghi file, TUYỆT ĐỐI không dùng lệnh echo. Phải sử dụng lệnh printf với cú pháp định dạng '%b' (Ví dụ: printf '%b' '- Dòng 1\\n- Dòng 2') để tránh lỗi khi chuỗi bắt đầu bằng dấu gạch ngang, và sử dụng > để ghi đè.";
+        "\n=== GHI FILE ===\n"
+        "Khi can tao/ghi noi dung vao file (dac biet la code C/C++/Python), LUON UU TIEN "
+        "dung tool 'write_file' voi Arguments dung dinh dang 'duong_dan | noi_dung'. "
+        "Tool nay ghi truc tiep, KHONG di qua shell nen khong can escape bat ky ky tu nao: "
+        "% , dau backslash, dau nhay don, dau nhay kep... deu giu nguyen y het nhu ban viet.\n"
+        "CHI dung 'exec' de ghi file khi that su bat buoc phai dung shell (vi du can pipe, "
+        "redirect phuc tap, hoac thao tac ma cac tool khac khong ho tro). Khi do:\n"
+        "- TUYET DOI KHONG dung 'echo' (hanh vi khong nhat quan giua cac shell).\n"
+        "- Dung 'printf %s' (KHONG phai '%b') roi > de ghi de, vi du: printf '%s' '...noi dung...' > file.\n"
+        "  Ly do bat buoc dung %s: '%b' tu dong dien giai cac chuoi backslash (\\n, \\t, \\\\...) "
+        "ben trong noi dung thanh ky tu that. Neu code C/C++ ban sinh ra co chua \\n hoac \\t "
+        "(vi du printf(\"...\\n\")), '%b' se cat/hong dong code do ngay khi ghi file. '%s' "
+        "giu nguyen noi dung y het, khong dien giai gi ca.\n"
+        "- Neu noi dung can ghi co chua dau nhay don ('), KHONG dung exec+shell — bat buoc "
+        "chuyen sang dung 'write_file' vi dau nhay don se lam gay cau lenh shell giua chung.";
 
     return prompt;
 }
@@ -91,7 +105,6 @@ Action AgentLoop::parseAction(const std::string& thought) {
     
     if (std::regex_search(thought, m, argsRe)) {
         args = m[1].str();
-        // Vòng lặp làm sạch phía sau của bạn viết rất tốt, giữ nguyên!
         while (!args.empty() &&
                (args.back() == '\r' || args.back() == '\n' || args.back() == ' '))
             args.pop_back();
@@ -99,7 +112,7 @@ Action AgentLoop::parseAction(const std::string& thought) {
 
     if (!toolName.empty()) return ToolCallAction{toolName, args};
 
-    // 3. Không parse được → coi toàn bộ thought là Final Answer
+    // 3. Không parse được -> coi toàn bộ thought là Final Answer
     return FinalAnswerAction{thought};
 }
 // ─── doAct ───────────────────────────────────────────────────────────────────

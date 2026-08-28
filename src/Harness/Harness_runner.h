@@ -2,7 +2,7 @@
 #include "../agent/agent_loop.h"
 #include "../agent/trajectory.h"
 #include "evaluator.h"
-#include "../environment/environment.h" // Nhúng tệp môi trường vào ===
+#include "../environment/environment.h" 
 #include "../LLMClient/json.hpp"
 #include <vector>
 #include <memory>

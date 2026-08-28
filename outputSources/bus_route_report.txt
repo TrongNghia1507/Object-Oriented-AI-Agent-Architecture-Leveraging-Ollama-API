@@ -1,1 +1,0 @@
-Lộ trình ngắn nhất từ A đến E: A -> C -> D -> E với khoảng cách là 17.0

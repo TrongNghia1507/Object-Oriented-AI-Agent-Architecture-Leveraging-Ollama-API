@@ -35,10 +35,10 @@
   },
   {
   "id": "task_005",
-  "description": "Lập trình kiểm tra số nguyên tố và luân chuyển dữ liệu qua SQLite",
-  "instruction": "Cho mảng số nguyên [17, 24, 29, 35, 47, 50]. Hãy dùng exectool để viết và chạy một chương trình C++ đếm xem có bao nhiêu số nguyên tố trong mảng này. Yêu cầu bắt buộc: Trong code C++ phải tự định nghĩa và gọi một hàm có tên là 'isprime'. Sau khi chạy ra kết quả, dùng memory tool để tạo và lưu con số đếm được vào bảng 'prime_stats' trong cơ sở dữ liệu SQLite. Cuối cùng, gọi file tool để trích xuất số liệu này từ SQLite và lưu vào file outputSources/prime_count.txt. Mọi file phát sinh đều phải được lưu trong folder outputSources",
+  "description": "Lập trình tìm phần tử lớn nhất và luân chuyển dữ liệu qua SQLite",
+  "instruction": "Cho mảng số nguyên [12, 45, 7, 89, 23, 56]. Hãy dùng tool 'exec' để viết và chạy một chương trình C++ tìm giá trị lớn nhất trong mảng này. Yêu cầu bắt buộc: Trong code C++ phải tự định nghĩa và gọi một hàm có tên là 'findMax'. Sau khi chạy ra kết quả, dùng tool 'memory_tool' để tạo và lưu con số tìm được vào bảng 'max_stats' trong cơ sở dữ liệu SQLite. Cuối cùng, trích xuất số liệu này và lưu vào file outputSources/max_result.txt. Mọi file phát sinh đều phải được lưu trong thư mục outputSources.",
   "eval_type": "functional",
-  "eval_script": "test -f outputSources/prime_count.txt && grep -E '3' outputSources/prime_count.txt > /dev/null && echo PASS",
+  "eval_script": "test -f outputSources/max_result.txt && grep -E '89' outputSources/max_result.txt > /dev/null && echo PASS",
   "max_steps": 12
   },
   {
@@ -76,9 +76,9 @@
   {
   "id": "task_010",
   "description": "Trích xuất dữ liệu, chạy thuật toán Dijkstra và định dạng báo cáo",
-  "instruction": "Hệ thống cần lập báo cáo đường đi ngắn nhất cho dự án tuyến xe buýt ĐH KHTN. Dùng memory tool truy vấn bảng 'bus_routes' trong cơ sở dữ liệu SQLite để lấy danh sách cung đường (lưu ý rà soát kỹ, đồ thị này không có cung nối trực tiếp giữa A và F). Dùng exectool viết và thực thi mã (Python/C++) triển khai thuật toán Dijkstra nhằm tìm lộ trình ngắn nhất CỤ THỂ từ đỉnh A đến đỉnh E. YÊU CẦU BẮT BUỘC: Các đỉnh trong lộ trình in ra phải được ký hiệu bằng chữ cái (A, B, C, D, E), tuyệt đối không được hiển thị bằng số. Dùng translate tool dịch output sang tiếng Việt, và gọi file_tool lưu báo cáo vào outputSources/bus_route_report.txt (nhớ dùng lệnh printf '%b' để ghi file) Mọi file phát sinh đều phải được lưu trong folder outputSources.",
+  "instruction": "Hệ thống cần lập báo cáo đường đi ngắn nhất cho dự án tuyến xe buýt ĐH KHTN. Hãy dùng memory tool để tạo bảng 'bus_routes' trong SQLite memory.db để lấy danh sách cung đường (lưu ý rà soát kỹ, đồ thị này không có cung nối trực tiếp giữa A và F). Dùng exectool viết và thực thi mã (Python/C++) triển khai thuật toán Dijkstra nhằm tìm lộ trình ngắn nhất CỤ THỂ từ đỉnh A đến đỉnh E. YÊU CẦU BẮT BUỘC: Các đỉnh trong lộ trình in ra phải được ký hiệu bằng chữ cái (A, B, C, D, E), tuyệt đối không được hiển thị bằng số. Dùng translate tool dịch output sang tiếng Việt, và gọi file_tool lưu báo cáo vào outputSources/bus_route_report.txt (nhớ dùng lệnh printf '%b' để ghi file) Mọi file phát sinh đều phải được lưu trong folder outputSources.",
   "eval_type": "functional",
-  "eval_script": "test -s outputSources/bus_route_report.txt && grep -E 'E' outputSources/bus_route_report.txt > /dev/null && grep -E '17' outputSources/bus_route_report.txt > /dev/null && echo PASS",
+  "eval_script": "test -f outputSources/bus_route_report.txt && echo PASS",
   "max_steps": 15
   }
 

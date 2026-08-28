@@ -1,9 +1,0 @@
-- Tên đầy đủ: Lionel Andrés Messi
-- Ngày sinh: 24 tháng 6, 1987
-- Nơi sinh: Rosario, Argentina
-- Các thành tích nổi bật nhất trong sự nghiệp:
-  + Vô địch FIFA World Cup (2022).
-  + Kỷ lục giành nhiều Quả bóng Vàng (Ballon d'Or) nhất lịch sử.
-  + Vô địch UEFA Champions League nhiều lần cùng FC Barcelona.
-  + Vô địch Copa América (2021).
-  + Được công nhận rộng rãi là một trong những cầu thủ vĩ đại nhất mọi thời đại.

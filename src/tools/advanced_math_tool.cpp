@@ -1,5 +1,5 @@
 #include "advanced_math_tool.h"
-#include "exprtk.hpp" // Khai báo nhúng thư viện bên thứ ba dạng header-only
+#include "exprtk.hpp" 
 #include <algorithm>
 
 std::string AdvancedMathTool::execute(const std::string& arguments) {

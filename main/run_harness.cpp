@@ -71,7 +71,7 @@ int main() {
     runner.setEnvironment(&env);
 
     // 6. Chạy Benchmark từ file JSON
-    std::string taskFile = "/workspaces/AgentAI/benchmark/tasks.json"; 
+    std::string taskFile = "benchmark/tasks.json"; 
     std::cout << "[MAIN] Bat dau load file: " << taskFile << "\n";
     
     // Hàm này sẽ tự động đọc file, reset env, tạo evaluator, chạy agent và chấm điểm!

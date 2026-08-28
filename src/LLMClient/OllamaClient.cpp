@@ -116,7 +116,7 @@ std::expected<string, LLMError> OllamaClient::resolveEndpoint() {
     }
 
     // Nếu baseUrl_ là "https://openrouter.ai"
-    // Nhớ đảm bảo chuỗi trả về đúng chuẩn API của họ
+    // Nhớ đảm bảo chuỗi trả về đúng chuẩn API
     if (baseUrl_ == "https://openrouter.ai") {
          return baseUrl_ + "/api/v1/chat/completions";
     }
