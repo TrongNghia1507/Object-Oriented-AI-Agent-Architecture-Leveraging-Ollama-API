@@ -1,4 +1,5 @@
 #include <iostream>
+#include <filesystem>
 #include <memory>
 #include <string>
 #include "../src/Harness/Harness_runner.h"
@@ -25,6 +26,7 @@ int main() {
     std::cout << "        KHOI DONG HE THONG BENCHMARK              \n";
     std::cout << "==================================================\n";
 
+    std::filesystem::create_directories("benchmark_summary");
     string modelName = "google/gemma-4-31b-it"; 
     
     OllamaClient llmClient(modelName, "https://openrouter.ai");
