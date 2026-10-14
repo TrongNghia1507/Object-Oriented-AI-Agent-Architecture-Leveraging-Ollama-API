@@ -1,3 +1,4 @@
+This is our first project in OOP course during first year in HCMUS. As most of the time doing vibe code, this is a project we done have experiences in using github and developing project. Please do not clone or fork this project for any purpose.
 # AgentAI
 Hệ thống gồm 5 tầng độc lập nhưng phối hợp thành một pipeline hoàn chỉnh:
 
